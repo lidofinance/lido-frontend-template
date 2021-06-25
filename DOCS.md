@@ -157,4 +157,5 @@ yarn add @lidofinance/button
 ```
 
 For more visit the Lido UI repository at: https://github.com/lidofinance/ui
+
 Check out Lido UI Storybook at: https://ui.lido.fi/
