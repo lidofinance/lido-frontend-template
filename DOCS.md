@@ -151,7 +151,7 @@ const MyComponent: FC<{}> = () => {
 }
 ```
 
-However, in some cases you may not need the entire library to minimize the size of your JavaScript bundle, so you may tree-shake the library to necessary components. Install individual packages like so,
+However, you may not need the entire library to minimize the size of your JavaScript bundle, in which case you can tree-shake the library for necessary components. Install individual packages like so,
 ```bash
 yarn add @lidofinance/button
 ```
