@@ -42,7 +42,7 @@ module.exports = {
 
 If you take a look at `_app.tsx`, you will see than the public runtime config will be passed down to our app context using the `getInitialProps` function.
 
-**Step 3.** Export the `getServerSideProps` function from each page where you are planning to use your variable. The function doesn't have to return anything but it forces the page Next.js to run `getInitialProps` on the server.
+**Step 3.** Export the `getServerSideProps` function from each page where you are planning to use your variable. The function doesn't have to return anything but it forces Next.js to run `getInitialProps` on the server.
 
 ```ts
 // index.tsx
@@ -77,7 +77,7 @@ Apart from Web3 connection provided by the user's wallet, we use an additional J
 
 This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it in your `.env.local` and you are ready to go.
 
-In order to ensure that pre-paid production API keys do not end getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
+In order to ensure that pre-paid production API keys do not end up getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
 
 To use JSON RPC Provider, use the `useEthRpcSwr` hook like so,
 ```ts
@@ -95,7 +95,7 @@ yarn typechain
 ```
 If everything goes well, you will see `generated` directory in the root of the project.
 
-**Step 2.** After that, fill out `config/tokens.ts` which contains a dictionary of your contract's addresses across different networks.
+**Step 2.** After that, fill out `config/tokens.ts` and `config/abi.ts`. These files contain utilities that will help us access the contract.
 
 **Step 3.** Create your token provider in `providers/tokens.ts`, e.g.
 ```ts
