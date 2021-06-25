@@ -18,13 +18,13 @@ Please **avoid** using public runtime variables with the `NEXT_PUBLIC_` prefix. 
 
 If you need to access an environment variable in the client (e.g. supported networks, analytics IDs), make sure you follow the procedure below,
 
-Step 1. Specify a variable in `.env.local`, e.g.
+**Step 1.** Specify a variable in `.env.local`, e.g.
 ```bash
 # .env.local
 MY_PUBLIC_VAR=hello
 ```
 
-Step 2. Add it to `publicRuntimeConfig` in `next.config.js`
+**Step 2.** Add it to `publicRuntimeConfig` in `next.config.js`
 ```js
 // next.config.js
 
@@ -41,7 +41,7 @@ module.exports = {
 
 If you take a look at `_app.tsx`, you will see than the public runtime config will be passed down to our app context using the `getInitialProps` function.
 
-Step 3. Export the `getServerSideProps` function from each page where you are planning to use your variable. The function doesn't have to return anything but it forces the page Next.js to run `getInitialProps` on the server.
+**Step 3.** Export the `getServerSideProps` function from each page where you are planning to use your variable. The function doesn't have to return anything but it forces the page Next.js to run `getInitialProps` on the server.
 
 ```ts
 // index.tsx
@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps<WithdrawProps> =
   };
 ```
 
-Step 4. Use the `useConfig` hook to extract the variable
+**Step 4.** Use the `useConfig` hook to extract the variable
 
 ```ts
 const MyComponent: FC<{}> = () => {
