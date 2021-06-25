@@ -77,8 +77,6 @@ Apart from Web3 connection provided by the user's wallet, we use an additional J
 
 This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it in your `.env.local` and you are ready to go.
 
-In order to ensure that pre-paid production API keys do not end up getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
-
 To use JSON RPC Provider, use the `useEthRpcSwr` hook like so,
 ```ts
 function MyComponent: FC<{}> = () => {
@@ -86,6 +84,11 @@ function MyComponent: FC<{}> = () => {
   // ..
 }
 ```
+---
+**NOTE**
+In order to ensure that pre-paid production API keys do not end up getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
+---
+
 
 ## Interacting with a contract
 
