@@ -111,9 +111,9 @@ const TokensProvider: Provider = ({ children }) => {
 };
 // ...
 ```
-This creates a React context that will provide both the JSON RPC- and Web3- contract interfaces which will allow us to use read and write methods respectively.
+This creates a React context that will provide both the JSON RPC and Web3 contract interfaces which will allow us to use read and write methods respectively.
 
-**Step 4.** Create a custom hook to be able to be easily access the context.
+**Step 4.** Create a custom hook to be able to easily access the context.
 ```ts
 import { useContext } from 'react';
 import { myToken, TokenContextValue } from 'providers';
@@ -131,14 +131,14 @@ const MyComponent: FC<{}> = () => {
 
   const totalSupply = useContractRpcSwr(myToken.contractRpc, 'totalSupply');
 
-  const handleSubmit = () => {
-    myToken.contractWeb3.mint();
+  const handleSubmit = (to, value) => {
+    myToken.contractWeb3.transfer(to, value);
   };
 };
 ```
 
 ## Lido UI React Components Library
-In order to ensure visual consistency across all Lido frontends and to speed up the development process, Lido has a React Components library that is distributed as an npm package, `@lidofinance/lido-ui`. It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions, tables, text components, modals, icons, identicons, tooltips, icons and more. 
+In order to ensure visual consistency across all Lido frontends and to speed up the development process, Lido has a React Components library that is distributed as an npm package, `@lidofinance/lido-ui`. It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions, tables, text components, modals, icons, identicons, tooltips and more. 
 
 It is already listed as a dependency to this project and you may start using it right away, e.g. 
 ```ts
@@ -147,12 +147,13 @@ import { Button } from '@lidofinance/lido-ui';
 const MyComponent: FC<{}> = () => {
   return (
     <Button fullwidth color="primary" variant="outlined">
+      Click me
     </Button>
   )
 }
 ```
 
-However, you may not need the entire library to minimize the size of your JavaScript bundle, in which case you can tree-shake the library for necessary components. Install individual packages like so,
+If you want to minimize the size of your JavaScript bundle, you can tree-shake the library for necessary components. Install individual packages like so,
 ```bash
 yarn add @lidofinance/button
 ```
@@ -167,6 +168,6 @@ Please make sure to use [conventional commit messages](https://www.conventionalc
 # bumps to minor version 2.0.1 -> 2.0.2
 git commit -m "fix: typo in README"
 
-# bumps to minor version 2.0.2 -> 3.0.0
+# bumps to major version 2.0.2 -> 3.0.0
 git commit -m "feat!: dark theme"
 ```
