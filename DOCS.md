@@ -1,6 +1,6 @@
 # Lido Frontend Template Documentation
 
-This document outlines the template's structure, provides general guidelines and explains best practices for Lido frontend development. 
+This document outlines the template's structure, provides general guidelines and explains best practices for Lido frontend development. The template is mainly Ethereum-focused but it can be easily modified for different blockchains while preserving the general structure of the project.
 
 ## Stack
 
@@ -86,3 +86,53 @@ function MyComponent: FC<{}> = () => {
   // ..
 }
 ```
+
+## Interacting with a contract
+
+**Step 1.** Before you are ready to work with your contract, you will need add its ABI to the `abi` directory and have `typechain` generate the contract factory and infer its types by running,
+```bash
+yarn typechain
+```
+If everything goes well, you will see `generated` directory in the root of the project.
+
+**Step 2.** After that, fill out `config/tokens.ts` which contains a dictionary of your contract's addresses across different networks.
+
+**Step 3.** Create your token provider in `providers/tokens.ts`, e.g.
+```ts
+// providers/tokens.ts
+
+// ...
+export const myToken = getTokenProvider(TOKENS.myToken);
+const MyTokenProvider = memo(myToken.TokenProvider);
+
+const TokensProvider: Provider = ({ children }) => {
+  return <MyTokenProvider>{children}</MyTokenProvider>;
+};
+// ...
+```
+This creates a React context that will provide both the JSON RPC- and Web3- contract interfaces to be able to access read and write methods respectively.
+
+**Step 4.** Create a custom hook to be able to be easily access the context.
+```ts
+import { useContext } from 'react';
+import { myToken, TokenContextValue } from 'providers';
+import { TOKENS } from 'config';
+
+export const useMyToken = (): TokenContextValue<TOKENS.myToken> => {
+  return useContext(myToken.TokenContext);
+};
+```
+
+**Step 5.** Start working with your contract like so,
+```ts
+const MyComponent: FC<{}> = () => {
+  const myToken = useMyToken();
+
+  const totalSupply = useContractRpcSwr(myToken.contractRpc, 'totalSupply');
+
+  const handleSubmit = () => {
+    myToken.contractWeb3.mint();
+  };
+};
+```
+
