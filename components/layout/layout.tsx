@@ -14,7 +14,7 @@ const Layout: FC<LayoutProps> = (props) => {
   return (
     <>
       <Head>
-        <meta name="description" content="Lido wstETH pool for Uniswap V3" />
+        <meta name="description" content="Lido Template" />
       </Head>
       <Header />
       <Main>

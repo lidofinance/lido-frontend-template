@@ -1,6 +1,6 @@
 {
-  "name": "Lido wstETH pool for Uniswap V3",
-  "short_name": "Lido pool",
+  "name": "Lido Frontend Template",
+  "short_name": "Lido",
   "description": "Lido is the liquid staking solution for Ethereum.",
   "icons": [
     {

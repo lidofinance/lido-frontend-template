@@ -86,7 +86,7 @@ const ConfigProvider: Provider<ConfigProviderProps> = (props) => {
           // It's support only mainnet
           // https://github.com/NoahZinsmeister/web3-react/blob/v6/packages/walletlink-connector/src/index.ts
           url: getRpcPath(CHAINS.Mainnet),
-          appName: 'Lido wstETH pool for Uniswap V3',
+          appName: 'Lido Template',
           appLogoUrl: `${baseUrl}/apple-touch-icon.png`,
           darkMode: false,
         })
