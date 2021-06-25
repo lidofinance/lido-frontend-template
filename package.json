@@ -1,0 +1,77 @@
+{
+  "name": "lido-uni-v3-pool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --ext ts,tsx .",
+    "lint:fix": "yarn lint --fix",
+    "typechain": "typechain --target=ethers-v5 --out-dir ./generated './abi/*.json'",
+    "postinstall": "husky install && yarn typechain"
+  },
+  "dependencies": {
+    "@ethersproject/abstract-signer": "^5.3.0",
+    "@ethersproject/address": "^5.3.0",
+    "@ethersproject/bignumber": "^5.3.0",
+    "@ethersproject/bytes": "^5.3.0",
+    "@ethersproject/constants": "^5.3.0",
+    "@ethersproject/contracts": "^5.3.0",
+    "@ethersproject/providers": "^5.3.0",
+    "@ethersproject/units": "^5.3.0",
+    "@lidofinance/lido-ui": "^1.5.1",
+    "@web3-react/abstract-connector": "^6.0.7",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.0",
+    "@web3-react/walletlink-connector": "^6.2.0",
+    "copy-to-clipboard": "^3.3.1",
+    "ethers": "^5.3.0",
+    "gray-matter": "^4.0.2",
+    "memory-cache": "^0.2.0",
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-device-detect": "^1.17.0",
+    "react-dom": "17.0.1",
+    "react-is": "^17.0.2",
+    "react-toastify": "^7.0.4",
+    "remark": "^12.0.0",
+    "remark-external-links": "^8.0.0",
+    "remark-html": "^12.0.0",
+    "styled-components": "^5.3.0",
+    "swr": "^0.5.6"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "@typechain/ethers-v5": "^7.0.1",
+    "@types/memory-cache": "^0.2.1",
+    "@types/node": "^15.6.1",
+    "@types/react": "^17.0.8",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "typechain": "^5.0.0",
+    "typescript": "^4.3.2",
+    "url-loader": "^4.1.1"
+  },
+  "lint-staged": {
+    "./**/*.{ts,tsx}": [
+      "eslint --ignore-path .gitignore --max-warnings=0"
+    ],
+    "./**/*.{ts,tsx,css,md,json}": [
+      "prettier --write"
+    ]
+  }
+}
