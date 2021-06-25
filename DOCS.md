@@ -2,13 +2,14 @@
 
 This document outlines the template's structure, provides general guidelines and explains best practices for Lido frontend development. 
 
-## Structure
+## Stack
 
 The Lido Frontend Template stack includes:
 - [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/docs/getting-started) -- API routes, server-side rendering
+- [Next.js](https://nextjs.org/docs/getting-started) | API routes, server-side rendering
 - [ethers](https://docs.ethers.io/v5/) | Ethereum library
 - [web3react](https://github.com/NoahZinsmeister/web3-react) | Web3 Provider and wallet connectors
+- [SWR](https://swr.vercel.app/) | Data fetching and caching
 - [Lido UI](https://github.com/lidofinance/ui) | Lido UI React component library
 - [styled-components](https://styled-components.com/docs) | custom styled React components 
 
@@ -70,3 +71,18 @@ const MyComponent: FC<{}> = () => {
 ```
 
 Read more about [runtime configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration) and [automatic static optimization](https://nextjs.org/docs/advanced-features/automatic-static-optimization)
+
+## JSON RPC Provider
+Apart from Web3 connection provided by the user's wallet, we use an additional JSON RPC connection to be able to query Ethereum before Web3 connection is established. This allows us to show any relevant information the user might need to know before deciding to connect their wallet.
+
+This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it in your `.env.local` and you are ready to go.
+
+In order to ensure that pre-paid production API keys do not end getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
+
+To use JSON RPC Provider, use the `useEthRpcSwr` hook like so,
+```ts
+function MyComponent: FC<{}> = () => {
+  const gasPrice = useEthRpcSwr('getGasPrice');
+  // ..
+}
+```
