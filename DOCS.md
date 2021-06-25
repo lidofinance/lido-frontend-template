@@ -159,3 +159,13 @@ yarn add @lidofinance/button
 For more visit the Lido UI repository at: https://github.com/lidofinance/ui
 
 Check out Lido UI Storybook at: https://ui.lido.fi/
+
+## Git commit messages
+Please make sure to use [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) to keep the automatic versioning working, e.g.
+```bash
+# bumps to minor version 2.0.1 -> 2.0.2
+git commit -m "fix: typo in README"
+
+# bumps to minor version 2.0.2 -> 3.0.0
+git commit -m "feat!: dark theme"
+```
