@@ -85,9 +85,7 @@ function MyComponent: FC<{}> = () => {
 }
 ```
 ---
-**NOTE**
 In order to ensure that pre-paid production API keys do not end up getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
----
 
 
 ## Interacting with a contract
