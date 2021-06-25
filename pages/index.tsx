@@ -15,6 +15,8 @@ import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
+import { useContractRpcSwr } from 'hooks';
+import { useStethToken } from 'hooks/useStethToken';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -29,6 +31,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     e.preventDefault();
     alert('Submitted');
   };
+
+  const { contractRpc } = useStethToken();
+  const tokenName = useContractRpcSwr(contractRpc, 'name');
 
   return (
     <Layout
@@ -53,13 +58,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           </Button>
         </form>
       </Block>
-      <Section
-        title="Data table"
-        headerDecorator={<Link href="#">Link to contract</Link>}
-      >
+      <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>
           <DataTable>
-            <DataTableRow title="Total supply">0</DataTableRow>
+            <DataTableRow title="Token name" loading={tokenName.initialLoading}>
+              {tokenName.data}
+            </DataTableRow>
           </DataTable>
         </Block>
       </Section>
