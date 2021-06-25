@@ -137,7 +137,7 @@ const MyComponent: FC<{}> = () => {
 ```
 
 ## Lido UI React Components Library
-In order to visual consistency across all Lido frontends and to speed up the development process, Lido has a React Components library that is distributed as an npm package, `@lidofinance/lido-ui`. It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions, tables, text components, modals, icons, identicons, tooltips and more. 
+In order to ensure visual consistency across all Lido frontends and to speed up the development process, Lido has a React Components library that is distributed as an npm package, `@lidofinance/lido-ui`. It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions, tables, text components, modals, icons, identicons, tooltips, icons and more. 
 
 It is already listed as a dependency to this project and you may start using it right away, e.g. 
 ```ts
@@ -145,7 +145,7 @@ import { Button } from '@lidofinance/lido-ui';
 
 const MyComponent: FC<{}> = () => {
   return (
-    <Button fullwidth color="primary">
+    <Button fullwidth color="primary" variant="outlined">
     </Button>
   )
 }
