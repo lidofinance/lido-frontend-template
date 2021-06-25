@@ -110,7 +110,7 @@ const TokensProvider: Provider = ({ children }) => {
 };
 // ...
 ```
-This creates a React context that will provide both the JSON RPC- and Web3- contract interfaces to be able to access read and write methods respectively.
+This creates a React context that will provide both the JSON RPC- and Web3- contract interfaces which will allow us to use read and write methods respectively.
 
 **Step 4.** Create a custom hook to be able to be easily access the context.
 ```ts
