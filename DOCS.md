@@ -15,9 +15,28 @@ The Lido Frontend Template stack includes:
 
 ## Environment variables
 
-Please **avoid** using public runtime variables with the `NEXT_PUBLIC_` prefix. This ensures that the testnet and production deployments of your application can be smoothly integrated into our CI pipeline. 
+To ensure that the production version of your application is on par with the Lido standards, it needs to undergo manual testing and various QA procedures which are enabled by having a testnet deployment of your application. Moreover, the mainnet and testnet versions must only support their respective network(s). This is why the supported networks are specified as environment variables, e.g.
 
-If you need to access an environment variable in the client (e.g. supported networks, analytics IDs), make sure you follow the procedure below,
+For Ethereum mainnet deployment, we would use:
+```bash
+# mainnet 1
+DEFAULT_CHAIN=1
+SUPPORTED_CHAINS=1
+```
+
+For testnet deployment, we can use multiple networks:
+```bash
+# rinkeby 4, goerli 5
+DEFAULT_CHAIN=4
+SUPPORTED_CHAINS=4,5 
+```
+
+*Note! `DEFAULT_CHAIN` is the network the application defaults whenever the user wallet is not connected.*
+
+### Public Runtime Variables
+Currently our CI pipeline DOES NOT support public build-time environment variables, i.e variables with the [`NEXT_PUBLIC_` prefix](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser). We strongly recommend that you avoid using them so that your application can be integrated into our pipeline as smoothly as possible.
+
+If you need to access an environment variable on the client (e.g. supported networks, analytics IDs), you will neede to specify a regular server-side environment variable and export it to the client using `getInitialProps`. Below is the detailed procedure on how to do it.
 
 **Step 1.** Specify a variable in `.env.local`, e.g.
 ```bash
