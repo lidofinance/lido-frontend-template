@@ -31,12 +31,12 @@ DEFAULT_CHAIN=4
 SUPPORTED_CHAINS=4,5 
 ```
 
-*Note! `DEFAULT_CHAIN` is the network the application defaults whenever the user wallet is not connected.*
+*Note! `DEFAULT_CHAIN` is the network the application defaults to whenever the user wallet is not connected.*
 
 ### Public Runtime Variables
-Currently our CI pipeline DOES NOT support public build-time environment variables, i.e variables with the [`NEXT_PUBLIC_` prefix](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser). We strongly recommend that you avoid using them so that your application can be integrated into our pipeline as smoothly as possible.
+Currently our CI pipeline DOES NOT support public build-time environment variables, i.e variables with the [`NEXT_PUBLIC_` prefix](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser). This is because we use a single docker image for both the mainnet and testnet versions of the application and specify the network(s) at the start of the container. We strongly recommend that you avoid using them so that your application can be integrated into our pipeline as smoothly as possible. Other than that, you are free to add as many environment varables as your application may require.
 
-If you need to access an environment variable on the client (e.g. supported networks, analytics IDs), you will neede to specify a regular server-side environment variable and export it to the client using `getInitialProps`. Below is the detailed procedure on how to do it.
+If you need to access an environment variable on the client (e.g. supported networks, analytics IDs), you will need to specify a regular server-side environment variable and export it to the client using `getInitialProps`. Below is the detailed procedure on how to do it.
 
 **Step 1.** Specify a variable in `.env.local`, e.g.
 ```bash
