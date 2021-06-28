@@ -94,7 +94,8 @@ Read more about [runtime configuration](https://nextjs.org/docs/api-reference/ne
 ## JSON RPC Provider
 Apart from Web3 connection provided by the user's wallet, we use an additional JSON RPC connection to be able to query Ethereum before Web3 connection is established. This allows us to show any relevant information the user might need to know before deciding to connect their wallet.
 
-This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it in your `.env.local` and you are ready to go.
+This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it as a respective variable (`INFURA_API_KEY` or `ALCHEMY_API_KEY`) in your `.env.local` and you are ready to go.
+
 
 To use JSON RPC Provider, use the `useEthRpcSwr` hook like so,
 ```ts
@@ -104,10 +105,11 @@ function MyComponent: FC<{}> = () => {
 }
 ```
 ---
-In order to ensure that pre-paid production API keys do not end up getting shipped to the user's browser, we have an API route at `pages/api/rpc.ts` that proxies all Ethereum JSON RPC requests.
+Note! The `pages/api/rpc.ts` Next.js API route serves as a proxy for all JSON RPC requests so that the Infura/Alchemy API key is exposed to the browser.
 
 
 ## Interacting with a contract
+*Note! The words token and contract are used interchangeably.*
 
 **Step 1.** Before you are ready to work with your contract, you will need add its ABI to the `abi` directory and have `typechain` generate the contract factory and infer its types by running,
 ```bash
@@ -115,7 +117,7 @@ yarn typechain
 ```
 If everything goes well, you will see `generated` directory in the root of the project.
 
-**Step 2.** After that, fill out `config/tokens.ts` and `config/abi.ts`. These files contain utilities that will help us access the contract.
+**Step 2.** After that, fill out `config/tokens.ts` and `config/abi.ts`. These are simple objects that are used to dynamically access the factory and address of your contract depending on the network.
 
 **Step 3.** Create your token provider in `providers/tokens.ts`, e.g.
 ```ts
@@ -143,14 +145,16 @@ export const useMyToken = (): TokenContextValue<TOKENS.myToken> => {
 };
 ```
 
-**Step 5.** Start working with your contract like so,
+**Step 5.** Start working with your contract. For read methods, use the `useContractRpcSwr` hook that wraps your rpc interface in `useSwr` for caching and re-validation. Write methods are available directly on the `contractWeb3` property and are automatically typed thanks to generated types.
 ```ts
 const MyComponent: FC<{}> = () => {
   const myToken = useMyToken();
 
+  // read call
   const totalSupply = useContractRpcSwr(myToken.contractRpc, 'totalSupply');
 
   const handleSubmit = (to, value) => {
+    // write call
     myToken.contractWeb3.transfer(to, value);
   };
 };
