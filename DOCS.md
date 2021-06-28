@@ -34,7 +34,7 @@ SUPPORTED_CHAINS=4,5
 *Note! `DEFAULT_CHAIN` is the network the application defaults to whenever the user wallet is not connected.*
 
 ### Build-time Variables
-Currently our CI pipeline DOES NOT support build-time environment variables, for example, variables with the [`NEXT_PUBLIC_` prefix](https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser) for SSG pages. This is because we build a single docker image for both the mainnet and testnet versions of the application and specify environment variables at the start of the container. We strongly recommend that you avoid using any build-time variables so that your application can be integrated into our pipeline as smoothly as possible. Other than that, you are free to add as many environment varables as your application may require.
+Currently our CI pipeline DOES NOT support build-time environment variables (https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration). This is because we build a single docker image for both the mainnet and testnet versions of the application and specify environment variables at the start of the container. We strongly recommend that you avoid using any build-time variables so that your application can be integrated into our pipeline as smoothly as possible. Other than that, you are free to add as many environment varables as your application may require. 
 
 If you need to access an environment variable on the client (e.g. supported networks, analytics IDs), you will need to specify a regular server-side environment variable and export it to the client using `getInitialProps`. Below is the detailed procedure on how to do it.
 
