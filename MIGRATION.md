@@ -17,7 +17,7 @@ MY_PUBLIC_VAR=hello
 
 ### Step 2. Add `DEFAULT_CHAIN` and `SUPPORTED_CHAINS` environment variables
 
-`DEFAULT_CHAIN` and `SUPPORTED_CHAINS` are important variables that are different for mainnet and testnet deployments which eliminate an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
+`DEFAULT_CHAIN` and `SUPPORTED_CHAINS` are important variables that are different for mainnet and testnet deployments which eliminates an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
 
 For development we could use several networks
 
@@ -171,7 +171,7 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-IndexPage.getServerSideProps = () => {
+IndexPage.getServerSideProps = async () => {
   // doesn't have to return anything
   return {
     props: {},
@@ -222,7 +222,7 @@ export default Header;
 This hook will help us access the currently active chain,
 
 ```js
-// hooks/useChain
+// hooks/useChain.js
 
 import { useWeb3React } from '@web3-react/core';
 import { useConfig } from './useConfig';
@@ -236,11 +236,11 @@ export default function useChain() {
 }
 ```
 
-### Step 10. Turns functions into hooks
+### Step 11. Turns functions into hooks
 
-Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. We will consider an utility function that allows us to build an Etherscan link based on the current network and tx hash.
+Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that allows us to build an Etherscan link based on the current network and tx hash.
 
-**BEFORE**
+#### BEFORE
 We would have a helper like this,
 
 ```js
@@ -258,7 +258,7 @@ export default getEtherscanLink(chain, hash) {
 }
 ```
 
-and we would use like so,
+and we would use it like so,
 
 ```js
 // component/Transaction
@@ -273,8 +273,7 @@ const Transaction = ({ hash }) => {
   );
 };
 ```
-
-**AFTER**
+#### AFTER
 Now we will re-write our helper into a hook,
 
 ```js
@@ -312,4 +311,29 @@ const Transaction = ({ hash }) => {
     </div>
   );
 };
+```
+
+### Step 12. Using private variables
+Up until we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
+
+```js
+// pages/index.js
+import getConfig from 'next/config';
+
+const IndexPage = ({ dataFromApi }) => {
+
+  return <p>{dataFromApi}</p>
+}
+
+IndexPage.getServerSideProps = async () => {
+  const { serverRuntimeConfig } = getConfig();
+
+  // this is the varible that we've exported in next.config.js
+  const { mySecretApiKey } = serverRuntimeConfig;
+
+  const response = await fetch(`https://someapi.com?apiKey=${mySecretApiKey}`);
+  const data = await response.json();
+
+  return data;
+}
 ```
