@@ -241,6 +241,7 @@ export default function useChain() {
 Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that allows us to build an Etherscan link based on the current network and tx hash.
 
 #### BEFORE
+
 We would have a helper like this,
 
 ```js
@@ -273,7 +274,9 @@ const Transaction = ({ hash }) => {
   );
 };
 ```
+
 #### AFTER
+
 Now we will re-write our helper into a hook,
 
 ```js
@@ -297,6 +300,7 @@ export default useEtherscanLink(hash) {
 ```
 
 And now use the hook like so,
+
 ```js
 // component/Transaction
 import { ACTIVE_CHAIN } from 'config';
@@ -314,6 +318,7 @@ const Transaction = ({ hash }) => {
 ```
 
 ### Step 12. Using private variables
+
 Up until we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
 
 ```js
@@ -321,9 +326,8 @@ Up until we only talked about public variables that are necessary for the client
 import getConfig from 'next/config';
 
 const IndexPage = ({ dataFromApi }) => {
-
-  return <p>{dataFromApi}</p>
-}
+  return <p>{dataFromApi}</p>;
+};
 
 IndexPage.getServerSideProps = async () => {
   const { serverRuntimeConfig } = getConfig();
@@ -334,6 +338,10 @@ IndexPage.getServerSideProps = async () => {
   const response = await fetch(`https://someapi.com?apiKey=${mySecretApiKey}`);
   const data = await response.json();
 
-  return data;
-}
+  return {
+    props: {
+      dataFromApi: data,
+    },
+  };
+};
 ```
