@@ -236,9 +236,9 @@ export default function useChain() {
 }
 ```
 
-### Step 11. Turns functions into hooks
+### Step 11. Turn functions into hooks
 
-Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that allows us to build an Etherscan link based on the current network and tx hash.
+Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that builds an Etherscan link based on the current network and tx hash.
 
 #### BEFORE
 
@@ -319,7 +319,7 @@ const Transaction = ({ hash }) => {
 
 ### Step 12. Using private variables
 
-Up until we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
+Up until now we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
 
 ```js
 // pages/index.js
