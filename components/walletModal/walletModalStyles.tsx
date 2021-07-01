@@ -14,7 +14,7 @@ export const WalletModalConnectedStyle = styled.div`
 
 export const WalletModalConnectorStyle = styled.div`
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
+  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   line-height: 1.4em;
   flex-grow: 1;
   padding-right: ${({ theme }) => theme.spaceMap.md}px;
@@ -34,7 +34,7 @@ export const WalletModalAccountStyle = styled.div`
 
 export const WalletModalAddressStyle = styled.div`
   margin-left: ${({ theme }) => theme.spaceMap.sm}px;
-  font-size: ${({ theme }) => theme.fontSizesMap.lg}px;
+  font-size: ${({ theme }) => theme.fontSizesMap.md}px;
   line-height: 1.2em;
   font-weight: 600;
 `;

@@ -50,16 +50,16 @@ export const FooterGroupStyle = styled.div`
 
 export const FooterTitleStyle = styled.h4`
   margin: 0.6em 0;
-  font-weight: 600;
-  font-size: ${({ theme }) => theme.fontSizesMap.lg}px;
+  font-weight: 800;
+  font-size: ${({ theme }) => theme.fontSizesMap.md}px;
   line-height: 1.3em;
-  margin: 0 0 0.5em;
+  margin: 0 0 0.7em;
 `;
 
 export const FooterItemStyle = styled.div`
-  font-size: ${({ theme }) => theme.fontSizesMap.md}px;
+  font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
   line-height: 1.5em;
-  margin: 0 0 0.5em;
+  margin: 0 0 0.7em;
 
   a {
     text-decoration: none;
