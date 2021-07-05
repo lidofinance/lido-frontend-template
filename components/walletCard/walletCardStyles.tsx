@@ -33,8 +33,8 @@ export const WalletCardBalanceStyle = styled.div`
   margin-right: 18px;
   flex-basis: 50%;
   flex-grow: 1;
-  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
-  line-height: 1.4em;
+  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
+  line-height: 1.6em;
 
   :last-child {
     margin-right: 0;
@@ -46,9 +46,9 @@ export const WalletCardTitleStyle = styled.div``;
 export const WalletCardValueStyle = styled.div<{ $small: boolean }>`
   margin-top: 2px;
   font-size: ${({ theme, $small }) =>
-    $small ? theme.fontSizesMap.sm : theme.fontSizesMap.lg}px;
-  line-height: 1.35em;
-  font-weight: 500;
+    $small ? theme.fontSizesMap.sm : theme.fontSizesMap.md}px;
+  line-height: 1.4em;
+  font-weight: 800;
   white-space: nowrap;
 `;
 

@@ -6,8 +6,8 @@ export const ConnectButtonStyle = styled(Button).attrs({
   variant: 'ghost',
 })`
   text-align: left;
-  font-weight: normal;
-  font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   padding-left: ${({ theme }) => theme.spaceMap.lg}px;
   padding-right: ${({ theme }) => theme.spaceMap.lg}px;
   margin-bottom: ${({ theme }) => theme.spaceMap.sm}px;

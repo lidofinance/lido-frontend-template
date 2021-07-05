@@ -11,15 +11,15 @@ export const SectionHeaderStyle = styled.div`
 `;
 
 export const SectionTitleStyle = styled.h2`
-  font-weight: 600;
-  font-size: ${({ theme }) => theme.fontSizesMap.lg}px;
+  font-weight: 800;
+  font-size: ${({ theme }) => theme.fontSizesMap.md}px;
   line-height: 1.3em;
   margin-right: auto;
 `;
 
 export const SectionHeaderDecoratorStyle = styled.div`
   margin-left: ${({ theme }) => theme.spaceMap.lg}px;
-  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
+  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   line-height: 1.5em;
 `;
 

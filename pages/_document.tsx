@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
 } from 'next/document';
+import { Fonts } from '@lidofinance/lido-ui';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -41,7 +42,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="stylesheet" href="/fonts/style.css" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" type="image/svg+xml" href="favicon-512x512.svg" />
           <link
@@ -67,6 +67,7 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
+          <Fonts />
         </Head>
         <body>
           <Main />

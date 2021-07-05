@@ -28,7 +28,7 @@ export const ToastContainer = styled(SourceToastContainer).attrs({
       min-height: 0px;
       padding: ${({ theme }) => theme.spaceMap.sm}px
         ${({ theme }) => theme.spaceMap.md}px;
-      font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
+      font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
       line-height: 1.3em;
       font-family: inherit;
       cursor: default;
