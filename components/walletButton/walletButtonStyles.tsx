@@ -11,12 +11,13 @@ export const WalledButtonWrapperStyle = styled.span`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: -8px -16px;
+  margin: -10px -18px;
 `;
 
 export const WalledButtonBalanceStyle = styled.span`
-  margin-right: 16px;
+  margin-right: 12px;
   margin-left: 4px;
+  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
 
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;

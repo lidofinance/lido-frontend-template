@@ -14,7 +14,7 @@ export const LayoutTitleStyle = styled(H1)`
 `;
 
 export const LayoutSubTitleStyle = styled.h4`
-  font-weight: normal;
+  font-weight: 500;
   color: ${({ theme }) => theme.colors.textSecondary};
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
   font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;

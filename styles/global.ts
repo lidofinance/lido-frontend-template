@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
     line-height: 1.5em;
+    font-weight: 500;
   }
   a {
     color: ${({ theme }) => theme.colors.primary};

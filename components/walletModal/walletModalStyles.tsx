@@ -34,9 +34,9 @@ export const WalletModalAccountStyle = styled.div`
 
 export const WalletModalAddressStyle = styled.div`
   margin-left: ${({ theme }) => theme.spaceMap.sm}px;
-  font-size: ${({ theme }) => theme.fontSizesMap.md}px;
+  font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
   line-height: 1.2em;
-  font-weight: 600;
+  font-weight: 800;
 `;
 
 export const WalletModalActionsStyle = styled.div`
