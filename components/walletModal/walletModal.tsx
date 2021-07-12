@@ -7,13 +7,9 @@ import {
   Copy,
   trimAddress,
 } from '@lidofinance/lido-ui';
-import { useWeb3React } from '@web3-react/core';
-import {
-  useConnectorStorage,
-  useCopyToClipboard,
-  useDisconnect,
-  useEtherscanOpen,
-} from 'hooks';
+import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
+import { useConnectorInfo, useDisconnect } from '@lido-sdk/web3-react';
+import { useCopyToClipboard } from 'hooks';
 import { FC, useCallback, useMemo } from 'react';
 import {
   WalletModalContentStyle,
@@ -27,12 +23,12 @@ import {
 
 const WalletModal: FC<ModalProps> = (props) => {
   const { onClose } = props;
-  const { account } = useWeb3React();
-  const [connector] = useConnectorStorage();
-  const disconnect = useDisconnect();
+  const { account } = useSDK();
+  const { providerName } = useConnectorInfo();
+  const { disconnect } = useDisconnect();
 
   const handleDisconnect = useCallback(() => {
-    disconnect();
+    disconnect?.();
     onClose?.();
   }, [disconnect, onClose]);
 
@@ -48,17 +44,21 @@ const WalletModal: FC<ModalProps> = (props) => {
     <Modal title="Account" {...props}>
       <WalletModalContentStyle>
         <WalletModalConnectedStyle>
-          <WalletModalConnectorStyle>
-            Connected with {connector}
-          </WalletModalConnectorStyle>
+          {providerName && (
+            <WalletModalConnectorStyle>
+              Connected with {providerName}
+            </WalletModalConnectorStyle>
+          )}
 
-          <WalletModalDisconnectStyle
-            size="xs"
-            variant="outlined"
-            onClick={handleDisconnect}
-          >
-            Disconnect
-          </WalletModalDisconnectStyle>
+          {disconnect && (
+            <WalletModalDisconnectStyle
+              size="xs"
+              variant="outlined"
+              onClick={handleDisconnect}
+            >
+              Disconnect
+            </WalletModalDisconnectStyle>
+          )}
         </WalletModalConnectedStyle>
 
         <WalletModalAccountStyle>

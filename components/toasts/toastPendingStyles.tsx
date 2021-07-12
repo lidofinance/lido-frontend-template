@@ -13,6 +13,6 @@ export const ToastPendingLoaderStyle = styled(Loader)`
   margin-right: ${({ theme }) => theme.spaceMap.md}px;
 
   svg {
-    color: ${({ theme }) => theme.colors.secondaryContrast};
+    color: ${({ theme }) => theme.colors.accentContrast};
   }
 `;

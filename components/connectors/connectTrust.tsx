@@ -1,39 +1,27 @@
 import { FC, useCallback } from 'react';
 import { ConnectWalletProps } from './types';
-import ConnectButtonMobile from './connectButtonMobile';
+import ConnectButton from './connectButton';
 import iconUrl from 'assets/icons/trust.svg';
-import { useConnect, useConfig } from 'hooks';
-import { openWindow } from 'utils';
+import { useConnectorTrust } from '@lido-sdk/web3-react';
 
 const ConnectTrust: FC<ConnectWalletProps> = (props) => {
-  const { onConnect, ...rest } = props;
-  const { connectors } = useConfig();
-  const connect = useConnect();
-  const connector = connectors.trust;
-
-  const openInWallet = useCallback(() => {
-    const url = encodeURIComponent(window.location.href);
-    openWindow(`https://link.trustwallet.com/open_url?url=${url}`);
-
-    return;
-  }, []);
+  const { onConnect, disabled, ...rest } = props;
+  const { connect } = useConnectorTrust();
 
   const handleConnect = useCallback(async () => {
-    const hasInjected = typeof window !== 'undefined' && 'ethereum' in window;
-
-    if (!hasInjected) {
-      openInWallet();
-      return;
-    }
-
     onConnect?.();
-    await connect(connector);
-  }, [onConnect, connect, connector, openInWallet]);
+    connect?.();
+  }, [onConnect, connect]);
 
   return (
-    <ConnectButtonMobile {...rest} iconSrc={iconUrl} onClick={handleConnect}>
+    <ConnectButton
+      {...rest}
+      disabled={disabled || !connect}
+      iconSrc={iconUrl}
+      onClick={handleConnect}
+    >
       Trust
-    </ConnectButtonMobile>
+    </ConnectButton>
   );
 };
 

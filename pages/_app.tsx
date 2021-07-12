@@ -1,13 +1,11 @@
 import { memo } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
-import { useAutoConnect } from 'hooks';
 import { ToastContainer } from 'components/toasts';
 import Providers, { EnvConfig } from 'providers';
 import getConfig from 'next/config';
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
-  useAutoConnect();
 
   return <Component {...pageProps} />;
 };

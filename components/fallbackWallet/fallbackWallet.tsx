@@ -1,14 +1,12 @@
 import { FallbackWalletComponent } from './types';
 import { FallbackWalletStyle } from './fallbackWalletStyles';
-import { useWeb3React } from '@web3-react/core';
 import { useErrorMessage } from './useErrorMessage';
 
 const FallbackWallet: FallbackWalletComponent = (props) => {
-  const { error } = useWeb3React();
-  const message = useErrorMessage(error);
+  const error = useErrorMessage();
 
   if (error) {
-    return <FallbackWalletStyle {...props}>{message}</FallbackWalletStyle>;
+    return <FallbackWalletStyle {...props}>{error}</FallbackWalletStyle>;
   }
 
   return null;

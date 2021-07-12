@@ -1,6 +1,9 @@
-import { TransactionResponse } from '@ethersproject/abstract-provider';
+import {
+  TransactionResponse,
+  TransactionReceipt,
+} from '@ethersproject/abstract-provider';
 import { toastError, toastPending, toastSuccess } from 'components/toasts';
-import { CHAINS } from 'config';
+import { CHAINS } from '@lido-sdk/constants';
 import { toast } from 'react-toastify';
 import { runWithTransactionLogger } from 'utils';
 import {
@@ -8,7 +11,7 @@ import {
   TransactionToastEtherscan,
 } from './transactionToast';
 
-export const transaction = async <T extends unknown>(
+export const transaction = async <T extends unknown = TransactionReceipt>(
   name: string,
   chainId: CHAINS,
   callback: () => Promise<TransactionResponse>,

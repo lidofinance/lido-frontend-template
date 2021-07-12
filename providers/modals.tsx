@@ -1,5 +1,4 @@
-import { createContext, useMemo, useCallback, memo, useState } from 'react';
-import { Provider } from './types';
+import { createContext, useMemo, useCallback, memo, useState, FC } from 'react';
 import WalletModal from 'components/walletModal';
 import WalletModalConnect from 'components/walletModalConnect';
 
@@ -11,13 +10,11 @@ export type ModalContextValue = {
 export enum MODAL {
   connect,
   wallet,
-  rewardsWithdraw,
-  rewardsClaim,
 }
 
 export const ModalContext = createContext({} as ModalContextValue);
 
-const ModalProvider: Provider = ({ children }) => {
+const ModalProvider: FC = ({ children }) => {
   const [active, setActive] = useState<MODAL | null>(null);
 
   const openModal = useCallback((modal: MODAL) => {
@@ -49,4 +46,4 @@ const ModalProvider: Provider = ({ children }) => {
   );
 };
 
-export default memo(ModalProvider);
+export default memo<FC>(ModalProvider);

@@ -10,13 +10,13 @@ import {
   Button,
 } from '@lidofinance/lido-ui';
 import Head from 'next/head';
+import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
-import { useContractRpcSwr } from 'hooks';
-import { useStethToken } from 'hooks/useStethToken';
+import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -32,8 +32,11 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     alert('Submitted');
   };
 
-  const { contractRpc } = useStethToken();
-  const tokenName = useContractRpcSwr(contractRpc, 'name');
+  const contractRpc = useSTETHContractRPC();
+  const tokenName = useContractSWR({
+    contract: contractRpc,
+    method: 'name',
+  });
 
   return (
     <Layout
@@ -43,6 +46,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Head>
         <title>Lido | Frontend Template</title>
       </Head>
+      <Wallet />
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
           <InputWrapper>
