@@ -2,7 +2,7 @@ import { LOCALE } from 'config';
 import { FormatPriceComponent } from './types';
 
 const FormatPrice: FormatPriceComponent = (props) => {
-  const { amount = 0, ...rest } = props;
+  const { amount, ...rest } = props;
   const value =
     amount == null
       ? 'Unavailable'

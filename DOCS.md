@@ -209,4 +209,4 @@ git commit -m "feat!: dark theme"
 ## Icons
 
 Yon can use this mockup to generate icons for the app:
-https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons?node-id=1%3A24
+https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons
