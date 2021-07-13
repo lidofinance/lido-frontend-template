@@ -1,6 +1,6 @@
 # MIGRATION GUIDE
 
-If you have been using the old Ethereum Lido Staking Widget as your template, your project may be subject to changes as per this new template. In this document you will be presented with a step-by-step guide on how to migrate to the new Lido project structure as necessitated by our pipeline.
+Current Lido CI setup is built with this app template in mind. If your project was built with custom code / fork of an older version of the staking widget, most likely there would be changes required to make your app run smoothly.
 
 ### Step 1. Change all public environment variables to server-side
 
@@ -17,7 +17,7 @@ MY_PUBLIC_VAR=hello
 
 ### Step 2. Add `DEFAULT_CHAIN` and `SUPPORTED_CHAINS` environment variables
 
-`DEFAULT_CHAIN` and `SUPPORTED_CHAINS` are important variables that are different for mainnet and testnet deployments which eliminates an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
+The chains supported by an app's deployment are specified with `DEFAULT_CHAIN` and `SUPPORTED_CHAINS` env variables. Having separate values for mainnet and testnet prevents an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
 
 For development we could use several networks
 
@@ -109,7 +109,7 @@ const Web3Provider: FC<Web3ProviderProps> = ({ children, config }) => {
 export default Web3Provider;
 ```
 
-This provider is needed for hooks from packages `@lido-sdk/web3-react` and `@lido-sdk/react`.
+This provider is required for hooks from `@lido-sdk/web3-react` and `@lido-sdk/react`.
 For more details visit the [Lido JS SDK repository](https://github.com/lidofinance/lido-js-sdk/)
 
 ### Step 5. Wrap your app with `Web3Provider`
@@ -144,7 +144,7 @@ const AppWrapper = (props) => {
 
 ### Step 6. Export server-side variables to the client using `getInitialProps`
 
-Add the `getInitialProps` method to your application, in which your pass down the `publicRuntimeConfig` to the React context, e.g.
+Add the `getInitialProps` method to your application (`_app.js`) and pass down the `publicRuntimeConfig` to the React context here, e.g.
 
 ```js
 // pages/_app.js
@@ -163,7 +163,7 @@ export default AppWrapper;
 
 ### Step 7. Add the `getServerSideProps` method on each page
 
-For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then run on the client when navigating to a different route via the `next/link` component or by using `next/router`. However, we can export `getServerSideProps` on each page of our app to force Next to always run `getInitialProps` on the server, e.g.
+For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then run on the client when navigating to a different route via the `next/link` component or by using `next/router`. However, exporting `getServerSideProps` on each page of our app forces Next to always run `getInitialProps` on the server, e.g.
 
 ```js
 // pages/index.js
@@ -266,7 +266,7 @@ const Transaction = ({ hash }) => {
 
 ### Step 10. Using private variables
 
-Up until now we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
+Private variables are accessed directly by the Next server-side code with `getConfig` function.
 
 ```js
 // pages/index.js
