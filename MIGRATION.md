@@ -1,6 +1,6 @@
 # MIGRATION GUIDE
 
-If you have been using the old Ethereum Lido Staking Widget as your template, your project may be subject to changes as per this new template. In this document you will be presented with a step-by-step guide on how to migrate to the new Lido project structure as necessitated by our pipeline.
+Current Lido CI setup is built with this app template in mind. If your project was built with custom code / fork of an older version of the staking widget, most likely there would be changes required to make your app run smoothly. 
 
 ### Step 1. Change all public environment variables to server-side
 
@@ -17,7 +17,7 @@ MY_PUBLIC_VAR=hello
 
 ### Step 2. Add `DEFAULT_CHAIN` and `SUPPORTED_CHAINS` environment variables
 
-`DEFAULT_CHAIN` and `SUPPORTED_CHAINS` are important variables that are different for mainnet and testnet deployments which eliminates an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
+The chains supported by an app's deployment are specified with `DEFAULT_CHAIN` and `SUPPORTED_CHAINS` env variables. Having separate values for mainnet and testnet prevents an entire category of bugs and user wallet-related errors. `DEFAULT_CHAIN` tells the application which network to connect to before the user connects their wallet. `SUPPORTED_CHAINS` are the networks to which wallet connections are limited.
 
 For development we could use several networks
 
@@ -59,64 +59,67 @@ module.exports = {
 };
 ```
 
-### Step 4. Create a React Context for config
+### Step 4. Replace your Web3 Provider with provider from `@lido-sdk/web3-react`
 
-In this step we create a React Context that will wrap our entire application, so that we can access the variables anywhere in our component tree without the need to drill them down via props. If our wallet connectors depend on the current network, which they usually do, we would also add them to our config provider, e.g.
+In this step we wrap the application with `ProviderWeb3` from `@lido-sdk/web3-react` and pass our config into it:
 
-```js
-// providers/config.js
+- `defaultChainId`,
+- `supportedChainIds`,
+- and list of `rpc` addresses.
 
-const ConfigContext = React.createContext({});
+```jsx
+// providers/web3.js
 
-const ConfigProvider = ({ config, children }) => {
-  // cast the string to int
-  const defaultChain = parseInt(config.defaultChain);
+import { FC, useMemo } from 'react';
+import { ProviderWeb3 } from '@lido-sdk/web3-react';
+import { backendRPC } from 'config';
 
-  // comma-separated numbers into an array of ints
+export type EnvConfig = {
+  defaultChain: string,
+  supportedChains: string,
+};
+
+export type Config = {
+  defaultChain: number,
+  supportedChainIds: number[],
+};
+
+export type Web3ProviderProps = { config: EnvConfig };
+
+const Web3Provider: FC<Web3ProviderProps> = ({ children, config }) => {
+  const defaultChainId = parseInt(config.defaultChain);
+
   const supportedChainIds = useMemo(() => {
     return config.supportedChains
       .split(',')
       .map((value: string) => parseInt(value));
   }, [config.supportedChains]);
 
-  // restrict Metamask connections to specified supported chains
-  const metamask = useMemo(
-    () => new InjectedConnector({ supportedChainIds }),
-    [supportedChainIds],
-  );
-
-  // memoize context value
-  const contextValue = useMemo(
-    () => ({
-      config: {
-        defaultChain,
-        supportedChainIds,
-      },
-      connectors: {
-        metamask,
-      },
-    }),
-    [defaultChain, supportedChains, metamask],
-  );
-
   return (
-    <ConfigContext.Provider value={contextValue}>
+    <ProviderWeb3
+      defaultChainId={defaultChainId}
+      supportedChainIds={supportedChainIds}
+      rpc={backendRPC}
+    >
       {children}
-    </ConfigContext.Provider>
+    </ProviderWeb3>
   );
 };
 
-export default memo(ConfigProvider);
+export default Web3Provider;
 ```
 
-### Step 5. Wrap your app with `ConfigProvider`
+This provider is required for hooks from `@lido-sdk/web3-react` and `@lido-sdk/react`.
+For more details visit the [Lido JS SDK repository](https://github.com/lidofinance/lido-js-sdk/)
 
-Now go to `_app.js` and wrap your entire application with the config provider, e.g.
+### Step 5. Wrap your app with `Web3Provider`
+
+Now go to `_app.js` and wrap your entire application with the Web3Provider from previous step, e.g.
 
 ```js
 // pages/_app.js
 
-import ConfigProvider from 'providers/config';
+import Web3Provider from 'providers/web3';
 
 const App = (props) => {
   const { Component, pageProps } = props;
@@ -132,16 +135,16 @@ const AppWrapper = (props) => {
 
   return (
     // provide empty object for fallback
-    <ConfigProvider config={config || {}}>
+    <Web3Provider config={config || {}}>
       <MemoApp {...rest} />
-    </ConfigProvider>
+    </Web3Provider>
   );
 };
 ```
 
 ### Step 6. Export server-side variables to the client using `getInitialProps`
 
-Add the `getInitialProps` method to your application, in which your pass down the `publicRuntimeConfig` to the React context, e.g.
+Add the `getInitialProps` method to your application (`_app.js`) and pass down the `publicRuntimeConfig` to the React context here, e.g.
 
 ```js
 // pages/_app.js
@@ -160,7 +163,7 @@ export default AppWrapper;
 
 ### Step 7. Add the `getServerSideProps` method on each page
 
-For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then run on the client when navigating to a different route via the `next/link` component or by using `next/router`. However, we can export `getServerSideProps` on each page of our app to force Next to always run `getInitialProps` on the server, e.g.
+For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then run on the client when navigating to a different route via the `next/link` component or by using `next/router`. However, exporting `getServerSideProps` on each page of our app forces Next to always run `getInitialProps` on the server, e.g.
 
 ```js
 // pages/index.js
@@ -179,66 +182,15 @@ IndexPage.getServerSideProps = async () => {
 };
 ```
 
-### Step 8. Create a custom hook to access config
+### Step 8. Replace exist hooks with hooks from SDK
 
-Now the only thing left is to create a hook that will allow us to access the config easier, e.g.
+Popular hooks have been moved to the shared library. Check out this packages:
+https://github.com/lidofinance/lido-js-sdk/tree/main/packages/react
+https://github.com/lidofinance/lido-js-sdk/tree/main/packages/web3-react
 
-```js
-// hooks/useConfig.js
+### Step 9. Turn functions into hooks
 
-import { useContext } from 'react';
-import { ConfigContext } from 'providers/config';
-
-export const useConfig = () => {
-  return useContext(ConfigContext);
-};
-```
-
-### Step 9. Start using the `useConfig` hook wherever needed
-
-Now you can use `useConfig` to access all of your public variables, e.g.
-
-```js
-// components/header.js
-
-import useConfig from 'hooks/useConfig';
-
-const Header = () => {
-  const { config } = useConfig();
-  const { supportedChains } = config;
-
-  return (
-    <header>
-      <p>Supported networks: {supportedChains.join(', ')}</p>
-    </header>
-  );
-};
-
-export default Header;
-```
-
-### Step 10. Create the `useChain` hook
-
-This hook will help us access the currently active chain,
-
-```js
-// hooks/useChain.js
-
-import { useWeb3React } from '@web3-react/core';
-import { useConfig } from './useConfig';
-
-export default function useChain() {
-  const { config } = useConfig();
-  // defaults to defaultChain if no wallet is connected
-  const { chainId = config.defaultChain } = useWeb3React();
-
-  return chainId;
-}
-```
-
-### Step 11. Turn functions into hooks
-
-Unfortunately, you cannot use the `useConfig` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that builds an Etherscan link based on the current network and tx hash.
+Unfortunately, you cannot use the `useSDK` hook in regular JavaScript functions, this is why you will have to re-write those into hooks. As an example, we will consider an utility function that builds an Etherscan link based on the current network and tx hash.
 
 #### BEFORE
 
@@ -262,7 +214,6 @@ export default getEtherscanLink(chain, hash) {
 and we would use it like so,
 
 ```js
-// component/Transaction
 import { ACTIVE_CHAIN } from 'config';
 import getEtherscanLink from 'utils/getEtherscanLink';
 
@@ -279,10 +230,8 @@ const Transaction = ({ hash }) => {
 
 Now we will re-write our helper into a hook,
 
-```js
-// hooks/useEtherscanLink
-
-import useChain from 'hooks/useChain'
+```jsx
+import useChain from 'hooks/useChain';
 
 const ETHERSCAN_SUBDOMAINS_BY_NETWORK = {
   [1]: '',
@@ -292,18 +241,16 @@ const ETHERSCAN_SUBDOMAINS_BY_NETWORK = {
   [42]: 'kovan.',
 };
 
-export default useEtherscanLink(hash) {
+const useEtherscanLink = (hash) => {
   const chain = useChain();
 
-  return `https://${ETHERSCAN_SUBDOMAINS_BY_NETWORK(chain)}/tx/${hash}`
+  return `https://${ETHERSCAN_SUBDOMAINS_BY_NETWORK(chain)}/tx/${hash}`;
 };
 ```
 
 And now use the hook like so,
 
 ```js
-// component/Transaction
-import { ACTIVE_CHAIN } from 'config';
 import useEtherscanLink from 'hooks/useEtherscanLink';
 
 const Transaction = ({ hash }) => {
@@ -317,9 +264,9 @@ const Transaction = ({ hash }) => {
 };
 ```
 
-### Step 12. Using private variables
+### Step 10. Using private variables
 
-Up until now we only talked about public variables that are necessary for the client-side code. Now you will learn how to use server-side config to access private variables. Fortunately, it's much less complicated. You can use Next's `getConfig` function to access the variables directly, e.g.
+Private variables are accessed directly by the Next server-side code with `getConfig` function.
 
 ```js
 // pages/index.js
@@ -332,7 +279,7 @@ const IndexPage = ({ dataFromApi }) => {
 IndexPage.getServerSideProps = async () => {
   const { serverRuntimeConfig } = getConfig();
 
-  // this is the varible that we've exported in next.config.js
+  // this is the variable that we've exported in next.config.js
   const { mySecretApiKey } = serverRuntimeConfig;
 
   const response = await fetch(`https://someapi.com?apiKey=${mySecretApiKey}`);
