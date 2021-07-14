@@ -182,7 +182,7 @@ IndexPage.getServerSideProps = async () => {
 };
 ```
 
-### Step 8. Replace exist hooks with hooks from SDK
+### Step 8. Replace existing hooks with hooks from SDK
 
 Popular hooks have been moved to the shared library. Check out this packages:
 https://github.com/lidofinance/lido-js-sdk/tree/main/packages/react
