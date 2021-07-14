@@ -38,7 +38,7 @@ _Note! `DEFAULT_CHAIN` is the network the application defaults to whenever the u
 
 ### Build-time Variables
 
-Currently our CI pipeline DOES NOT support build-time environment variables (https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration). This is because we build a single docker image for both the mainnet and testnet versions of the application and specify environment variables at the start of the container. We strongly recommend that you avoid using any build-time variables so that your application can be integrated into our pipeline as smoothly as possible. Other than that, you are free to add as many environment varables as your application may require.
+Currently our CI pipeline DOES NOT support build-time environment variables (https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration). This is because we build a single docker image for both the mainnet and testnet versions of the application and specify environment variables at the start of the container. We strongly recommend that you avoid using any build-time variables so that your application can be integrated into our pipeline as smoothly as possible. Other than that, you are free to add as many environment variables as your application may require.
 
 If you need to access an environment variable on the client (e.g. supported networks, analytics IDs), you will need to specify a regular server-side environment variable and export it to the client using `getInitialProps`. Below is the detailed procedure on how to do it.
 
@@ -65,7 +65,7 @@ module.exports = {
 };
 ```
 
-If you take a look at `_app.tsx`, you will see than the public runtime config will be passed down to our app context using the `getInitialProps` function.
+If you take a look at `_app.tsx`, you will see that the public runtime config will be passed down to our app context using the `getInitialProps` function.
 
 **Step 3.** Export the `getServerSideProps` function from each page where you are planning to use your variable. The function doesn't have to return anything but it forces Next.js to run `getInitialProps` on the server.
 
@@ -97,7 +97,7 @@ Apart from Web3 connection provided by the user's wallet, we use an additional J
 
 This means that you may have to register an account with a third-party Ethereum provider such [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/) whose free plans are more than enough for development. Once you get your hands on the API Key, specify it as a respective variable (`INFURA_API_KEY` or `ALCHEMY_API_KEY`) in your `.env.local` and you are ready to go.
 
-To use JSON RPC Provider, use the `useEthereumSWR` hooks like so,
+To use JSON RPC Provider, use the `useEthereumSWR` hook like so,
 
 ```ts
 function MyComponent: FC<{}> = () => {
@@ -108,13 +108,13 @@ function MyComponent: FC<{}> = () => {
 
 ---
 
-Note! The `pages/api/rpc.ts` Next.js API route serves as a proxy for all JSON RPC requests so that the Infura/Alchemy API key is exposed to the browser.
+Note! The `pages/api/rpc.ts` Next.js API route serves as a proxy for all JSON RPC requests so that the Infura/Alchemy API key is not exposed to the browser.
 
 ## Interacting with a contract
 
 _Note! The words token and contract are used interchangeably._
 
-**Step 1.** Before you are ready to work with your contract, you will need add its ABI to the `abi` directory and have `typechain` generate the contract factory and infer its types by running,
+**Step 1.** Before you are ready to work with your contract, you will need to add its ABI to the `abi` directory and have `typechain` generate the contract factory and infer its types by running,
 
 ```bash
 yarn typechain
