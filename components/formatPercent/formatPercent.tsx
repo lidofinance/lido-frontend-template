@@ -2,7 +2,7 @@ import { LOCALE } from 'config';
 import { FormatPercentComponent } from './types';
 
 const FormatPercent: FormatPercentComponent = (props) => {
-  const { amount = 0, ...rest } = props;
+  const { amount, ...rest } = props;
   const value =
     amount == null
       ? 'Unavailable'

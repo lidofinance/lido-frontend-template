@@ -31,7 +31,8 @@
       { "ignoreRestSiblings": true }
     ],
     "jsx-a11y/no-autofocus": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "func-style": ["error", "expression"]
   },
   "settings": {
     "react": {

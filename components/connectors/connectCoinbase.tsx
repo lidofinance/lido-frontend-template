@@ -2,28 +2,19 @@ import { FC, useCallback } from 'react';
 import { ConnectWalletProps } from './types';
 import ConnectButton from './connectButton';
 import iconUrl from 'assets/icons/coinbase.svg';
-import { useConnect, useConfig } from 'hooks';
+import { useConnectorCoinbase } from '@lido-sdk/web3-react';
 
 const ConnectCoinbase: FC<ConnectWalletProps> = (props) => {
-  const { onConnect, disabled, ...rest } = props;
-  const { connectors } = useConfig();
-  const connect = useConnect();
-  const connector = connectors.coinbase;
+  const { onConnect, ...rest } = props;
+  const { connect } = useConnectorCoinbase();
 
   const handleConnect = useCallback(async () => {
-    if (!connector) return;
-
     onConnect?.();
-    await connect(connector);
-  }, [connect, connector, onConnect]);
+    connect();
+  }, [onConnect, connect]);
 
   return (
-    <ConnectButton
-      {...rest}
-      disabled={!connector || disabled}
-      iconSrc={iconUrl}
-      onClick={handleConnect}
-    >
+    <ConnectButton {...rest} iconSrc={iconUrl} onClick={handleConnect}>
       Coinbase Wallet
     </ConnectButton>
   );

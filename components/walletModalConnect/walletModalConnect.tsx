@@ -8,7 +8,7 @@ import {
   ConnectTrust,
   ConnectImToken,
 } from 'components/connectors';
-import { useLocalStorage } from 'hooks';
+import { useLocalStorage } from '@lido-sdk/react';
 import { STORAGE_TERMS_KEY } from 'config';
 
 const WalletModalConnect: FC<ModalProps> = (props) => {

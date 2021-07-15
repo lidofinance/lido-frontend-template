@@ -18,20 +18,14 @@ module.exports = {
 
     return config;
   },
-  // allows localhost to be loaded into Gnosis Safe
-  devServer(configFunction) {
-    return function (proxy, allowedHost) {
-      const config = configFunction(proxy, allowedHost);
-
-      config.headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers':
-          'X-Requested-With, content-type, Authorization',
-      };
-
-      return config;
-    };
+  async headers() {
+    return [
+      {
+        // required for gnosis save apps
+        source: '/manifest.json',
+        headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
+      },
+    ];
   },
   serverRuntimeConfig: {
     basePath,

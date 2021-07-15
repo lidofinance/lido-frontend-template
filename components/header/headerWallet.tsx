@@ -1,14 +1,14 @@
 import { FC } from 'react';
-import { useWeb3React } from '@web3-react/core';
+import { useWeb3 } from '@lido-sdk/web3-react';
+import { useSDK } from '@lido-sdk/react';
 import WalletButton from 'components/walletButton';
 import WalletConnect from 'components/walletConnect';
 import { HeaderWalletChainStyle } from './headerWalletStyles';
-import { getChainColor, CHAINS } from 'config';
-import { useChain } from 'hooks';
+import { CHAINS, getChainColor } from '@lido-sdk/constants';
 
 const HeaderWallet: FC = () => {
-  const { active } = useWeb3React();
-  const chainId = useChain();
+  const { active } = useWeb3();
+  const { chainId } = useSDK();
 
   const chainName = CHAINS[chainId];
   const testNet = chainId !== CHAINS.Mainnet;

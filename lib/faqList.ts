@@ -13,7 +13,7 @@ export interface FAQItem {
   title: string;
 }
 
-export async function getFaqList(list: string[]): Promise<FAQItem[]> {
+export const getFaqList = async (list: string[]): Promise<FAQItem[]> => {
   return Promise.all(
     list.map(async (id) => {
       const fullPath = path.join(faqDirectory, `${id}.md`);
@@ -36,4 +36,4 @@ export async function getFaqList(list: string[]): Promise<FAQItem[]> {
       };
     }),
   );
-}
+};

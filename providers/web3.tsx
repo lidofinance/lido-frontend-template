@@ -1,20 +1,37 @@
-import {
-  Web3Provider,
-  ExternalProvider,
-  JsonRpcFetchFunc,
-} from '@ethersproject/providers';
-import { Web3ReactProvider } from '@web3-react/core';
-import { POLLING_INTERVAL } from 'config';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
+import { ProviderWeb3 } from '@lido-sdk/web3-react';
+import { backendRPC } from 'config';
 
-function getLibrary(provider: ExternalProvider | JsonRpcFetchFunc) {
-  const library = new Web3Provider(provider);
-  library.pollingInterval = POLLING_INTERVAL;
-  return library;
-}
+export type EnvConfig = {
+  defaultChain: string;
+  supportedChains: string;
+};
 
-const Web3AppProvider: FC = ({ children }) => (
-  <Web3ReactProvider getLibrary={getLibrary}>{children}</Web3ReactProvider>
-);
+export type Config = {
+  defaultChain: number;
+  supportedChainIds: number[];
+};
 
-export default Web3AppProvider;
+export type Web3ProviderProps = { config: EnvConfig };
+
+const Web3Provider: FC<Web3ProviderProps> = ({ children, config }) => {
+  const defaultChainId = parseInt(config.defaultChain);
+
+  const supportedChainIds = useMemo(() => {
+    return config.supportedChains
+      .split(',')
+      .map((value: string) => parseInt(value));
+  }, [config.supportedChains]);
+
+  return (
+    <ProviderWeb3
+      defaultChainId={defaultChainId}
+      supportedChainIds={supportedChainIds}
+      rpc={backendRPC}
+    >
+      {children}
+    </ProviderWeb3>
+  );
+};
+
+export default Web3Provider;
