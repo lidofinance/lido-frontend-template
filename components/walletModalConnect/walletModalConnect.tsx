@@ -7,6 +7,7 @@ import {
   ConnectCoinbase,
   ConnectTrust,
   ConnectImToken,
+  ConnectLedger,
 } from 'components/connectors';
 import { useLocalStorage } from '@lido-sdk/react';
 import { STORAGE_TERMS_KEY } from 'config';
@@ -30,6 +31,7 @@ const WalletModalConnect: FC<ModalProps> = (props) => {
       <Terms onChange={handleChange} checked={checked} />
       <ConnectMetamask {...common} />
       <ConnectWalletConnect {...common} />
+      <ConnectLedger {...common} />
       <ConnectCoinbase {...common} />
       <ConnectTrust {...common} />
       <ConnectImToken {...common} />
