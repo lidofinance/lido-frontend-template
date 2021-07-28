@@ -9,3 +9,10 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+type RuntimeConfig = {
+  basePath?: string;
+  infuraApiKey?: string;
+  alchemyApiKey?: string;
+  apiProviderUrls?: Record<number, string>;
+};
