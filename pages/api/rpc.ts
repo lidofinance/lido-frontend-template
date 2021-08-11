@@ -4,7 +4,8 @@ import { CHAINS } from '@lido-sdk/constants';
 import getConfig from 'next/config';
 
 const { serverRuntimeConfig } = getConfig();
-const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
+const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
+  serverRuntimeConfig as RuntimeConfig;
 
 type Rpc = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
@@ -16,8 +17,10 @@ const rpc: Rpc = async (req, res) => {
       throw new Error(`Chain ${chainId} is not supported`);
     }
 
+    const apiUrl = apiProviderUrls?.[chainId];
     const options = {
       body: JSON.stringify(req.body),
+      urls: apiUrl ? [apiUrl] : [],
       providers: { alchemy: alchemyApiKey, infura: infuraApiKey },
     };
     const requested = await fetchRPC(chainId, options);
