@@ -22,6 +22,9 @@ const rpc: Rpc = async (req, res) => {
       body: JSON.stringify(req.body),
       urls: apiUrl ? [apiUrl] : [],
       providers: { alchemy: alchemyApiKey, infura: infuraApiKey },
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
     const requested = await fetchRPC(chainId, options);
 
