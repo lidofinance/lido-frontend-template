@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "yarn lint --fix",
-    "typechain": "typechain --target=ethers-v5 --out-dir ./generated './abi/*.json'",
+    "typechain": "typechain --target=ethers-v5 --out-dir ./generated ./abi/*.json",
     "postinstall": "husky install && yarn typechain"
   },
   "dependencies": {
