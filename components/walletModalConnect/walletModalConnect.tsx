@@ -23,6 +23,7 @@ const WalletModalConnect: FC<ModalProps> = (props) => {
 
   const common = {
     disabled: !checked,
+    termsChecked: checked,
     onConnect: onClose,
   };
 
