@@ -8,8 +8,10 @@ import {
   ConnectTrust,
   ConnectImToken,
   ConnectLedger,
+  ConnectCoin98,
 } from 'components/connectors';
 import { useLocalStorage } from '@lido-sdk/react';
+import { helpers } from '@lido-sdk/web3-react';
 import { STORAGE_TERMS_KEY } from 'config';
 
 const WalletModalConnect: FC<ModalProps> = (props) => {
@@ -27,15 +29,26 @@ const WalletModalConnect: FC<ModalProps> = (props) => {
     onConnect: onClose,
   };
 
+  const wallets = [
+    <ConnectMetamask key="Metamask" {...common} />,
+    <ConnectWalletConnect key="WalletConnect" {...common} />,
+    <ConnectLedger key="Ledger" {...common} />,
+    <ConnectCoinbase key="Coinbase" {...common} />,
+    <ConnectTrust key="Trust" {...common} />,
+    <ConnectImToken key="ImToken" {...common} />,
+  ];
+
+  const ConnectCoin98WithProps = <ConnectCoin98 key="Coin98" {...common} />;
+  if (helpers.isCoin98Provider()) {
+    wallets.unshift(ConnectCoin98WithProps);
+  } else {
+    wallets.push(ConnectCoin98WithProps);
+  }
+
   return (
     <Modal title="Connect wallet" {...props}>
       <Terms onChange={handleChange} checked={checked} />
-      <ConnectMetamask {...common} />
-      <ConnectWalletConnect {...common} />
-      <ConnectLedger {...common} />
-      <ConnectCoinbase {...common} />
-      <ConnectTrust {...common} />
-      <ConnectImToken {...common} />
+      {wallets}
     </Modal>
   );
 };
