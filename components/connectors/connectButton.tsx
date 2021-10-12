@@ -20,7 +20,7 @@ const ConnectButton: FC<ConnectButtonProps> = (props) => {
         {isTooltipTriggerShown && tooltipMessage && (
           <Tooltip offset="sm" placement="bottomLeft" title={tooltipMessage}>
             <ConnectButtonTooltipTriggerStyle>
-              Why disabled?
+              How to enable?
             </ConnectButtonTooltipTriggerStyle>
           </Tooltip>
         )}
