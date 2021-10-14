@@ -8,6 +8,7 @@ import {
   Input,
   Steth,
   Button,
+  Stack,
 } from '@lidofinance/lido-ui';
 import Head from 'next/head';
 import Switch from 'components/switch';
@@ -55,21 +56,42 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         onToggle={() => setIsToggled(!isToggled)}
       />
       <Wallet />
-      <Block>
-        <form action="" method="post" onSubmit={handleSubmit}>
-          <InputWrapper>
-            <Input
-              fullwidth
-              placeholder="0"
-              leftDecorator={<Steth />}
-              label="Token amount"
-            />
-          </InputWrapper>
-          <Button fullwidth type="submit">
-            Submit
-          </Button>
-        </form>
-      </Block>
+      {isToggled ? (
+        <Block>
+          <form action="" method="post" onSubmit={handleSubmit}>
+            <InputWrapper>
+              <Input
+                fullwidth
+                placeholder="0"
+                leftDecorator={<Steth />}
+                label="Token amount"
+              />
+            </InputWrapper>
+            <Stack justify="space-around">
+              <Button type="submit">Withdraw</Button>
+              <Button type="submit" color="success">
+                Claim
+              </Button>
+            </Stack>
+          </form>
+        </Block>
+      ) : (
+        <Block>
+          <form action="" method="post" onSubmit={handleSubmit}>
+            <InputWrapper>
+              <Input
+                fullwidth
+                placeholder="0"
+                leftDecorator={<Steth />}
+                label="Token amount"
+              />
+            </InputWrapper>
+            <Button fullwidth type="submit">
+              Submit
+            </Button>
+          </form>
+        </Block>
+      )}
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
         <Block>
           <DataTable>
