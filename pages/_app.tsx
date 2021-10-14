@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
-import { ToastContainer } from 'components/toasts';
+import { ToastContainer } from '@lidofinance/lido-ui';
 import Providers, { EnvConfig } from 'providers';
 import getConfig from 'next/config';
 
