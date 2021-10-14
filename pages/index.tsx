@@ -1,4 +1,4 @@
-import { FC, FormEventHandler } from 'react';
+import { FC, FormEventHandler, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -10,6 +10,7 @@ import {
   Button,
 } from '@lidofinance/lido-ui';
 import Head from 'next/head';
+import Switch from 'components/switch';
 import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
@@ -37,6 +38,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     contract: contractRpc,
     method: 'name',
   });
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <Layout
@@ -46,6 +48,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Head>
         <title>Lido | Frontend Template</title>
       </Head>
+      <Switch
+        optionOne={'STAKE'}
+        optionTwo={'WITHDRAW'}
+        isToggled={isToggled}
+        onToggle={() => setIsToggled(!isToggled)}
+      />
       <Wallet />
       <Block>
         <form action="" method="post" onSubmit={handleSubmit}>
