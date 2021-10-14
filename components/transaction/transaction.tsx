@@ -2,9 +2,13 @@ import {
   TransactionResponse,
   TransactionReceipt,
 } from '@ethersproject/abstract-provider';
-import { toastError, toastPending, toastSuccess } from 'components/toasts';
+import {
+  toast,
+  ToastError,
+  ToastPending,
+  ToastSuccess,
+} from '@lidofinance/lido-ui';
 import { CHAINS } from '@lido-sdk/constants';
-import { toast } from 'react-toastify';
 import { runWithTransactionLogger } from 'utils';
 import {
   TransactionToast,
@@ -20,7 +24,7 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
   let result: T | undefined = undefined;
 
   try {
-    pendingToastId = toastPending(
+    pendingToastId = ToastPending(
       <TransactionToast title="Awaiting signing">
         Confirm this transaction in your wallet
       </TransactionToast>,
@@ -33,7 +37,7 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
 
     toast.dismiss(pendingToastId);
 
-    pendingToastId = toastPending(
+    pendingToastId = ToastPending(
       <TransactionToastEtherscan
         title="Awaiting block confirmation"
         chainId={chainId}
@@ -47,7 +51,7 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
 
     toast.dismiss(pendingToastId);
 
-    toastSuccess(
+    ToastSuccess(
       <TransactionToastEtherscan
         title="Block confirmation received"
         chainId={chainId}
@@ -56,7 +60,7 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
     );
   } catch (error) {
     if (pendingToastId) toast.dismiss(pendingToastId);
-    toastError(error?.message || error);
+    ToastError(error?.message || error);
   }
 
   return result;

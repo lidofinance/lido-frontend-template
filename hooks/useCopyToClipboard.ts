@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import copy from 'copy-to-clipboard';
-import { toastInfo } from 'components/toasts';
+import { ToastInfo } from '@lidofinance/lido-ui';
 
 export const useCopyToClipboard = (text: string): (() => void) => {
   return useCallback(() => {
     copy(text);
-    toastInfo('Copied to clipboard');
+    ToastInfo('Copied to clipboard');
   }, [text]);
 };

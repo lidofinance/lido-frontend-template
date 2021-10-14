@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from '@lidofinance/lido-ui';
-import Logo from 'components/logo';
+import { LidoLogo } from '@lidofinance/lido-logo';
 import {
   FooterStyle,
   FooterDividerStyle,
@@ -15,7 +15,7 @@ const Footer: FC = () => (
     <FooterDividerStyle />
 
     <FooterLogoStyle>
-      <Logo />
+      <LidoLogo />
     </FooterLogoStyle>
 
     <FooterGroupStyle>
