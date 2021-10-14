@@ -1,16 +1,19 @@
 import { FC } from 'react';
+import Link from 'next/link';
+import { LidoLogo } from '@lidofinance/lido-logo';
 import {
   HeaderStyle,
   HeaderLogoStyle,
   HeaderActionsStyle,
 } from './headerStyles';
-import Logo from 'components/logo';
 import HeaderWallet from './headerWallet';
 
 const Header: FC = () => (
   <HeaderStyle size="full" forwardedAs="header">
     <HeaderLogoStyle>
-      <Logo />
+      <Link href="/">
+        <LidoLogo />
+      </Link>
     </HeaderLogoStyle>
     <HeaderActionsStyle>
       <HeaderWallet />
