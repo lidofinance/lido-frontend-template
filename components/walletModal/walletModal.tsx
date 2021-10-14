@@ -5,12 +5,12 @@ import {
   Identicon,
   External,
   Copy,
-  trimAddress,
 } from '@lidofinance/lido-ui';
+import { Address } from '@lidofinance/address';
 import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
 import { useConnectorInfo, useDisconnect } from '@lido-sdk/web3-react';
 import { useCopyToClipboard } from 'hooks';
-import { FC, useCallback, useMemo } from 'react';
+import { FC, useCallback } from 'react';
 import {
   WalletModalContentStyle,
   WalletModalConnectedStyle,
@@ -31,11 +31,6 @@ const WalletModal: FC<ModalProps> = (props) => {
     disconnect?.();
     onClose?.();
   }, [disconnect, onClose]);
-
-  const trimmedAddress = useMemo(
-    () => trimAddress(account ?? '', 6),
-    [account],
-  );
 
   const handleCopy = useCopyToClipboard(account ?? '');
   const handleEtherscan = useEtherscanOpen(account ?? '', 'address');
@@ -63,7 +58,9 @@ const WalletModal: FC<ModalProps> = (props) => {
 
         <WalletModalAccountStyle>
           <Identicon address={account ?? ''} />
-          <WalletModalAddressStyle>{trimmedAddress}</WalletModalAddressStyle>
+          <WalletModalAddressStyle>
+            <Address address={account ?? ''} symbols={6} />
+          </WalletModalAddressStyle>
         </WalletModalAccountStyle>
 
         <WalletModalActionsStyle>
