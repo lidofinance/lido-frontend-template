@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useState } from 'react';
+import { FC, FormEventHandler, useState, MouseEventHandler } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -19,6 +19,8 @@ import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
 import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
+import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
+import { utils } from 'ethers';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -29,10 +31,58 @@ const InputWrapper = styled.div`
 `;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (e) => {
-    e.preventDefault();
-    alert('Submitted');
-  };
+  const lidoMaticWeb3 = useLidoMaticWeb3();
+  const maticTokenWeb3 = useMaticTokenWeb3();
+  const handleSubmitTokens: FormEventHandler<HTMLFormElement> | undefined =
+    async (e: any) => {
+      e.preventDefault();
+      const amount = e.target[0].value;
+      if (amount && lidoMaticWeb3 && maticTokenWeb3) {
+        try {
+          const ethAmount = utils.parseUnits(amount, 'ether').toHexString();
+          await maticTokenWeb3.approve(lidoMaticWeb3.address, ethAmount, {
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
+          await lidoMaticWeb3.submit(ethAmount, {
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
+        } catch (ex) {
+          console.log(ex);
+        }
+      }
+    };
+  const handleSubmitWithdraw: FormEventHandler<HTMLFormElement> | undefined =
+    async (e: any) => {
+      e.preventDefault();
+      const amount = e.target[0].value;
+      if (amount && lidoMaticWeb3) {
+        try {
+          const ethAmount = utils.parseUnits(amount, 'ether');
+          await lidoMaticWeb3.requestWithdraw(ethAmount, {
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
+        } catch (ex) {
+          console.log(ex);
+        }
+      }
+    };
+  const handleClaimTokens: MouseEventHandler<HTMLButtonElement> | undefined =
+    async (e: any) => {
+      e.preventDefault();
+      if (lidoMaticWeb3) {
+        try {
+          await lidoMaticWeb3.claimTokens({
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
+        } catch (ex) {
+          console.log(ex);
+        }
+      }
+    };
 
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
@@ -42,12 +92,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isToggled, setIsToggled] = useState(false);
 
   return (
-    <Layout
-      title="Lido Frontend Template"
-      subtitle="Develop Lido Apps without hassle"
-    >
+    <Layout title="PoLido">
       <Head>
-        <title>Lido | Frontend Template</title>
+        <title>PoLido</title>
       </Head>
       <Switch
         optionOne={'STAKE'}
@@ -58,7 +105,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Wallet />
       {isToggled ? (
         <Block>
-          <form action="" method="post" onSubmit={handleSubmit}>
+          <form action="" method="post" onSubmit={handleSubmitWithdraw}>
             <InputWrapper>
               <Input
                 fullwidth
@@ -69,7 +116,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             </InputWrapper>
             <Stack justify="space-around">
               <Button type="submit">Withdraw</Button>
-              <Button type="submit" color="success">
+              <Button onClick={handleClaimTokens} color="success">
                 Claim
               </Button>
             </Stack>
@@ -77,7 +124,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         </Block>
       ) : (
         <Block>
-          <form action="" method="post" onSubmit={handleSubmit}>
+          <form action="" method="post" onSubmit={handleSubmitTokens}>
             <InputWrapper>
               <Input
                 fullwidth
