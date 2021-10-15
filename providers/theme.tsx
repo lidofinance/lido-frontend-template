@@ -12,6 +12,7 @@ import {
   themeDark,
   Theme,
   ThemeProvider as SourceProvider,
+  useSystemTheme,
 } from '@lidofinance/lido-ui';
 import BackgroundGradient from 'components/backgroundGradient';
 import { useLocalStorage } from '@lido-sdk/react';
@@ -34,18 +35,23 @@ export const ThemeToggleContext = createContext({} as ThemeContext);
 const DEFAULT_THEME = 'light';
 
 const ThemeProvider: FC = ({ children }) => {
-  const [themeLS, setThemeLS] = useLocalStorage<ThemeName>(
+  const [themeLS, setThemeLS] = useLocalStorage<ThemeName | null>(
     STORAGE_THEME_KEY,
-    DEFAULT_THEME,
+    null,
   );
+  const systemTheme = useSystemTheme();
 
   /*
    * The first rendering is always with a light theme. After that useEffect will replace the theme with a custom one
    * This is necessary for correct Next.js hydration
    */
   const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME);
-  useEffect(() => setThemeName(themeLS), [themeLS]);
 
+  useEffect(() => {
+    setThemeName(themeLS ?? systemTheme);
+  }, [themeLS, systemTheme]);
+
+  // remember the theme on manual toggle, ignore system theme changes
   const toggleTheme = useCallback(() => {
     setThemeLS((current) => (current === 'light' ? 'dark' : 'light'));
   }, [setThemeLS]);
