@@ -64,7 +64,7 @@ const Wallet: WalletComponent = (props) => {
           loading={ethBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={ethBalance.data} symbol="ERC20-Testv4" />
+              <FormatToken amount={ethBalance.data} symbol="Testv4" />
               {/* <TokenToWallet address={wstethAddress} /> */}
             </>
           }

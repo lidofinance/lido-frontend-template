@@ -1,6 +1,6 @@
 import { contractHooksFactory } from '@lido-sdk/react';
 import { getMaticAddress, getLidoMaticAddress } from 'config';
-import { LidoMatic__factory, ETHGoerli__factory } from 'generated';
+import { LidoMatic__factory, MaticToken__factory } from 'generated';
 
 const lidoMatic = contractHooksFactory(LidoMatic__factory, (chainId) =>
   getLidoMaticAddress(chainId),
@@ -8,7 +8,7 @@ const lidoMatic = contractHooksFactory(LidoMatic__factory, (chainId) =>
 export const useLidoMaticRPC = lidoMatic.useContractRPC;
 export const useLidoMaticWeb3 = lidoMatic.useContractWeb3;
 
-const maticToken = contractHooksFactory(ETHGoerli__factory, (chainId) =>
+const maticToken = contractHooksFactory(MaticToken__factory, (chainId) =>
   getMaticAddress(chainId),
 );
 export const useMaticTokenRPC = maticToken.useContractRPC;

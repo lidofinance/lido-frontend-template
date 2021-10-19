@@ -9,6 +9,7 @@ import {
   Steth,
   Button,
   Stack,
+  ToastContainer,
 } from '@lidofinance/lido-ui';
 import Head from 'next/head';
 import Switch from 'components/switch';
@@ -38,6 +39,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       e.preventDefault();
       const amount = e.target[0].value;
       if (amount && lidoMaticWeb3 && maticTokenWeb3) {
+        setIsLoadingSubmit(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether').toHexString();
           await maticTokenWeb3.approve(lidoMaticWeb3.address, ethAmount, {
@@ -48,8 +50,11 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
+          e.target.reset();
+          setIsLoadingSubmit(false);
         } catch (ex) {
           console.log(ex);
+          setIsLoadingSubmit(false);
         }
       }
     };
@@ -58,13 +63,17 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       e.preventDefault();
       const amount = e.target[0].value;
       if (amount && lidoMaticWeb3) {
+        setIsLoadingWithdraw(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
           await lidoMaticWeb3.requestWithdraw(ethAmount, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
+          setIsLoadingWithdraw(false);
+          e.target.reset();
         } catch (ex) {
+          setIsLoadingWithdraw(false);
           console.log(ex);
         }
       }
@@ -73,12 +82,15 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     async (e: any) => {
       e.preventDefault();
       if (lidoMaticWeb3) {
+        setIsLoadingClaim(true);
         try {
           await lidoMaticWeb3.claimTokens({
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
+          setIsLoadingClaim(false);
         } catch (ex) {
+          setIsLoadingClaim(false);
           console.log(ex);
         }
       }
@@ -90,6 +102,10 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'name',
   });
   const [isToggled, setIsToggled] = useState(false);
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
+  const [isLoadingClaim, setIsLoadingClaim] = useState(false);
+  const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
+  const [message, setMessage] = useState('');
 
   return (
     <Layout title="PoLido">
@@ -103,6 +119,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         onToggle={() => setIsToggled(!isToggled)}
       />
       <Wallet />
+      <ToastContainer position="top-center">{message}</ToastContainer>
       {isToggled ? (
         <Block>
           <form action="" method="post" onSubmit={handleSubmitWithdraw}>
@@ -112,11 +129,23 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                 placeholder="0"
                 leftDecorator={<Steth />}
                 label="Token amount"
+                disabled={isLoadingClaim || isLoadingWithdraw}
               />
             </InputWrapper>
             <Stack justify="space-around">
-              <Button type="submit">Withdraw</Button>
-              <Button onClick={handleClaimTokens} color="success">
+              <Button
+                type="submit"
+                loading={isLoadingWithdraw}
+                disabled={isLoadingClaim || isLoadingWithdraw}
+              >
+                Withdraw
+              </Button>
+              <Button
+                onClick={handleClaimTokens}
+                color="success"
+                loading={isLoadingClaim}
+                disabled={isLoadingClaim || isLoadingWithdraw}
+              >
                 Claim
               </Button>
             </Stack>
@@ -131,9 +160,15 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                 placeholder="0"
                 leftDecorator={<Steth />}
                 label="Token amount"
+                disabled={isLoadingSubmit}
               />
             </InputWrapper>
-            <Button fullwidth type="submit">
+            <Button
+              fullwidth
+              type="submit"
+              disabled={isLoadingSubmit}
+              loading={isLoadingSubmit}
+            >
               Submit
             </Button>
           </form>
