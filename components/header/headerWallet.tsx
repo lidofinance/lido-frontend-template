@@ -22,17 +22,8 @@ const HeaderWallet: FC = () => {
           {chainName}
         </HeaderWalletChainStyle>
       )}
-      {active ? (
-        <>
-          <WalletButton />
-          <ThemeToggler />
-        </>
-      ) : (
-        <>
-          <WalletConnect size="sm" />
-          <ThemeToggler />
-        </>
-      )}
+      {active ? <WalletButton /> : <WalletConnect size="sm" />}
+      <ThemeToggler />
     </>
   );
 };
