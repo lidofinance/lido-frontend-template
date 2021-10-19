@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Header from 'components/header';
 import Main from 'components/main';
 import Footer from 'components/footer';
-import ThemeToggler from 'components/themeToggler';
 import { LayoutTitleStyle, LayoutSubTitleStyle } from './layoutStyles';
 import { LayoutProps } from './types';
 
@@ -23,7 +22,6 @@ const Layout: FC<LayoutProps> = (props) => {
         {children}
       </Main>
       <Footer />
-      <ThemeToggler />
     </>
   );
 };
