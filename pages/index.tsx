@@ -9,8 +9,8 @@ import {
   Steth,
   Button,
   Stack,
-  ToastContainer,
 } from '@lidofinance/lido-ui';
+import { toast } from 'react-toastify';
 import Head from 'next/head';
 import Switch from 'components/switch';
 import Wallet from 'components/wallet';
@@ -38,7 +38,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     async (e: any) => {
       e.preventDefault();
       const amount = e.target[0].value;
-      if (amount && lidoMaticWeb3 && maticTokenWeb3) {
+      if (amount && amount !== '0' && lidoMaticWeb3 && maticTokenWeb3) {
         setIsLoadingSubmit(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether').toHexString();
@@ -46,36 +46,63 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
-          await lidoMaticWeb3.submit(ethAmount, {
+          const submit = await lidoMaticWeb3.submit(ethAmount, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
-          e.target.reset();
+          const { status } = await submit.wait();
+          if (status) {
+            e.target.reset();
+            notify('Transaction was successful');
+          } else {
+            notify('Something went wrong', 'error');
+          }
           setIsLoadingSubmit(false);
         } catch (ex) {
-          console.log(ex);
+          if (ex.message.length > 45) {
+            notify('Something went wrong', 'error');
+          } else {
+            notify(ex.message, 'error');
+          }
           setIsLoadingSubmit(false);
         }
+      } else {
+        notify('Please enter the amount', 'error');
       }
     };
   const handleSubmitWithdraw: FormEventHandler<HTMLFormElement> | undefined =
     async (e: any) => {
       e.preventDefault();
       const amount = e.target[0].value;
-      if (amount && lidoMaticWeb3) {
+      console.log(amount);
+      if (amount && amount !== '0' && lidoMaticWeb3) {
         setIsLoadingWithdraw(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
-          await lidoMaticWeb3.requestWithdraw(ethAmount, {
+          const withdraw = await lidoMaticWeb3.requestWithdraw(ethAmount, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
+          const { status } = await withdraw.wait();
+          if (status) {
+            e.target.reset();
+            notify('Transaction was successful');
+          } else {
+            notify('Something went wrong', 'error');
+          }
           setIsLoadingWithdraw(false);
           e.target.reset();
         } catch (ex) {
+          if (ex.message.length > 45) {
+            notify('Something went wrong', 'error');
+          } else {
+            notify(ex.message, 'error');
+          }
           setIsLoadingWithdraw(false);
           console.log(ex);
         }
+      } else {
+        notify('Please enter the amount', 'error');
       }
     };
   const handleClaimTokens: MouseEventHandler<HTMLButtonElement> | undefined =
@@ -84,17 +111,43 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       if (lidoMaticWeb3) {
         setIsLoadingClaim(true);
         try {
-          await lidoMaticWeb3.claimTokens({
+          const claim = await lidoMaticWeb3.claimTokens({
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
+          const { status } = claim.wait();
+          if (status) {
+            notify('Transaction was successful');
+          } else {
+            notify('Something went wrong', 'error');
+          }
           setIsLoadingClaim(false);
         } catch (ex) {
+          if (ex.message.length > 45) {
+            notify('Something went wrong', 'error');
+          } else {
+            notify(ex.message, 'error');
+          }
           setIsLoadingClaim(false);
           console.log(ex);
         }
       }
     };
+  const notify = (message: string, type?: string) => {
+    toast.configure();
+    switch (type) {
+      case 'error':
+        toast.error(message, {
+          position: toast.POSITION.TOP_LEFT,
+        });
+        break;
+      default:
+        toast.success(message, {
+          position: toast.POSITION.TOP_LEFT,
+        });
+        break;
+    }
+  }
 
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
@@ -105,7 +158,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoadingClaim, setIsLoadingClaim] = useState(false);
   const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
-  const [message, setMessage] = useState('');
 
   return (
     <Layout title="PoLido">
@@ -119,7 +171,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         onToggle={() => setIsToggled(!isToggled)}
       />
       <Wallet />
-      <ToastContainer position="top-center">{message}</ToastContainer>
       {isToggled ? (
         <Block>
           <form action="" method="post" onSubmit={handleSubmitWithdraw}>
