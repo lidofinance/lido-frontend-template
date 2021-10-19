@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
     line-height: 1.5em;
     font-weight: 500;
+    text-size-adjust: none;
   }
   a {
     color: ${({ theme }) => theme.colors.primary};

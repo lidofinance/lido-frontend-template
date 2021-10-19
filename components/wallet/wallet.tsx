@@ -5,36 +5,43 @@ import {
   WalletCardAccount,
 } from 'components/walletCard';
 import { Divider } from '@lidofinance/lido-ui';
-import {
-  useEthereumBalance,
-  useSDK,
-  useSTETHBalance,
-  useTokenAddress,
-  useWSTETHBalance,
-} from '@lido-sdk/react';
+import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { useWeb3 } from '@lido-sdk/web3-react';
 import FormatToken from 'components/formatToken';
 import FallbackWallet from 'components/fallbackWallet';
 import TokenToWallet from 'components/tokenToWallet';
 import { WalletComponent } from './types';
-import { TOKENS } from '@lido-sdk/constants';
+import { useLidoMaticRPC, useMaticTokenRPC } from 'hooks';
+import { getSTMaticAddress } from 'config';
 
 const Wallet: WalletComponent = (props) => {
-  const { account } = useSDK();
-  const eth = useEthereumBalance();
-  const steth = useSTETHBalance();
-  const wsteth = useWSTETHBalance();
+  const { account, chainId } = useSDK();;
 
-  const stethAddress = useTokenAddress(TOKENS.STETH);
-  const wstethAddress = useTokenAddress(TOKENS.WSTETH);
+  const stMaticTokenRPC = useLidoMaticRPC();
+  const maticTokenRPC = useMaticTokenRPC();
+  const ethBalance = useContractSWR({
+    contract: maticTokenRPC,
+    method: 'balanceOf',
+    params: [account],
+  });
+  const maticBalance = useContractSWR({
+    contract: stMaticTokenRPC,
+    method: 'getUserBalanceInMATIC',
+    params: [account],
+  });
+  const stMaticBalance = useContractSWR({
+    contract: stMaticTokenRPC,
+    method: 'balanceOf',
+    params: [account],
+  });
 
   return (
     <WalletCard {...props}>
       <WalletCardRow>
         <WalletCardBalance
-          title="Eth balance"
-          loading={eth.initialLoading}
-          value={<FormatToken amount={eth.data} symbol="ETH" />}
+          title="MAT balance"
+          loading={maticBalance.initialLoading}
+          value={<FormatToken amount={maticBalance.data} symbol="MAT" />}
         />
         <WalletCardAccount account={account} />
       </WalletCardRow>
@@ -43,22 +50,22 @@ const Wallet: WalletComponent = (props) => {
         <WalletCardBalance
           small
           title="Token balance"
-          loading={steth.initialLoading}
+          loading={stMaticBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={steth.data} symbol="stETH" />
-              <TokenToWallet address={stethAddress} />
+              <FormatToken amount={stMaticBalance.data} symbol="stMAT" />
+              <TokenToWallet address={getSTMaticAddress(chainId)} />
             </>
           }
         />
         <WalletCardBalance
           small
           title="Token balance"
-          loading={wsteth.initialLoading}
+          loading={ethBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={wsteth.data} symbol="wstETH" />
-              <TokenToWallet address={wstethAddress} />
+              <FormatToken amount={ethBalance.data} symbol="Testv4" />
+              {/* <TokenToWallet address={wstethAddress} /> */}
             </>
           }
         />
