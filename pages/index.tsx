@@ -115,7 +115,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
-          const { status } = claim.wait();
+          const { status } = await claim.wait();
           if (status) {
             notify('Transaction was successful');
           } else {
