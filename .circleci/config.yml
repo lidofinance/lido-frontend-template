@@ -1,0 +1,19 @@
+version: 2
+
+jobs:
+  deploy:
+    machine: true
+    steps:
+      - run:
+          name: Deploying
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd /srv/polido-frontend && git pull && docker-compose build polido-frontend && docker-compose up -d --build polido-frontend"
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+              - main
