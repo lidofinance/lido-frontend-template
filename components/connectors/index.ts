@@ -7,3 +7,4 @@ export { default as ConnectMetamask } from './connectMetamask';
 export { default as ConnectTrust } from './connectTrust';
 export { default as ConnectWalletConnect } from './connectWalletConnect';
 export { default as ConnectCoin98 } from './connectCoin98';
+export { default as ConnectMathWallet } from './connectMathWallet';
