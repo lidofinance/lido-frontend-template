@@ -60,7 +60,12 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
     );
   } catch (error) {
     if (pendingToastId) toast.dismiss(pendingToastId);
-    ToastError(error?.message || error);
+
+    if (error instanceof Error) {
+      ToastError(error?.message || error);
+    } else {
+      ToastError('Transaction error');
+    }
   }
 
   return result;
