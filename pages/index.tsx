@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useState, MouseEventHandler } from 'react';
+import { FC, FormEventHandler, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -9,6 +9,10 @@ import {
   Steth,
   Button,
   Stack,
+  Select,
+  Option,
+  Divider,
+  Container,
 } from '@lidofinance/lido-ui';
 import { toast } from 'react-toastify';
 import Head from 'next/head';
@@ -19,8 +23,8 @@ import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
-import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
-import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
+import { useContractSWR, useSTETHContractRPC, useSDK } from '@lido-sdk/react';
+import { useLidoMaticWeb3, useMaticTokenWeb3, useLidoNFTRPC } from 'hooks';
 import { utils } from 'ethers';
 
 interface HomeProps {
@@ -32,8 +36,25 @@ const InputWrapper = styled.div`
 `;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
+  const { account } = useSDK();
+  const lidoNFTRPC = useLidoNFTRPC();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
+  const tokenApproved = useContractSWR({
+    contract: lidoNFTRPC,
+    method: 'getApprovedTokens',
+    params: [account],
+  })
+    .data?.map(id => id.toString())
+    .filter(id => id !== '0');
+  const tokenOwned = useContractSWR({
+    contract: lidoNFTRPC,
+    method: 'getOwnedTokens',
+    params: [account],
+  })
+    .data?.map((id) => id.toString())
+    .filter((id) => id !== '0');
+
   const handleSubmitTokens: FormEventHandler<HTMLFormElement> | undefined =
     async (e: any) => {
       e.preventDefault();
@@ -74,11 +95,14 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     async (e: any) => {
       e.preventDefault();
       const amount = e.target[0].value;
-      console.log(amount);
       if (amount && amount !== '0' && lidoMaticWeb3) {
         setIsLoadingWithdraw(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
+          await lidoMaticWeb3.approve(lidoMaticWeb3.address, ethAmount, {
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
           const withdraw = await lidoMaticWeb3.requestWithdraw(ethAmount, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
@@ -105,13 +129,14 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         notify('Please enter the amount', 'error');
       }
     };
-  const handleClaimTokens: MouseEventHandler<HTMLButtonElement> | undefined =
+  const handleClaimTokens: FormEventHandler<HTMLFormElement> | undefined =
     async (e: any) => {
       e.preventDefault();
       if (lidoMaticWeb3) {
         setIsLoadingClaim(true);
+        const tokenId = e.target[0].value;
         try {
-          const claim = await lidoMaticWeb3.claimTokens({
+          const claim = await lidoMaticWeb3.claimTokens(tokenId, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
@@ -147,7 +172,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         });
         break;
     }
-  }
+  };
 
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
@@ -158,7 +183,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoadingClaim, setIsLoadingClaim] = useState(false);
   const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
-
   return (
     <Layout title="PoLido">
       <Head>
@@ -173,34 +197,92 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Wallet />
       {isToggled ? (
         <Block>
-          <form action="" method="post" onSubmit={handleSubmitWithdraw}>
-            <InputWrapper>
-              <Input
-                fullwidth
-                placeholder="0"
-                leftDecorator={<Steth />}
-                label="Token amount"
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              />
-            </InputWrapper>
-            <Stack justify="space-around">
-              <Button
-                type="submit"
-                loading={isLoadingWithdraw}
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              >
-                Withdraw
-              </Button>
-              <Button
-                onClick={handleClaimTokens}
-                color="success"
-                loading={isLoadingClaim}
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              >
-                Claim
-              </Button>
-            </Stack>
-          </form>
+          <Stack
+            align="center"
+            justify="space-between"
+            wrap="nowrap"
+            spacing="md"
+            direction="column"
+          >
+            <Container size="tight">
+              <form action="" method="post" onSubmit={handleSubmitWithdraw}>
+                <Stack
+                  align="center"
+                  justify="space-between"
+                  wrap="nowrap"
+                  spacing="md"
+                  direction="column"
+                >
+                  <Input
+                    fullwidth={true}
+                    placeholder="0"
+                    leftDecorator={<Steth />}
+                    label="Token amount"
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  />
+                  <Divider indents="sm" />
+                  <Button
+                    fullwidth={true}
+                    type="submit"
+                    loading={isLoadingWithdraw}
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  >
+                    Request Withdraw
+                  </Button>
+                </Stack>
+              </form>
+            </Container>
+            <Divider indents="lg" />
+            <Container size="tight">
+              <form action="" method="post" onSubmit={handleClaimTokens}>
+                <Stack
+                  align="center"
+                  justify="space-between"
+                  wrap="nowrap"
+                  spacing="md"
+                  direction="column"
+                >
+                  <Select
+                    fullwidth={true}
+                    label="Amount"
+                    onChange={function (e) {
+                      console.log(e);
+                    }}
+                    value={
+                      tokenOwned && Array.isArray(tokenOwned)
+                        ? tokenOwned[0]
+                        : undefined
+                    }
+                  >
+                    {tokenOwned && Array.isArray(tokenOwned)
+                      ? tokenOwned.map((id) => (
+                          <Option value={id} key={id}>
+                            {id}
+                          </Option>
+                        ))
+                      : null}
+                    {tokenApproved && Array.isArray(tokenApproved)
+                      ? tokenApproved.map((id) => (
+                          <Option value={id} key={id}>
+                            {id}
+                          </Option>
+                        ))
+                      : null}
+                  </Select>
+                  <Divider indents="sm" />
+                  <Button
+                    fullwidth={true}
+                    type="submit"
+                    color="success"
+                    loading={isLoadingClaim}
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  >
+                    Claim
+                  </Button>
+                </Stack>
+              </form>
+            </Container>
+          </Stack>
         </Block>
       ) : (
         <Block>

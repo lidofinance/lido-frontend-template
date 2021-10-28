@@ -15,7 +15,7 @@ import { useLidoMaticRPC, useMaticTokenRPC } from 'hooks';
 import { getSTMaticAddress } from 'config';
 
 const Wallet: WalletComponent = (props) => {
-  const { account, chainId } = useSDK();;
+  const { account, chainId } = useSDK();
 
   const stMaticTokenRPC = useLidoMaticRPC();
   const maticTokenRPC = useMaticTokenRPC();

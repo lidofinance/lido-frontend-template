@@ -1,6 +1,14 @@
 import { contractHooksFactory } from '@lido-sdk/react';
-import { getMaticAddress, getLidoMaticAddress } from 'config';
-import { LidoMatic__factory, MaticToken__factory } from 'generated';
+import {
+  getMaticAddress,
+  getLidoMaticAddress,
+  getLidoNFTAddress,
+} from 'config';
+import {
+  LidoMatic__factory,
+  MaticToken__factory,
+  LidoNFT__factory,
+} from 'generated';
 
 const lidoMatic = contractHooksFactory(LidoMatic__factory, (chainId) =>
   getLidoMaticAddress(chainId),
@@ -13,3 +21,9 @@ const maticToken = contractHooksFactory(MaticToken__factory, (chainId) =>
 );
 export const useMaticTokenRPC = maticToken.useContractRPC;
 export const useMaticTokenWeb3 = maticToken.useContractWeb3;
+
+const lidoNFT = contractHooksFactory(LidoNFT__factory, (chainId) =>
+  getLidoNFTAddress(chainId),
+);
+export const useLidoNFTRPC = lidoNFT.useContractRPC;
+export const useLidoNFTWeb3 = lidoNFT.useContractWeb3;
