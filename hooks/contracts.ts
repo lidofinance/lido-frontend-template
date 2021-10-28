@@ -3,11 +3,13 @@ import {
   getMaticAddress,
   getLidoMaticAddress,
   getLidoNFTAddress,
+  getStakeManagerAddress,
 } from 'config';
 import {
   LidoMatic__factory,
   MaticToken__factory,
   LidoNFT__factory,
+  StakeManager__factory,
 } from 'generated';
 
 const lidoMatic = contractHooksFactory(LidoMatic__factory, (chainId) =>
@@ -27,3 +29,10 @@ const lidoNFT = contractHooksFactory(LidoNFT__factory, (chainId) =>
 );
 export const useLidoNFTRPC = lidoNFT.useContractRPC;
 export const useLidoNFTWeb3 = lidoNFT.useContractWeb3;
+
+const stakeManager = contractHooksFactory(StakeManager__factory, (chainId) =>
+  getStakeManagerAddress(chainId),
+);
+
+export const useStakeManagerRPC = stakeManager.useContractRPC;
+export const useStakeManagerWeb3 = stakeManager.useContractWeb3;

@@ -40,6 +40,16 @@ export const STMATIC_BY_NETWORK: {
   [CHAINS.Kovan]: '0x0000000000000000000000000000000000000000',
 };
 
+export const STAKE_MANAGER_BY_NETWORK: {
+  [key in CHAINS]: string;
+} = {
+  [CHAINS.Mainnet]: '0x0000000000000000000000000000000000000000',
+  [CHAINS.Ropsten]: '0x0000000000000000000000000000000000000000',
+  [CHAINS.Rinkeby]: '0x0000000000000000000000000000000000000000',
+  [CHAINS.Goerli]: '0x00200eA4Ee292E253E6Ca07dBA5EdC07c8Aa37A3',
+  [CHAINS.Kovan]: '0x0000000000000000000000000000000000000000',
+};
+
 export const getLidoMaticAddress = (chainId: CHAINS): string => {
   return LIDO_MATIC_BY_NETWORK[chainId];
 };
@@ -51,4 +61,7 @@ export const getSTMaticAddress = (chainId: CHAINS): string => {
 };
 export const getLidoNFTAddress = (chainId: CHAINS): string => {
   return LIDO_NFT_BY_NETWORK[chainId];
+};
+export const getStakeManagerAddress = (chainId: CHAINS): string => {
+  return STAKE_MANAGER_BY_NETWORK[chainId];
 };
