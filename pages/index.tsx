@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useState, MouseEventHandler } from 'react';
+import { FC, FormEventHandler, useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -9,6 +9,10 @@ import {
   Steth,
   Button,
   Stack,
+  Select,
+  Option,
+  Divider,
+  Container,
 } from '@lidofinance/lido-ui';
 import { toast } from 'react-toastify';
 import Head from 'next/head';
@@ -19,9 +23,15 @@ import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
-import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
-import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
+import { useContractSWR, useSTETHContractRPC, useSDK } from '@lido-sdk/react';
+import {
+  useLidoMaticWeb3,
+  useMaticTokenWeb3,
+  useLidoNFTRPC,
+  useStakeManagerWeb3,
+} from 'hooks';
 import { utils } from 'ethers';
+import moment from 'moment';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -32,8 +42,70 @@ const InputWrapper = styled.div`
 `;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
+  const { account } = useSDK();
+  const lidoNFTRPC = useLidoNFTRPC();
   const lidoMaticWeb3 = useLidoMaticWeb3();
+  const stakeManagerWeb3 = useStakeManagerWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
+  const [tokens, setTokens] = useState([]);
+  const [delay, setDelay] = useState(0);
+  const [selectedToken, setSelectedToken] = useState('');
+  const tokenApproved = useContractSWR({
+    contract: lidoNFTRPC,
+    method: 'getApprovedTokens',
+    params: [account],
+  })
+    .data?.map(id => id.toString())
+    .filter(id => id !== '0');
+  const tokenOwned = useContractSWR({
+    contract: lidoNFTRPC,
+    method: 'getOwnedTokens',
+    params: [account],
+  })
+    .data?.map((id) => id.toString())
+    .filter((id) => id !== '0');
+  useEffect(() => {
+    if (stakeManagerWeb3 && !delay) {
+      stakeManagerWeb3?.withdrawalDelay().then((delay) => {
+        setDelay(delay.toNumber() || 0);
+      });
+    }
+  }, [stakeManagerWeb3]);
+  useEffect(() => {
+    if (lidoMaticWeb3 && tokenOwned && tokenApproved) {
+      if (tokenOwned.length === 0 && tokenApproved.length === 0) {
+        if (tokens.length !== 0) {
+          setTokens([]);
+        }
+        return;
+      }
+      const rawTokens = tokenOwned?.concat(tokenApproved);
+      Promise.all(
+        rawTokens?.map((id) => {
+          return lidoMaticWeb3.token2WithdrawRequest(id);
+        }),
+      ).then((result) => {
+        const tokens = result.map((token, index) => {
+          const amount = utils.formatEther(
+            token?.amountToClaim.toString() || 0,
+          );
+          const availableFrom = moment(
+            token?.requestTime?.toNumber() * 1000,
+          ).add(delay, 'seconds');
+          const available = availableFrom.diff(moment(), 'seconds') <= 0;
+          return {
+            value: rawTokens[index],
+            text: `${amount} - Available from: ${availableFrom.format(
+              'YYYY-MM-DD HH:mm',
+            )}`,
+            available,
+          };
+        });
+        setTokens(tokens);
+      });
+    }
+  }, [JSON.stringify(tokenOwned), JSON.stringify(tokenApproved), delay]);
+
   const handleSubmitTokens: FormEventHandler<HTMLFormElement> | undefined =
     async (e: any) => {
       e.preventDefault();
@@ -52,7 +124,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           });
           const { status } = await submit.wait();
           if (status) {
-            e.target.reset();
+            // setSelectedToken('');
             notify('Transaction was successful');
           } else {
             notify('Something went wrong', 'error');
@@ -74,11 +146,14 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     async (e: any) => {
       e.preventDefault();
       const amount = e.target[0].value;
-      console.log(amount);
       if (amount && amount !== '0' && lidoMaticWeb3) {
         setIsLoadingWithdraw(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
+          await lidoMaticWeb3.approve(lidoMaticWeb3.address, ethAmount, {
+            gasLimit: utils.hexValue(8000000),
+            gasPrice: utils.hexValue(10000000000),
+          });
           const withdraw = await lidoMaticWeb3.requestWithdraw(ethAmount, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
@@ -91,7 +166,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
             notify('Something went wrong', 'error');
           }
           setIsLoadingWithdraw(false);
-          e.target.reset();
         } catch (ex) {
           if (ex.message.length > 45) {
             notify('Something went wrong', 'error');
@@ -105,18 +179,21 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         notify('Please enter the amount', 'error');
       }
     };
-  const handleClaimTokens: MouseEventHandler<HTMLButtonElement> | undefined =
+  const handleClaimTokens: FormEventHandler<HTMLFormElement> | undefined =
     async (e: any) => {
       e.preventDefault();
-      if (lidoMaticWeb3) {
+      if (lidoMaticWeb3 && selectedToken) {
         setIsLoadingClaim(true);
+        const tokenId = selectedToken;
         try {
-          const claim = await lidoMaticWeb3.claimTokens({
+          const claim = await lidoMaticWeb3.claimTokens(tokenId, {
             gasLimit: utils.hexValue(8000000),
             gasPrice: utils.hexValue(10000000000),
           });
           const { status } = await claim.wait();
           if (status) {
+            e.target.reset();
+            setSelectedToken('')
             notify('Transaction was successful');
           } else {
             notify('Something went wrong', 'error');
@@ -147,7 +224,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         });
         break;
     }
-  }
+  };
 
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
@@ -158,7 +235,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoadingClaim, setIsLoadingClaim] = useState(false);
   const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
-
   return (
     <Layout title="PoLido">
       <Head>
@@ -173,34 +249,85 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       <Wallet />
       {isToggled ? (
         <Block>
-          <form action="" method="post" onSubmit={handleSubmitWithdraw}>
-            <InputWrapper>
-              <Input
-                fullwidth
-                placeholder="0"
-                leftDecorator={<Steth />}
-                label="Token amount"
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              />
-            </InputWrapper>
-            <Stack justify="space-around">
-              <Button
-                type="submit"
-                loading={isLoadingWithdraw}
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              >
-                Withdraw
-              </Button>
-              <Button
-                onClick={handleClaimTokens}
-                color="success"
-                loading={isLoadingClaim}
-                disabled={isLoadingClaim || isLoadingWithdraw}
-              >
-                Claim
-              </Button>
-            </Stack>
-          </form>
+          <Stack
+            align="center"
+            justify="space-between"
+            wrap="nowrap"
+            spacing="md"
+            direction="column"
+          >
+            <Container size="tight">
+              <form action="" method="post" onSubmit={handleSubmitWithdraw}>
+                <Stack
+                  align="center"
+                  justify="space-between"
+                  wrap="nowrap"
+                  spacing="md"
+                  direction="column"
+                >
+                  <Input
+                    fullwidth={true}
+                    placeholder="0"
+                    leftDecorator={<Steth />}
+                    label="Token amount"
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  />
+                  <Divider indents="sm" />
+                  <Button
+                    fullwidth={true}
+                    type="submit"
+                    loading={isLoadingWithdraw}
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  >
+                    Request Withdraw
+                  </Button>
+                </Stack>
+              </form>
+            </Container>
+            <Divider indents="lg" />
+            <Container size="tight">
+              <form action="" method="post" onSubmit={handleClaimTokens}>
+                <Stack
+                  align="center"
+                  justify="space-between"
+                  wrap="nowrap"
+                  spacing="md"
+                  direction="column"
+                >
+                  <Select
+                    fullwidth={true}
+                    label="Amount"
+                    onChange={function (e) {
+                      setSelectedToken(e);
+                    }}
+                    value={selectedToken}
+                  >
+                    {tokens && Array.isArray(tokens)
+                      ? tokens.map(({ value, text, available }) => (
+                          <Option
+                            value={value}
+                            key={value}
+                            disabled={!available}
+                          >
+                            {text}
+                          </Option>
+                        ))
+                      : null}
+                  </Select>
+                  <Divider indents="sm" />
+                  <Button
+                    fullwidth={true}
+                    type="submit"
+                    color="success"
+                    loading={isLoadingClaim}
+                    disabled={isLoadingClaim || isLoadingWithdraw}
+                  >
+                    Claim
+                  </Button>
+                </Stack>
+              </form>
+            </Container>
+          </Stack>
         </Block>
       ) : (
         <Block>
