@@ -37,6 +37,12 @@ interface HomeProps {
   faqList: FAQItem[];
 }
 
+interface TokenOption {
+  value: string;
+  text: string;
+  available: boolean;
+}
+
 const InputWrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
 `;
@@ -47,7 +53,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const stakeManagerWeb3 = useStakeManagerWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
-  const [tokens, setTokens] = useState([]);
+  const [tokens, setTokens] = useState<TokenOption[]>([]);
   const [delay, setDelay] = useState(0);
   const [selectedToken, setSelectedToken] = useState('');
   const tokenApproved = useContractSWR({
@@ -55,8 +61,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'getApprovedTokens',
     params: [account],
   })
-    .data?.map(id => id.toString())
-    .filter(id => id !== '0');
+    .data?.map((id) => id.toString())
+    .filter((id) => id !== '0');
   const tokenOwned = useContractSWR({
     contract: lidoNFTRPC,
     method: 'getOwnedTokens',
@@ -193,7 +199,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           const { status } = await claim.wait();
           if (status) {
             e.target.reset();
-            setSelectedToken('')
+            setSelectedToken('');
             notify('Transaction was successful');
           } else {
             notify('Something went wrong', 'error');
@@ -298,7 +304,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
                     fullwidth={true}
                     label="Amount"
                     onChange={function (e) {
-                      setSelectedToken(e);
+                      setSelectedToken(`${e}`);
                     }}
                     value={selectedToken}
                   >

@@ -13,6 +13,8 @@ import TokenToWallet from 'components/tokenToWallet';
 import { WalletComponent } from './types';
 import { useLidoMaticRPC, useMaticTokenRPC } from 'hooks';
 import { getSTMaticAddress } from 'config';
+import { useState, useEffect } from 'react';
+import { BigNumber } from '@ethersproject/bignumber';
 
 const Wallet: WalletComponent = (props) => {
   const { account, chainId } = useSDK();
@@ -24,24 +26,36 @@ const Wallet: WalletComponent = (props) => {
     method: 'balanceOf',
     params: [account],
   });
-  const maticBalance = useContractSWR({
-    contract: stMaticTokenRPC,
-    method: 'getUserBalanceInMATIC',
-    params: [account],
-  });
+  // const maticBalance = useContractSWR({
+  //   contract: stMaticTokenRPC,
+  //   method: 'getUserBalanceInMATIC',
+  //   params: [account],
+  // });
   const stMaticBalance = useContractSWR({
     contract: stMaticTokenRPC,
     method: 'balanceOf',
     params: [account],
   });
-
+  const [maticBalance, setMaticBalance] = useState(BigNumber.from(0));
+  const [maticBalanceLoading, setMaticBalanceLoading] = useState(true);
+  useEffect(() => {
+    console.log('test');
+    if (stMaticBalance.data) {
+      stMaticTokenRPC
+        .convertStMaticToMatic(stMaticBalance.data)
+        .then((amount) => {
+          setMaticBalance(amount);
+          setMaticBalanceLoading(false);
+        });
+    }
+  }, [JSON.stringify(stMaticBalance.data)]);
   return (
     <WalletCard {...props}>
       <WalletCardRow>
         <WalletCardBalance
           title="MAT balance"
-          loading={maticBalance.initialLoading}
-          value={<FormatToken amount={maticBalance.data} symbol="MAT" />}
+          loading={maticBalanceLoading}
+          value={<FormatToken amount={maticBalance} symbol="MAT" />}
         />
         <WalletCardAccount account={account} />
       </WalletCardRow>
