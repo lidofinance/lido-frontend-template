@@ -5,11 +5,13 @@ import iconUrl from 'assets/icons/coin98.svg';
 import { helpers, useConnectorCoin98 } from '@lido-sdk/web3-react';
 
 const disabledMessage =
-  'Your browser has a turned-on “MathWallet”' +
-  ' extension. Please, turn off this extension to enable the Coin98 wallet.';
+  'Your browser has a turned-on “MathWallet” extension.' +
+  ' Please, turn off this extension and reload the page' +
+  ' to enable the Coin98 wallet.';
 
 const ConnectCoin98: FC<ConnectWalletProps> = (props) => {
   const { onConnect, termsChecked, ...rest } = props;
+  const { isMathWalletProvider } = helpers;
   const { connect } = useConnectorCoin98();
 
   const handleConnect = useCallback(async () => {
@@ -17,7 +19,7 @@ const ConnectCoin98: FC<ConnectWalletProps> = (props) => {
     connect();
   }, [onConnect, connect]);
 
-  const disabled = props.disabled || helpers.isMathWalletProvider();
+  const disabled = props.disabled || isMathWalletProvider();
 
   return (
     <ConnectButton
