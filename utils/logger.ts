@@ -36,7 +36,11 @@ export const runWithLogger = async <T extends unknown>(
 
     return result;
   } catch (error) {
-    logger.error({ event, state: 'error' }, error);
+    if (error instanceof Error) {
+      logger.error({ event, state: 'error' }, error);
+    } else {
+      logger.error({ event, state: 'error' });
+    }
     throw error;
   }
 };

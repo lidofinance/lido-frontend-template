@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       color: ${({ theme }) => theme.colors.primaryHover};
     }
+
+    &:visited {
+      color: ${({ theme }) => theme.colors.primaryVisited};
+    }
   }
 `;
 
