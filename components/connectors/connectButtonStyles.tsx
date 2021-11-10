@@ -40,6 +40,11 @@ export const ConnectButtonIconStyle = styled.span`
   button:disabled & {
     opacity: 0.5;
   }
+
+  img {
+    max-width: 40px;
+    max-height: 40px;
+  }
 `;
 
 export const ConnectButtonTooltipTriggerStyle = styled.div`
