@@ -4,10 +4,11 @@ jobs:
   deploy:
     machine: true
     steps:
+      - checkout
       - run:
-          name: Deploying
-          command: |
-            ssh $SSH_USER@$SSH_HOST "cd /srv/polido-frontend && git pull && docker-compose build polido-frontend && docker-compose up -d --build polido-frontend"
+          name: Deploy latest version through nested SSH
+          command: bash .circleci/deploy.sh
+
 workflows:
   version: 2
   build-and-deploy:
@@ -16,4 +17,5 @@ workflows:
           filters:
             branches:
               only:
-              - main
+                - main
+                - pipeline
