@@ -196,14 +196,11 @@ Check out Lido UI Storybook at: https://ui.lido.fi/
 
 ## Git commit messages
 
-Please make sure to use [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) to keep the automatic versioning working, e.g.
+This repo features a pre-commit hook that lints your commit messages and rejects them if they do not follow the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) standards specified in [config](/commitlint.config.js). If you are not confident in composing a beautiful commit message on your own, you are free to make use of any Conventional Commit IDE extensions or use the CLI helper already installed in this repo,
 
 ```bash
-# bumps to minor version 2.0.1 -> 2.0.2
-git commit -m "fix: typo in README"
-
-# bumps to major version 2.0.2 -> 3.0.0
-git commit -m "feat!: dark theme"
+$ git add .
+$ yarn commit
 ```
 
 ## Icons
