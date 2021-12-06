@@ -39,7 +39,6 @@ const Wallet: WalletComponent = (props) => {
   const [maticBalance, setMaticBalance] = useState(BigNumber.from(0));
   const [maticBalanceLoading, setMaticBalanceLoading] = useState(true);
   useEffect(() => {
-    console.log('test');
     if (stMaticBalance.data) {
       stMaticTokenRPC
         .convertStMaticToMatic(stMaticBalance.data)

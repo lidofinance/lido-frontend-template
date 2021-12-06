@@ -29,8 +29,9 @@ import {
   useMaticTokenWeb3,
   useLidoNFTRPC,
   useStakeManagerWeb3,
+  useStakeManagerRPC,
 } from 'hooks';
-import { utils } from 'ethers';
+import { BigNumber, utils } from 'ethers';
 import moment from 'moment';
 
 interface HomeProps {
@@ -52,10 +53,16 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const lidoNFTRPC = useLidoNFTRPC();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const stakeManagerWeb3 = useStakeManagerWeb3();
+  const stakeManagerRPC = useStakeManagerRPC();
   const maticTokenWeb3 = useMaticTokenWeb3();
   const [tokens, setTokens] = useState<TokenOption[]>([]);
   const [delay, setDelay] = useState(0);
   const [selectedToken, setSelectedToken] = useState('');
+  const epoch = useContractSWR({
+    contract: stakeManagerRPC,
+    method: 'epoch',
+    params: [],
+  });
   const tokenApproved = useContractSWR({
     contract: lidoNFTRPC,
     method: 'getApprovedTokens',
@@ -86,29 +93,36 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         return;
       }
       const rawTokens = tokenOwned?.concat(tokenApproved);
-      Promise.all(
-        rawTokens?.map((id) => {
-          return lidoMaticWeb3.token2WithdrawRequest(id);
-        }),
-      ).then((result) => {
-        const tokens = result.map((token, index) => {
-          const amount = utils.formatEther(
-            token?.amountToClaim.toString() || 0,
-          );
-          const availableFrom = moment(
-            token?.requestTime?.toNumber() * 1000,
-          ).add(delay, 'seconds');
-          const available = availableFrom.diff(moment(), 'seconds') <= 0;
-          return {
-            value: rawTokens[index],
-            text: `${amount} - Available from: ${availableFrom.format(
-              'YYYY-MM-DD HH:mm',
-            )}`,
-            available,
-          };
+      try {
+        Promise.all(
+          rawTokens?.map((id) => {
+            return lidoMaticWeb3.token2WithdrawRequest(id);
+          }),
+        ).then((result) => {
+          console.log(epoch);
+          const tokens = result.map((token, index) => {
+            const amount = utils.formatEther(
+              token?.amount2WithdrawFromStMATIC.toString() || 0,
+            );
+            let epochs = BigNumber.from(0);
+            let available = false;
+            if (epoch.data && token.requestTime) {
+              epochs = token.requestTime.sub(epoch.data);
+              available = epochs.lte(0);
+            }
+            return {
+              value: rawTokens[index],
+              text: `${amount} - Available ${
+                available ? '' : `in: ${epochs} epochs`
+              }`,
+              available,
+            };
+          });
+          setTokens(tokens);
         });
-        setTokens(tokens);
-      });
+      } catch (ex) {
+        console.log(ex);
+      }
     }
   }, [JSON.stringify(tokenOwned), JSON.stringify(tokenApproved), delay]);
 
