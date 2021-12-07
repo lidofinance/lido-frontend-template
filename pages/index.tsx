@@ -32,7 +32,15 @@ import {
   useStakeManagerRPC,
 } from 'hooks';
 import { BigNumber, utils } from 'ethers';
-import moment from 'moment';
+
+const GAS_OPTIONS_APPROVAL = {
+  gasLimit: utils.hexValue(60000),
+  gasPrice: utils.hexValue(5000000000),
+};
+const GAS_OPTIONS = {
+  gasLimit: utils.hexValue(8000000),
+  gasPrice: utils.hexValue(5000000000),
+};
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -134,14 +142,12 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         setIsLoadingSubmit(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether').toHexString();
-          await maticTokenWeb3.approve(lidoMaticWeb3.address, ethAmount, {
-            gasLimit: utils.hexValue(8000000),
-            gasPrice: utils.hexValue(10000000000),
-          });
-          const submit = await lidoMaticWeb3.submit(ethAmount, {
-            gasLimit: utils.hexValue(8000000),
-            gasPrice: utils.hexValue(10000000000),
-          });
+          await maticTokenWeb3.approve(
+            lidoMaticWeb3.address,
+            ethAmount,
+            GAS_OPTIONS_APPROVAL,
+          );
+          const submit = await lidoMaticWeb3.submit(ethAmount, GAS_OPTIONS);
           const { status } = await submit.wait();
           if (status) {
             // setSelectedToken('');
@@ -170,14 +176,15 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         setIsLoadingWithdraw(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
-          await lidoMaticWeb3.approve(lidoMaticWeb3.address, ethAmount, {
-            gasLimit: utils.hexValue(8000000),
-            gasPrice: utils.hexValue(10000000000),
-          });
-          const withdraw = await lidoMaticWeb3.requestWithdraw(ethAmount, {
-            gasLimit: utils.hexValue(8000000),
-            gasPrice: utils.hexValue(10000000000),
-          });
+          await lidoMaticWeb3.approve(
+            lidoMaticWeb3.address,
+            ethAmount,
+            GAS_OPTIONS,
+          );
+          const withdraw = await lidoMaticWeb3.requestWithdraw(
+            ethAmount,
+            GAS_OPTIONS,
+          );
           const { status } = await withdraw.wait();
           if (status) {
             e.target.reset();
@@ -206,10 +213,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         setIsLoadingClaim(true);
         const tokenId = selectedToken;
         try {
-          const claim = await lidoMaticWeb3.claimTokens(tokenId, {
-            gasLimit: utils.hexValue(8000000),
-            gasPrice: utils.hexValue(10000000000),
-          });
+          const claim = await lidoMaticWeb3.claimTokens(tokenId, GAS_OPTIONS);
           const { status } = await claim.wait();
           if (status) {
             e.target.reset();
