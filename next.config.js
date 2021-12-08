@@ -14,6 +14,8 @@ const apiProviderUrls = {
 const defaultChain = process.env.DEFAULT_CHAIN;
 const supportedChains = process.env.SUPPORTED_CHAINS;
 
+const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
+
 module.exports = {
   basePath,
   future: {
@@ -28,11 +30,38 @@ module.exports = {
     return config;
   },
   async headers() {
+    const optionalTrustedHosts = cspTrustedHosts
+      ? ' ' + cspTrustedHosts.split(',').join(' ')
+      : '';
+
+    // 'unsafe-inline' for styled-components
+    const stylePolicy = "style-src 'self' 'unsafe-inline'";
+    const fontPolicy =
+      "font-src 'self' https://fonts.gstatic.com https://*.lido.fi" +
+      optionalTrustedHosts;
+    const imagePolicy =
+      "img-src 'self' data: https://*.lido.fi" + optionalTrustedHosts;
+    const defaultPolicy =
+      "default-src 'self' https://*.lido.fi" + optionalTrustedHosts;
+
+    const cspPolicies = [
+      stylePolicy,
+      fontPolicy,
+      imagePolicy,
+      defaultPolicy,
+    ].join('; ');
+
+    const scpValue = process.env.NODE_ENV !== 'development' ? cspPolicies : '';
+
     return [
       {
         // required for gnosis save apps
         source: '/manifest.json',
         headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
+      },
+      {
+        key: 'Content-Security-Policy',
+        value: scpValue,
       },
     ];
   },
