@@ -1,3 +1,5 @@
+const { createSecureHeaders } = require('next-secure-headers');
+
 const { CHAINS } = require('@lido-sdk/constants');
 
 const basePath = process.env.BASE_PATH || '';
@@ -14,7 +16,9 @@ const apiProviderUrls = {
 const defaultChain = process.env.DEFAULT_CHAIN;
 const supportedChains = process.env.SUPPORTED_CHAINS;
 
-const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
+let cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS || 'https://*.lido.fi';
+const cspReportOnly = process.env.CSP_REPORT_ONLY === 'true';
+const cspReportUri = process.env.CSP_REPORT_URI;
 
 module.exports = {
   basePath,
@@ -30,29 +34,6 @@ module.exports = {
     return config;
   },
   async headers() {
-    const optionalTrustedHosts = cspTrustedHosts
-      ? ' ' + cspTrustedHosts.split(',').join(' ')
-      : '';
-
-    // 'unsafe-inline' for styled-components
-    const stylePolicy = "style-src 'self' 'unsafe-inline'";
-    const fontPolicy =
-      "font-src 'self' https://fonts.gstatic.com https://*.lido.fi" +
-      optionalTrustedHosts;
-    const imagePolicy =
-      "img-src 'self' data: https://*.lido.fi" + optionalTrustedHosts;
-    const defaultPolicy =
-      "default-src 'self' https://*.lido.fi" + optionalTrustedHosts;
-
-    const cspPolicies = [
-      stylePolicy,
-      fontPolicy,
-      imagePolicy,
-      defaultPolicy,
-    ].join('; ');
-
-    const scpValue = process.env.NODE_ENV !== 'development' ? cspPolicies : '';
-
     return [
       {
         // required for gnosis save apps
@@ -60,8 +41,25 @@ module.exports = {
         headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
       },
       {
-        key: 'Content-Security-Policy',
-        value: scpValue,
+        source: '/(.*)',
+        headers: createSecureHeaders({
+          contentSecurityPolicy: {
+            directives: {
+              styleSrc: ["'self'", "'unsafe-inline'"],
+              fontSrc: [
+                "'self'",
+                'https://fonts.gstatic.com',
+                ...cspTrustedHosts,
+              ],
+              imgSrc: ["'self'", 'data:', ...cspTrustedHosts],
+              scriptSrc: ["'self'", ...cspTrustedHosts],
+              connectSrc: ["'self'", ...cspTrustedHosts],
+              defaultSrc: ["'self'", ...cspTrustedHosts],
+              reportURI: cspReportUri,
+            },
+          },
+          reportOnly: cspReportOnly,
+        }),
       },
     ];
   },
