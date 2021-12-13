@@ -1,8 +1,10 @@
 import { memo } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { ToastContainer } from '@lidofinance/lido-ui';
-import Providers, { EnvConfig } from 'providers';
+import Providers from 'providers';
 import getConfig from 'next/config';
+import { CustomAppProps } from 'types';
+import { withCsp } from 'utils/withCsp';
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
@@ -12,7 +14,7 @@ const App = (props: AppProps): JSX.Element => {
 
 const MemoApp = memo(App);
 
-const AppWrapper = (props: AppProps & { config: EnvConfig }): JSX.Element => {
+const AppWrapper = (props: CustomAppProps): JSX.Element => {
   const { config, ...rest } = props;
 
   return (
@@ -30,4 +32,6 @@ AppWrapper.getInitialProps = async (appContext: AppContext) => {
   return { ...appProps, config: publicRuntimeConfig };
 };
 
-export default AppWrapper;
+export default process.env.NODE_ENV === 'development'
+  ? AppWrapper
+  : withCsp(AppWrapper);
