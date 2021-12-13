@@ -1,5 +1,3 @@
-const { createSecureHeaders } = require('next-secure-headers');
-
 const { CHAINS } = require('@lido-sdk/constants');
 
 const basePath = process.env.BASE_PATH || '';
@@ -39,27 +37,6 @@ module.exports = {
         // required for gnosis save apps
         source: '/manifest.json',
         headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
-      },
-      {
-        source: '/(.*)',
-        headers: createSecureHeaders({
-          contentSecurityPolicy: {
-            directives: {
-              styleSrc: ["'self'", "'unsafe-inline'"],
-              fontSrc: [
-                "'self'",
-                'https://fonts.gstatic.com',
-                ...cspTrustedHosts,
-              ],
-              imgSrc: ["'self'", 'data:', ...cspTrustedHosts],
-              scriptSrc: ["'self'", ...cspTrustedHosts],
-              connectSrc: ["'self'", ...cspTrustedHosts],
-              defaultSrc: ["'self'", ...cspTrustedHosts],
-              reportURI: cspReportUri,
-            },
-          },
-          reportOnly: cspReportOnly,
-        }),
       },
     ];
   },
