@@ -254,9 +254,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isLoadingClaim, setIsLoadingClaim] = useState(false);
   const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
   return (
-    <Layout title="PoLido">
+    <Layout title="Lido for Polygon">
       <Head>
-        <title>PoLido</title>
+        <title>Lido for Polygon</title>
       </Head>
       <Switch
         optionOne={'STAKE'}
