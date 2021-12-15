@@ -132,19 +132,26 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       if (amount && amount !== '0' && lidoMaticWeb3 && maticTokenWeb3) {
         setIsLoadingSubmit(true);
         try {
-          const ethAmount = utils.parseUnits(amount, 'ether').toHexString();
-          const approval = await maticTokenWeb3.approve(
-            lidoMaticWeb3.address,
-            ethAmount,
-          );
-          const { status: approvalStatus } = await approval.wait();
-          if (!approvalStatus) {
-            notify('Something went wrong', 'error');
+          const ethAmount = utils.parseUnits(amount, 'ether');
+          if (account && lidoMaticWeb3.address) {
+            const alreadyApproved = await maticTokenWeb3.allowance(
+              account,
+              lidoMaticWeb3.address,
+            );
+            if (alreadyApproved.lt(ethAmount)) {
+              const approval = await maticTokenWeb3.approve(
+                lidoMaticWeb3.address,
+                ethAmount.toHexString(),
+              );
+              const { status: approvalStatus } = await approval.wait();
+              if (!approvalStatus) {
+                notify('Something went wrong', 'error');
+              }
+            }
           }
-          const submit = await lidoMaticWeb3.submit(ethAmount);
+          const submit = await lidoMaticWeb3.submit(ethAmount.toHexString());
           const { status } = await submit.wait();
           if (status) {
-            // setSelectedToken('');
             notify('Transaction was successful');
           } else {
             notify('Something went wrong', 'error');
@@ -247,9 +254,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const [isLoadingClaim, setIsLoadingClaim] = useState(false);
   const [isLoadingWithdraw, setIsLoadingWithdraw] = useState(false);
   return (
-    <Layout title="PoLido">
+    <Layout title="Lido for Polygon">
       <Head>
-        <title>PoLido</title>
+        <title>Lido for Polygon</title>
       </Head>
       <Switch
         optionOne={'STAKE'}

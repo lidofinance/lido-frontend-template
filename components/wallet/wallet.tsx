@@ -52,9 +52,9 @@ const Wallet: WalletComponent = (props) => {
     <WalletCard {...props}>
       <WalletCardRow>
         <WalletCardBalance
-          title="MAT balance"
+          title="MATIC balance"
           loading={maticBalanceLoading}
-          value={<FormatToken amount={maticBalance} symbol="MAT" />}
+          value={<FormatToken amount={maticBalance} symbol="MATIC" />}
         />
         <WalletCardAccount account={account} />
       </WalletCardRow>
@@ -66,7 +66,7 @@ const Wallet: WalletComponent = (props) => {
           loading={stMaticBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={stMaticBalance.data} symbol="stMAT" />
+              <FormatToken amount={stMaticBalance.data} symbol="stMATIC" />
               <TokenToWallet address={getSTMaticAddress(chainId)} />
             </>
           }
