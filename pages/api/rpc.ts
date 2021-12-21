@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { fetchRPC } from '@lido-sdk/fetch';
+import { getRPCUrls } from '@lido-sdk/fetch';
 import { CHAINS } from '@lido-sdk/constants';
 import getConfig from 'next/config';
 import { DEFAULT_API_ERROR_MESSAGE } from 'config';
+import { fetchWithFallbacks } from 'utils/fetchWithFallbacks';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
@@ -18,18 +19,25 @@ const rpc: Rpc = async (req, res) => {
       throw new Error(`Chain ${chainId} is not supported`);
     }
 
-    const apiUrl = apiProviderUrls?.[chainId];
-    const options = {
+    const urls = getRPCUrls(chainId, {
+      infura: infuraApiKey,
+      alchemy: alchemyApiKey,
+    });
+
+    const customProvider = apiProviderUrls?.[chainId];
+
+    if (customProvider) {
+      urls.unshift(customProvider);
+    }
+
+    const requested = await fetchWithFallbacks(urls, {
+      method: 'POST',
+      // Next by default parses our body for us, we don't want that here
       body: JSON.stringify(req.body),
-      urls: apiUrl ? [apiUrl] : [],
-      providers: { alchemy: alchemyApiKey, infura: infuraApiKey },
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const requested = await fetchRPC(chainId, options);
+    });
 
     const responded = await requested.json();
+
     res.status(requested.status).json(responded);
   } catch (error) {
     if (error instanceof Error) {
