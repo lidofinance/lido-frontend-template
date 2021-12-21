@@ -16,8 +16,8 @@ const supportedChains = process.env.SUPPORTED_CHAINS;
 
 module.exports = {
   basePath,
-  future: {
-    webpack5: true,
+  experimental: {
+    styledComponents: true,
   },
   webpack(config) {
     config.module.rules.push({
