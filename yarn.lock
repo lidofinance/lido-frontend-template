@@ -1865,10 +1865,10 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@lido-sdk/web3-react@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@lido-sdk/web3-react/-/web3-react-1.9.0.tgz#34a00c5b9bf7b7ce6f3cec31db1ddd1250dfbbad"
-  integrity sha512-YehMmVB50yWW+3NSY8sCwitFLtZnShz6A1JNU7S5J1eN/bHVXqrphx84nR0EypGdrIuBBNNmx5DHbHO7n0yVWg==
+"@lido-sdk/web3-react@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@lido-sdk/web3-react/-/web3-react-1.13.0.tgz#5c46aeeb65ef04bd26a2c8e112b09a7b1c5261fe"
+  integrity sha512-c5eNmC+We3ZgbTmSJN21d0BYAh5ZD+Y6MT4Pte+xfuJx8D1WkRv+EtGD2SIv6/17lLFCJC7oaRA3PXjojvE5sw==
   dependencies:
     "@gnosis.pm/safe-apps-web3-react" "0.6.3"
     "@ledgerhq/iframe-provider" "0.4.2"
