@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='-r next-logger'next start",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "yarn lint --fix",
     "typechain": "typechain --target=ethers-v5 --out-dir ./generated ./abi/*.json",
@@ -13,6 +13,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@darkobits/mask-string": "^2.0.1",
     "@ethersproject/abstract-signer": "^5.4.0",
     "@ethersproject/address": "^5.4.0",
     "@ethersproject/bignumber": "^5.4.1",
@@ -32,8 +33,10 @@
     "ethers": "^5.4.2",
     "gray-matter": "^4.0.3",
     "memory-cache": "^0.2.0",
-    "next-secure-headers": "^2.2.0",
     "next": "^12.0.7",
+    "next-logger": "^2.2.0",
+    "next-secure-headers": "^2.2.0",
+    "prom-client": "^14.0.1",
     "react": "17.0.2",
     "react-device-detect": "^1.17.0",
     "react-dom": "17.0.2",
