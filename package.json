@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='-r next-logger'next start",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "yarn lint --fix",
     "typechain": "typechain --target=ethers-v5 --out-dir ./generated ./abi/*.json",
