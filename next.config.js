@@ -14,6 +14,10 @@ const apiProviderUrls = {
 const defaultChain = process.env.DEFAULT_CHAIN;
 const supportedChains = process.env.SUPPORTED_CHAINS;
 
+const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
+const cspReportOnly = process.env.CSP_REPORT_ONLY;
+const cspReportUri = process.env.CSP_REPORT_URI;
+
 module.exports = {
   basePath,
   experimental: {
@@ -41,6 +45,9 @@ module.exports = {
     infuraApiKey,
     alchemyApiKey,
     apiProviderUrls,
+    cspTrustedHosts,
+    cspReportOnly,
+    cspReportUri,
   },
   publicRuntimeConfig: {
     defaultChain,
