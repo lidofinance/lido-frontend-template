@@ -1,12 +1,20 @@
 import maskString from '@darkobits/mask-string';
+import getConfig from 'next/config';
 
-// match any terra address except before 'contracts/'
-const userAddress = new RegExp('(?<!contracts/)terra[a-z0-9]+', 'gi');
-// match quiknode token, i.e. any alphanumeric characters after 'quiknode.pro/'
-const quikNodeToken = new RegExp('(?<=quiknode.pro/)[a-z0-9]+', 'gi');
+const { serverRuntimeConfig } = getConfig();
+const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
 
-const mask = (message: string): string =>
-  maskString([userAddress, quikNodeToken], message);
+const anyHexadecimal = new RegExp('0x[a-fA-F0-9]+', 'gi');
+const anyEnsAddress = new RegExp('[a-zA-Z.]+\\.eth', 'gi');
+
+const secrets: (RegExp | string)[] = [
+  infuraApiKey,
+  alchemyApiKey,
+  anyHexadecimal,
+  anyEnsAddress,
+].filter(Boolean);
+
+const mask = (message: string): string => maskString(secrets, message);
 
 enum LEVEL {
   error = 'error',
