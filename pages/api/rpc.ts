@@ -4,6 +4,7 @@ import { CHAINS } from '@lido-sdk/constants';
 import getConfig from 'next/config';
 import { DEFAULT_API_ERROR_MESSAGE } from 'config';
 import { fetchWithFallbacks } from 'utils/fetchWithFallbacks';
+import { serverLogger } from 'utils/serverLogger';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
@@ -12,6 +13,7 @@ const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
 type Rpc = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
 const rpc: Rpc = async (req, res) => {
+  serverLogger.debug('Request to RPC');
   try {
     const chainId = Number(req.query.chainId);
 
@@ -40,6 +42,7 @@ const rpc: Rpc = async (req, res) => {
 
     res.status(requested.status).json(responded);
   } catch (error) {
+    serverLogger.error(error);
     if (error instanceof Error) {
       res.status(500).json(error.message ?? DEFAULT_API_ERROR_MESSAGE);
     } else {
