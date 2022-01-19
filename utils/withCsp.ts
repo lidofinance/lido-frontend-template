@@ -43,4 +43,5 @@ export const withCsp = (
 ): FC =>
   withSecureHeaders({
     contentSecurityPolicy,
+    frameGuard: false,
   })(app);
