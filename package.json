@@ -27,7 +27,7 @@
     "@lido-sdk/fetch": "^1.2.2",
     "@lido-sdk/helpers": "^1.3.1",
     "@lido-sdk/react": "^1.16.1",
-    "@lido-sdk/web3-react": "^1.14.2",
+    "@lido-sdk/web3-react": "^1.15.0",
     "@lidofinance/lido-ui": "^1.10.7",
     "copy-to-clipboard": "^3.3.1",
     "ethers": "^5.4.2",
