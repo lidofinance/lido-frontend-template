@@ -4,57 +4,55 @@ import {
   WalletCardRow,
   WalletCardAccount,
 } from 'components/walletCard';
-import { Divider } from '@lidofinance/lido-ui';
+import { Divider, Text } from '@lidofinance/lido-ui';
 import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { useWeb3 } from '@lido-sdk/web3-react';
 import FormatToken from 'components/formatToken';
 import FallbackWallet from 'components/fallbackWallet';
-import TokenToWallet from 'components/tokenToWallet';
 import { WalletComponent } from './types';
-import { useLidoMaticRPC, useMaticTokenRPC } from 'hooks';
-import { getSTMaticAddress } from 'config';
+import { useLidoMaticRPC, useLidoMaticWeb3, useMaticTokenRPC, useMaticTokenWeb3 } from 'hooks';
 import { useState, useEffect } from 'react';
-import { BigNumber } from '@ethersproject/bignumber';
 
 const Wallet: WalletComponent = (props) => {
   const { account, chainId } = useSDK();
 
   const stMaticTokenRPC = useLidoMaticRPC();
+  const stMaticTokenWeb3 = useLidoMaticWeb3();
   const maticTokenRPC = useMaticTokenRPC();
-  const ethBalance = useContractSWR({
+  const maticTokenWeb3 = useMaticTokenWeb3();
+  const maticBalance = useContractSWR({
     contract: maticTokenRPC,
     method: 'balanceOf',
     params: [account],
   });
-  // const maticBalance = useContractSWR({
-  //   contract: stMaticTokenRPC,
-  //   method: 'getUserBalanceInMATIC',
-  //   params: [account],
-  // });
+  const [maticSymbol, setMaticSymbol] = useState('MAT');
+  const [stMaticSymbol, setStMaticSymbol] = useState('stMAT');
+  useEffect(() => {
+    if (maticTokenWeb3) {
+      maticTokenWeb3.symbol().then((res) => {
+        setMaticSymbol(res);
+      });
+    }
+    if (stMaticTokenWeb3) {
+      stMaticTokenWeb3.symbol().then((res) => {
+        setStMaticSymbol(res);
+      });
+    }
+  }, [maticTokenWeb3, stMaticTokenWeb3]);
   const stMaticBalance = useContractSWR({
     contract: stMaticTokenRPC,
     method: 'balanceOf',
     params: [account],
   });
-  const [maticBalance, setMaticBalance] = useState(BigNumber.from(0));
-  const [maticBalanceLoading, setMaticBalanceLoading] = useState(true);
-  useEffect(() => {
-    if (stMaticBalance.data) {
-      stMaticTokenRPC
-        .convertStMaticToMatic(stMaticBalance.data)
-        .then((amount) => {
-          setMaticBalance(amount);
-          setMaticBalanceLoading(false);
-        });
-    }
-  }, [JSON.stringify(stMaticBalance.data)]);
   return (
     <WalletCard {...props}>
       <WalletCardRow>
         <WalletCardBalance
-          title="MATIC balance"
-          loading={maticBalanceLoading}
-          value={<FormatToken amount={maticBalance} symbol="MATIC" />}
+          title="Available to stake"
+          loading={maticBalance.loading}
+          value={
+            <FormatToken amount={maticBalance.data} symbol={maticSymbol} />
+          }
         />
         <WalletCardAccount account={account} />
       </WalletCardRow>
@@ -62,23 +60,26 @@ const Wallet: WalletComponent = (props) => {
       <WalletCardRow>
         <WalletCardBalance
           small
-          title="Token balance"
+          title="Staked amount"
           loading={stMaticBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={stMaticBalance.data} symbol="stMATIC" />
-              <TokenToWallet address={getSTMaticAddress(chainId)} />
+              <FormatToken
+                amount={stMaticBalance.data}
+                symbol={stMaticSymbol}
+              />
             </>
           }
         />
         <WalletCardBalance
           small
-          title="Token balance"
-          loading={ethBalance.initialLoading}
+          title="Lido APR"
+          loading={maticBalance.initialLoading}
           value={
             <>
-              <FormatToken amount={ethBalance.data} symbol="Testv4" />
-              {/* <TokenToWallet address={wstethAddress} /> */}
+              <Text style={{ color: '#53BA95' }} size="xs">
+                40%
+              </Text>
             </>
           }
         />
