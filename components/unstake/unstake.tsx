@@ -17,7 +17,6 @@ import { StMatic } from 'components/tokens';
 import { SCANNERS } from 'config';
 import { useSDK } from '@lido-sdk/react';
 import { formatBalance } from 'utils';
-import { parseEther } from '@ethersproject/units';
 
 const initialStatus = {
   title: '',
@@ -150,10 +149,10 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     }
   };
 
-
   return (
     <Block>
       <Box
+        // @ts-expect-error attributes are not in the interface
         bg="#FFFAE0"
         padding="20px"
         borderRadius="10px"

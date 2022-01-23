@@ -1,8 +1,8 @@
 import React, { FC, FormEventHandler, useState, useEffect } from 'react';
-import { Block, Box, Modal, Text, Loader } from '@lidofinance/lido-ui';
-import { useContractSWR, useSTETHContractRPC, useSDK } from '@lido-sdk/react';
+import { Block, Box } from '@lidofinance/lido-ui';
+import { useContractSWR, useSDK } from '@lido-sdk/react';
 import notify from 'utils/notify';
-import { BigNumber, utils } from 'ethers';
+import { BigNumber } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
 import FormatToken from 'components/formatToken/formatToken';
 import {
@@ -225,7 +225,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
           });
         }
         setIsLoading(false);
-      } catch (ex) {
+      } catch (ex: any) {
         if (ex.message.length > 45) {
           notify('Something went wrong', 'error');
         } else {
@@ -239,19 +239,22 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   return (
     <Block>
       <Box
+        // @ts-expect-error attributes are not in the interface
         bg="#FFFAE0"
         padding="20px"
         borderRadius="10px"
         margin="0 auto 16px auto"
         color="#273852"
       >
-        You will be able to claim your rewards after the withdraw request has been processed. To unstake your amount go to Unstake tab
+        You will be able to claim your rewards after the withdraw request has
+        been processed. To unstake your amount go to Unstake tab
         {
           // eslint-disable-next-line
           <span style={{ color: '#00A3FF', cursor: 'pointer' }} onClick={() => changeTab("UNSTAKE")}>
             {' Unstake '}
           </span>
-        }tab
+        }
+        tab
       </Box>
       <ClaimCard>
         <ClaimStat>
