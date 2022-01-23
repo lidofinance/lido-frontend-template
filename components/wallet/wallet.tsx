@@ -71,6 +71,9 @@ const Wallet: WalletComponent = (props) => {
             </>
           }
         />
+        {/* 
+        TODO: Add after historical data can be fetched
+        
         <WalletCardBalance
           small
           title="Lido APR"
@@ -82,7 +85,7 @@ const Wallet: WalletComponent = (props) => {
               </Text>
             </>
           }
-        />
+        /> */}
       </WalletCardRow>
     </WalletCard>
   );

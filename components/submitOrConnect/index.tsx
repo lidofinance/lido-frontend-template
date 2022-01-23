@@ -12,7 +12,7 @@ const ButtonWrapper = styled.div`
 interface Props {
   isLoading: boolean;
   label: string;
-  submit?: () => void;
+  submit?: (e: any) => void;
 }
 
 const SubmitOrConnect: FC<Props> = ({ isLoading, label, submit }) => {

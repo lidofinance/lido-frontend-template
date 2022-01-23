@@ -70,16 +70,22 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       >
         <Block>
           <DataTable title="Lido">
-            <DataTableRow title="Annual percentage rate">40.5%</DataTableRow>
+            {/*
+              TODO: Add after historical data can be fetched
+              <DataTableRow title="Annual percentage rate">40.5%</DataTableRow>
+             */}
             <DataTableRow
               title="Total staked with Lido"
               loading={totalTokenStaked.initialLoading}
             >
               {formatBalance(totalTokenStaked.data)} {symbol}
             </DataTableRow>
+            {/* 
+             TODO: uncomment after getting api key for etherscan
             <DataTableRow title="Stakers" loading={tokenName.initialLoading}>
               99 999
             </DataTableRow>
+             */}
             {/* <DataTableRow
               title="stMATIC market cap"
               loading={tokenName.initialLoading}
