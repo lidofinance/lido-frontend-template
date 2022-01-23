@@ -14,6 +14,7 @@ export const WalletCardStyle = styled(Block)`
     padding-bottom: ${({ theme }) =>
       theme.borderRadiusesMap.xl + theme.spaceMap.lg}px;
   }
+  background: linear-gradient(52.01deg, #28144a 0%, #512a96 100%);
 `;
 
 export const WalletCardRowStyle = styled.div`
