@@ -33,7 +33,7 @@ const SubmitOrConnect: FC<Props> = ({ isLoading, label, submit }) => {
         <WalletConnect fullwidth />
       )}
     </ButtonWrapper>
-  )
+  );
 };
 
 export default SubmitOrConnect;

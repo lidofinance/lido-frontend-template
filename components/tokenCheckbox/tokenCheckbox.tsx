@@ -14,7 +14,7 @@ interface Token {
   amount: BigNumber;
   available: boolean;
   isChecked: boolean;
-  handleChange: (value: string) => void
+  handleChange: (value: string) => void;
 }
 
 const TokenCheckbox: FC<Token> = ({

@@ -4,8 +4,7 @@ import { TabWrapper, TabSlider, TabLabel } from './TabStyles';
 interface Props {
   options: string[];
   selected: string;
-  onSelectTab: React.MouseEventHandler<HTMLDivElement> &
-    ((option: string) => void);
+  onSelectTab: (option: string) => void;
 }
 
 const Switch: FC<Props> = ({ options, selected, onSelectTab }) => {

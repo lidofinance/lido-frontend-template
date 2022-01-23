@@ -4,17 +4,22 @@ import {
   WalletCardRow,
   WalletCardAccount,
 } from 'components/walletCard';
-import { Divider, Text } from '@lidofinance/lido-ui';
+import { Divider } from '@lidofinance/lido-ui';
 import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { useWeb3 } from '@lido-sdk/web3-react';
 import FormatToken from 'components/formatToken';
 import FallbackWallet from 'components/fallbackWallet';
 import { WalletComponent } from './types';
-import { useLidoMaticRPC, useLidoMaticWeb3, useMaticTokenRPC, useMaticTokenWeb3 } from 'hooks';
+import {
+  useLidoMaticRPC,
+  useLidoMaticWeb3,
+  useMaticTokenRPC,
+  useMaticTokenWeb3,
+} from 'hooks';
 import { useState, useEffect } from 'react';
 
 const Wallet: WalletComponent = (props) => {
-  const { account, chainId } = useSDK();
+  const { account } = useSDK();
 
   const stMaticTokenRPC = useLidoMaticRPC();
   const stMaticTokenWeb3 = useLidoMaticWeb3();

@@ -1,1 +1,1 @@
-export { default as default} from './statusModal'
+export { default as default } from './statusModal';

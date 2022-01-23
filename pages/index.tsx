@@ -34,11 +34,11 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'getTotalPooledMatic',
   });
 
-  const contractRpc = useSTETHContractRPC();
-  const tokenName = useContractSWR({
-    contract: contractRpc,
-    method: 'name',
-  });
+  // const contractRpc = useSTETHContractRPC();
+  // const tokenName = useContractSWR({
+  //   contract: contractRpc,
+  //   method: 'name',
+  // });
   return (
     <Layout
       title="Lido for Polygon"
