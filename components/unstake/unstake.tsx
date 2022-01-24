@@ -8,18 +8,14 @@ import {
   Box,
 } from '@lidofinance/lido-ui';
 import InputWrapper from 'components/inputWrapper';
-import {
-  useLidoMaticWeb3,
-  useMaticTokenWeb3,
-  useStakeManagerWeb3,
-} from 'hooks';
+import { useLidoMaticWeb3, useMaticTokenWeb3, useStakeManagerRPC } from 'hooks';
 import notify from 'utils/notify';
 import { utils } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
 import StatusModal from 'components/statusModal';
 import { StMatic } from 'components/tokens';
 import { SCANNERS } from 'config';
-import { useSDK } from '@lido-sdk/react';
+import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { formatBalance } from 'utils';
 
 const initialStatus = {
@@ -35,7 +31,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const { chainId, account } = useSDK();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
-  const stakeManagerWeb3 = useStakeManagerWeb3();
+  const stakeManagerRPC = useStakeManagerRPC();
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState(initialStatus);
@@ -44,15 +40,11 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const [rate, setRate] = useState('0');
   const [stSymbol, setStSymbol] = useState('stMATIC');
   const [reward, setReward] = useState('0');
-  const [delay, setDelay] = useState(0);
 
-  useEffect(() => {
-    if (stakeManagerWeb3 && !delay) {
-      stakeManagerWeb3?.withdrawalDelay().then((delay) => {
-        setDelay(delay.toNumber() || 0);
-      });
-    }
-  }, [stakeManagerWeb3]);
+  const delay = useContractSWR({
+    contract: stakeManagerRPC,
+    method: 'withdrawalDelay',
+  });
 
   const setMaxInputValue = () => {
     if (account) {
@@ -173,8 +165,9 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         margin="0 auto 16px auto"
         color="#273852"
       >
-        Default stMATIC unstaking period takes at least {delay} epochs to
-        process. After that you can claim your rewards in
+        Default stMATIC unstaking period takes around 9 days (
+        {delay.data?.toString() || 80} epochs) to process. After that you can
+        claim your rewards in
         {
           // eslint-disable-next-line
           <span style={{ color: '#00A3FF', cursor: 'pointer' }} onClick={() => changeTab("CLAIM")}>
