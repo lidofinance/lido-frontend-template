@@ -104,7 +104,15 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   // list of .md files from /faq/
-  const fileList = ['lido-frontend-template'];
+  const fileList = [
+    'lido-polygon',
+    'how-does-it-work',
+    'liquid-staking',
+    'stMatic',
+    'requesting-withdraw',
+    'ldo',
+    'fees',
+  ];
   const faqList = await getFaqList(fileList);
 
   return { props: { faqList } };
