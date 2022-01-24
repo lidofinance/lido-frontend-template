@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         - INFURA_API_KEY=${INFURA_API_KEY:-0}
-        - SUPPORTED_CHAINS=${SUPPORTED_CHAINS:-1,4,5}
+        - SUPPORTED_CHAINS=${SUPPORTED_CHAINS:-5}
         - DEFAULT_CHAIN=${DEFAULT_CHAIN:-5}
     image: polido-frontend:latest
     container_name: polido-frontend
