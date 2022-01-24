@@ -247,7 +247,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         color="#273852"
       >
         You will be able to claim your rewards after the withdraw request has
-        been processed. To unstake your amount go to Unstake tab
+        been processed. To unstake your amount go to
         {
           // eslint-disable-next-line
           <span style={{ color: '#00A3FF', cursor: 'pointer' }} onClick={() => changeTab("UNSTAKE")}>

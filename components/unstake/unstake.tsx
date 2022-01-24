@@ -8,7 +8,11 @@ import {
   Box,
 } from '@lidofinance/lido-ui';
 import InputWrapper from 'components/inputWrapper';
-import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
+import {
+  useLidoMaticWeb3,
+  useMaticTokenWeb3,
+  useStakeManagerWeb3,
+} from 'hooks';
 import notify from 'utils/notify';
 import { utils } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
@@ -31,6 +35,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const { chainId, account } = useSDK();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
+  const stakeManagerWeb3 = useStakeManagerWeb3();
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState(initialStatus);
@@ -39,6 +44,15 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const [rate, setRate] = useState('0');
   const [stSymbol, setStSymbol] = useState('stMATIC');
   const [reward, setReward] = useState('0');
+  const [delay, setDelay] = useState(0);
+
+  useEffect(() => {
+    if (stakeManagerWeb3 && !delay) {
+      stakeManagerWeb3?.withdrawalDelay().then((delay) => {
+        setDelay(delay.toNumber() || 0);
+      });
+    }
+  }, [stakeManagerWeb3]);
 
   const setMaxInputValue = () => {
     if (account) {
@@ -55,21 +69,21 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         setRate(formatBalance(res));
       });
     }
-  }, []);
+  }, [lidoMaticWeb3]);
   useEffect(() => {
     if (lidoMaticWeb3) {
       lidoMaticWeb3?.symbol().then((res) => {
         setStSymbol(res);
       });
     }
-  }, []);
+  }, [lidoMaticWeb3]);
   useEffect(() => {
     if (maticTokenWeb3) {
       maticTokenWeb3?.symbol().then((res) => {
         setSymbol(res);
       });
     }
-  }, []);
+  }, [maticTokenWeb3]);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = async (
     e: any,
@@ -159,8 +173,8 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         margin="0 auto 16px auto"
         color="#273852"
       >
-        Default stMATIC unstaking period takes at least X days to process. After
-        that you can claim your rewards in
+        Default stMATIC unstaking period takes at least {delay} epochs to
+        process. After that you can claim your rewards in
         {
           // eslint-disable-next-line
           <span style={{ color: '#00A3FF', cursor: 'pointer' }} onClick={() => changeTab("CLAIM")}>

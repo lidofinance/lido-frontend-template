@@ -157,21 +157,21 @@ const Stake: FC = () => {
         setRate(formatBalance(res));
       });
     }
-  }, []);
+  }, [lidoMaticWeb3]);
   useEffect(() => {
     if (lidoMaticWeb3) {
       lidoMaticWeb3?.symbol().then((res) => {
         setStSymbol(res);
       });
     }
-  }, []);
+  }, [lidoMaticWeb3]);
   useEffect(() => {
     if (maticTokenWeb3) {
       maticTokenWeb3?.symbol().then((res) => {
         setSymbol(res);
       });
     }
-  }, []);
+  }, [maticTokenWeb3]);
 
   return (
     <Block>
