@@ -3,6 +3,7 @@ import NextApp, { AppProps, AppContext } from 'next/app';
 import { ToastContainer } from 'components/toasts';
 import Providers, { EnvConfig } from 'providers';
 import getConfig from 'next/config';
+import { withCsp } from 'utilsAPI';
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
@@ -30,4 +31,6 @@ AppWrapper.getInitialProps = async (appContext: AppContext) => {
   return { ...appProps, config: publicRuntimeConfig };
 };
 
-export default AppWrapper;
+export default process.env.NODE_ENV === 'development'
+  ? AppWrapper
+  : withCsp(AppWrapper);
