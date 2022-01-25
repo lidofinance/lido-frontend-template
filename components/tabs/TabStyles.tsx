@@ -8,10 +8,7 @@ export const TabWrapper = styled.div`
   width: 279px;
   height: 44px;
   /* background-color: rgb(226, 230, 235); */
-  background-color: ${({ theme }) => {
-    console.log(theme);
-    return theme.colors.backgroundDarken;
-  }};
+  background-color: ${({ theme }) => theme.colors.backgroundDarken};
   border-radius: 22px;
   position: relative;
   display: flex;
@@ -26,10 +23,7 @@ export const TabSlider = styled.div<{ selectedOption: number }>`
   width: 97px;
   height: 40px;
   background-color: white;
-  background-color: ${({ theme }) => {
-    console.log(theme);
-    return theme.colors.background;
-  }};
+  background-color: ${({ theme }) => theme.colors.background};
   border-radius: 20px;
   position: absolute;
   transition: left 0.3s ease 0s;

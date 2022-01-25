@@ -111,7 +111,6 @@ const Stake: FC = () => {
           const submit = await lidoMaticWeb3.submit(ethAmount.toHexString());
           const response = await submit.wait();
           const { status, transactionHash } = response;
-          console.log(response);
           if (status) {
             setStatus({
               title: `Stake successful`,
@@ -121,7 +120,7 @@ const Stake: FC = () => {
               link: `${SCANNERS[chainId]}tx/${transactionHash}`,
               show: true,
             });
-            e.target.reset();
+            setAmount('0');
           } else {
             setStatus({
               title: `Transaction Failed`,

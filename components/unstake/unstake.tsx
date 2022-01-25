@@ -94,16 +94,11 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
       });
       try {
         const stMaticAmount = utils.parseUnits(amount, 'ether');
-        const approval = await lidoMaticWeb3.approve(
-          lidoMaticWeb3.address,
-          stMaticAmount,
-        );
-        const { status: approvalStatus } = await approval.wait();
-        console.log(approvalStatus);
+        await lidoMaticWeb3.approve(lidoMaticWeb3.address, stMaticAmount);
         const unstake = await lidoMaticWeb3.requestWithdraw(stMaticAmount);
         const { status, transactionHash } = await unstake.wait();
         if (status) {
-          e.target.reset();
+          setAmount('0');
           setStatus({
             title: `Transaction created`,
             subtitle: `Your ${amount} ${symbol} will be unstaked.`,
@@ -123,8 +118,8 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
               : '',
             show: true,
           });
-          setIsLoading(false);
         }
+        setIsLoading(false);
       } catch (ex) {
         setStatus({
           title: `Transaction Failed`,
