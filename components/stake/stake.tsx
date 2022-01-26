@@ -54,15 +54,16 @@ const Stake: FC = () => {
   };
   const handleChange = (e: any) => {
     const amount = e.target.value;
-    if (!amount) {
+    setAmount(amount);
+    if (isNaN(amount) || Number(amount) <= 0) {
       setReward('0');
-    } else if (lidoMaticWeb3) {
-      setAmount(amount);
+    } else if (lidoMaticWeb3 && Number(amount) > 0) {
       lidoMaticWeb3
         .convertMaticToStMatic(utils.parseUnits(amount, 'ether'))
-        .then((res) => {
+        .then(([res]) => {
           setReward(formatBalance(res));
         });
+      setReward('0');
     }
   };
 
@@ -74,7 +75,7 @@ const Stake: FC = () => {
         setIsLoading(true);
         try {
           const ethAmount = utils.parseUnits(amount, 'ether');
-          const stAmount = await lidoMaticWeb3.convertMaticToStMatic(ethAmount);
+          const [stAmount] = await lidoMaticWeb3.convertMaticToStMatic(ethAmount);
           setStatus({
             title: `You are now staking ${symbol}`,
             subtitle: `Staking ${amount} ${symbol}. You will receive ${formatBalance(
@@ -152,7 +153,7 @@ const Stake: FC = () => {
   useEffect(() => {
     if (lidoMaticWeb3) {
       const amount = utils.parseUnits('1', 'ether');
-      lidoMaticWeb3.convertMaticToStMatic(amount).then((res) => {
+      lidoMaticWeb3.convertMaticToStMatic(amount).then(([res]) => {
         setRate(formatBalance(res));
       });
     }

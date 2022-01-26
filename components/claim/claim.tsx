@@ -68,43 +68,43 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
       }
       const rawTokens = tokenOwned?.concat(tokenApproved);
       try {
-        Promise.all(
+        let claimableAmount = BigNumber.from(0);
+        let pendingAmount = BigNumber.from(0);
+        const result = await Promise.all(
           rawTokens?.map((id) => {
             return lidoMaticWeb3.token2WithdrawRequest(id);
           }),
-        ).then((result) => {
-          let claimableAmount = BigNumber.from(0);
-          let pendingAmount = BigNumber.from(0);
-          const tokens = result.map((token, index) => {
-            const amount = token?.amount2WithdrawFromStMATIC || 0;
-            let epochs = BigNumber.from(0);
-            let available = false;
-            if (epoch.data && token.requestTime) {
-              epochs = token.requestTime.sub(epoch.data);
-              available = epochs.lte(0);
-            }
-            if (available) {
-              claimableAmount = claimableAmount.add(amount);
-            } else {
-              pendingAmount = pendingAmount.add(amount);
-            }
-            console.log(rawTokens[index]);
-            return {
-              value: rawTokens[index],
-              amount,
-              text: `${amount} - Available ${
-                available ? '' : `in: ${epochs} epochs`
-              }`,
-              available,
-              checked: available,
-            };
+        );
+        const tokens = [];
+        for (let i = 0; i < result.length; i++) {
+          const token = result[i];
+          const amount = token?.amount2WithdrawFromStMATIC.eq('0')
+            ? await lidoMaticWeb3.getMaticFromTokenId(rawTokens[i])
+            : token?.amount2WithdrawFromStMATIC;
+          let epochs = BigNumber.from(0);
+          let available = false;
+          if (epoch.data && token.requestTime) {
+            epochs = token.requestTime.sub(epoch.data);
+            available = epochs.lte(0);
+          }
+          if (available) {
+            claimableAmount = claimableAmount.add(amount);
+          } else {
+            pendingAmount = pendingAmount.add(amount);
+          }
+          tokens.push({
+            value: rawTokens[i],
+            amount,
+            text: `${amount} - Available ${
+              available ? '' : `in: ${epochs} epochs`
+            }`,
+            available,
+            checked: available,
           });
-          const claimAmount = formatBalance(claimableAmount);
-          setTokens(tokens);
-          setClaimableAmount(claimableAmount);
-          setClaimAmount(claimAmount);
-          setPendingAmount(pendingAmount);
-        });
+        }
+        setTokens(tokens);
+        setClaimableAmount(claimableAmount);
+        setPendingAmount(pendingAmount);
       } catch (ex) {
         console.log(ex);
       }
@@ -154,7 +154,6 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   useEffect(() => {
     const claimAmount = formatBalance(
       tokens.reduce((acc, token) => {
-        console.log(token.checked);
         if (token.checked) {
           acc = acc.add(token.amount);
         }
@@ -231,7 +230,6 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         } else {
           notify(ex.message, 'error');
         }
-        // setIsLoading(false);
         console.log(ex);
       }
     }

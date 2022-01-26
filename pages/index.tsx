@@ -8,7 +8,7 @@ import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
-import { useContractSWR, useSTETHContractRPC, useSDK } from '@lido-sdk/react';
+import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { useLidoMaticRPC, useMaticTokenWeb3 } from 'hooks';
 import Stake from 'components/stake';
 import Unstake from 'components/unstake';
@@ -34,11 +34,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'getTotalPooledMatic',
   });
 
-  // const contractRpc = useSTETHContractRPC();
-  // const tokenName = useContractSWR({
-  //   contract: contractRpc,
-  //   method: 'name',
-  // });
   return (
     <Layout
       title="Lido for Polygon"
