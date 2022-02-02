@@ -1,4 +1,5 @@
 import { createContext, useMemo, useCallback, memo, useState, FC } from 'react';
+import { useThemeToggle } from 'hooks';
 import WalletModal from 'components/walletModal';
 import { WalletsModalForEth } from '@lidofinance/lido-ui-blocks';
 
@@ -16,6 +17,7 @@ export const ModalContext = createContext({} as ModalContextValue);
 
 const ModalProvider: FC = ({ children }) => {
   const [active, setActive] = useState<MODAL | null>(null);
+  const { themeName } = useThemeToggle();
 
   const openModal = useCallback((modal: MODAL) => {
     setActive(modal);
@@ -35,6 +37,7 @@ const ModalProvider: FC = ({ children }) => {
 
   const common = {
     onClose: closeModal,
+    shouldInvertWalletIcon: themeName === 'dark',
   };
 
   return (
