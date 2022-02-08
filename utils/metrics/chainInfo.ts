@@ -12,4 +12,9 @@ export const chainInfo = new Gauge({
   registers: [],
 });
 
-chainInfo.labels(defaultChain, supportedChains).set(1);
+chainInfo.labels({ default_chain: defaultChain }).set(1);
+if (typeof supportedChains === 'string') {
+  supportedChains.split(',').forEach((chain) => {
+    chainInfo.labels({ supported_chains: chain }).set(1);
+  });
+}
