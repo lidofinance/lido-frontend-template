@@ -198,6 +198,14 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         const claims = await Promise.all(
           tokenIds.map((tokenId) => lidoMaticWeb3.claimTokens(tokenId)),
         );
+        setStatus({
+          title: 'You are now claiming your reward',
+          subtitle: `Claiming ${claimAmount} ${symbol}`,
+          additionalDetails: 'Processing your transaction',
+          type: 'loading',
+          link: '',
+          show: true,
+        });
         const results = await Promise.all(claims.map((claim) => claim.wait()));
         const finalRes = results.reduce(
           (acc, { status }) => {
@@ -313,6 +321,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         type={status.type}
         show={status.show}
         onClose={() => setStatus(initialStatus)}
+        retry={false}
       />
     </Block>
   );
