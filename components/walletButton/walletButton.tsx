@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { ButtonProps } from '@lidofinance/lido-ui';
 import AddressBadge from 'components/addressBadge';
 import {
@@ -7,8 +7,8 @@ import {
   WalledButtonBalanceStyle,
   WalledButtonLoaderStyle,
 } from './walletButtonStyles';
-import { useModal } from 'hooks';
-import { useEthereumBalance, useSDK } from '@lido-sdk/react';
+import { useModal, useMaticTokenRPC } from 'hooks';
+import { useContractSWR, useSDK } from '@lido-sdk/react';
 import FormatToken from 'components/formatToken';
 import { MODAL } from 'providers';
 
@@ -16,7 +16,18 @@ const WalletButton: FC<ButtonProps> = (props) => {
   const { onClick, ...rest } = props;
   const { openModal } = useModal(MODAL.wallet);
   const { account } = useSDK();
-  const { data: balance, initialLoading } = useEthereumBalance();
+  const maticTokenRPC = useMaticTokenRPC();
+  // const { data: balance, initialLoading } = useEthereumBalance();
+  const maticBalance = useContractSWR({
+    contract: maticTokenRPC,
+    method: 'balanceOf',
+    params: [account],
+  });
+  const maticSymbol = useContractSWR({
+    contract: maticTokenRPC,
+    method: 'symbol',
+    params: [],
+  });
 
   return (
     <WalledButtonStyle
@@ -28,10 +39,13 @@ const WalletButton: FC<ButtonProps> = (props) => {
     >
       <WalledButtonWrapperStyle>
         <WalledButtonBalanceStyle>
-          {initialLoading ? (
+          {maticBalance.initialLoading ? (
             <WalledButtonLoaderStyle />
           ) : (
-            <FormatToken amount={balance} symbol="ETH" />
+            <FormatToken
+              amount={maticBalance.data}
+              symbol={maticSymbol.data as string}
+            />
           )}
         </WalledButtonBalanceStyle>
         <AddressBadge address={account} />
