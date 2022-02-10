@@ -8,7 +8,7 @@ export const ClaimCardStyle = styled.div`
 
 export const ClaimStatStyle = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #f5f7fa;
   border-radius: 10px;
   padding: 20px;
@@ -21,6 +21,7 @@ export const ClaimStatBalanceStyle = styled.div`
   margin-right: 18px;
   font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   line-height: 1.6em;
+  width: 50%;
 
   :last-child {
     margin-right: 0;
