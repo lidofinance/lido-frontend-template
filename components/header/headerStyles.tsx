@@ -24,4 +24,5 @@ export const HeaderActionsStyle = styled.div`
   align-items: center;
   flex-shrink: 1;
   overflow: hidden;
+  margin-right: 44px;
 `;
