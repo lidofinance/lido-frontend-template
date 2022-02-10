@@ -37,7 +37,9 @@ const SelectTokenModal: FC<Props> = ({ tokens, show, onClose, save }) => {
     const tokens = [...tokensClone];
     const token = tokens.find((el) => el.value === value);
     if (token && typeof token.checked === 'boolean' && token.available) {
-      token.checked = !token.checked;
+      if (token.available) {
+        token.checked = !token.checked;
+      }
     }
     setTokensClone(tokens);
   };
