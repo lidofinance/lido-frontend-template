@@ -277,6 +277,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         label={`Claim ${claimAmount} ${symbol}`}
         isLoading={false}
         submit={handleSubmit}
+        disabled={claimAmount === '0.0'}
       />
       <SelectTokenModal
         tokens={tokens}

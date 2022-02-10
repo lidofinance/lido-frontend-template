@@ -12,10 +12,11 @@ const ButtonWrapper = styled.div`
 interface Props {
   isLoading: boolean;
   label: string;
+  disabled?: boolean;
   submit?: (e: any) => void;
 }
 
-const SubmitOrConnect: FC<Props> = ({ isLoading, label, submit }) => {
+const SubmitOrConnect: FC<Props> = ({ isLoading, label, submit, disabled }) => {
   const { account } = useSDK();
   return (
     <ButtonWrapper>
@@ -23,7 +24,7 @@ const SubmitOrConnect: FC<Props> = ({ isLoading, label, submit }) => {
         <Button
           fullwidth
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || disabled}
           loading={isLoading}
           onClick={submit}
         >
