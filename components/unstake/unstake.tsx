@@ -48,8 +48,15 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
 
   const setMaxInputValue = () => {
     if (account) {
-      lidoMaticWeb3?.balanceOf(account).then((res) => {
-        setAmount(utils.formatEther(res));
+      lidoMaticWeb3?.balanceOf(account).then((max) => {
+        setAmount(utils.formatEther(max));
+        if (lidoMaticWeb3 && max.gt(0)) {
+          lidoMaticWeb3.convertStMaticToMatic(max).then(([res]) => {
+            setReward(formatBalance(res));
+          });
+        } else {
+          setReward('0');
+        }
       });
     }
   };

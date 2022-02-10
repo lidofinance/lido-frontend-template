@@ -47,8 +47,15 @@ const Stake: FC = () => {
   const [status, setStatus] = useState(initialStatus);
   const setMaxInputValue = () => {
     if (account) {
-      maticTokenWeb3?.balanceOf(account).then((res) => {
-        setAmount(utils.formatEther(res));
+      maticTokenWeb3?.balanceOf(account).then((max) => {
+        setAmount(utils.formatEther(max));
+        if (lidoMaticWeb3 && max.gt(0)) {
+          lidoMaticWeb3.convertMaticToStMatic(max).then(([reward]) => {
+            setReward(formatBalance(reward));
+          });
+        } else {
+          setReward('0');
+        }
       });
     }
   };
