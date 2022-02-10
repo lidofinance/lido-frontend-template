@@ -1,6 +1,7 @@
 import React, { FC, FormEventHandler, useState, useEffect } from 'react';
 import { Block, Box } from '@lidofinance/lido-ui';
 import { useContractSWR, useSDK } from '@lido-sdk/react';
+import { useWeb3 } from '@lido-sdk/web3-react';
 import notify from 'utils/notify';
 import { BigNumber } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
@@ -47,6 +48,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const maticTokenWeb3 = useMaticTokenWeb3();
   const stakeManagerWeb3 = useStakeManagerWeb3();
   const stakeManagerRPC = useStakeManagerRPC();
+  const { active } = useWeb3();
   const [delay, setDelay] = useState(0);
 
   const [status, setStatus] = useState(initialStatus);
@@ -130,6 +132,15 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   })
     .data?.map((id) => id.toString())
     .filter((id) => id !== '0');
+
+  useEffect(() => {
+    if (active) {
+      fetchTokens();
+    } else {
+      setClaimableAmount(BigNumber.from(0));
+      setPendingAmount(BigNumber.from(0));
+    }
+  }, [active]);
 
   useEffect(() => {
     if (maticTokenWeb3) {
@@ -234,6 +245,12 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
       }
     }
   };
+  const handleShowSelectModal = (): void => {
+    if (claimableAmount.gt(0)) {
+      setShowSelectModal(true);
+    }
+  };
+
   return (
     <Block>
       <Box
@@ -269,7 +286,10 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
             value={<FormatToken amount={pendingAmount} symbol={symbol} />}
           />
         </ClaimStat>
-        <ClaimCardEdit onClick={() => setShowSelectModal(true)}>
+        <ClaimCardEdit
+          onClick={handleShowSelectModal}
+          disabled={claimableAmount.eq(0)}
+        >
           Edit reward claims
         </ClaimCardEdit>
       </ClaimCard>

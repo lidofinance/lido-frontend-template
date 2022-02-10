@@ -43,11 +43,15 @@ export const ClaimStatValueStyle = styled.div<{
   color: #273852;
 `;
 
-export const ClaimCardEditStyle = styled.div`
-  color: #00a3ff;
+export const ClaimCardEditStyle = styled.div<{ disabled?: boolean }>`
   text-align: center;
   padding: 12px 0;
-  cursor: pointer;
+  cursor: ${({ disabled }) => {
+    return disabled ? `not-allowed` : `pointer`;
+  }};
+  color: ${({ disabled }) => {
+    return disabled ? `#ade1ff` : `#00a3ff`;
+  }};
 `;
 
 export const ClaimCardExtraStyle = styled.div`

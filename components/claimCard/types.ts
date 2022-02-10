@@ -15,7 +15,8 @@ export type ClaimStatBalanceComponent = Component<
     loading?: boolean;
     bold?: boolean;
     extra?: React.ReactNode;
+    disabled?: boolean;
   }
 >;
 
-export type ClaimCardEditComponent = Component<'div'>;
+export type ClaimCardEditComponent = Component<'div', { disabled?: boolean }>;
