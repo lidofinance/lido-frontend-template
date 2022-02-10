@@ -3,6 +3,14 @@ import { Accordion } from '@lidofinance/lido-ui';
 import Section from 'components/section';
 import { FaqProps } from './types';
 
+import styled from 'styled-components';
+
+const FaqItem = styled.div`
+  a {
+    text-decoration: none;
+  }
+`;
+
 const Faq: FC<FaqProps> = (props) => {
   const { faqList } = props;
 
@@ -14,7 +22,7 @@ const Faq: FC<FaqProps> = (props) => {
           defaultExpanded={index === 0}
           summary={String(title)}
         >
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <FaqItem dangerouslySetInnerHTML={{ __html: content }} />
         </Accordion>
       ))}
     </Section>
