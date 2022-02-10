@@ -1,4 +1,4 @@
-import React, { FC, FormEventHandler, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import {
   Block,
   Input,
@@ -10,13 +10,22 @@ import {
 import InputWrapper from 'components/inputWrapper';
 import { useLidoMaticWeb3, useMaticTokenWeb3, useStakeManagerRPC } from 'hooks';
 import notify from 'utils/notify';
-import { utils } from 'ethers';
+import { BigNumber, utils } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
 import StatusModal from 'components/statusModal';
 import { StMatic } from 'components/tokens';
 import { SCANNERS } from 'config';
 import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { formatBalance } from 'utils';
+
+type StatusProps = {
+  step: string;
+  amount?: string;
+  reason?: string;
+  stAmount?: BigNumber;
+  transactionHash?: string;
+  retry?: boolean;
+};
 
 const initialStatus = {
   title: '',
@@ -25,6 +34,7 @@ const initialStatus = {
   link: '',
   type: '',
   show: false,
+  retry: false,
 };
 
 const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
@@ -61,6 +71,107 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     }
   };
 
+  const setStatusData = ({
+    amount,
+    step,
+    transactionHash,
+    retry,
+    reason,
+  }: StatusProps) => {
+    switch (step) {
+      case 'approve':
+        setStatus({
+          title: `You are now unlocking ${stSymbol}`,
+          subtitle: `Unlocking ${amount} ${stSymbol}.`,
+          additionalDetails: 'Confirm this transaction in your wallet',
+          type: 'loading',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'approve-processing':
+        setStatus({
+          title: `You are now unlocking ${stSymbol}`,
+          subtitle: `Unlocking ${amount} ${stSymbol}.`,
+          additionalDetails: 'Processing your transaction',
+          type: 'loading',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'approved-already':
+        setStatus({
+          title: `${amount} ${stSymbol} already unlocked`,
+          subtitle: '',
+          additionalDetails: 'Processing your transaction',
+          type: 'success',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'approve-success':
+        setStatus({
+          title: `${amount} ${stSymbol} unlocked`,
+          subtitle: '',
+          additionalDetails: '',
+          type: 'success',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'confirm':
+        setStatus({
+          title: `You are now launching unstake`,
+          subtitle: `Unstake ${amount} ${symbol}.`,
+          additionalDetails: 'Confirm this transaction in your wallet',
+          type: 'loading',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'processing':
+        setStatus({
+          title: `You are now staking ${symbol}`,
+          subtitle: `Unstake ${amount} ${symbol}`,
+          additionalDetails: 'Processing your transaction',
+          type: 'loading',
+          link: '',
+          show: true,
+          retry: false,
+        });
+        break;
+      case 'failed':
+        setStatus({
+          title: `Transaction Failed`,
+          subtitle: reason || 'Something went wrong',
+          additionalDetails: '',
+          type: 'error',
+          link: transactionHash
+            ? `${SCANNERS[chainId]}tx/${transactionHash}`
+            : '',
+          show: true,
+          retry: retry || false,
+        });
+        break;
+      default:
+        setStatus({
+          title: `Transaction created`,
+          subtitle: `Your ${amount} ${stSymbol} will be unstaked.`,
+          additionalDetails: '',
+          type: 'success',
+          link: `${SCANNERS[chainId]}tx/${transactionHash}`,
+          show: true,
+          retry: false,
+        });
+        break;
+    }
+  };
+
   useEffect(() => {
     if (lidoMaticWeb3) {
       const amount = utils.parseUnits('1', 'ether');
@@ -84,57 +195,32 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     }
   }, [maticTokenWeb3]);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = async (
-    e: any,
-  ) => {
-    e.preventDefault();
-    const amount = e.target[0].value;
+  const handleSubmit = async () => {
     if (amount && amount !== '0' && lidoMaticWeb3) {
       setIsLoading(true);
-      setStatus({
-        title: 'You are now launching unstake',
-        subtitle: `Unstake ${amount} ${symbol}.`,
-        additionalDetails: 'Confirm this transaction in your wallet',
-        type: 'loading',
-        link: '',
-        show: true,
-      });
       try {
         const stMaticAmount = utils.parseUnits(amount, 'ether');
+        setStatusData({ amount, step: 'confirm' });
         await lidoMaticWeb3.approve(lidoMaticWeb3.address, stMaticAmount);
         const unstake = await lidoMaticWeb3.requestWithdraw(stMaticAmount);
+        setStatusData({ amount, step: 'processing' });
         const { status, transactionHash } = await unstake.wait();
         if (status) {
           setAmount('0');
-          setStatus({
-            title: `Transaction created`,
-            subtitle: `Your ${amount} ${symbol} will be unstaked.`,
-            additionalDetails: '',
-            type: 'success',
-            link: `${SCANNERS[chainId]}tx/${transactionHash}`,
-            show: true,
+          setStatusData({
+            amount,
+            transactionHash,
+            step: 'success',
           });
         } else {
-          setStatus({
-            title: `Transaction Failed`,
-            subtitle: `Something went wrong`,
-            additionalDetails: '',
-            type: 'error',
-            link: transactionHash
-              ? `${SCANNERS[chainId]}tx/${transactionHash}`
-              : '',
-            show: true,
-          });
+          setStatusData({ transactionHash, step: 'failed', retry: true });
         }
         setIsLoading(false);
-      } catch (ex) {
-        setStatus({
-          title: `Transaction Failed`,
-          subtitle: `Something went wrong`,
-          additionalDetails: '',
-          type: 'error',
-          link: '',
-          show: true,
+      } catch (ex: any) {
+        setStatusData({
+          step: 'failed',
+          reason: ex.message.replace('MetaMask Tx Signature: ', ''),
+          retry: true,
         });
         setIsLoading(false);
       }
@@ -178,7 +264,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         }
         tab
       </Box>
-      <form action="" method="post" onSubmit={handleSubmit}>
+      <form action="" method="post">
         <InputWrapper>
           <Input
             fullwidth={true}
@@ -201,7 +287,11 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
             disabled={isLoading}
           />
         </InputWrapper>
-        <SubmitOrConnect isLoading={isLoading} label="Start unstaking"/>
+        <SubmitOrConnect
+          isLoading={isLoading}
+          label="Start unstaking"
+          submit={handleSubmit}
+        />
       </form>
       <DataTable>
         <DataTableRow title="You will recieve">
@@ -218,7 +308,9 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         link={status.link}
         type={status.type}
         show={status.show}
+        retry={status.retry}
         onClose={() => setStatus(initialStatus)}
+        onRetry={handleSubmit}
       />
     </Block>
   );
