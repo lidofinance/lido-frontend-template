@@ -15,7 +15,9 @@ interface Props {
   link: string;
   type: string;
   show: boolean;
+  retry: boolean;
   onClose: () => void;
+  onRetry?: () => void;
 }
 
 const statusModal: FC<Props> = ({
@@ -25,7 +27,9 @@ const statusModal: FC<Props> = ({
   link,
   type,
   show,
+  retry,
   onClose,
+  onRetry,
 }) => {
   return (
     <Modal
@@ -54,6 +58,7 @@ const statusModal: FC<Props> = ({
         </Text>
       ) : null}
       {link ? <Link href={link}>View on Etherscan</Link> : null}
+      {retry ? <Link onClick={onRetry}>Retry</Link> : null}
     </Modal>
   );
 };
