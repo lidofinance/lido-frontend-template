@@ -231,6 +231,9 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
 
   const handleChange = (e: any) => {
     const amount = e.target.value;
+    if (isNaN(amount) || /^00/.test(amount)) {
+      return;
+    }
     setAmount(amount);
     if (isNaN(amount) || Number(amount) <= 0) {
       setReward('0');
