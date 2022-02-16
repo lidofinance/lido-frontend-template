@@ -288,7 +288,7 @@ const Stake: FC = () => {
         setRate(formatBalance(res));
       });
 
-      if (hardCapLimit) {
+      if (hardCapLimit && !totalPooledMatic) {
         lidoMaticWeb3.getTotalPooledMatic().then((res) => {
           const value = Number(utils.formatEther(res));
           setTotalPooledMatic(value);
@@ -297,7 +297,7 @@ const Stake: FC = () => {
         });
       }
     }
-  }, [hardCapLimit, lidoMaticWeb3]);
+  }, [hardCapLimit, lidoMaticWeb3, totalPooledMatic]);
   useEffect(() => {
     if (lidoMaticWeb3) {
       lidoMaticWeb3?.symbol().then((res) => {
@@ -328,7 +328,7 @@ const Stake: FC = () => {
         }
       });
     }
-  }, [account, amount]);
+  }, [approved, amount]);
   return (
     <Block>
       <form action="" method="post" onSubmit={handleSubmitTokens}>
