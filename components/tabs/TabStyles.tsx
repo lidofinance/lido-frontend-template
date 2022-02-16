@@ -29,7 +29,7 @@ export const TabSlider = styled.div<{ selectedOption: number }>`
   transition: left 0.3s ease 0s;
   top: 2px;
   z-index: 1;
-  left: ${({ selectedOption }) =>{
+  left: ${({ selectedOption }) => {
     return selectedOption <= 0 ? `2px` : `${selectedOption * 90}px`;
   }};
 `;
