@@ -1,11 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import {
-  Block,
-  Input,
-  Button,
-  DataTable,
-  DataTableRow,
-} from '@lidofinance/lido-ui';
+import { Block, Input, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSDK } from '@lido-sdk/react';
 import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
 import { BigNumber, utils } from 'ethers';
@@ -16,13 +10,11 @@ import { Matic } from 'components/tokens';
 import StatusModal from 'components/statusModal';
 import { formatBalance } from 'utils';
 import { SCANNERS } from 'config';
+import InputRightDecorator from 'components/inputRightDecorator/InputRightDecorator';
+import getConfig from 'next/config';
 
 const InputWrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
-`;
-
-export const MaxButton = styled(Button)`
-  letter-spacing: 0.4px;
 `;
 
 type StatusProps = {
@@ -45,6 +37,8 @@ const initialStatus = {
 };
 
 const Stake: FC = () => {
+  const { publicRuntimeConfig } = getConfig();
+  const { hardCapLimit } = publicRuntimeConfig;
   const { account, chainId } = useSDK();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
@@ -57,6 +51,17 @@ const Stake: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [canStake, setCanStake] = useState(false);
   const [status, setStatus] = useState(initialStatus);
+  const [totalPooledMatic, setTotalPooledMatic] = useState<number>(0);
+  const [currentStakeCapacityPercentage, setCurrentStakeCapacityPercentage] =
+    useState<number>(0);
+
+  const getCurrentBalance = async () => {
+    if (account && maticTokenWeb3) {
+      const balance = await maticTokenWeb3.balanceOf(account);
+      return utils.formatEther(balance);
+    }
+    return 0;
+  };
   const setMaxInputValue = () => {
     if (account) {
       maticTokenWeb3?.balanceOf(account).then((max) => {
@@ -197,6 +202,15 @@ const Stake: FC = () => {
 
   const handleUnlockTokens = async () => {
     if (amount && amount !== '0' && lidoMaticWeb3 && maticTokenWeb3) {
+      const currentbalance = await getCurrentBalance();
+      if (+amount > +currentbalance) {
+        notify('Entered amount exceedes your balance', 'error');
+        return;
+      }
+      if (hardCapLimit && +amount + totalPooledMatic > +hardCapLimit) {
+        notify('Entered amount exceedes hardcap limit', 'error');
+        return;
+      }
       setIsLoading(true);
       const parsedAmount = utils.parseUnits(amount, 'ether');
       if (account && lidoMaticWeb3.address) {
@@ -225,6 +239,8 @@ const Stake: FC = () => {
           setStatusData({ step: 'failed' });
         }
       }
+    } else {
+      notify('Please enter the amount', 'error');
     }
     setIsLoading(false);
   };
@@ -271,8 +287,17 @@ const Stake: FC = () => {
       lidoMaticWeb3.convertMaticToStMatic(amount).then(([res]) => {
         setRate(formatBalance(res));
       });
+
+      if (hardCapLimit) {
+        lidoMaticWeb3.getTotalPooledMatic().then((res) => {
+          const value = Number(utils.formatEther(res));
+          setTotalPooledMatic(value);
+          setCurrentStakeCapacityPercentage((value / +hardCapLimit) * 100);
+          setCanStake(+hardCapLimit < value);
+        });
+      }
     }
-  }, [lidoMaticWeb3]);
+  }, [hardCapLimit, lidoMaticWeb3]);
   useEffect(() => {
     if (lidoMaticWeb3) {
       lidoMaticWeb3?.symbol().then((res) => {
@@ -313,15 +338,12 @@ const Stake: FC = () => {
             value={amount}
             leftDecorator={<Matic />}
             rightDecorator={
-              <MaxButton
-                size="xxs"
-                variant="translucent"
-                onClick={() => {
-                  setMaxInputValue();
-                }}
-              >
-                MAX
-              </MaxButton>
+              <InputRightDecorator
+                hardCapLimit={hardCapLimit ? +hardCapLimit : 0}
+                currentlyStakedAmount={totalPooledMatic}
+                currentStakeCapacityPercentage={currentStakeCapacityPercentage}
+                onClick={setMaxInputValue}
+              />
             }
             label="Amount"
             disabled={isLoading}

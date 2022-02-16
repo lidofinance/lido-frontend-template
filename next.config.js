@@ -2,6 +2,7 @@ const { CHAINS } = require('@lido-sdk/constants');
 
 const basePath = process.env.BASE_PATH || '';
 const infuraApiKey = process.env.INFURA_API_KEY;
+const hardCapLimit = process.env.HARD_CAP_LIMIT;
 const alchemyApiKey = process.env.ALCHEMY_API_KEY;
 const apiProviderUrls = {
   [CHAINS.Mainnet]: process.env[`API_PROVIDER_URL_${CHAINS.Mainnet}`],
@@ -52,5 +53,6 @@ module.exports = {
   publicRuntimeConfig: {
     defaultChain,
     supportedChains,
+    hardCapLimit,
   },
 };
