@@ -48,7 +48,11 @@ const ThemeProvider: FC = ({ children }) => {
   const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME);
 
   useEffect(() => {
-    setThemeName(themeLS ?? systemTheme);
+    if (themeLS) {
+      setThemeName(themeLS);
+    } else if (systemTheme) {
+      setThemeName(systemTheme);
+    }
   }, [themeLS, systemTheme]);
 
   // remember the theme on manual toggle, ignore system theme changes
