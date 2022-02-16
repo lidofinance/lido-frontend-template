@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { ButtonProps } from '@lidofinance/lido-ui';
 import AddressBadge from 'components/addressBadge';
 import {
