@@ -328,7 +328,7 @@ const Stake: FC = () => {
         }
       });
     }
-  }, [approved, amount]);
+  }, [account, amount]);
   return (
     <Block>
       <form action="" method="post" onSubmit={handleSubmitTokens}>
