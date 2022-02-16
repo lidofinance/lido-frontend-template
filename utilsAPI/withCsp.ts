@@ -43,4 +43,5 @@ export const contentSecurityPolicy = {
 export const withCsp = (app: CustomApp): FC =>
   withSecureHeaders({
     contentSecurityPolicy,
+    frameGuard: false,
   })(app);
