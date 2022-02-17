@@ -41,9 +41,9 @@ const statusModal: FC<Props> = ({
         type === 'loading' ? (
           <Loader size="large" />
         ) : type === 'error' ? (
-          <Error color="red" height={64} width={64} />
+          <Error color="#E14D4D" height={64} width={64} />
         ) : (
-          <Success color="green" height={64} width={64} />
+          <Success color="#53BA95" height={64} width={64} />
         )
       }
     >
