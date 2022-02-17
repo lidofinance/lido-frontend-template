@@ -11,18 +11,20 @@ const ButtonWrapper = styled.div`
 `;
 
 interface Props {
-  label: string;
+  unlockLabel?: string;
+  submitLabel: string;
   disabledUnlock?: boolean;
   disabledSubmit?: boolean;
   isSubmitting: boolean;
-  isUnlocking: boolean;
+  isUnlocking?: boolean;
   fullwidth?: boolean;
   submit?: (e: any) => void;
   unlock?: (e: any) => void;
 }
 
 const SubmitOrConnect: FC<Props> = ({
-  label,
+  unlockLabel,
+  submitLabel,
   submit,
   disabledUnlock,
   disabledSubmit,
@@ -42,7 +44,7 @@ const SubmitOrConnect: FC<Props> = ({
               loading={isUnlocking}
               style={{ marginRight: '15px', flexGrow: 1 }}
             >
-              Unlock Tokens
+              {unlockLabel}
             </Button>
           ) : null}
           <Button
@@ -52,7 +54,7 @@ const SubmitOrConnect: FC<Props> = ({
             onClick={submit}
             style={{ flexGrow: 1 }}
           >
-            {label}
+            {submitLabel}
           </Button>
         </>
       ) : (

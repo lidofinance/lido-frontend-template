@@ -378,7 +378,8 @@ const Stake: FC = () => {
           isSubmitting={isSubmitting}
           disabledSubmit={!canStake}
           disabledUnlock={!canUnlock}
-          label="Stake now"
+          submitLabel="Stake now"
+          unlockLabel="Unlock tokens"
           fullwidth={false}
           submit={handleSubmitTokens}
         />

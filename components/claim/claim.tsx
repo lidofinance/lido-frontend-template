@@ -273,7 +273,10 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         been processed. To unstake your amount go to
         {
           // eslint-disable-next-line
-          <span style={{ color: '#00A3FF', cursor: 'pointer' }} onClick={() => changeTab("UNSTAKE")}>
+          <span
+            style={{ color: '#00A3FF', cursor: 'pointer' }}
+            onClick={() => changeTab('UNSTAKE')}
+          >
             {' Unstake '}
           </span>
         }
@@ -302,10 +305,10 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         </ClaimCardEdit>
       </ClaimCard>
       <SubmitOrConnect
-        label={`Claim ${claimAmount} ${symbol}`}
-        isLoading={false}
+        submitLabel={`Claim ${claimAmount} ${symbol}`}
+        isSubmitting={false}
         submit={handleSubmit}
-        disabled={claimAmount === '0.0'}
+        disabledSubmit={claimAmount === '0.0'}
       />
       <SelectTokenModal
         tokens={tokens}
