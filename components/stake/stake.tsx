@@ -183,9 +183,9 @@ const Stake: FC = () => {
         break;
     }
   };
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const amount = e.target.value;
-    if (isNaN(amount) || /^00/.test(amount) || +amount < 0) {
+    if (isNaN(+amount) || /^00/.test(amount) || +amount < 0) {
       return;
     }
     if (+amount === 0) {
@@ -301,7 +301,7 @@ const Stake: FC = () => {
           setStatusData({ transactionHash, step: 'failed', retry: true });
         }
         setIsSubmitting(false);
-      } catch (ex: any) {
+      } catch (ex) {
         setStatusData({
           step: 'failed',
           reason: ex.message.replace('MetaMask Tx Signature: ', ''),
