@@ -45,6 +45,7 @@ interface InputRightDecoratorProps {
   currentlyStakedAmount: number;
   currentStakeCapacityPercentage: number;
   onClick: () => void;
+  disabled: boolean;
 }
 
 const InputRightDecorator: FC<InputRightDecoratorProps> = ({
@@ -52,6 +53,7 @@ const InputRightDecorator: FC<InputRightDecoratorProps> = ({
   currentlyStakedAmount,
   currentStakeCapacityPercentage,
   onClick,
+  disabled,
 }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const anchorRef = useRef<HTMLImageElement>(null);
@@ -117,7 +119,12 @@ const InputRightDecorator: FC<InputRightDecoratorProps> = ({
         </>
       ) : null}
 
-      <MaxButton size="xxs" variant="translucent" onClick={onClick}>
+      <MaxButton
+        disabled={disabled}
+        size="xxs"
+        variant="translucent"
+        onClick={onClick}
+      >
         MAX
       </MaxButton>
     </Wrapper>

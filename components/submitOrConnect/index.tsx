@@ -11,19 +11,23 @@ const ButtonWrapper = styled.div`
 `;
 
 interface Props {
-  isLoading: boolean;
   label: string;
-  disabled?: boolean;
+  disabledUnlock?: boolean;
+  disabledSubmit?: boolean;
+  isSubmitting: boolean;
+  isUnlocking: boolean;
   fullwidth?: boolean;
   submit?: (e: any) => void;
   unlock?: (e: any) => void;
 }
 
 const SubmitOrConnect: FC<Props> = ({
-  isLoading,
   label,
   submit,
-  disabled,
+  disabledUnlock,
+  disabledSubmit,
+  isUnlocking,
+  isSubmitting,
   unlock,
 }) => {
   const { account } = useSDK();
@@ -34,8 +38,8 @@ const SubmitOrConnect: FC<Props> = ({
           {unlock ? (
             <Button
               onClick={unlock}
-              disabled={isLoading}
-              loading={isLoading}
+              disabled={disabledUnlock || isUnlocking}
+              loading={isUnlocking}
               style={{ marginRight: '15px', flexGrow: 1 }}
             >
               Unlock Tokens
@@ -43,8 +47,8 @@ const SubmitOrConnect: FC<Props> = ({
           ) : null}
           <Button
             type="submit"
-            disabled={isLoading || disabled}
-            loading={isLoading}
+            disabled={isSubmitting || disabledSubmit}
+            loading={isSubmitting}
             onClick={submit}
             style={{ flexGrow: 1 }}
           >

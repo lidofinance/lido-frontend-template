@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Block, Input, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSDK } from '@lido-sdk/react';
-import { useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
+import { useLidoMaticRPC, useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
 import { BigNumber, utils } from 'ethers';
 import notify from 'utils/notify';
 import styled from 'styled-components';
@@ -42,14 +42,16 @@ const Stake: FC = () => {
   const { account, chainId } = useSDK();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
-  const [amount, setAmount] = useState('');
-  const [approved, setApproved] = useState(BigNumber.from(0));
+  const lidoMaticRpc = useLidoMaticRPC();
+  const [enteredAmount, setEnteredAmount] = useState('');
   const [symbol, setSymbol] = useState('MATIC');
   const [reward, setReward] = useState('0');
   const [rate, setRate] = useState('0');
   const [stSymbol, setStSymbol] = useState('stMATIC');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isUnlocking, setIsUnlocking] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [canStake, setCanStake] = useState(false);
+  const [canUnlock, setCanUnlock] = useState(false);
   const [status, setStatus] = useState(initialStatus);
   const [totalPooledMatic, setTotalPooledMatic] = useState<number>(0);
   const [currentStakeCapacityPercentage, setCurrentStakeCapacityPercentage] =
@@ -65,7 +67,7 @@ const Stake: FC = () => {
   const setMaxInputValue = () => {
     if (account) {
       maticTokenWeb3?.balanceOf(account).then((max) => {
-        setAmount(utils.formatEther(max));
+        setEnteredAmount(utils.formatEther(max));
         if (lidoMaticWeb3 && max.gt(0)) {
           lidoMaticWeb3.convertMaticToStMatic(max).then(([reward]) => {
             setReward(formatBalance(reward));
@@ -183,36 +185,54 @@ const Stake: FC = () => {
   };
   const handleChange = (e: any) => {
     const amount = e.target.value;
-    if (isNaN(amount) || /^00/.test(amount)) {
+    if (isNaN(amount) || /^00/.test(amount) || +amount < 0) {
       return;
     }
-    setAmount(amount);
-    if (isNaN(amount) || Number(amount) <= 0) {
+    if (+amount === 0) {
       setReward('0');
       setCanStake(false);
-    } else if (lidoMaticWeb3 && Number(amount) > 0) {
-      lidoMaticWeb3
+      setCanUnlock(false);
+    }
+    if (+amount) {
+      lidoMaticRpc
         .convertMaticToStMatic(utils.parseUnits(amount, 'ether'))
         .then(([res]) => {
           setReward(formatBalance(res));
         });
-      setReward('0');
     }
-  };
 
+    if (lidoMaticWeb3 && maticTokenWeb3 && account && +amount) {
+      maticTokenWeb3.allowance(account, lidoMaticWeb3.address).then((res) => {
+        const parsedAmount = utils.parseUnits(amount, 'ether');
+        if (res.gte(parsedAmount)) {
+          setCanUnlock(false);
+          setCanStake(true);
+        } else {
+          setCanUnlock(true);
+          setCanStake(false);
+        }
+      });
+    }
+    setEnteredAmount(amount);
+  };
   const handleUnlockTokens = async () => {
-    if (amount && amount !== '0' && lidoMaticWeb3 && maticTokenWeb3) {
+    if (
+      enteredAmount &&
+      enteredAmount !== '0' &&
+      lidoMaticWeb3 &&
+      maticTokenWeb3
+    ) {
       const currentbalance = await getCurrentBalance();
-      if (+amount > +currentbalance) {
+      if (+enteredAmount > +currentbalance) {
         notify('Entered amount exceedes your balance', 'error');
         return;
       }
-      if (hardCapLimit && +amount + totalPooledMatic > +hardCapLimit) {
+      if (hardCapLimit && +enteredAmount + totalPooledMatic > +hardCapLimit) {
         notify('Entered amount exceedes hardcap limit', 'error');
         return;
       }
-      setIsLoading(true);
-      const parsedAmount = utils.parseUnits(amount, 'ether');
+      setIsUnlocking(true);
+      const parsedAmount = utils.parseUnits(enteredAmount, 'ether');
       if (account && lidoMaticWeb3.address) {
         try {
           const alreadyApproved = await maticTokenWeb3.allowance(
@@ -220,20 +240,27 @@ const Stake: FC = () => {
             lidoMaticWeb3.address,
           );
           if (alreadyApproved.lt(parsedAmount)) {
-            setStatusData({ amount, step: 'approve' });
+            setStatusData({ amount: enteredAmount, step: 'approve' });
             const approval = await maticTokenWeb3.approve(
               lidoMaticWeb3.address,
               parsedAmount.toHexString(),
             );
-            setStatusData({ amount, step: 'approve-processing' });
+            setStatusData({
+              amount: enteredAmount,
+              step: 'approve-processing',
+            });
             const { status: approvalStatus } = await approval.wait();
             if (!approvalStatus) {
               setStatusData({ step: 'failed' });
             } else {
-              setStatusData({ amount, step: 'approve-success' });
+              setStatusData({ amount: enteredAmount, step: 'approve-success' });
+              setCanUnlock(false);
+              setCanStake(true);
             }
           } else {
-            setStatusData({ amount, step: 'approved-already' });
+            setStatusData({ amount: enteredAmount, step: 'approved-already' });
+            setCanUnlock(false);
+            setCanStake(true);
           }
         } catch (ex) {
           setStatusData({ step: 'failed' });
@@ -242,45 +269,51 @@ const Stake: FC = () => {
     } else {
       notify('Please enter the amount', 'error');
     }
-    setIsLoading(false);
+    setIsUnlocking(false);
   };
   const handleSubmitTokens = async () => {
-    if (amount && amount !== '0' && lidoMaticWeb3 && maticTokenWeb3) {
-      setIsLoading(true);
+    if (
+      enteredAmount &&
+      enteredAmount !== '0' &&
+      lidoMaticWeb3 &&
+      maticTokenWeb3
+    ) {
+      setIsSubmitting(true);
       try {
-        const parsedAmount = utils.parseUnits(amount, 'ether');
+        const parsedAmount = utils.parseUnits(enteredAmount, 'ether');
         const [stAmount] = await lidoMaticWeb3.convertMaticToStMatic(
           parsedAmount,
         );
-        setStatusData({ amount, stAmount, step: 'confirm' });
+        setStatusData({ amount: enteredAmount, stAmount, step: 'confirm' });
         const submit = await lidoMaticWeb3.submit(parsedAmount.toHexString());
-        setStatusData({ amount, stAmount, step: 'processing' });
+        setStatusData({ amount: enteredAmount, stAmount, step: 'processing' });
         const response = await submit.wait();
         const { status, transactionHash } = response;
         if (status) {
           setStatusData({
-            amount,
+            amount: enteredAmount,
             stAmount,
             transactionHash,
             step: 'success',
           });
-          setAmount('0');
+          setEnteredAmount('0');
         } else {
           setStatusData({ transactionHash, step: 'failed', retry: true });
         }
-        setIsLoading(false);
+        setIsSubmitting(false);
       } catch (ex: any) {
         setStatusData({
           step: 'failed',
           reason: ex.message.replace('MetaMask Tx Signature: ', ''),
           retry: true,
         });
-        setIsLoading(false);
+        setIsSubmitting(false);
       }
     } else {
       notify('Please enter the amount', 'error');
     }
   };
+
   useEffect(() => {
     if (lidoMaticWeb3) {
       const amount = utils.parseUnits('1', 'ether');
@@ -288,16 +321,20 @@ const Stake: FC = () => {
         setRate(formatBalance(res));
       });
 
-      if (hardCapLimit && !totalPooledMatic) {
+      if (hardCapLimit && enteredAmount) {
         lidoMaticWeb3.getTotalPooledMatic().then((res) => {
           const value = Number(utils.formatEther(res));
           setTotalPooledMatic(value);
           setCurrentStakeCapacityPercentage((value / +hardCapLimit) * 100);
-          setCanStake(+hardCapLimit < value);
+          if (+enteredAmount && +hardCapLimit < +value) {
+            setCanUnlock(false);
+            setCanStake(false);
+          }
         });
       }
     }
-  }, [hardCapLimit, lidoMaticWeb3, totalPooledMatic]);
+  }, [enteredAmount, hardCapLimit, lidoMaticWeb3, totalPooledMatic]);
+
   useEffect(() => {
     if (lidoMaticWeb3) {
       lidoMaticWeb3?.symbol().then((res) => {
@@ -312,30 +349,14 @@ const Stake: FC = () => {
       });
     }
   }, [maticTokenWeb3]);
-  useEffect(() => {
-    if (account && maticTokenWeb3 && lidoMaticWeb3) {
-      maticTokenWeb3.allowance(account, lidoMaticWeb3.address).then((res) => {
-        setApproved(res);
-        if (amount) {
-          const parsedAmount = utils.parseUnits(amount, 'ether');
-          if (amount && res.gte(parsedAmount)) {
-            setCanStake(true);
-          } else {
-            setCanStake(false);
-          }
-        } else {
-          setCanStake(false);
-        }
-      });
-    }
-  }, [approved, amount]);
+
   return (
     <Block>
       <form action="" method="post" onSubmit={handleSubmitTokens}>
         <InputWrapper>
           <Input
             fullwidth
-            value={amount}
+            value={enteredAmount}
             leftDecorator={<Matic />}
             rightDecorator={
               <InputRightDecorator
@@ -343,17 +364,20 @@ const Stake: FC = () => {
                 currentlyStakedAmount={totalPooledMatic}
                 currentStakeCapacityPercentage={currentStakeCapacityPercentage}
                 onClick={setMaxInputValue}
+                disabled={!account}
               />
             }
             label="Amount"
-            disabled={isLoading}
+            disabled={isUnlocking || isSubmitting}
             onChange={handleChange}
           />
         </InputWrapper>
         <SubmitOrConnect
           unlock={handleUnlockTokens}
-          isLoading={isLoading}
-          disabled={!canStake}
+          isUnlocking={isUnlocking}
+          isSubmitting={isSubmitting}
+          disabledSubmit={!canStake}
+          disabledUnlock={!canUnlock}
           label="Stake now"
           fullwidth={false}
           submit={handleSubmitTokens}
