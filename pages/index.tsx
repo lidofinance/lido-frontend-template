@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { Block, Link, DataTable, DataTableRow } from '@lidofinance/lido-ui';
-import Head from 'next/head';
 import Tabs from 'components/tabs';
 import Wallet from 'components/wallet';
 import Section from 'components/section';
@@ -39,9 +38,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       title="Lido for Polygon"
       subtitle="Stake Matic and receive stMatic while staking."
     >
-      <Head>
-        <title>Lido for Polygon</title>
-      </Head>
       <Tabs
         options={['STAKE', 'UNSTAKE', 'CLAIM']}
         selected={selectedTab}
