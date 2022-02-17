@@ -330,15 +330,15 @@ const Stake: FC = () => {
         setRate(formatBalance(res));
       });
 
-      if (hardCapLimit && enteredAmount) {
+      if (hardCapLimit) {
         lidoMaticWeb3.getTotalPooledMatic().then((res) => {
           const value = Number(utils.formatEther(res));
-          setTotalPooledMatic(value);
-          setCurrentStakeCapacityPercentage((value / +hardCapLimit) * 100);
-          if (+enteredAmount && +hardCapLimit < +value) {
+          if (+hardCapLimit < +value) {
             setCanUnlock(false);
             setCanStake(false);
           }
+          setTotalPooledMatic(value);
+          setCurrentStakeCapacityPercentage((value / +hardCapLimit) * 100);
         });
       }
     }
