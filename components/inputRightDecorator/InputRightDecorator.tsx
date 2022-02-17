@@ -77,7 +77,11 @@ const InputRightDecorator: FC<InputRightDecoratorProps> = ({
             width="24"
             height="24"
             ref={anchorRef}
-            onClick={handleToggle}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleToggle();
+            }}
           />
           <Popover
             style={{
