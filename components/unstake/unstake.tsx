@@ -8,7 +8,12 @@ import {
   Box,
 } from '@lidofinance/lido-ui';
 import InputWrapper from 'components/inputWrapper';
-import { useLidoMaticWeb3, useMaticTokenWeb3, useStakeManagerRPC } from 'hooks';
+import {
+  useLidoMaticRPC,
+  useLidoMaticWeb3,
+  useMaticTokenWeb3,
+  useStakeManagerRPC,
+} from 'hooks';
 import notify from 'utils/notify';
 import { BigNumber, utils } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
@@ -42,6 +47,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
   const stakeManagerRPC = useStakeManagerRPC();
+  const stMaticTokenRPC = useLidoMaticRPC();
 
   const [isApproving, setIsApproving] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,6 +65,27 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     method: 'withdrawalDelay',
   });
 
+  const stMaticBalance = useContractSWR({
+    contract: stMaticTokenRPC,
+    method: 'balanceOf',
+    params: [account],
+  });
+
+  const checkAllowance = (amount: string) => {
+    if (lidoMaticWeb3 && maticTokenWeb3 && account && +amount) {
+      lidoMaticWeb3.allowance(account, lidoMaticWeb3.address).then((res) => {
+        const parsedAmount = utils.parseUnits(amount, 'ether');
+        if (res.gte(parsedAmount)) {
+          setCanApprove(false);
+          setCanUnstake(true);
+        } else {
+          setCanApprove(true);
+          setCanUnstake(false);
+        }
+      });
+    }
+  };
+
   const setMaxInputValue = () => {
     if (account) {
       lidoMaticWeb3?.balanceOf(account).then((max) => {
@@ -70,6 +97,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         } else {
           setReward('0');
         }
+        checkAllowance(utils.formatEther(max));
       });
     }
   };
@@ -84,8 +112,8 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     switch (step) {
       case 'approve':
         setStatus({
-          title: `You are now unlocking ${stSymbol}`,
-          subtitle: `Unlocking ${amount} ${stSymbol}.`,
+          title: `You are now approving ${stSymbol}`,
+          subtitle: `Approving ${amount} ${stSymbol}.`,
           additionalDetails: 'Confirm this transaction in your wallet',
           type: 'loading',
           link: '',
@@ -95,8 +123,8 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         break;
       case 'approve-processing':
         setStatus({
-          title: `You are now unlocking ${stSymbol}`,
-          subtitle: `Unlocking ${amount} ${stSymbol}.`,
+          title: `You are now approving ${stSymbol}`,
+          subtitle: `Approving ${amount} ${stSymbol}.`,
           additionalDetails: 'Processing your transaction',
           type: 'loading',
           link: '',
@@ -106,7 +134,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         break;
       case 'approved-already':
         setStatus({
-          title: `${amount} ${stSymbol} already unlocked`,
+          title: `${amount} ${stSymbol} already approved`,
           subtitle: '',
           additionalDetails: 'Processing your transaction',
           type: 'success',
@@ -117,7 +145,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         break;
       case 'approve-success':
         setStatus({
-          title: `${amount} ${stSymbol} unlocked`,
+          title: `${amount} ${stSymbol} approved`,
           subtitle: '',
           additionalDetails: '',
           type: 'success',
@@ -139,7 +167,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         break;
       case 'processing':
         setStatus({
-          title: `You are now staking ${symbol}`,
+          title: `You are now unstaking ${symbol}`,
           subtitle: `Unstake ${amount} ${symbol}`,
           additionalDetails: 'Processing your transaction',
           type: 'loading',
@@ -200,42 +228,73 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
 
   const handleApprove = async () => {
     if (enteredAmount && enteredAmount !== '0' && lidoMaticWeb3) {
+      if (!stMaticBalance.data) return;
+      const currentlyStaked = +utils.formatEther(stMaticBalance.data);
+      if (+enteredAmount > currentlyStaked) {
+        notify('Entered amount bigger than staked amount', 'error');
+        return;
+      }
       setIsApproving(true);
-      try {
-        const stMaticAmount = utils.parseUnits(enteredAmount, 'ether');
-        setStatusData({ amount: enteredAmount, step: 'confirm' });
-        const approval = await lidoMaticWeb3.approve(
-          lidoMaticWeb3.address,
-          stMaticAmount,
-        );
-        setStatusData({ amount: enteredAmount, step: 'approve-processing' });
-        const { status: approvalStatus, transactionHash } =
-          await approval.wait();
-        if (approvalStatus) {
-          setEnteredAmount('0');
+      const stMaticAmount = utils.parseUnits(enteredAmount, 'ether');
+
+      if (account && lidoMaticWeb3.address) {
+        try {
+          const alreadyApproved = await lidoMaticWeb3.allowance(
+            account,
+            lidoMaticWeb3.address,
+          );
+          if (alreadyApproved.lt(stMaticAmount)) {
+            setStatusData({
+              amount: enteredAmount,
+              step: 'approve',
+            });
+            const approval = await lidoMaticWeb3.approve(
+              lidoMaticWeb3.address,
+              stMaticAmount,
+            );
+            setStatusData({
+              amount: enteredAmount,
+              step: 'approve-processing',
+            });
+            const { status: approvalStatus, transactionHash } =
+              await approval.wait();
+            if (approvalStatus) {
+              setStatusData({
+                amount: enteredAmount,
+                step: 'approve-success',
+              });
+              setCanApprove(false);
+              setCanUnstake(true);
+            } else {
+              setStatusData({ transactionHash, step: 'failed', retry: true });
+            }
+            setIsApproving(false);
+          } else {
+            setStatusData({ amount: enteredAmount, step: 'approved-already' });
+            setCanApprove(false);
+            setCanUnstake(true);
+          }
+        } catch (ex) {
           setStatusData({
-            amount: enteredAmount,
-            step: 'success',
+            step: 'failed',
+            retry: true,
           });
-        } else {
-          setStatusData({ transactionHash, step: 'failed', retry: true });
         }
-        setIsApproving(false);
-      } catch (ex) {
-        setStatusData({
-          step: 'failed',
-          reason: ex.message.replace('MetaMask Tx Signature: ', ''),
-          retry: true,
-        });
-        setIsApproving(false);
       }
     } else {
       notify('Please enter the amount', 'error');
     }
+    setIsApproving(false);
   };
 
   const handleSubmit = async () => {
     if (enteredAmount && enteredAmount !== '0' && lidoMaticWeb3) {
+      if (!stMaticBalance.data) return;
+      const currentlyStaked = +utils.formatEther(stMaticBalance.data);
+      if (+enteredAmount > currentlyStaked) {
+        notify('Entered amount bigger than staked amount', 'error');
+        return;
+      }
       setIsSubmitting(true);
       try {
         const stMaticAmount = utils.parseUnits(enteredAmount, 'ether');
@@ -244,12 +303,14 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         setStatusData({ amount: enteredAmount, step: 'processing' });
         const { status, transactionHash } = await unstake.wait();
         if (status) {
-          setEnteredAmount('0');
+          setEnteredAmount('');
           setStatusData({
             amount: enteredAmount,
             transactionHash,
             step: 'success',
           });
+          setCanUnstake(false);
+          setCanApprove(false);
         } else {
           setStatusData({ transactionHash, step: 'failed', retry: true });
         }
@@ -282,8 +343,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         .then(([res]) => {
           setReward(formatBalance(res));
         });
-      setCanApprove(true);
-      setCanUnstake(true);
+      checkAllowance(amount);
     }
 
     setEnteredAmount(amount);

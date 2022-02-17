@@ -57,6 +57,21 @@ const Stake: FC = () => {
   const [currentStakeCapacityPercentage, setCurrentStakeCapacityPercentage] =
     useState<number>(0);
 
+  const checkAllowance = (amount: string) => {
+    if (lidoMaticWeb3 && maticTokenWeb3 && account && +amount) {
+      maticTokenWeb3.allowance(account, lidoMaticWeb3.address).then((res) => {
+        const parsedAmount = utils.parseUnits(amount, 'ether');
+        if (res.gte(parsedAmount)) {
+          setCanUnlock(false);
+          setCanStake(true);
+        } else {
+          setCanUnlock(true);
+          setCanStake(false);
+        }
+      });
+    }
+  };
+
   const getCurrentBalance = async () => {
     if (account && maticTokenWeb3) {
       const balance = await maticTokenWeb3.balanceOf(account);
@@ -75,9 +90,11 @@ const Stake: FC = () => {
         } else {
           setReward('0');
         }
+        checkAllowance(utils.formatEther(max));
       });
     }
   };
+
   const setStatusData = ({
     amount,
     stAmount,
@@ -201,18 +218,8 @@ const Stake: FC = () => {
         });
     }
 
-    if (lidoMaticWeb3 && maticTokenWeb3 && account && +amount) {
-      maticTokenWeb3.allowance(account, lidoMaticWeb3.address).then((res) => {
-        const parsedAmount = utils.parseUnits(amount, 'ether');
-        if (res.gte(parsedAmount)) {
-          setCanUnlock(false);
-          setCanStake(true);
-        } else {
-          setCanUnlock(true);
-          setCanStake(false);
-        }
-      });
-    }
+    checkAllowance(amount);
+
     setEnteredAmount(amount);
   };
   const handleUnlockTokens = async () => {
@@ -296,7 +303,9 @@ const Stake: FC = () => {
             transactionHash,
             step: 'success',
           });
-          setEnteredAmount('0');
+          setEnteredAmount('');
+          setCanUnlock(false);
+          setCanStake(false);
         } else {
           setStatusData({ transactionHash, step: 'failed', retry: true });
         }
