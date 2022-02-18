@@ -1,9 +1,9 @@
-import React, { FC, FormEventHandler, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { Block, Box } from '@lidofinance/lido-ui';
 import { useContractSWR, useSDK } from '@lido-sdk/react';
 import { useWeb3 } from '@lido-sdk/web3-react';
 import notify from 'utils/notify';
-import { BigNumber } from 'ethers';
+import { BigNumber, ContractTransaction } from 'ethers';
 import SubmitOrConnect from 'components/submitOrConnect';
 import FormatToken from 'components/formatToken/formatToken';
 import {
@@ -39,6 +39,7 @@ const initialStatus = {
   link: '',
   type: '',
   show: false,
+  retry: false,
 };
 
 const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
@@ -59,6 +60,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
   const [pendingAmount, setPendingAmount] = useState(BigNumber.from(0));
   const [symbol, setSymbol] = useState('MATIC');
   const [claimAmount, setClaimAmount] = useState('0');
+  const invalidClaims = useRef<ContractTransaction[]>();
 
   const fetchTokens = async () => {
     if (lidoMaticWeb3 && tokenOwned && tokenApproved) {
@@ -174,10 +176,8 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     setClaimAmount(claimAmount);
   }, [JSON.stringify(tokens)]);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = async (
-    e: any,
-  ) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    // e.preventDefault();
     if (lidoMaticWeb3 && tokens.length) {
       setIsLoading(true);
       setStatus({
@@ -187,6 +187,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         type: 'loading',
         link: '',
         show: true,
+        retry: true,
       });
       const tokenIds = tokens.reduce((acc, token) => {
         if (token.checked) {
@@ -205,32 +206,39 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
           type: 'loading',
           link: '',
           show: true,
+          retry: true,
         });
-        const results = await Promise.all(claims.map((claim) => claim.wait()));
-        const finalRes = results.reduce(
-          (acc, { status }) => {
-            if (status) {
-              acc.success += 1;
-            } else {
-              acc.failed += 1;
-            }
-            return acc;
-          },
-          {
-            success: 0,
-            failed: 0,
-          },
+        let results;
+        if (invalidClaims.current?.length) {
+          results = await Promise.all(
+            invalidClaims.current.map((claim) =>
+              claim.wait().catch((ex) => ex),
+            ),
+          );
+        } else {
+          results = await Promise.all(
+            claims.map((claim) => claim.wait().catch((ex) => ex)),
+          );
+          invalidClaims.current = [];
+        }
+        const validResults = results.filter((result) => result.status);
+        invalidClaims.current = claims.slice(
+          validResults.length,
+          claims.length - 1,
         );
+
         await fetchTokens();
         setIsLoading(false);
-        if (finalRes.failed > 0) {
+        if (invalidClaims.current.length) {
           setStatus({
-            title: 'Failed to claim rewards',
+            title: 'Some rewards failed to claim',
             subtitle: `Something went wrong`,
-            additionalDetails: '',
+            additionalDetails:
+              'If you would like to claim again missing rewards please click retry',
             type: 'error',
             link: '',
             show: true,
+            retry: true,
           });
         } else {
           setStatus({
@@ -240,6 +248,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
             type: 'success',
             link: '',
             show: true,
+            retry: false,
           });
         }
         setIsLoading(false);
@@ -324,7 +333,8 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
         type={status.type}
         show={status.show}
         onClose={() => setStatus(initialStatus)}
-        retry={false}
+        retry={status.retry}
+        onRetry={handleSubmit}
       />
     </Block>
   );
