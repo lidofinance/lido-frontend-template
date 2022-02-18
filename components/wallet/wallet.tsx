@@ -30,8 +30,8 @@ const Wallet: WalletComponent = (props) => {
     method: 'balanceOf',
     params: [account],
   });
-  const [maticSymbol, setMaticSymbol] = useState('MAT');
-  const [stMaticSymbol, setStMaticSymbol] = useState('stMAT');
+  const [maticSymbol, setMaticSymbol] = useState('MATIC');
+  const [stMaticSymbol, setStMaticSymbol] = useState('stMATIC');
   useEffect(() => {
     if (maticTokenWeb3) {
       maticTokenWeb3.symbol().then((res) => {
