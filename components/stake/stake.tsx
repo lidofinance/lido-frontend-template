@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { Block, Input, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSDK } from '@lido-sdk/react';
 import { useLidoMaticRPC, useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
@@ -38,7 +38,6 @@ const initialStatus = {
 
 const Stake: FC = () => {
   const { publicRuntimeConfig } = getConfig();
-  const { hardCapLimit } = publicRuntimeConfig;
   const { account, chainId } = useSDK();
   const lidoMaticWeb3 = useLidoMaticWeb3();
   const maticTokenWeb3 = useMaticTokenWeb3();
@@ -56,6 +55,7 @@ const Stake: FC = () => {
   const [totalPooledMatic, setTotalPooledMatic] = useState<number>(0);
   const [currentStakeCapacityPercentage, setCurrentStakeCapacityPercentage] =
     useState<number>(0);
+  const hardCapLimit = useRef(+publicRuntimeConfig.hardCapLimit * 2);
 
   const checkAllowance = (amount: string) => {
     if (lidoMaticWeb3 && maticTokenWeb3 && account && +amount) {
@@ -234,7 +234,10 @@ const Stake: FC = () => {
         notify('Entered amount exceedes your balance', 'error');
         return;
       }
-      if (hardCapLimit && +enteredAmount + totalPooledMatic > +hardCapLimit) {
+      if (
+        hardCapLimit.current &&
+        +enteredAmount + totalPooledMatic > +hardCapLimit.current
+      ) {
         notify('Entered amount exceedes hardcap limit', 'error');
         return;
       }
@@ -330,19 +333,21 @@ const Stake: FC = () => {
         setRate(formatBalance(res));
       });
 
-      if (hardCapLimit) {
+      if (hardCapLimit.current) {
         lidoMaticWeb3.getTotalPooledMatic().then((res) => {
-          const value = Number(utils.formatEther(res));
-          if (+hardCapLimit < +value) {
+          const value = Number(utils.formatEther(res)) * 2;
+          if (+hardCapLimit.current < +value) {
             setCanUnlock(false);
             setCanStake(false);
           }
           setTotalPooledMatic(value);
-          setCurrentStakeCapacityPercentage((value / +hardCapLimit) * 100);
+          setCurrentStakeCapacityPercentage(
+            (value / +hardCapLimit.current) * 100,
+          );
         });
       }
     }
-  }, [enteredAmount, hardCapLimit, lidoMaticWeb3, totalPooledMatic]);
+  }, [enteredAmount, lidoMaticWeb3, totalPooledMatic]);
 
   useEffect(() => {
     if (lidoMaticWeb3) {
@@ -369,7 +374,7 @@ const Stake: FC = () => {
             leftDecorator={<Matic />}
             rightDecorator={
               <InputRightDecorator
-                hardCapLimit={hardCapLimit ? +hardCapLimit : 0}
+                hardCapLimit={hardCapLimit.current || 0}
                 currentlyStakedAmount={totalPooledMatic}
                 currentStakeCapacityPercentage={currentStakeCapacityPercentage}
                 onClick={setMaxInputValue}

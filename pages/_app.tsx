@@ -34,7 +34,7 @@ const AppWrapper = (props: AppProps & { config: EnvConfig }): JSX.Element => {
           url: siteConfig.url,
           images: [
             {
-              url: `${siteConfig.url}${ogImage.src}`,
+              url: `${siteConfig.url}${ogImage}`,
               width: 1200,
               height: 614,
               alt: 'Lido MATIC stake',

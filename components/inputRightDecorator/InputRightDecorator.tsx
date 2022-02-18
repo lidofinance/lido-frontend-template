@@ -66,10 +66,10 @@ const InputRightDecorator: FC<InputRightDecoratorProps> = ({
         <>
           <img
             src={
-              currentStakeCapacityPercentage === 100
+              currentStakeCapacityPercentage >= 100
                 ? batteryFull
                 : currentStakeCapacityPercentage < 100 &&
-                  currentStakeCapacityPercentage > 50
+                  currentStakeCapacityPercentage >= 50
                 ? batteryHalf
                 : batteryLow
             }
