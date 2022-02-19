@@ -206,7 +206,7 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
           type: 'loading',
           link: '',
           show: true,
-          retry: true,
+          retry: false,
         });
         let results;
         if (invalidClaims.current?.length) {
