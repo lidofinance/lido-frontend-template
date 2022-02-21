@@ -38,9 +38,10 @@ export default async function handler(
   );
 
   const totalPooledMatic = await contract.getTotalPooledMatic();
-  const totalStMatic = await contract
-    .convertMaticToStMatic(totalPooledMatic.toString())
-    .then(([res]: BigNumber[]) => formatBalance(res));
+
+  const totalStMaticSupply = await contract
+    .totalSupply()
+    .then((res: BigNumber) => formatBalance(res));
 
   const formattedPooledMatic = +utils.formatEther(totalPooledMatic);
 
@@ -52,8 +53,8 @@ export default async function handler(
       usd: formattedPooledMatic * rate,
     },
     totalRewards: {
-      stMATIC: formattedPooledMatic - totalStMatic,
-      usd: (formattedPooledMatic - totalStMatic) * rate,
+      stMATIC: formattedPooledMatic - totalStMaticSupply,
+      usd: (formattedPooledMatic - totalStMaticSupply) * rate,
     },
   };
   res.status(200).json(data);
