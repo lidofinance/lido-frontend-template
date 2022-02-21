@@ -401,7 +401,7 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
           isUnlocking={isApproving}
           isSubmitting={isSubmitting}
           unlock={handleApprove}
-          unlockLabel="Approve"
+          unlockLabel="Unlock tokens"
           submitLabel="Unstake"
           submit={handleSubmit}
           fullwidth={false}

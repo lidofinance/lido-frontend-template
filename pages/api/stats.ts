@@ -48,10 +48,11 @@ export default async function handler(
   const formattedPooledMatic = +utils.formatEther(totalPooledMatic);
 
   const data = {
-    maticPriceInUsd: rate,
-    numberOfStMaticAccounts: holdersCount,
-    totalMaticStaked: {
-      matic: formattedPooledMatic,
+    price: rate,
+    apr: 8.676,
+    stakers: holdersCount,
+    totalStaked: {
+      stMATIC: formattedPooledMatic,
       usd: formattedPooledMatic * rate,
     },
     totalRewards: {
