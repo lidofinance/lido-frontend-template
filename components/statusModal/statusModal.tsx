@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import {
   Text,
   Modal,
@@ -17,7 +17,7 @@ interface Props {
   show: boolean;
   retry: boolean;
   onClose: () => void;
-  onRetry?: () => void;
+  onRetry?: (e: any) => void;
 }
 
 const statusModal: FC<Props> = ({

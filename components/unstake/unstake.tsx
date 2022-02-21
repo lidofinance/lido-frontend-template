@@ -287,7 +287,8 @@ const Unstake: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     setIsApproving(false);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (enteredAmount && enteredAmount !== '0' && lidoMaticWeb3) {
       if (!stMaticBalance.data) return;
       const currentlyStaked = +utils.formatEther(stMaticBalance.data);

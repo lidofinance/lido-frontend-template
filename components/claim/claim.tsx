@@ -176,8 +176,8 @@ const Claim: FC<{ changeTab: (tab: string) => void }> = ({ changeTab }) => {
     setClaimAmount(claimAmount);
   }, [JSON.stringify(tokens)]);
 
-  const handleSubmit = async () => {
-    // e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (lidoMaticWeb3 && tokens.length) {
       setIsLoading(true);
       setStatus({

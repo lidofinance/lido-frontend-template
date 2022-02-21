@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, FormEvent, useEffect, useRef, useState } from 'react';
 import { Block, Input, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSDK } from '@lido-sdk/react';
 import { useLidoMaticRPC, useLidoMaticWeb3, useMaticTokenWeb3 } from 'hooks';
@@ -281,7 +281,8 @@ const Stake: FC = () => {
     }
     setIsUnlocking(false);
   };
-  const handleSubmitTokens = async () => {
+  const handleSubmitTokens = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (
       enteredAmount &&
       enteredAmount !== '0' &&
