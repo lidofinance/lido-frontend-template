@@ -52,11 +52,11 @@ export default async function handler(
     apr: 8.676,
     stakers: holdersCount,
     totalStaked: {
-      stMATIC: formattedPooledMatic,
+      token: formattedPooledMatic,
       usd: formattedPooledMatic * rate,
     },
     totalRewards: {
-      stMATIC: formattedPooledMatic - totalStMaticSupply,
+      token: formattedPooledMatic - totalStMaticSupply,
       usd: (formattedPooledMatic - totalStMaticSupply) * rate,
     },
   };
