@@ -15,10 +15,17 @@ import {
   useSystemTheme,
 } from '@lidofinance/lido-ui';
 import BackgroundGradient from 'components/backgroundGradient';
-import { useLocalStorage } from '@lido-sdk/react';
-import { STORAGE_THEME_KEY } from 'config';
+import { STORAGE_THEME_AUTO_KEY, STORAGE_THEME_MANUAL_KEY } from 'config';
+import Cookies from 'js-cookie';
 
 export type ThemeName = 'light' | 'dark';
+
+const COOKIES_THEME_EXPIRES_DAYS = 365;
+
+type Props = {
+  cookiesAutoThemeScheme?: ThemeName;
+  cookiesManualThemeScheme?: ThemeName;
+};
 
 export type ThemeContext = {
   toggleTheme: () => void;
@@ -34,31 +41,46 @@ export const ThemeToggleContext = createContext({} as ThemeContext);
 
 const DEFAULT_THEME = 'light';
 
-const ThemeProvider: FC = ({ children }) => {
-  const [themeLS, setThemeLS] = useLocalStorage<ThemeName | null>(
-    STORAGE_THEME_KEY,
-    null,
-  );
+export enum THEME {
+  light = 'light',
+  dark = 'dark',
+}
+
+const ThemeProvider: FC<Props> = ({
+  cookiesAutoThemeScheme,
+  cookiesManualThemeScheme,
+  children,
+}) => {
   const systemTheme = useSystemTheme();
 
   /*
    * The first rendering is always with a light theme. After that useEffect will replace the theme with a custom one
    * This is necessary for correct Next.js hydration
    */
-  const [themeName, setThemeName] = useState<ThemeName>(DEFAULT_THEME);
+  const [themeName, setThemeName] = useState<ThemeName>(
+    cookiesManualThemeScheme || cookiesAutoThemeScheme || DEFAULT_THEME,
+  );
 
+  // Noticing browser preferences on hydration
+  // Reacting to changing preferences
   useEffect(() => {
-    if (themeLS) {
-      setThemeName(themeLS);
-    } else if (systemTheme) {
+    if (process.browser && !cookiesManualThemeScheme && systemTheme) {
       setThemeName(systemTheme);
+      Cookies.set(STORAGE_THEME_AUTO_KEY, systemTheme, {
+        expires: COOKIES_THEME_EXPIRES_DAYS,
+      });
     }
-  }, [themeLS, systemTheme]);
+    // We only need to override logic when systemTheme changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [systemTheme]);
 
-  // remember the theme on manual toggle, ignore system theme changes
   const toggleTheme = useCallback(() => {
-    setThemeLS((current) => (current === 'light' ? 'dark' : 'light'));
-  }, [setThemeLS]);
+    const toggledThemeName = themeName === 'light' ? 'dark' : 'light';
+    setThemeName(toggledThemeName);
+    Cookies.set(STORAGE_THEME_MANUAL_KEY, toggledThemeName, {
+      expires: COOKIES_THEME_EXPIRES_DAYS,
+    });
+  }, [themeName]);
 
   const value = useMemo(
     () => ({
