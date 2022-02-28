@@ -76,12 +76,13 @@ const HomePage: FC<Props> = () => {
   // ...
 };
 
-export const getServerSideProps: GetServerSideProps<WithdrawProps> =
-  async () => {
-    return {
-      props: {},
-    };
+export const getServerSideProps: GetServerSideProps<
+  WithdrawProps
+> = async () => {
+  return {
+    props: {},
   };
+};
 ```
 
 **Step 4.** Use [React Context](https://reactjs.org/docs/context.html) to provide your variable. You can find an example providing `defaultChain` and `supportedChainIds` variables in files:
@@ -207,3 +208,100 @@ $ yarn commit
 
 Yon can use this mockup to generate icons for the app:
 https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons
+
+## Monitoring
+
+Before your application is ready to be deployed within the Lido infrastructure, it should meet certain codebase requirements that will make it more secure, resilient and easier to debug. These are as follows,
+
+- your app must send a [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header with an appropriate policy to detect and mitigate XSS attacks;
+- you app must log essential server-side operations to output in JSON format without revealing any secrets or user addresses;
+- any `Content-Security-Policy` violations must be reported to [`api/csp-report](page/api/csp-report.ts) API route where they will be logged and picked up by our monitoring system;
+- your app should export relevant metrics at [`api/metrics](page/api/metrics.ts) which will give us a better insight into your app's operation and enable us set up alerts.
+
+### Content-Security-Policy
+
+This template features a boilerplate for configuring `Content-Security-Policy`. If you open up [.env](/.env), you will see three environment variables: `CSP_TRUSTED_HOSTS`, `CSP_REPORT_ONLY`, and `CSP_REPORT_URI`. You will need to fill these out in your `.env.local` file.
+
+- `CSP_TRUSTED_HOSTS` is a comma-separated list of third-party hosts that your application depends on. These can be CDN services, image hosting websites, third-party APIs, etc. You can specify them directly or use a wildcard (which is supported in most modern browsers);
+- `CSP_REPORT_ONLY` is a flag that enables/disables report-only mode. If `true`, violations are reported but the resources/requests are not blocked by the browser. This is useful when you want to test out your `Content-Security-Policy` without the risk of breaking the application for your users. Any other value other than `true` will enable blocking mode;
+- `CSP_REPORT_URI` instructs the browser where the violations are ought to be reported to. Because this CSP directive does not support relative paths, the value of this variable depends on your application's environment. For example, if you're running the app locally, this is usually `http://localhost:3000/api/csp-endpoint`.
+
+Below are some example values,
+
+```bash
+# allow requests to third-party-api.com and any lido.fi subdomains
+CSP_TRUSTED_HOSTS=third-party-api.com,*.lido.fi
+# blocking mode enabled
+CSP_REPORT_ONLY=false
+# report CSP violations to https://app.lido.fi/api/csp-report
+CSP_REPORT_URI=https://app.lido.fi/api/csp-report
+```
+
+These variables are passed to `serverRuntimeConfig` in `next.config.js` and then with the help of the `next-secure-header` npm package are transformed into a proper `Content-Security-Header` in [utils/withCSP](/utils//withCsp.ts), which is shipped to the client on each request.
+
+Learn more about `Content-Security-Policy` on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
+
+### Server-side logger
+
+The template comes with its own custom JSON logger out of the box. Simply import and start logging, e.g.
+
+```typescript
+import { serverLogger } from 'utils/serverLogger';
+
+function sendSomeRequest() {
+  serverLogger.debug('sending some request');
+  try {
+    // request logic
+
+    serverLogger.info('some request successful');
+  } catch {
+    serverLogger.error('some request failed');
+  }
+}
+```
+
+The logger utilizes the `next-logger` package which transforms any system output to JSON, and as you can see in `package.json` it is only enabled for `start` script meaning it will only work in production mode. In development you will see your usual `console` logs.
+
+Before deploying to production, however, you must make sure that no secrets are exposed in logs. To do this, please specify patterns to mask your secrets in [utils/serverLogger](/utils/serverLogger.ts). There you will find that Infura/Alchemy API keys and user addresses are already masked using the `@darkobits/mask-string` module.
+
+### Metrics
+
+We use Prometheus together with Grafana to set up monitoring and alerting for your app. Your app should collect the essential configuration and network activity and export them as metrics at [api/metrics](/pages/api/metrics.ts) using the `prom-client` package. To start aggregating this data, first, specify your app's metrics prefix in [config/metrics](/config/metrics.ts), import a relevant metric type from `prom-client`, instantiate an object and start using it.
+
+If you open `utils/metrics` directory, you will find the examples of required metrics for our apps and how to export them. Among these are build information (version, branch and commit), network configuration (default network, supported networks), contract configuration (names and addresses of contracts that your app interacts with) and network requests.
+
+Below is an example of a network requests histogram,
+
+```typescript
+import { METRICS_PREFIX } from 'config';
+import { Histogram } from 'prom-client';
+
+// this metric collects HTTP statuses and response times of API requests
+const apiResponses = new Histogram({
+  name: METRICS_PREFIX + '_api_response',
+  help: 'API responses',
+  labelNames: ['host', 'status'],
+  buckets: [0.1, 0.2, 0.3, 0.6, 1, 1.5, 2, 5],
+});
+
+async function sendSomeRequest() {
+  const apiHost = 'some-api.com';
+
+  // start metric timer
+  const end = apiResponses.startTimer();
+
+  // request logic
+  const response = await fetch(apiHost);
+  const data = await response.json();
+
+  // stop timer and collect API response time
+  end({
+    host: someApi,
+    status: response.status,
+  });
+
+  return data;
+}
+```
+
+Learn more about [Prometheus metrics](https://prometheus.io/docs/concepts/metric_types/) and [`prom-client`](https://github.com/siimon/prom-client).
