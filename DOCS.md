@@ -215,15 +215,15 @@ Before your application is ready to be deployed within the Lido infrastructure, 
 
 - your app must send a [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) header with an appropriate policy to detect and mitigate XSS attacks;
 - you app must log essential server-side operations to output in JSON format without revealing any secrets or user addresses;
-- any `Content-Security-Policy` violations must be reported to [`api/csp-report](page/api/csp-report.ts) API route where they will be logged and picked up by our monitoring system;
-- your app should export relevant metrics at [`api/metrics](page/api/metrics.ts) which will give us a better insight into your app's operation and enable us set up alerts.
+- any `Content-Security-Policy` violations must be reported to [`api/csp-report`](page/api/csp-report.ts) API route where they will be logged and picked up by our monitoring system;
+- your app should export relevant metrics at [`api/metrics`](page/api/metrics.ts) which will give us a better insight into your app's operation and enable us to set up alerts.
 
 ### Content-Security-Policy
 
 This template features a boilerplate for configuring `Content-Security-Policy`. If you open up [.env](/.env), you will see three environment variables: `CSP_TRUSTED_HOSTS`, `CSP_REPORT_ONLY`, and `CSP_REPORT_URI`. You will need to fill these out in your `.env.local` file.
 
 - `CSP_TRUSTED_HOSTS` is a comma-separated list of third-party hosts that your application depends on. These can be CDN services, image hosting websites, third-party APIs, etc. You can specify them directly or use a wildcard (which is supported in most modern browsers);
-- `CSP_REPORT_ONLY` is a flag that enables/disables report-only mode. If `true`, violations are reported but the resources/requests are not blocked by the browser. This is useful when you want to test out your `Content-Security-Policy` without the risk of breaking the application for your users. Any other value other than `true` will enable blocking mode;
+- `CSP_REPORT_ONLY` is a flag that enables/disables report-only mode. In report-only mode, violations are reported but the associated resources/requests are not blocked by the browser. This is useful when you want to test out your `Content-Security-Policy` without the risk of breaking the application for your users. Any other value other than `true` will enable blocking mode;
 - `CSP_REPORT_URI` instructs the browser where the violations are ought to be reported to. Because this CSP directive does not support relative paths, the value of this variable depends on your application's environment. For example, if you're running the app locally, this is usually `http://localhost:3000/api/csp-endpoint`.
 
 Below are some example values,
@@ -237,7 +237,7 @@ CSP_REPORT_ONLY=false
 CSP_REPORT_URI=https://app.lido.fi/api/csp-report
 ```
 
-These variables are passed to `serverRuntimeConfig` in `next.config.js` and then with the help of the `next-secure-header` npm package are transformed into a proper `Content-Security-Header` in [utils/withCSP](/utils//withCsp.ts), which is shipped to the client on each request.
+These variables are passed to `serverRuntimeConfig` in `next.config.js` and then with the help of the [`next-secure-headers`](https://www.npmjs.com/package/next-secure-headers) npm package are transformed into a proper `Content-Security-Header` in [utils/withCSP](/utils//withCsp.ts), which is shipped to the client on each request.
 
 Learn more about `Content-Security-Policy` on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
@@ -260,13 +260,13 @@ function sendSomeRequest() {
 }
 ```
 
-The logger utilizes the `next-logger` package which transforms any system output to JSON, and as you can see in `package.json` it is only enabled for `start` script meaning it will only work in production mode. In development you will see your usual `console` logs.
+The logger utilizes the [`next-logger`](https://www.npmjs.com/package/next-logger) package which transforms any system output to JSON. As you can see in `package.json` it is only enabled for `start` script meaning it will only work in production mode. In development you will see your usual `console` logs.
 
-Before deploying to production, however, you must make sure that no secrets are exposed in logs. To do this, please specify patterns to mask your secrets in [utils/serverLogger](/utils/serverLogger.ts). There you will find that Infura/Alchemy API keys and user addresses are already masked using the `@darkobits/mask-string` module.
+Before deploying to production, however, you must make sure that no secrets are exposed in logs. To do this, please specify patterns to mask your secrets in [utils/serverLogger](/utils/serverLogger.ts). There you will find that Infura/Alchemy API keys and user addresses are already masked using the [`@darkobits/mask-string`](https://www.npmjs.com/package/@darkobits/mask-string) module.
 
 ### Metrics
 
-We use Prometheus together with Grafana to set up monitoring and alerting for your app. Your app should collect the essential configuration and network activity and export them as metrics at [api/metrics](/pages/api/metrics.ts) using the `prom-client` package. To start aggregating this data, first, specify your app's metrics prefix in [config/metrics](/config/metrics.ts), import a relevant metric type from `prom-client`, instantiate an object and start using it.
+We use Prometheus together with Grafana to set up monitoring and alerting for your app. Your app should collect the essential configuration and network activity and export them as metrics at [api/metrics](/pages/api/metrics.ts) using the `prom-client` package. To start aggregating the data, specify your app's metrics prefix in [config/metrics](/config/metrics.ts).
 
 If you open `utils/metrics` directory, you will find the examples of required metrics for our apps and how to export them. Among these are build information (version, branch and commit), network configuration (default network, supported networks), contract configuration (names and addresses of contracts that your app interacts with) and network requests.
 
