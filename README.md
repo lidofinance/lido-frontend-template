@@ -41,7 +41,7 @@ Read more about [runtime configuration](https://nextjs.org/docs/api-reference/ne
 
 ### Content-Security-Policy
 
-In order to improve security, this template includes a Content-Security-Policy boilerplate. Please make sure to customize the policies in [utils/withCsp.ts](utils/withCsp.ts) before shipping the application to production.
+In order to improve security, this template includes a Content-Security-Policy boilerplate. Please make sure to customize the policies in [utils/withCsp.ts](utils/withCsp.ts) before shipping the application to production. Learn more about it in [DOCS](/DOCS.md#monitoring).
 
 ## Production
 
