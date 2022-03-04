@@ -1,11 +1,24 @@
 import { FC } from 'react';
 
 import ModalProvider from './modals';
-import ThemeProvider from './theme';
+import ThemeProvider, { ThemeName } from './theme';
 import Web3Provider, { Web3ProviderProps } from './web3';
 
-const Providers: FC<Web3ProviderProps> = ({ config, children }) => (
-  <ThemeProvider>
+type Props = Web3ProviderProps & {
+  cookiesAutoThemeScheme?: ThemeName;
+  cookiesManualThemeScheme?: ThemeName;
+};
+
+const Providers: FC<Props> = ({
+  cookiesAutoThemeScheme,
+  cookiesManualThemeScheme,
+  config,
+  children,
+}) => (
+  <ThemeProvider
+    cookiesAutoThemeScheme={cookiesAutoThemeScheme}
+    cookiesManualThemeScheme={cookiesManualThemeScheme}
+  >
     <Web3Provider config={config}>
       <ModalProvider>{children}</ModalProvider>
     </Web3Provider>
