@@ -36,7 +36,7 @@
     "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.1",
     "memory-cache": "^0.2.0",
-    "next": "^12.0.7",
+    "next": "^12.1.0",
     "next-logger": "^2.2.0",
     "next-secure-headers": "^2.2.0",
     "prom-client": "^14.0.1",

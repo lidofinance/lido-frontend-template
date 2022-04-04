@@ -20,7 +20,7 @@ const cspReportUri = process.env.CSP_REPORT_URI;
 
 module.exports = {
   basePath,
-  experimental: {
+  compiler: {
     styledComponents: true,
   },
   // WARNING: Vulnerability fix, don't remove until default Next.js image loader is patched
