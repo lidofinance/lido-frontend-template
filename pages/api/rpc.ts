@@ -38,9 +38,11 @@ const rpc: Rpc = async (req, res) => {
       body: JSON.stringify(req.body),
     });
 
-    const responded = await requested.json();
-
-    res.status(requested.status).json(responded);
+    res.setHeader(
+      'Content-Type',
+      requested.headers.get('Content-Type') ?? 'application/json',
+    );
+    res.status(requested.status).send(requested.body);
   } catch (error) {
     serverLogger.error(error);
     if (error instanceof Error) {
