@@ -5,12 +5,9 @@ Lido Frontend Template is a project template for developing Lido applications. I
 > 🚧 CI and deploy
 > 
 > After creating repo from the template make sure that you have correctly filled TARGET_WORKFLOW field in:
->
-> .github/workflows/ci-dev.yml
->
-> .github/workflows/ci-staging.yml
->
-> .github/workflows/ci-prod.yml
+> - .github/workflows/ci-dev.yml
+> - .github/workflows/ci-staging.yml
+> - .github/workflows/ci-prod.yml
 
 
 ### Pre-requisites
