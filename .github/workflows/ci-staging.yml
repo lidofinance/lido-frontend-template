@@ -1,10 +1,10 @@
-name: CI Dev
+name: CI Staging
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - develop
+      - main
     paths-ignore:
       - ".github/**"
 
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Testnet deploy
+      - name: Staging deploy
         uses: lidofinance/dispatch-workflow@v1
         env:
           APP_ID: ${{ secrets.APP_ID }}
