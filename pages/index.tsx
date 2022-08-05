@@ -78,10 +78,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  // list of .md files from /faq/
-  const fileList = ['lido-frontend-template'];
-  const faqList = await getFaqList(fileList);
+const faqList = getFaqList(['lido-frontend-template']);
 
-  return { props: { faqList } };
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  return { props: { faqList: await faqList } };
 };
