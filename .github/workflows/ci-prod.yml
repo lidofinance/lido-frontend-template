@@ -24,6 +24,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     # needs: test
+    if: ${{ github.repository != 'lidofinance/lido-frontend-template' }}
     name: Build and deploy
     steps:
       - name: Checkout
@@ -45,4 +46,5 @@ jobs:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
           TARGET_REPO: "lidofinance/infra-mainnet"
           TAG: "${{ steps.tag_name.outputs.TAG }}"
+          # TODO fill workflow
           TARGET_WORKFLOW: "!! PUT CORRECT REFERENCE TO DEPLOY WF IN lidofinance/infra-mainnet HERE. EX. my_awesome_app.yml !!"
