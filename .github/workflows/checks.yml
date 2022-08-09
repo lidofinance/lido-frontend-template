@@ -7,3 +7,6 @@ jobs:
     uses: lidofinance/linters/.github/workflows/security.yml@master
   docker:
     uses: lidofinance/linters/.github/workflows/docker.yml@master
+  todos:
+    if: ${{ github.repository != 'lidofinance/lido-frontend-template' }}
+    uses: lidofinance/linters/.github/workflows/todos.yml@master
