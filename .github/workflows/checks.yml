@@ -10,3 +10,23 @@ jobs:
   todos:
     if: ${{ github.repository != 'lidofinance/lido-frontend-template' }}
     uses: lidofinance/linters/.github/workflows/todos.yml@master
+  codeql:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max_old_space_size=4096
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
