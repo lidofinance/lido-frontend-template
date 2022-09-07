@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   security:
-    uses: lidofinance/linters/.github/workflows/security.yml@codeql
+    uses: lidofinance/linters/.github/workflows/security.yml@codeql-only-public
   docker:
     uses: lidofinance/linters/.github/workflows/docker.yml@master
   todos:
