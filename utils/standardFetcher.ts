@@ -17,5 +17,5 @@ export const standardFetcher: StandardFetcher = async (url, params) => {
     throw new Error('An error occurred while fetching the data.');
   }
 
-  return await response.json();
+  return response.json();
 };
