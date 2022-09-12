@@ -335,7 +335,7 @@ const someApiRequest: API = async (req, res) => {
 // Example showing how to use API wrappers (error handler and cahce control)
 export default wrapRequest([
   cacheControl(),
-  defaultErrorHandler({ serverLogger: serverLogger }),
+  defaultErrorHandler({ serverLogger }),
 ])(someApiRequest);
 ```
 

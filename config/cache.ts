@@ -1,5 +1,4 @@
-export const CACHE_DEFAULT_HEADERS =
-  'public, max-age=180, stale-if-error=1200, stale-while-revalidate=60';
+import { CACHE_DEFAULT_HEADERS } from '@lidofinance/next-api-wrapper';
 
 export const CACHE_ALLOWED_LIST_FILES_PATHS = [
   { path: /^\/favicon-?[^@]*.(svg|ico)?$/, headers: CACHE_DEFAULT_HEADERS },

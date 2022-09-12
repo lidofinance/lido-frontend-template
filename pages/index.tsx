@@ -1,4 +1,4 @@
-import { FC, FormEventHandler, useEffect } from 'react';
+import { FC, FormEventHandler } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -16,7 +16,12 @@ import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
-import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
+import {
+  useContractSWR,
+  useSTETHContractRPC,
+  useLidoSWR,
+} from '@lido-sdk/react';
+import { standardFetcher } from 'utils';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -38,9 +43,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     method: 'name',
   });
 
-  useEffect(() => {
-    fetch('api/oneinch-rate');
-  }, []);
+  const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
+  const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
   return (
     <Layout
@@ -70,7 +74,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <Block>
           <DataTable>
             <DataTableRow title="Token name" loading={tokenName.initialLoading}>
-              {tokenName.data}
+              {tokenName.data} {oneInchRate}
             </DataTableRow>
           </DataTable>
         </Block>

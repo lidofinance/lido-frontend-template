@@ -5,7 +5,7 @@ import {
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
 import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
-import { serverLogger } from 'utils/serverLogger';
+import { serverLogger } from 'utils';
 
 // Proxy for third-party API.
 // Returns 1inch rate
@@ -30,5 +30,5 @@ const oneInchRate: API = async (req, res) => {
 
 export default wrapRequest([
   cacheControl(),
-  defaultErrorHandler({ serverLogger: serverLogger }),
+  defaultErrorHandler({ serverLogger }),
 ])(oneInchRate);

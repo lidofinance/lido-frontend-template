@@ -5,10 +5,10 @@ import { findCacheControlFileHeaders } from 'config/cache';
 // use only for cache files
 const middleware = (req: NextRequest): NextResponse => {
   const response = NextResponse.next();
-  const methodName = req.nextUrl.pathname;
+  const { pathname } = req.nextUrl;
 
   // Use allowed list
-  const headers = findCacheControlFileHeaders(methodName);
+  const headers = findCacheControlFileHeaders(pathname);
   if (!headers) return response;
 
   response.headers.append('Cache-Control', headers);
