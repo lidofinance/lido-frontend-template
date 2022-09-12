@@ -1,4 +1,4 @@
-import { FC, FormEventHandler } from 'react';
+import { FC, FormEventHandler, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import {
   Block,
@@ -37,6 +37,10 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     contract: contractRpc,
     method: 'name',
   });
+
+  useEffect(() => {
+    fetch('api/oneinch-rate');
+  }, []);
 
   return (
     <Layout

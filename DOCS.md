@@ -305,3 +305,41 @@ async function sendSomeRequest() {
 ```
 
 Learn more about [Prometheus metrics](https://prometheus.io/docs/concepts/metric_types/) and [`prom-client`](https://github.com/siimon/prom-client).
+
+### Cache-control
+
+#### API
+
+Use cache control wherever possible. For example - GET requests for statistical data.
+For simple setting of cache-control headers, next-api-wrappers are used. An example can be viewed [here](pages/api/oneinch-rate.ts). API wrappers documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
+
+##### Example:
+
+```typescript
+import {
+  API,
+  wrapRequest,
+  cacheControl,
+  defaultErrorHandler,
+} from '@lidofinance/next-api-wrapper';
+import { serverLogger } from 'utils/serverLogger';
+
+// Proxy for third-party API.
+const someApiRequest: API = async (req, res) => {
+  const response = await fetch('api-url');
+  const data = await response.json();
+
+  res.json(data);
+};
+
+// Example showing how to use API wrappers (error handler and cahce control)
+export default wrapRequest([
+  cacheControl(),
+  defaultErrorHandler({ serverLogger: serverLogger }),
+])(someApiRequest);
+```
+
+#### Static files
+
+For caching static files (for example manifest.json), a `Next Middleware` is used. Its implementation is [here](middleware.ts). Сonfig file for configuring cached files is [here](config/cache.ts).
+You can read about `Next Middleware` there - https://nextjs.org/docs/advanced-features/middleware
