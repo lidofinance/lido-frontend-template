@@ -2420,6 +2420,11 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/next-api-wrapper/-/next-api-wrapper-0.2.0.tgz#bf8be7285456b29a376f4cc09f246c80570ef3f7"
   integrity sha512-aY561/1/qWM5irkbkzfA4U13+sKdQ5BXqKlXLMFXeiouaO3Jn2Te5NBWbqXOriX/ge6bsPU3bB+uIem/Q8314A==
 
+"@lidofinance/next-cache-files-middleware@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/next-cache-files-middleware/-/next-cache-files-middleware-0.3.0.tgz#b254e3cae4c47e7425ba0a3ad031ad95823ca1b8"
+  integrity sha512-7Jfg06tLRlQk8Dr16okDYRyQflHSSy5IVM9dMD0OGkteyrYR7EbBNre0WgwsbV4qTtZiZY82Xx6YVFEeHANKsw==
+
 "@lidofinance/pagination@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@lidofinance/pagination/-/pagination-1.9.0.tgz#f59227d9dfeee76dafc43ae0878add1ac7bb3145"
@@ -6699,7 +6704,7 @@ next-secure-headers@^2.2.0:
   resolved "https://registry.yarnpkg.com/next-secure-headers/-/next-secure-headers-2.2.0.tgz#d4eb1b00a424f811c1455d1288990a4aad3026af"
   integrity sha512-C7OfZ9JdSJyYMz2ZBMI/WwNbt0qNjlFWX9afUp8nEUzbz6ez3JbeopdyxSZJZJAzVLIAfyk6n73rFpd4e22jRg==
 
-next@^12.2.5:
+next@^12.2.0:
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/next/-/next-12.3.0.tgz#0e4c1ed0092544c7e8f4c998ca57cf6529e286cb"
   integrity sha512-GpzI6me9V1+XYtfK0Ae9WD0mKqHyzQlGq1xH1rzNIYMASo4Tkl4rTe9jSqtBpXFhOS33KohXs9ZY38Akkhdciw==

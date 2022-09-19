@@ -311,7 +311,9 @@ Learn more about [Prometheus metrics](https://prometheus.io/docs/concepts/metric
 #### API
 
 Use cache control wherever possible. For example - GET requests for statistical data.
-For simple setting of cache-control headers, next-api-wrappers are used. An example can be viewed [here](pages/api/oneinch-rate.ts). API wrappers documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
+For simple setting of cache-control headers, `@lidofinance/next-api-wrappers` are used.
+An example can be viewed [here](pages/api/oneinch-rate.ts).
+API wrappers documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
 
 ##### Example:
 
@@ -341,5 +343,8 @@ export default wrapRequest([
 
 #### Static files
 
-For caching static files (for example manifest.json), a `Next Middleware` is used. Its implementation is [here](middleware.ts). Сonfig file for configuring cached files is [here](config/cache.ts).
+For caching static files (for example manifest.json), a `Next Middleware` is used. For simple setting of cache-control file headers, `@lidofinance/next-cache-files-middleware` are used. Its implementation is [here](middleware.ts).
+The template uses default caching from the package.
+Don't forget about the "config" constant. The matcher values need to be constants so they can be statically analyzed at build-time. Dynamic values such as variables will be ignored.
+Files cache-control documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/cache-files-middleware).
 You can read about `Next Middleware` there - https://nextjs.org/docs/advanced-features/middleware

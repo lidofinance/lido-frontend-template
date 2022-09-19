@@ -74,7 +74,10 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <Block>
           <DataTable>
             <DataTableRow title="Token name" loading={tokenName.initialLoading}>
-              {tokenName.data} {oneInchRate}
+              {tokenName.data}
+            </DataTableRow>
+            <DataTableRow title="1inch rate" loading={tokenName.initialLoading}>
+              {oneInchRate}
             </DataTableRow>
           </DataTable>
         </Block>
