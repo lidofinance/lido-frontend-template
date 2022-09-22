@@ -16,7 +16,12 @@ import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
 import styled from 'styled-components';
-import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
+import {
+  useContractSWR,
+  useSTETHContractRPC,
+  useLidoSWR,
+} from '@lido-sdk/react';
+import { standardFetcher } from 'utils';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -37,6 +42,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     contract: contractRpc,
     method: 'name',
   });
+
+  const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
+  const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
   return (
     <Layout
@@ -67,6 +75,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
           <DataTable>
             <DataTableRow title="Token name" loading={tokenName.initialLoading}>
               {tokenName.data}
+            </DataTableRow>
+            <DataTableRow title="1inch rate" loading={tokenName.initialLoading}>
+              {oneInchRate}
             </DataTableRow>
           </DataTable>
         </Block>
