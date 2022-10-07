@@ -10,3 +10,5 @@ jobs:
   todos:
     if: ${{ github.repository != 'lidofinance/lido-frontend-template' }}
     uses: lidofinance/linters/.github/workflows/todos.yml@master
+  actions:
+    uses: lidofinance/linters/.github/workflows/actions.yml@master
