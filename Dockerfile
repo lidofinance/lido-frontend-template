@@ -6,9 +6,12 @@ WORKDIR /app
 RUN apk add --no-cache git=2.34.1-r0
 COPY package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --non-interactive && yarn cache clean
+RUN yarn install --frozen-lockfile --non-interactive --ignore-scripts && yarn cache clean
+
 COPY . .
-RUN yarn typechain && yarn build
+RUN NODE_NO_BUILD_DYNAMICS=true yarn typechain && yarn build
+# public/runtime is used to inject runtime vars; it should exist and user node should have write access there for it
+RUN rm -rf /app/public/runtime && mkdir /app/public/runtime && chown node /app/public/runtime
 
 # final image
 FROM node:14-alpine as base
