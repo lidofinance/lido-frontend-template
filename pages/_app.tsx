@@ -1,12 +1,17 @@
 import { memo } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
-import { ToastContainer } from '@lidofinance/lido-ui';
+import getConfig from 'next/config';
+import {
+  ToastContainer,
+  migrationThemeCookiesToCrossDomainCookiesClientSide,
+} from '@lidofinance/lido-ui';
 import Providers from 'providers';
 import getConfig from 'next/config';
 import { CustomAppProps } from 'types';
 import { withCsp } from 'utils/withCsp';
-import { STORAGE_THEME_AUTO_KEY, STORAGE_THEME_MANUAL_KEY } from 'config';
-import cookie from 'cookie';
+
+// Migrations old cookies to new cross domain cookies
+migrationThemeCookiesToCrossDomainCookiesClientSide();
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
