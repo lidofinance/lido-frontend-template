@@ -2,7 +2,7 @@ import { Button } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
 
 export const WalletModalContentStyle = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: var(--lido-color-background);
   border-radius: ${({ theme }) => theme.borderRadiusesMap.lg}px;
   padding: ${({ theme }) => theme.spaceMap.lg}px;
 `;
@@ -13,7 +13,7 @@ export const WalletModalConnectedStyle = styled.div`
 `;
 
 export const WalletModalConnectorStyle = styled.div`
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--lido-color-textSecondary);
   font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   line-height: 1.4em;
   flex-grow: 1;
