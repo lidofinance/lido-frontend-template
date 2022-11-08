@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { Link } from '@lidofinance/lido-ui';
-import { LidoLogo } from '@lidofinance/lido-logo';
+import { Link, LidoLogo } from '@lidofinance/lido-ui';
 import {
   FooterStyle,
   FooterDividerStyle,

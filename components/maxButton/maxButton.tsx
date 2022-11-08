@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@lidofinance/button';
+import { Button, ButtonProps } from '@lidofinance/lido-ui';
 import { FC } from 'react';
 
 const MaxButton: FC<ButtonProps> = (props) => (

@@ -1,5 +1,12 @@
 import { FC, FormEventHandler } from 'react';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import styled from 'styled-components';
+import {
+  useContractSWR,
+  useSTETHContractRPC,
+  useLidoSWR,
+} from '@lido-sdk/react';
 import {
   Block,
   Link,
@@ -9,18 +16,11 @@ import {
   Steth,
   Button,
 } from '@lidofinance/lido-ui';
-import Head from 'next/head';
 import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
 import { FAQItem, getFaqList } from 'lib/faqList';
-import styled from 'styled-components';
-import {
-  useContractSWR,
-  useSTETHContractRPC,
-  useLidoSWR,
-} from '@lido-sdk/react';
 import { standardFetcher } from 'utils';
 
 interface HomeProps {
@@ -32,8 +32,10 @@ const InputWrapper = styled.div`
 `;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (e) => {
-    e.preventDefault();
+  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (
+    event,
+  ) => {
+    event.preventDefault();
     alert('Submitted');
   };
 
@@ -89,8 +91,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
 
 export default Home;
 
-const faqList = getFaqList(['lido-frontend-template']);
-
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  return { props: { faqList: await faqList } };
-};
+export const getStaticProps: GetStaticProps<HomeProps> = async () => ({
+  props: {
+    faqList: await getFaqList(['lido-frontend-template']),
+  },
+});

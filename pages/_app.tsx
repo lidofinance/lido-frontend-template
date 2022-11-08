@@ -6,7 +6,6 @@ import {
   migrationThemeCookiesToCrossDomainCookiesClientSide,
 } from '@lidofinance/lido-ui';
 import Providers from 'providers';
-import getConfig from 'next/config';
 import { CustomAppProps } from 'types';
 import { withCsp } from 'utils/withCsp';
 
@@ -25,13 +24,9 @@ const AppWrapper = (props: CustomAppProps): JSX.Element => {
   const { config, ...rest } = props;
 
   return (
-    <Providers
-      config={config || {}}
-      cookiesAutoThemeScheme={rest.pageProps.cookiesAutoThemeScheme}
-      cookiesManualThemeScheme={rest.pageProps.cookiesManualThemeScheme}
-    >
-      <ToastContainer />
+    <Providers>
       <MemoApp {...rest} />
+      <ToastContainer />
     </Providers>
   );
 };
@@ -39,12 +34,6 @@ const AppWrapper = (props: CustomAppProps): JSX.Element => {
 AppWrapper.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
   const { publicRuntimeConfig } = getConfig();
-
-  const cookies = cookie.parse(String(appContext?.ctx?.req?.headers?.cookie));
-
-  appProps.pageProps.cookiesAutoThemeScheme = cookies[STORAGE_THEME_AUTO_KEY];
-  appProps.pageProps.cookiesManualThemeScheme =
-    cookies[STORAGE_THEME_MANUAL_KEY];
 
   return { ...appProps, config: publicRuntimeConfig };
 };
