@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
-import getConfig from 'next/config';
 import {
   ToastContainer,
   migrationThemeCookiesToCrossDomainCookiesClientSide,
@@ -21,7 +20,7 @@ const App = (props: AppProps): JSX.Element => {
 const MemoApp = memo(App);
 
 const AppWrapper = (props: CustomAppProps): JSX.Element => {
-  const { config, ...rest } = props;
+  const { ...rest } = props;
 
   return (
     <Providers>
@@ -33,9 +32,8 @@ const AppWrapper = (props: CustomAppProps): JSX.Element => {
 
 AppWrapper.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
-  const { publicRuntimeConfig } = getConfig();
 
-  return { ...appProps, config: publicRuntimeConfig };
+  return { ...appProps };
 };
 
 export default process.env.NODE_ENV === 'development'

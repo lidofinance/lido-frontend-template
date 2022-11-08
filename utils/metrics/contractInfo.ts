@@ -1,12 +1,8 @@
 import { Gauge } from 'prom-client';
-import getConfig from 'next/config';
 import { CHAINS } from '@lido-sdk/constants';
-import { getExampleAddress, METRICS_PREFIX } from 'config';
+import { dynamics, getExampleAddress, METRICS_PREFIX } from 'config';
 
-const { publicRuntimeConfig } = getConfig();
-const { defaultChain } = publicRuntimeConfig;
-
-const chainId = +defaultChain as CHAINS;
+const chainId = +dynamics.defaultChain as CHAINS;
 
 const contracts: Record<string, string> = {
   example: getExampleAddress(chainId),
