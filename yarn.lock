@@ -2189,6 +2189,11 @@
     web3-ledgerhq-connector "^1.2.3"
     web3-ledgerhq-frame-connector "^1.0.1"
 
+"@lidofinance/analytics-matomo@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/analytics-matomo/-/analytics-matomo-0.6.0.tgz#b3c014d17cb7cc86db32180530b8bba6d80c49a8"
+  integrity sha512-v/PMJ3zXBRuhuWcF8Lgzj81jZWy5dUYc4X55cxE+n/rYrZPvA4HBdu97y30e6EmveeRZKcHlPUCWLrZs8QlYiA==
+
 "@lidofinance/blocks-connect-wallet-modal@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@lidofinance/blocks-connect-wallet-modal/-/blocks-connect-wallet-modal-2.9.1.tgz#412d2a5cc3c1a5f59967c52cfb4b4b0b501751ad"
