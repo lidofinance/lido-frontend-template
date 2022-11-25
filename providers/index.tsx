@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import ModalProvider from './modals';
 import ThemeProvider, { ThemeName } from './theme';
@@ -9,7 +9,7 @@ type Props = Web3ProviderProps & {
   cookiesManualThemeScheme?: ThemeName;
 };
 
-const Providers: FC<Props> = ({
+const Providers: FC<PropsWithChildren<Props>> = ({
   cookiesAutoThemeScheme,
   cookiesManualThemeScheme,
   config,

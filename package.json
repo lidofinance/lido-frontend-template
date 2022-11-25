@@ -8,6 +8,7 @@
     "start": "NODE_OPTIONS='-r next-logger' next start",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "yarn lint --fix",
+    "types": "tsc --noEmit",
     "typechain": "typechain --target=ethers-v5 --out-dir ./generated ./abi/*.json",
     "postinstall": "husky install && yarn typechain",
     "commit": "git-cz"
