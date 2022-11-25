@@ -20,7 +20,7 @@ jobs:
 
   lint_and_build:
     runs-on: ubuntu-latest
-    name: Build and deploy
+    name: Lint and build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
