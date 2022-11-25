@@ -15,6 +15,7 @@ import {
   TransactionToastEtherscan,
 } from './transactionToast';
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export const transaction = async <T extends unknown = TransactionReceipt>(
   name: string,
   chainId: CHAINS,
