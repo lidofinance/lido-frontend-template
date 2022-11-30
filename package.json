@@ -100,5 +100,8 @@
     "commitizen": {
       "path": "@commitlint/prompt"
     }
+  },
+  "resolutions": {
+    "@types/react": "17.0.43"
   }
 }
