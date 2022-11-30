@@ -15,7 +15,7 @@ import {
   TransactionToastEtherscan,
 } from './transactionToast';
 
-export const transaction = async <T extends unknown = TransactionReceipt>(
+export const transaction = async <T extends TransactionReceipt>(
   name: string,
   chainId: CHAINS,
   callback: () => Promise<TransactionResponse>,

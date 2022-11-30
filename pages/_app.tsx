@@ -7,7 +7,6 @@ import {
   migrationThemeCookiesToCrossDomainCookiesClientSide,
 } from '@lidofinance/lido-ui';
 import Providers from 'providers';
-import { CustomAppProps } from 'types';
 import { withCsp } from 'utils/withCsp';
 
 // Migrations old cookies to new cross domain cookies
@@ -26,7 +25,7 @@ const App = (props: AppProps): JSX.Element => {
 
 const MemoApp = memo(App);
 
-const AppWrapper = (props: CustomAppProps): JSX.Element => {
+const AppWrapper = (props: AppProps): JSX.Element => {
   const { ...rest } = props;
 
   return (
