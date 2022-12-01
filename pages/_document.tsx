@@ -10,7 +10,8 @@ import { Fonts, LidoUIHead } from '@lidofinance/lido-ui';
 import { ServerStyleSheet } from 'styled-components';
 import { dynamics } from '../config';
 
-let host = 'https://stake.lido.fi';
+// for prod and dev use https and real domain
+let host = 'http://localhost';
 
 export default class MyDocument extends Document {
   static async getInitialProps(
