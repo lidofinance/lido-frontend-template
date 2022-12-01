@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { ProviderWeb3 } from '@lido-sdk/web3-react';
 import { backendRPC } from 'config';
 import dynamics from '../config/dynamics';
@@ -8,14 +8,16 @@ export type EnvConfig = {
   supportedChains: string;
 };
 
-const Web3Provider: FC = ({ children }) => (
-  <ProviderWeb3
-    defaultChainId={dynamics.defaultChain}
-    supportedChainIds={dynamics.supportedChains}
-    rpc={backendRPC}
-  >
-    {children}
-  </ProviderWeb3>
-);
+const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <ProviderWeb3
+      defaultChainId={dynamics.defaultChain}
+      supportedChainIds={dynamics.supportedChains}
+      rpc={backendRPC}
+    >
+      {children}
+    </ProviderWeb3>
+  );
+};
 
 export default Web3Provider;
