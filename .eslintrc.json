@@ -34,14 +34,6 @@
     "jsx-a11y/anchor-is-valid": "off",
     "func-style": ["error", "expression"]
   },
-  "overrides": [
-    {
-      "files": ["*.js"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-      }
-    }
-  ],
   "settings": {
     "react": {
       "version": "detect"

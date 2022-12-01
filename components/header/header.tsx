@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { LidoLogo } from '@lidofinance/lido-logo';
+import { LidoLogo } from '@lidofinance/lido-ui';
 import {
   HeaderStyle,
   HeaderLogoStyle,

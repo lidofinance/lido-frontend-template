@@ -1,11 +1,13 @@
 import { FC } from 'react';
-import { useWeb3 } from '@lido-sdk/web3-react';
+import { CHAINS, getChainColor } from '@lido-sdk/constants';
 import { useSDK } from '@lido-sdk/react';
+import { useWeb3 } from '@lido-sdk/web3-react';
+import { ThemeToggler } from '@lidofinance/lido-ui';
+
 import WalletButton from 'components/walletButton';
 import WalletConnect from 'components/walletConnect';
-import ThemeToggler from 'components/themeToggler';
+
 import { HeaderWalletChainStyle } from './headerWalletStyles';
-import { CHAINS, getChainColor } from '@lido-sdk/constants';
 
 const HeaderWallet: FC = () => {
   const { active } = useWeb3();

@@ -2,7 +2,7 @@ import { Container, Divider } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
 
 export const FooterStyle = styled(Container)`
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--lido-color-text);
   display: flex;
   flex-wrap: wrap;
   padding-top: 60px;
@@ -67,7 +67,7 @@ export const FooterItemStyle = styled.div`
 
     &,
     &:hover {
-      color: ${({ theme }) => theme.colors.text};
+      color: var(--lido-color-text);
     }
 
     &:hover {

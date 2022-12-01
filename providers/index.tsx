@@ -1,32 +1,20 @@
 import { FC, PropsWithChildren } from 'react';
+import { CookieThemeProvider } from '@lidofinance/lido-ui';
+
+import { GlobalStyle } from 'styles';
 
 import ModalProvider from './modals';
-import ThemeProvider, { ThemeName } from './theme';
-import Web3Provider, { Web3ProviderProps } from './web3';
+import Web3Provider from './web3';
+export { MODAL, ModalContext } from './modals';
+export * from './web3';
 
-type Props = Web3ProviderProps & {
-  cookiesAutoThemeScheme?: ThemeName;
-  cookiesManualThemeScheme?: ThemeName;
-};
-
-const Providers: FC<PropsWithChildren<Props>> = ({
-  cookiesAutoThemeScheme,
-  cookiesManualThemeScheme,
-  config,
-  children,
-}) => (
-  <ThemeProvider
-    cookiesAutoThemeScheme={cookiesAutoThemeScheme}
-    cookiesManualThemeScheme={cookiesManualThemeScheme}
-  >
-    <Web3Provider config={config}>
+const Providers: FC<PropsWithChildren> = ({ children }) => (
+  <CookieThemeProvider>
+    <GlobalStyle />
+    <Web3Provider>
       <ModalProvider>{children}</ModalProvider>
     </Web3Provider>
-  </ThemeProvider>
+  </CookieThemeProvider>
 );
 
 export default Providers;
-
-export * from './modals';
-export * from './theme';
-export * from './web3';

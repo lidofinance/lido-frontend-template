@@ -11,3 +11,5 @@
 
 # production
 /build
+
+/public

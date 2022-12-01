@@ -1,36 +1,19 @@
-import { FC, PropsWithChildren, useMemo } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { ProviderWeb3 } from '@lido-sdk/web3-react';
 import { backendRPC } from 'config';
+import dynamics from '../config/dynamics';
 
 export type EnvConfig = {
   defaultChain: string;
   supportedChains: string;
 };
 
-export type Config = {
-  defaultChain: number;
-  supportedChainIds: number[];
-};
-
-export type Web3ProviderProps = { config: EnvConfig };
-
-const Web3Provider: FC<PropsWithChildren<Web3ProviderProps>> = ({
-  children,
-  config,
-}) => {
-  const defaultChainId = parseInt(config.defaultChain);
-
-  const supportedChainIds = useMemo(() => {
-    return config.supportedChains
-      .split(',')
-      .map((value: string) => parseInt(value));
-  }, [config.supportedChains]);
-
+const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
   return (
     // @ts-expect-error need to patch web3-react
     <ProviderWeb3
-      defaultChainId={defaultChainId}
-      supportedChainIds={supportedChainIds}
+      defaultChainId={dynamics.defaultChain}
+      supportedChainIds={dynamics.supportedChains}
       rpc={backendRPC}
     >
       {children}

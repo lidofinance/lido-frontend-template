@@ -1,12 +1,21 @@
 import { memo } from 'react';
-import NextApp, { AppProps, AppContext } from 'next/app';
-import { ToastContainer } from '@lidofinance/lido-ui';
+import NextApp, { AppContext, AppProps } from 'next/app';
+import {
+  ToastContainer,
+  CookiesTooltip,
+  migrationAllowCookieToCrossDomainCookieClientSide,
+  migrationThemeCookiesToCrossDomainCookiesClientSide,
+} from '@lidofinance/lido-ui';
 import Providers from 'providers';
-import getConfig from 'next/config';
-import { CustomAppProps } from 'types';
 import { withCsp } from 'utils/withCsp';
-import { STORAGE_THEME_AUTO_KEY, STORAGE_THEME_MANUAL_KEY } from 'config';
-import cookie from 'cookie';
+
+// Migrations old cookies to new cross domain cookies
+migrationThemeCookiesToCrossDomainCookiesClientSide();
+
+// Migrations old allow cookies to new cross domain cookies
+migrationAllowCookieToCrossDomainCookieClientSide(
+  'LIDO_WIDGET__COOKIES_ALLOWED',
+);
 
 const App = (props: AppProps): JSX.Element => {
   const { Component, pageProps } = props;
@@ -16,32 +25,20 @@ const App = (props: AppProps): JSX.Element => {
 
 const MemoApp = memo(App);
 
-const AppWrapper = (props: CustomAppProps): JSX.Element => {
-  const { config, ...rest } = props;
+const AppWrapper = (props: AppProps): JSX.Element => {
+  const { ...rest } = props;
 
   return (
-    <Providers
-      config={config || {}}
-      cookiesAutoThemeScheme={rest.pageProps.cookiesAutoThemeScheme}
-      cookiesManualThemeScheme={rest.pageProps.cookiesManualThemeScheme}
-    >
-      <ToastContainer />
+    <Providers>
       <MemoApp {...rest} />
+      <CookiesTooltip />
+      <ToastContainer />
     </Providers>
   );
 };
 
 AppWrapper.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await NextApp.getInitialProps(appContext);
-  const { publicRuntimeConfig } = getConfig();
-
-  const cookies = cookie.parse(String(appContext?.ctx?.req?.headers?.cookie));
-
-  appProps.pageProps.cookiesAutoThemeScheme = cookies[STORAGE_THEME_AUTO_KEY];
-  appProps.pageProps.cookiesManualThemeScheme =
-    cookies[STORAGE_THEME_MANUAL_KEY];
-
-  return { ...appProps, config: publicRuntimeConfig };
+  return await NextApp.getInitialProps(appContext);
 };
 
 export default process.env.NODE_ENV === 'development'

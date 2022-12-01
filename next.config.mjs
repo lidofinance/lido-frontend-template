@@ -1,4 +1,7 @@
-const { CHAINS } = require('@lido-sdk/constants');
+import { CHAINS } from '@lido-sdk/constants';
+import buildDynamics from './scripts/build-dynamics.mjs';
+
+buildDynamics();
 
 const basePath = process.env.BASE_PATH || '';
 const infuraApiKey = process.env.INFURA_API_KEY;
@@ -11,15 +14,15 @@ const apiProviderUrls = {
   [CHAINS.Kovan]: process.env[`API_PROVIDER_URL_${CHAINS.Kovan}`],
 };
 
-const defaultChain = process.env.DEFAULT_CHAIN;
-const supportedChains = process.env.SUPPORTED_CHAINS;
-
 const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
 
-module.exports = {
+export default {
   basePath,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   compiler: {
     styledComponents: true,
   },
@@ -52,9 +55,5 @@ module.exports = {
     cspTrustedHosts,
     cspReportOnly,
     cspReportUri,
-  },
-  publicRuntimeConfig: {
-    defaultChain,
-    supportedChains,
   },
 };

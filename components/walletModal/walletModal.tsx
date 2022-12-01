@@ -1,4 +1,5 @@
 import {
+  Address,
   ButtonIcon,
   Modal,
   ModalProps,
@@ -6,7 +7,6 @@ import {
   External,
   Copy,
 } from '@lidofinance/lido-ui';
-import { Address } from '@lidofinance/address';
 import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
 import { useConnectorInfo, useDisconnect } from '@lido-sdk/web3-react';
 import { useCopyToClipboard } from 'hooks';
