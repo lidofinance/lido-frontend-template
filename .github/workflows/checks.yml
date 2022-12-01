@@ -1,7 +1,6 @@
 name: Tests and Checks
 
 on: 
-  push:
   pull_request:
 
 jobs:
