@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, PropsWithChildren, useMemo } from 'react';
 import { ProviderWeb3 } from '@lido-sdk/web3-react';
 import { backendRPC } from 'config';
 
@@ -14,7 +14,10 @@ export type Config = {
 
 export type Web3ProviderProps = { config: EnvConfig };
 
-const Web3Provider: FC<Web3ProviderProps> = ({ children, config }) => {
+const Web3Provider: FC<PropsWithChildren<Web3ProviderProps>> = ({
+  children,
+  config,
+}) => {
   const defaultChainId = parseInt(config.defaultChain);
 
   const supportedChainIds = useMemo(() => {
@@ -24,6 +27,7 @@ const Web3Provider: FC<Web3ProviderProps> = ({ children, config }) => {
   }, [config.supportedChains]);
 
   return (
+    // @ts-expect-error need to patch web3-react
     <ProviderWeb3
       defaultChainId={defaultChainId}
       supportedChainIds={supportedChainIds}

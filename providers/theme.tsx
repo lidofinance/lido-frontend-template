@@ -5,6 +5,7 @@ import {
   useState,
   useMemo,
   useEffect,
+  PropsWithChildren,
 } from 'react';
 import { GlobalStyle } from 'styles';
 import {
@@ -46,7 +47,7 @@ export enum THEME {
   dark = 'dark',
 }
 
-const ThemeProvider: FC<Props> = ({
+const ThemeProvider: FC<PropsWithChildren<Props>> = ({
   cookiesAutoThemeScheme,
   cookiesManualThemeScheme,
   children,
