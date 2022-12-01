@@ -1,7 +1,7 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import { MainStyle } from './mainStyles';
 
-const Main: FC<PropsWithChildren> = (props) => {
+const Main: FC = (props) => {
   return <MainStyle size="tight" forwardedAs="main" {...props} />;
 };
 
