@@ -20,7 +20,7 @@ import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
-import { FAQItem, getFaqList } from 'lib/faqList';
+import { FAQItem, getFaqList } from 'utils/faqList';
 import { standardFetcher } from 'utils';
 
 interface HomeProps {
