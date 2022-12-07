@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import NextApp, { AppProps, AppContext } from 'next/app';
+import NextApp, { AppContext, AppProps } from 'next/app';
 import {
   ToastContainer,
   CookiesTooltip,
@@ -39,9 +39,7 @@ const AppWrapper = (props: CustomAppProps): JSX.Element => {
 };
 
 AppWrapper.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await NextApp.getInitialProps(appContext);
-
-  return { ...appProps };
+  return await NextApp.getInitialProps(appContext);
 };
 
 export default process.env.NODE_ENV === 'development'

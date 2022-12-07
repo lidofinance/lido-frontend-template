@@ -15,7 +15,7 @@ import {
   TransactionToastEtherscan,
 } from './transactionToast';
 
-export const transaction = async <T extends unknown = TransactionReceipt>(
+export const transaction = async <T extends TransactionReceipt>(
   name: string,
   chainId: CHAINS,
   callback: () => Promise<TransactionResponse>,
@@ -62,7 +62,9 @@ export const transaction = async <T extends unknown = TransactionReceipt>(
     if (pendingToastId) toast.dismiss(pendingToastId);
 
     if (error instanceof Error) {
-      ToastError(error?.message || error);
+      ToastError(error?.message);
+    } else if (error instanceof String) {
+      ToastError(error);
     } else {
       ToastError('Transaction error');
     }

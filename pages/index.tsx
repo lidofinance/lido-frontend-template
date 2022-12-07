@@ -1,6 +1,6 @@
 import { FC, FormEventHandler, useEffect } from 'react';
-import styled from 'styled-components';
 import { GetStaticProps } from 'next';
+import styled from 'styled-components';
 import Head from 'next/head';
 import {
   useContractSWR,
@@ -22,8 +22,8 @@ import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
-import { FAQItem, getFaqList } from 'lib/faqList';
 import { standardFetcher } from 'utils';
+import { FAQItem, getFaqList } from 'utils/faqList';
 
 interface HomeProps {
   faqList: FAQItem[];

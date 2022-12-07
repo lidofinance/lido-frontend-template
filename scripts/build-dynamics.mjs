@@ -8,16 +8,12 @@ this allows developer to keep in mind that only client-side has access there.
 */
 
 import {resolve, dirname} from 'node:path';
-import cluster from 'node:cluster';
 import {ensureDirSync} from 'fs-extra';
 import {writeFileSync} from 'fs';
 import * as dynamics from '../env-dynamics.mjs';
 
 export default () => {
   if (process.env.NODE_NO_BUILD_DYNAMICS) {
-    return;
-  }
-  if (cluster.isWorker) {
     return;
   }
   const path = resolve('./public/runtime/window-env.js');
