@@ -11,12 +11,9 @@ on:
 permissions: {}
 
 jobs:
-  # test:
-  #   ...
-
   deploy:
+    if: ${{ github.repository != 'lidofinance/lido-frontend-template' }}
     runs-on: ubuntu-latest
-    # needs: test
     name: Build and deploy
     steps:
       - name: Staging deploy
