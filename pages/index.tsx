@@ -41,7 +41,6 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       'mount_index_component',
     ];
 
-    console.log(1);
     trackEvent(...matomoSomeEvent);
   }, []);
 
