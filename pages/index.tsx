@@ -1,7 +1,7 @@
-import { FC, FormEventHandler } from 'react';
+import { FC, FormEventHandler, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import styled from 'styled-components';
+import Head from 'next/head';
 import {
   useContractSWR,
   useSTETHContractRPC,
@@ -16,12 +16,14 @@ import {
   Steth,
   Button,
 } from '@lidofinance/lido-ui';
+import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
+
 import Wallet from 'components/wallet';
 import Section from 'components/section';
 import Layout from 'components/layout';
 import Faq from 'components/faq';
-import { FAQItem, getFaqList } from 'utils/faqList';
 import { standardFetcher } from 'utils';
+import { FAQItem, getFaqList } from 'utils/faqList';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -32,6 +34,16 @@ const InputWrapper = styled.div`
 `;
 
 const Home: FC<HomeProps> = ({ faqList }) => {
+  useEffect(() => {
+    const matomoSomeEvent: MatomoEventType = [
+      'Lido_Frontend_Template',
+      'Mount index component',
+      'mount_index_component',
+    ];
+
+    trackEvent(...matomoSomeEvent);
+  }, []);
+
   const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (
     event,
   ) => {
