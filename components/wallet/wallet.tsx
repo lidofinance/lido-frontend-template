@@ -12,7 +12,7 @@ import {
   useTokenAddress,
   useWSTETHBalance,
 } from '@lido-sdk/react';
-import { useWeb3 } from '@lido-sdk/web3-react';
+import { useWeb3 } from '@reef-knot/web3-react';
 import FormatToken from 'components/formatToken';
 import FallbackWallet from 'components/fallbackWallet';
 import TokenToWallet from 'components/tokenToWallet';

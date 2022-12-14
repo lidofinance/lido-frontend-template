@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { useThemeToggle } from '@lidofinance/lido-ui';
 import WalletModal from 'components/walletModal';
-import { WalletsModalForEth } from '@lidofinance/lido-ui-blocks';
+import { WalletsModalForEth } from '@reef-knot/connect-wallet-modal';
 
 export type ModalContextValue = {
   openModal: (modal: MODAL) => void;

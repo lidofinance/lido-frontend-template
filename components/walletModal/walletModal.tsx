@@ -8,7 +8,7 @@ import {
   Copy,
 } from '@lidofinance/lido-ui';
 import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
-import { useConnectorInfo, useDisconnect } from '@lido-sdk/web3-react';
+import { useConnectorInfo, useDisconnect } from '@reef-knot/web3-react';
 import { useCopyToClipboard } from 'hooks';
 import { FC, useCallback } from 'react';
 import {
