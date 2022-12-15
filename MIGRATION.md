@@ -208,10 +208,9 @@ const ETHERSCAN_SUBDOMAINS_BY_NETWORK = {
   [42]: 'kovan.',
 };
 
-export default getEtherscanLink(chain, hash);
-{
+export const getEtherscanLink = (chain, hash) => {
   return `https://${ETHERSCAN_SUBDOMAINS_BY_NETWORK(chain)}/tx/${hash}`;
-}
+};
 ```
 
 and we would use it like so,
