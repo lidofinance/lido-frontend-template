@@ -3,6 +3,9 @@ import { Metrics as WalletsMetrics } from 'reef-knot';
 
 const MATOMO_EVENT_CATEGORY = 'Lido_Frontend_Template';
 
+const getMatomoEventNameWithPrefix = (name: string) =>
+  `template_widget_${name}`;
+
 export const enum MATOMO_WALLETS_EVENTS_TYPES {
   onClickAmbire = 'onClickAmbire',
   onConnectAmbire = 'onConnectAmbire',
@@ -47,174 +50,176 @@ export const MATOMO_WALLETS_EVENTS: Record<
   [MATOMO_WALLETS_EVENTS_TYPES.onClickAmbire]: [
     MATOMO_EVENT_CATEGORY,
     'Click on Ambire wallet',
-    'template_widget_click_ambire',
+    getMatomoEventNameWithPrefix('click_ambire'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectAmbire]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Ambire wallet',
-    'template_widget_connect_ambire',
+    getMatomoEventNameWithPrefix('connect_ambire'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickBlockchaincom]: [
     MATOMO_EVENT_CATEGORY,
     'Click Blockchain.com wallet',
-    'template_widget_click_blockchaincom',
+    getMatomoEventNameWithPrefix('click_blockchaincom'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectBlockchaincom]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Blockchain.com wallet',
-    'template_widget_connect_blockchaincom',
+    getMatomoEventNameWithPrefix('connect_blockchaincom'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickBrave]: [
     MATOMO_EVENT_CATEGORY,
     'Click Brave wallet',
-    'template_widget_click_brave',
+    getMatomoEventNameWithPrefix('click_brave'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectBrave]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Brave wallet',
-    'template_widget_connect_brave',
+    getMatomoEventNameWithPrefix('connect_brave'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickCoin98]: [
     MATOMO_EVENT_CATEGORY,
     'Click Coin98 wallet',
-    'template_widget_click_coin98',
+    getMatomoEventNameWithPrefix('click_coin98'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectCoin98]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Coin98 wallet',
-    'template_widget_connect_coin98',
+    getMatomoEventNameWithPrefix('connect_coin98'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectCoinbase]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Coinbase Wallet wallet',
-    'template_widget_connect_coinbase_wallet',
+    getMatomoEventNameWithPrefix('connect_coinbase_wallet'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickCoinbase]: [
     MATOMO_EVENT_CATEGORY,
     'Click Coinbase Wallet wallet',
-    'template_widget_click_coinbase_wallet',
+    getMatomoEventNameWithPrefix('click_coinbase_wallet'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectExodus]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Exodus wallet',
-    'template_widget_connect_exodus',
+    getMatomoEventNameWithPrefix('connect_exodus'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickExodus]: [
     MATOMO_EVENT_CATEGORY,
     'Click Exodus wallet',
-    'template_widget_click_exodus',
+    getMatomoEventNameWithPrefix('click_exodus'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectGamestop]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Gamestop wallet',
-    'template_widget_connect_gamestop',
+    getMatomoEventNameWithPrefix('connect_gamestop'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickGamestop]: [
     MATOMO_EVENT_CATEGORY,
     'Click Gamestop wallet',
-    'template_widget_click_gamestop',
+    getMatomoEventNameWithPrefix('click_gamestop'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectImToken]: [
     MATOMO_EVENT_CATEGORY,
     'Connect imToken wallet',
-    'template_widget_connect_imtoken',
+    getMatomoEventNameWithPrefix('connect_imtoken'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickImToken]: [
     MATOMO_EVENT_CATEGORY,
     'Click imToken wallet',
-    'template_widget_click_imtoken',
+    getMatomoEventNameWithPrefix('click_imtoken'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectLedger]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Ledger wallet',
-    'template_widget_connect_ledger',
+    getMatomoEventNameWithPrefix('connect_ledger'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickLedger]: [
     MATOMO_EVENT_CATEGORY,
     'Click Ledger wallet',
-    'template_widget_click_ledger',
+    getMatomoEventNameWithPrefix('click_ledger'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectMathWallet]: [
     MATOMO_EVENT_CATEGORY,
     'Connect MathWallet wallet',
-    'template_widget_connect_mathwallet',
+    getMatomoEventNameWithPrefix('connect_mathwallet'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickMathWallet]: [
     MATOMO_EVENT_CATEGORY,
     'Click MathWallet wallet',
-    'template_widget_click_mathwallet',
+    getMatomoEventNameWithPrefix('click_mathwallet'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectMetamask]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Metamask wallet',
-    'template_widget_connect_metamask',
+    getMatomoEventNameWithPrefix('connect_metamask'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickMetamask]: [
     MATOMO_EVENT_CATEGORY,
     'Click Metamask wallet',
-    'template_widget_click_metamask',
+    getMatomoEventNameWithPrefix('click_metamask'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectOperaWallet]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Opera wallet',
-    'template_widget_connect_opera',
+    getMatomoEventNameWithPrefix('connect_opera'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickOperaWallet]: [
     MATOMO_EVENT_CATEGORY,
     'Click Opera wallet',
-    'template_widget_click_opera',
+    getMatomoEventNameWithPrefix('click_opera'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectTally]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Tally wallet',
-    'template_widget_connect_tally',
+    getMatomoEventNameWithPrefix('connect_tally'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickTally]: [
     MATOMO_EVENT_CATEGORY,
     'Click Tally wallet',
-    'template_widget_click_tally',
+    getMatomoEventNameWithPrefix('click_tally'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectTrust]: [
     MATOMO_EVENT_CATEGORY,
     'Connect Trust wallet',
-    'template_widget_connect_trust',
+    getMatomoEventNameWithPrefix('connect_trust'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickTrust]: [
     MATOMO_EVENT_CATEGORY,
     'Click Trust wallet',
-    'template_widgett_click_trust',
+    getMatomoEventNameWithPrefix('click_trust'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectWC]: [
     MATOMO_EVENT_CATEGORY,
     'Connect WalletConnect wallet',
-    'template_widget_connect_walletconnect',
+    getMatomoEventNameWithPrefix('connect_walletconnect'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickWC]: [
     MATOMO_EVENT_CATEGORY,
     'Click WalletConnect wallet',
-    'template_widget_click_walletconnect',
+    getMatomoEventNameWithPrefix('click_walletconnect'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectXdefi]: [
     MATOMO_EVENT_CATEGORY,
     'Connect XDEFI wallet',
-    'template_widget_connect_xdefi',
+    getMatomoEventNameWithPrefix('connect_xdefi'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickXdefi]: [
     MATOMO_EVENT_CATEGORY,
     'Click XDEFI wallet',
-    'template_widget_click_xdefi',
+    getMatomoEventNameWithPrefix('click_xdefi'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onConnectZenGo]: [
     MATOMO_EVENT_CATEGORY,
     'Connect ZenGo wallet',
-    'template_widget_connect_zengo',
+    getMatomoEventNameWithPrefix('connect_zengo'),
   ],
   [MATOMO_WALLETS_EVENTS_TYPES.onClickZenGo]: [
     MATOMO_EVENT_CATEGORY,
     'Click ZenGo wallet',
-    'template_widget_click_zengo',
+    getMatomoEventNameWithPrefix('click_zengo'),
   ],
 };
+
+console.log(MATOMO_WALLETS_EVENTS);
 
 export const walletsMetrics: WalletsMetrics = {
   events: {
