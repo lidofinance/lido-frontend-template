@@ -1,8 +1,16 @@
 import { MatomoEventType, trackEvent } from '@lidofinance/analytics-matomo';
 import { Metrics as WalletsMetrics } from 'reef-knot';
 
+// Should be change for Lido on X project!!!
+// For example:
+// - Ethereum_Staking_Widget
+// - Kusama_Stacking_Widget
 const MATOMO_EVENT_CATEGORY = 'Lido_Frontend_Template';
 
+// Should be change for Lido on X project!!!
+// For example:
+// - eth_widget_
+// - ksm_widget_
 const getMatomoEventNameWithPrefix = (name: string) =>
   `template_widget_${name}`;
 
