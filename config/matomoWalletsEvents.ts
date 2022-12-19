@@ -227,118 +227,50 @@ export const MATOMO_WALLETS_EVENTS: Record<
   ],
 };
 
-console.log(MATOMO_WALLETS_EVENTS);
+const bindEvent = (eventKey: keyof typeof MATOMO_WALLETS_EVENTS_TYPES) => () =>
+  trackEvent(...MATOMO_WALLETS_EVENTS[eventKey]);
 
 export const walletsMetrics: WalletsMetrics = {
   events: {
     click: {
       handlers: {
-        onClickAmbire: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickAmbire);
-        },
-        onClickBlockchaincom: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickBlockchaincom);
-        },
-        onClickBrave: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickBrave);
-        },
-        onClickCoin98: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickCoin98);
-        },
-        onClickCoinbase: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickCoinbase);
-        },
-        onClickExodus: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickExodus);
-        },
-        onClickGamestop: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickGamestop);
-        },
-        onClickImToken: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickImToken);
-        },
-        onClickLedger: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickLedger);
-        },
-        onClickMathWallet: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickMathWallet);
-        },
-        onClickMetamask: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickMetamask);
-        },
-        onClickOperaWallet: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickOperaWallet);
-        },
-        onClickTally: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickTally);
-        },
-        onClickTrust: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickTrust);
-        },
-        onClickWC: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickWC);
-        },
-        onClickXdefi: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickXdefi);
-        },
-        onClickZenGo: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onClickZenGo);
-        },
+        onClickAmbire: bindEvent('onClickAmbire'),
+        onClickBlockchaincom: () => bindEvent('onClickBlockchaincom'),
+        onClickBrave: bindEvent('onClickBrave'),
+        onClickCoin98: bindEvent('onClickCoin98'),
+        onClickCoinbase: bindEvent('onClickCoinbase'),
+        onClickExodus: bindEvent('onClickExodus'),
+        onClickGamestop: bindEvent('onClickGamestop'),
+        onClickLedger: bindEvent('onClickLedger'),
+        onClickMathWallet: bindEvent('onClickMathWallet'),
+        onClickMetamask: bindEvent('onClickMetamask'),
+        onClickOperaWallet: bindEvent('onClickOperaWallet'),
+        onClickTally: bindEvent('onClickTally'),
+        onClickTrust: bindEvent('onClickTrust'),
+        onClickWC: bindEvent('onClickWC'),
+        onClickXdefi: bindEvent('onClickXdefi'),
+        onClickZenGo: bindEvent('onClickZenGo'),
       },
     },
     connect: {
       handlers: {
-        onConnectAmbire: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectAmbire);
-        },
-        onConnectBlockchaincom: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectBlockchaincom);
-        },
-        onConnectBrave: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectBrave);
-        },
-        onConnectCoin98: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectCoin98);
-        },
-        onConnectCoinbase: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectCoinbase);
-        },
-        onConnectExodus: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectExodus);
-        },
-        onConnectGamestop: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectGamestop);
-        },
-        onConnectImToken: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectImToken);
-        },
-        onConnectLedger: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectLedger);
-        },
-        onConnectMathWallet: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectMathWallet);
-        },
-        onConnectMetamask: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectMetamask);
-        },
-        onConnectOperaWallet: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectOperaWallet);
-        },
-        onConnectTally: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectTally);
-        },
-        onConnectTrust: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectTrust);
-        },
-        onConnectWC: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectWC);
-        },
-        onConnectXdefi: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectXdefi);
-        },
-        onConnectZenGo: () => {
-          trackEvent(...MATOMO_WALLETS_EVENTS.onConnectZenGo);
-        },
+        onConnectAmbire: bindEvent('onConnectAmbire'),
+        onConnectBlockchaincom: bindEvent('onConnectBlockchaincom'),
+        onConnectBrave: bindEvent('onConnectBrave'),
+        onConnectCoin98: bindEvent('onConnectCoin98'),
+        onConnectCoinbase: bindEvent('onConnectCoinbase'),
+        onConnectExodus: bindEvent('onConnectExodus'),
+        onConnectGamestop: bindEvent('onConnectGamestop'),
+        onConnectImToken: bindEvent('onConnectImToken'),
+        onConnectLedger: bindEvent('onConnectLedger'),
+        onConnectMathWallet: bindEvent('onConnectMathWallet'),
+        onConnectMetamask: bindEvent('onConnectMetamask'),
+        onConnectOperaWallet: bindEvent('onConnectOperaWallet'),
+        onConnectTally: bindEvent('onConnectTally'),
+        onConnectTrust: bindEvent('onConnectTrust'),
+        onConnectWC: bindEvent('onConnectWC'),
+        onConnectXdefi: bindEvent('onConnectXdefi'),
+        onConnectZenGo: bindEvent('onConnectZenGo'),
       },
     },
   },
