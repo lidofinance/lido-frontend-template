@@ -55,9 +55,9 @@ const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
       <WalletModal open={active === MODAL.wallet} {...common} />
       <WalletsModalForEth
         open={active === MODAL.connect}
-        {...common}
         metrics={walletsMetrics}
         hiddenWallets={['Opera Wallet']}
+        {...common}
       />
     </ModalContext.Provider>
   );
