@@ -235,7 +235,7 @@ export const walletsMetrics: WalletsMetrics = {
     click: {
       handlers: {
         onClickAmbire: bindEvent('onClickAmbire'),
-        onClickBlockchaincom: () => bindEvent('onClickBlockchaincom'),
+        onClickBlockchaincom: bindEvent('onClickBlockchaincom'),
         onClickBrave: bindEvent('onClickBrave'),
         onClickCoin98: bindEvent('onClickCoin98'),
         onClickCoinbase: bindEvent('onClickCoinbase'),
