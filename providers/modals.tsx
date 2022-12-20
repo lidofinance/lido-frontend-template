@@ -8,8 +8,9 @@ import {
   PropsWithChildren,
 } from 'react';
 import { useThemeToggle } from '@lidofinance/lido-ui';
+import { WalletsModalForEth } from '@reef-knot/connect-wallet-modal';
 import WalletModal from 'components/walletModal';
-import { WalletsModalForEth } from '@lidofinance/lido-ui-blocks';
+import { walletsMetrics } from 'config/matomoWalletsEvents';
 
 export type ModalContextValue = {
   openModal: (modal: MODAL) => void;
@@ -52,7 +53,12 @@ const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
     <ModalContext.Provider value={value}>
       {children}
       <WalletModal open={active === MODAL.wallet} {...common} />
-      <WalletsModalForEth open={active === MODAL.connect} {...common} />
+      <WalletsModalForEth
+        open={active === MODAL.connect}
+        metrics={walletsMetrics}
+        hiddenWallets={['Opera Wallet']}
+        {...common}
+      />
     </ModalContext.Provider>
   );
 };

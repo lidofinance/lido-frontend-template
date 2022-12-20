@@ -67,7 +67,9 @@ In this step we wrap the application with `ProviderWeb3` from `@lido-sdk/web3-re
 - `supportedChainIds`,
 - and list of `rpc` addresses.
 
-```jsx
+But pay attention that for connect wallet should use `ProviderWeb3` from `@reef-knot/web3-react`.
+
+```tsx
 // providers/web3.js
 
 import { FC, useMemo } from 'react';
@@ -75,13 +77,13 @@ import { ProviderWeb3 } from '@lido-sdk/web3-react';
 import { backendRPC } from 'config';
 
 export type EnvConfig = {
-  defaultChain: string,
-  supportedChains: string,
+  defaultChain: string;
+  supportedChains: string;
 };
 
 export type Config = {
-  defaultChain: number,
-  supportedChainIds: number[],
+  defaultChain: number;
+  supportedChainIds: number[];
 };
 
 export type Web3ProviderProps = { config: EnvConfig };
@@ -206,9 +208,9 @@ const ETHERSCAN_SUBDOMAINS_BY_NETWORK = {
   [42]: 'kovan.',
 };
 
-export default getEtherscanLink(chain, hash) {
-  return `https://${ETHERSCAN_SUBDOMAINS_BY_NETWORK(chain)}/tx/${hash}`
-}
+export const getEtherscanLink = (chain, hash) => {
+  return `https://${ETHERSCAN_SUBDOMAINS_BY_NETWORK(chain)}/tx/${hash}`;
+};
 ```
 
 and we would use it like so,
