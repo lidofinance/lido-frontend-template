@@ -17,13 +17,15 @@ import {
   Button,
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
+import { Wallet as WalletIcon, Stake, Wrap } from '@lidofinance/lido-ui';
 
 import Wallet from 'components/wallet';
 import Section from 'components/section';
-import Layout from 'components/layout';
+import Layout from 'common/layout';
 import Faq from 'components/faq';
 import { standardFetcher } from 'utils';
 import { FAQItem, getFaqList } from 'utils/faqList';
+import { IPageLink } from '../common/header/components/pageLink';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -60,10 +62,31 @@ const Home: FC<HomeProps> = ({ faqList }) => {
   const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
   const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
 
+  // TODO: make another
+  const pages = [
+    {
+      title: 'Stake',
+      href: '/',
+      icon: <Stake />,
+    },
+    {
+      title: 'Wrap',
+      href: '/wrap',
+      icon: <Wrap />,
+    },
+    {
+      title: 'Rewards',
+      href: '/rewards',
+      icon: <WalletIcon />,
+      external: false,
+    },
+  ] as IPageLink[];
+
   return (
     <Layout
       title="Lido Frontend Template"
       subtitle="Develop Lido Apps without hassle"
+      pages={pages}
     >
       <Head>
         <title>Lido | Frontend Template</title>

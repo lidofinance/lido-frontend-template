@@ -93,6 +93,7 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
+          <meta name="description" content="Lido Template" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={this.metaTitle} />
           <meta property="og:description" content={this.metaDescription} />

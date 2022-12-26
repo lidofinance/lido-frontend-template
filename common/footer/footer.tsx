@@ -7,7 +7,7 @@ import {
   FooterGroupStyle,
   FooterTitleStyle,
   FooterItemStyle,
-} from './footerStyles';
+} from './styles';
 
 const Footer: FC = () => (
   <FooterStyle size="full" forwardedAs="footer">

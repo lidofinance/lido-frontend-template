@@ -7,7 +7,7 @@ import { ThemeToggler } from '@lidofinance/lido-ui';
 import WalletButton from 'components/walletButton';
 import WalletConnect from 'components/walletConnect';
 
-import { HeaderWalletChainStyle } from './headerWalletStyles';
+import { HeaderWalletChainStyle } from './styles';
 
 const HeaderWallet: FC = () => {
   const { active } = useWeb3();
