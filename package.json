@@ -89,10 +89,5 @@
     "./**/*.{ts,tsx,css,md,json}": [
       "prettier --write"
     ]
-  },
-  "commintlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
