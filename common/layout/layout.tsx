@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Ldo as LdoIcon, Stake, Wrap } from '@lidofinance/lido-ui';
 
 import Header from 'common/header';
-import { IPageLink } from 'common/header/components/pageLink';
+import { INavigationLink } from 'common/header/components/navigation/components/navigationLink';
 import Main from 'common/main';
 import Footer from 'common/footer';
 
@@ -29,7 +29,7 @@ const Layout: FC<ILayout> = (props: ILayout) => {
       icon: <LdoIcon />,
       external: true,
     },
-  ] as IPageLink[];
+  ] as INavigationLink[];
 
   return (
     <>
