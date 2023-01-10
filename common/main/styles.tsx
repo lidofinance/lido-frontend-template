@@ -1,5 +1,5 @@
-import { Container } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
+import { Container } from '@lidofinance/lido-ui';
 
 export const MainStyle = styled(Container)`
   position: relative;
