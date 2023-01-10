@@ -17,13 +17,17 @@ const NavigationLink: FC<INavigationLink> = (props: INavigationLink) => {
   const pathWithQuery = href + `${queryString ? `?${queryString}` : ''}`;
 
   return external ? (
-    <NavigationLinkStyle href={pathWithQuery} active={router.pathname === href}>
+    <NavigationLinkStyle
+      href={pathWithQuery}
+      active={router.pathname === href}
+      target="_blank"
+    >
       {icon}
       <span>{title}</span>
     </NavigationLinkStyle>
   ) : (
     // Fix hydration error https://github.com/vercel/next.js/issues/42358#issuecomment-1307230409
-    <LocalLink href={pathWithQuery} passHref legacyBehavior>
+    <LocalLink href={href} passHref legacyBehavior>
       <NavigationLinkStyle active={router.pathname === href}>
         {icon}
         <span>{title}</span>
