@@ -1,23 +1,25 @@
 import styled from 'styled-components';
 
-export const PageLinkStyle = styled.a<{ active: boolean }>`
-  cursor: pointer;
-  color: var(--lido-color-secondary);
-  font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
-  line-height: 1.7em;
-  font-weight: 800;
+export const NavigationLinkStyle = styled.a<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
+  line-height: 1.7em;
+  font-weight: 800;
   text-transform: uppercase;
   text-decoration: none !important;
   letter-spacing: 0.04em;
+  color: var(--lido-color-secondary);
+
   opacity: ${(props) => (props.active ? 1 : 0.8)};
+  cursor: pointer;
 
   :hover {
-    opacity: 1;
     color: var(--lido-color-secondary);
+    opacity: 1;
   }
   :visited {
     color: var(--lido-color-secondary);

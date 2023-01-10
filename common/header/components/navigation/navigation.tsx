@@ -1,7 +1,7 @@
 import { FC, memo, useId } from 'react';
-import { Nav } from './styles';
 
-import PageLink, { IPageLink } from '../pageLink';
+import NavigationLink, { INavigationLink } from './components/navigationLink';
+import { NavigationStyle } from './styles';
 import { INavigation } from './types';
 
 const Navigation: FC<INavigation> = memo((props: INavigation) => {
@@ -14,11 +14,11 @@ const Navigation: FC<INavigation> = memo((props: INavigation) => {
   }
 
   return (
-    <Nav>
-      {pages.map((pageProps: IPageLink, index: number) => (
-        <PageLink key={`${id}-${index}`} {...pageProps} />
+    <NavigationStyle>
+      {pages.map((pageProps: INavigationLink, index: number) => (
+        <NavigationLink key={`${id}-${index}`} {...pageProps} />
       ))}
-    </Nav>
+    </NavigationStyle>
   );
 });
 

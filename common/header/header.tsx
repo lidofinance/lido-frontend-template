@@ -4,7 +4,6 @@ import { LidoLogo } from '@lidofinance/lido-ui';
 
 import HeaderWallet from './components/headerWallet';
 import Navigation from './components/navigation';
-
 import { HeaderStyle, HeaderLogoStyle, HeaderActionsStyle } from './styles';
 import { IHeader } from './types';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface IPageLink {
+export interface INavigationLink {
   icon: string | React.ReactNode; // can be URL
   title: string;
   href: string;

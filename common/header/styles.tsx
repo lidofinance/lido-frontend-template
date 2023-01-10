@@ -1,17 +1,17 @@
-import { Container } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
+import { Container } from '@lidofinance/lido-ui';
 
 export const HeaderStyle = styled(Container)`
-  padding-top: 18px;
-  padding-bottom: 18px;
   display: flex;
   align-items: center;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
 `;
 
 export const HeaderLogoStyle = styled.div`
   overflow: hidden;
   flex-shrink: 0;
-  margin-right: ${({ theme }) => theme.spaceMap.xxl}px;
 
   ${({ theme }) => theme.mediaQueries.md} {
     width: 14px;
@@ -19,9 +19,11 @@ export const HeaderLogoStyle = styled.div`
 `;
 
 export const HeaderActionsStyle = styled.div`
-  margin-left: auto;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   flex-shrink: 1;
-  overflow: hidden;
+
+  margin-left: auto;
 `;

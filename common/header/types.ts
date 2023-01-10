@@ -1,5 +1,5 @@
-import { IPageLink } from 'common/header/components/pageLink';
+import { INavigationLink } from './components/navigation/components/navigationLink';
 
 export interface IHeader {
-  pages?: IPageLink[];
+  pages?: INavigationLink[];
 }
