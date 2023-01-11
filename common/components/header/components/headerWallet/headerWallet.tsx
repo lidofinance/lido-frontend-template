@@ -4,8 +4,8 @@ import { useSDK } from '@lido-sdk/react';
 import { useWeb3 } from '@reef-knot/web3-react';
 import { ThemeToggler } from '@lidofinance/lido-ui';
 
-import WalletButton from 'components/walletButton';
-import WalletConnect from 'components/walletConnect';
+import WalletButton from './components/walletButton';
+import WalletConnect from './components/walletConnect';
 
 import { HeaderWalletChainStyle } from './styles';
 
