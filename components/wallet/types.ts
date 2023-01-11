@@ -1,3 +1,3 @@
-import { WalletCardComponent } from 'components/walletCard';
+import { WalletCardComponent } from './components/walletCard';
 
 export type WalletComponent = WalletCardComponent;

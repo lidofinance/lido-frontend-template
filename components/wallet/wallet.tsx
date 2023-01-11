@@ -11,14 +11,12 @@ import { useWeb3 } from '@reef-knot/web3-react';
 
 import FormatToken from 'components/formatToken';
 import TokenToWallet from 'components/tokenToWallet';
-import {
-  WalletCard,
-  WalletCardBalance,
-  WalletCardRow,
-  WalletCardAccount,
-} from 'components/walletCard';
 
 import FallbackWallet from './components/fallbackWallet';
+import WalletCard from './components/walletCard';
+import WalletCardBalance from './components/walletCardBalance';
+import WalletCardAccount from './components/walletCard';
+import WalletCardRow from './components/walletCard/components/walletCardRow';
 import { WalletComponent } from './types';
 
 const Wallet: WalletComponent = (props) => {
