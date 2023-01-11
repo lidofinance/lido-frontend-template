@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Head from 'next/head';
 
-import Layout from 'common/layout';
+import Layout from 'common/components/layout';
 
 const Example: FC = () => {
   return (

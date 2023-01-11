@@ -7,6 +7,7 @@ import { BackgroundGradientComponent } from './types';
 
 // svg gradient looks better than css gradient in some browsers
 
+// TODO: think about move to https://ui.lido.fi
 const BackgroundGradient: BackgroundGradientComponent = (props) => {
   const { width, height, ...rest } = props;
 
