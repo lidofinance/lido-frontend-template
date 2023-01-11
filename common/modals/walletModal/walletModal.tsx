@@ -1,3 +1,4 @@
+import { FC, useCallback } from 'react';
 import {
   Address,
   ButtonIcon,
@@ -9,8 +10,9 @@ import {
 } from '@lidofinance/lido-ui';
 import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
 import { useConnectorInfo, useDisconnect } from '@reef-knot/web3-react';
+
 import { useCopyToClipboard } from 'hooks';
-import { FC, useCallback } from 'react';
+
 import {
   WalletModalContentStyle,
   WalletModalConnectedStyle,
@@ -19,7 +21,7 @@ import {
   WalletModalAccountStyle,
   WalletModalAddressStyle,
   WalletModalActionsStyle,
-} from './walletModalStyles';
+} from './styles';
 
 const WalletModal: FC<ModalProps> = (props) => {
   const { onClose } = props;

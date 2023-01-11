@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { useThemeToggle } from '@lidofinance/lido-ui';
 import { WalletsModalForEth } from '@reef-knot/connect-wallet-modal';
-import WalletModal from 'components/walletModal';
+import WalletModal from 'common/modals/walletModal';
 import { walletsMetrics } from 'config/matomoWalletsEvents';
 
 export type ModalContextValue = {
