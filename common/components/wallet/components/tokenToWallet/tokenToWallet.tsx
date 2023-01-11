@@ -1,6 +1,6 @@
 import { Tooltip } from '@lidofinance/lido-ui';
 import { useTokenToWallet } from '@lido-sdk/react';
-import { TokenToWalletStyle } from './tokenToWalletStyles';
+import { TokenToWalletStyle } from './styles';
 import { TokenToWalletComponent } from './types';
 
 const TokenToWallet: TokenToWalletComponent = (props) => {

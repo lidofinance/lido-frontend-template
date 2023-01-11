@@ -10,8 +10,8 @@ import { TOKENS } from '@lido-sdk/constants';
 import { useWeb3 } from '@reef-knot/web3-react';
 
 import FormatToken from 'common/components/formatToken';
-import TokenToWallet from 'components/tokenToWallet';
 
+import TokenToWallet from './components/tokenToWallet';
 import FallbackWallet from './components/fallbackWallet';
 import WalletCard from './components/walletCard';
 import WalletCardBalance from './components/walletCardBalance';
