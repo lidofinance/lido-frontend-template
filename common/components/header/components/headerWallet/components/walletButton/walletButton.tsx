@@ -3,7 +3,8 @@ import { ButtonProps } from '@lidofinance/lido-ui';
 import { useEthereumBalance, useSDK } from '@lido-sdk/react';
 
 import AddressBadge from 'common/components/addressBadge';
-import FormatToken from 'components/formatToken';
+import FormatToken from 'common/components/formatToken';
+
 import { useModal } from 'hooks';
 import { MODAL } from 'providers';
 

@@ -9,7 +9,7 @@ import {
 import { TOKENS } from '@lido-sdk/constants';
 import { useWeb3 } from '@reef-knot/web3-react';
 
-import FormatToken from 'components/formatToken';
+import FormatToken from 'common/components/formatToken';
 import TokenToWallet from 'components/tokenToWallet';
 
 import FallbackWallet from './components/fallbackWallet';
