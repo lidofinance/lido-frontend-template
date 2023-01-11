@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import LocalLink from 'common/localLink';
+import LocalLink from 'common/components/localLink';
 
 import { NavigationLinkStyle } from './styles';
 import { INavigationLink } from './types';

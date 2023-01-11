@@ -23,6 +23,7 @@ export const FooterDividerStyle = styled(Divider)`
 `;
 
 export const FooterLogoStyle = styled.div`
+  // TODO flex-grow
   flex-grow: 25%;
   flex-grow: 1;
   margin-bottom: 40px;
@@ -49,6 +50,7 @@ export const FooterGroupStyle = styled.div`
 `;
 
 export const FooterTitleStyle = styled.h4`
+  // TODO margin
   margin: 0.6em 0;
   font-weight: 800;
   font-size: ${({ theme }) => theme.fontSizesMap.sm}px;

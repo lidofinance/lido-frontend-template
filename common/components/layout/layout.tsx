@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Ldo as LdoIcon, Stake, Wrap } from '@lidofinance/lido-ui';
 
-import Header from 'common/header';
-import { INavigationLink } from 'common/header/components/navigation/components/navigationLink';
-import Main from 'common/main';
-import Footer from 'common/footer';
+import Header from 'common/components/header';
+import { INavigationLink } from 'common/components/header/components/navigation/components/navigationLink';
+import Main from 'common/components/main';
+import Footer from 'common/components/footer';
 
 import { LayoutTitleStyle, LayoutSubTitleStyle } from './styles';
 import { ILayout } from './types';

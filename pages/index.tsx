@@ -18,9 +18,9 @@ import {
 } from '@lidofinance/lido-ui';
 import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
 
+import Layout from 'common/components/layout';
 import Wallet from 'components/wallet';
 import Section from 'components/section';
-import Layout from 'common/layout';
 import Faq from 'components/faq';
 import { standardFetcher } from 'utils';
 import { FAQItem, getFaqList } from 'utils/faqList';
