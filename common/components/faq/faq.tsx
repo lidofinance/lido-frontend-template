@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Accordion } from '@lidofinance/lido-ui';
-import Section from 'components/section';
+import Section from 'common/components/section';
 import { FaqProps } from './types';
 import { FaqItem } from './faqStyles';
 
