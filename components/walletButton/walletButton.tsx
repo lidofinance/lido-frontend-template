@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ButtonProps } from '@lidofinance/lido-ui';
-import AddressBadge from 'components/addressBadge';
+import AddressBadge from 'common/components/addressBadge';
 import {
   WalledButtonStyle,
   WalledButtonWrapperStyle,

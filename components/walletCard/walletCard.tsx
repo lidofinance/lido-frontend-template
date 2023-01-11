@@ -8,7 +8,7 @@ import {
   WalletCardAccountStyle,
   WalletCardContentStyle,
 } from './walletCardStyles';
-import AddressBadge from 'components/addressBadge';
+import AddressBadge from 'common/components/addressBadge';
 import { Component } from 'types';
 import { InlineLoader } from '@lidofinance/lido-ui';
 import {
