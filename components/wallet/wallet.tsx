@@ -1,9 +1,3 @@
-import {
-  WalletCard,
-  WalletCardBalance,
-  WalletCardRow,
-  WalletCardAccount,
-} from 'components/walletCard';
 import { Divider } from '@lidofinance/lido-ui';
 import {
   useEthereumBalance,
@@ -12,12 +6,20 @@ import {
   useTokenAddress,
   useWSTETHBalance,
 } from '@lido-sdk/react';
-import { useWeb3 } from '@reef-knot/web3-react';
-import FormatToken from 'components/formatToken';
-import FallbackWallet from 'components/fallbackWallet';
-import TokenToWallet from 'components/tokenToWallet';
-import { WalletComponent } from './types';
 import { TOKENS } from '@lido-sdk/constants';
+import { useWeb3 } from '@reef-knot/web3-react';
+
+import FormatToken from 'components/formatToken';
+import TokenToWallet from 'components/tokenToWallet';
+import {
+  WalletCard,
+  WalletCardBalance,
+  WalletCardRow,
+  WalletCardAccount,
+} from 'components/walletCard';
+
+import FallbackWallet from './components/fallbackWallet';
+import { WalletComponent } from './types';
 
 const Wallet: WalletComponent = (props) => {
   const { account } = useSDK();

@@ -1,5 +1,5 @@
-import { WalletCard } from 'components/walletCard';
 import styled from 'styled-components';
+import { WalletCard } from 'components/walletCard';
 
 export const FallbackWalletStyle = styled(WalletCard)`
   text-align: center;

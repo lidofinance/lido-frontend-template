@@ -1,6 +1,6 @@
-import { FallbackWalletComponent } from './types';
-import { FallbackWalletStyle } from './fallbackWalletStyles';
 import { useErrorMessage } from './useErrorMessage';
+import { FallbackWalletComponent } from './types';
+import { FallbackWalletStyle } from './styles';
 
 const FallbackWallet: FallbackWalletComponent = (props) => {
   const error = useErrorMessage();
