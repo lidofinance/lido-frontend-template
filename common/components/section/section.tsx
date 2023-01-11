@@ -7,6 +7,7 @@ import {
   SectionContentStyle,
 } from './sectionStyles';
 
+// TODO: think about move to https://ui.lido.fi
 const Section: SectionComponent = (props) => {
   const { title, headerDecorator, children, ...rest } = props;
   const hasDecorator = !!headerDecorator;
