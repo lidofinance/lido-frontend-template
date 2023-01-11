@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { INavigationLink } from 'common/header/components/navigation/components/navigationLink';
+import { INavigationLink } from 'common/components/header/components/navigation/components/navigationLink';
 
 export interface ILayout extends PropsWithChildren {
   pages?: INavigationLink[];
