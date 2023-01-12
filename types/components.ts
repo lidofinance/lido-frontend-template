@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { EnvConfig } from 'providers';
+import { EnvConfig } from 'common/providers';
 import { FC, ReactNode } from 'react';
 
 export type ComponentProps<
