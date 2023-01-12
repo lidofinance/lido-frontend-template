@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { ProviderWeb3 } from '@reef-knot/web3-react';
-import { backendRPC } from 'config';
-import dynamics from '../config/dynamics';
+import { backendRPC, dynamics } from 'config';
 
 export type EnvConfig = {
   defaultChain: string;
