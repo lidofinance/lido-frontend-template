@@ -5,8 +5,7 @@ import { useEthereumBalance, useSDK } from '@lido-sdk/react';
 import AddressBadge from 'common/components/addressBadge';
 import FormatToken from 'common/components/formatToken';
 import { MODAL } from 'common/providers';
-
-import { useModal } from 'hooks';
+import { useModal } from 'common/hooks';
 
 import {
   WalledButtonStyle,

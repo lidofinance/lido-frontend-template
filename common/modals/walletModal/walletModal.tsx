@@ -11,7 +11,7 @@ import {
 import { useEtherscanOpen, useSDK } from '@lido-sdk/react';
 import { useConnectorInfo, useDisconnect } from '@reef-knot/web3-react';
 
-import { useCopyToClipboard } from 'hooks';
+import { useCopyToClipboard } from 'common/hooks';
 
 import {
   WalletModalContentStyle,
