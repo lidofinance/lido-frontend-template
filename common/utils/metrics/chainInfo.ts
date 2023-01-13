@@ -5,6 +5,7 @@ import { METRICS_PREFIX } from 'config';
 const { publicRuntimeConfig } = getConfig();
 const { defaultChain, supportedChains } = publicRuntimeConfig;
 
+// TODO: use https://github.com/lidofinance/warehouse/blob/main/packages/api/metrics/src/collectStartupMetrics.ts#L3
 export const chainInfo = new Gauge({
   name: METRICS_PREFIX + 'chain_info',
   help: 'Default chain and supported chains of the current build',

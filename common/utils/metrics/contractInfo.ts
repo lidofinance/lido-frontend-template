@@ -11,6 +11,7 @@ const contracts: Record<string, string> = {
 const contractNames = Object.keys(contracts);
 const contractAddrs = contractNames.map((cName) => contracts[cName]);
 
+// todo: move to template repo files
 export const contractInfo = new Gauge({
   name: METRICS_PREFIX + 'contract_info',
   help: `Contract configuration for default chain (${CHAINS[chainId]})`,

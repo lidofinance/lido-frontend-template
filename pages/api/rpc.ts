@@ -16,6 +16,7 @@ const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
 
 type Rpc = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
+// TODO: use https://github.com/lidofinance/warehouse/blob/main/packages/next/pages/src/rpcFactory.ts#L40
 const rpc: Rpc = async (req, res) => {
   serverLogger.debug('Request to RPC');
   const chainId = Number(req.query.chainId);

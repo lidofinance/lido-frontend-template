@@ -54,7 +54,7 @@ const log =
     }
   };
 
-// TODO: warehouse???
+// TODO: use https://github.com/lidofinance/warehouse/tree/main/packages/api/logger
 export const serverLogger =
   process.env.NODE_ENV === 'production'
     ? {
