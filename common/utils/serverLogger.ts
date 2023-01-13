@@ -1,5 +1,5 @@
-import maskString from '@darkobits/mask-string';
 import getConfig from 'next/config';
+import maskString from '@darkobits/mask-string';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
@@ -14,6 +14,7 @@ const secrets: (RegExp | string)[] = [
   anyEnsAddress,
 ].filter(Boolean);
 
+// TODO: warehouse???
 const mask = (message: string): string => maskString(secrets, message);
 
 enum LEVEL {
@@ -23,6 +24,7 @@ enum LEVEL {
   debug = 'debug',
 }
 
+// TODO: warehouse???
 const stringify = (data: unknown) => {
   let stringified = JSON.stringify(data);
 
@@ -37,9 +39,11 @@ const stringify = (data: unknown) => {
   return stringified;
 };
 
+// TODO: warehouse???
 const sanitize = (output: unknown[]) =>
   JSON.parse(mask(JSON.stringify(output.map(stringify))));
 
+// TODO: warehouse???
 const log =
   (level: LEVEL) =>
   (...output: unknown[]): void => {
@@ -50,6 +54,7 @@ const log =
     }
   };
 
+// TODO: warehouse???
 export const serverLogger =
   process.env.NODE_ENV === 'production'
     ? {

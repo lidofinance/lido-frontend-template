@@ -22,9 +22,9 @@ import Faq from 'common/components/faq';
 import Layout from 'common/components/layout';
 import Section from 'common/components/section';
 import Wallet from 'common/components/wallet';
+import { FAQItem, getFaqList } from 'common/utils/faqList';
 
-import { standardFetcher } from 'utils';
-import { FAQItem, getFaqList } from 'utils/faqList';
+import { standardFetcher } from 'common/utils';
 
 interface HomeProps {
   faqList: FAQItem[];

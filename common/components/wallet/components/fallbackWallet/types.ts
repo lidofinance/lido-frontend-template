@@ -1,3 +1,3 @@
-import { WalletCardComponent } from 'components/walletCardAccount';
+import { WalletCardComponent } from '../walletCard';
 
 export type FallbackWalletComponent = WalletCardComponent;

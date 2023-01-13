@@ -5,7 +5,7 @@ import {
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
 import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
-import { serverLogger } from 'utils';
+import { serverLogger } from 'common/utils';
 
 // Proxy for third-party API.
 // Returns 1inch rate

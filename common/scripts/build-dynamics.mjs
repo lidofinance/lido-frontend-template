@@ -11,7 +11,8 @@ import { resolve, dirname } from 'node:path';
 import { ensureDirSync } from 'fs-extra';
 import { writeFileSync } from 'fs';
 
-import * as dynamics from 'env-dynamics.mjs';
+// TODO: fix path (not use ../../*)
+import * as dynamics from '../../env-dynamics.mjs';
 
 export default () => {
   if (process.env.NODE_NO_BUILD_DYNAMICS) {

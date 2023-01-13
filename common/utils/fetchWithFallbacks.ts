@@ -6,6 +6,7 @@ type FetchWithFallbacks = (
   init?: RequestInit | undefined,
 ) => Promise<Response>;
 
+// TODO: warehouse?
 export const fetchWithFallbacks: FetchWithFallbacks = async (inputs, init) => {
   const [input, ...restInputs] = inputs;
 

@@ -1,13 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import getConfig from 'next/config';
 import { getRPCUrls } from '@lido-sdk/fetch';
 import { CHAINS } from '@lido-sdk/constants';
 import {
   wrapRequest,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
-import getConfig from 'next/config';
-import { fetchWithFallbacks } from 'utils/fetchWithFallbacks';
-import { serverLogger } from 'utils/serverLogger';
+
+import { fetchWithFallbacks } from 'common/utils/fetchWithFallbacks';
+import { serverLogger } from 'common/utils/serverLogger';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey, apiProviderUrls } =

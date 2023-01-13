@@ -1,7 +1,7 @@
 import AddressBadge from 'common/components/addressBadge';
 import { Component } from 'types';
-import { useModal } from 'hooks';
-import { MODAL } from 'providers';
+import { useModal } from 'common/hooks';
+import { MODAL } from 'common/providers';
 
 import { WalletCardAccountStyle } from './styles';
 

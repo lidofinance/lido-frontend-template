@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { registry } from 'utils/metrics';
+import { registry } from 'common/utils/metrics';
 
 type Metrics = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
