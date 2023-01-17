@@ -11,10 +11,10 @@ export const SectionHeaderStyle = styled.div`
 `;
 
 export const SectionTitleStyle = styled.h2`
+  margin-right: auto;
   font-weight: 800;
   font-size: ${({ theme }) => theme.fontSizesMap.md}px;
   line-height: 1.3em;
-  margin-right: auto;
 `;
 
 export const SectionHeaderDecoratorStyle = styled.div`
@@ -22,5 +22,3 @@ export const SectionHeaderDecoratorStyle = styled.div`
   font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
   line-height: 1.5em;
 `;
-
-export const SectionContentStyle = styled.div``;

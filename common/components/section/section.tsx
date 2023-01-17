@@ -4,11 +4,10 @@ import {
   SectionHeaderStyle,
   SectionTitleStyle,
   SectionHeaderDecoratorStyle,
-  SectionContentStyle,
-} from './sectionStyles';
+} from './styles';
 
-// TODO: think about move to https://ui.lido.fi
 const Section: SectionComponent = (props) => {
+  // TODO: `title`, `headerDecorator` is not necessary
   const { title, headerDecorator, children, ...rest } = props;
   const hasDecorator = !!headerDecorator;
 
@@ -22,7 +21,7 @@ const Section: SectionComponent = (props) => {
           </SectionHeaderDecoratorStyle>
         )}
       </SectionHeaderStyle>
-      <SectionContentStyle>{children}</SectionContentStyle>
+      {children}
     </SectionStyle>
   );
 };
