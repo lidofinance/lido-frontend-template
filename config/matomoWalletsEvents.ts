@@ -5,6 +5,8 @@ import { Metrics as WalletsMetrics } from 'reef-knot';
 // For example:
 // - Ethereum_Staking_Widget
 // - Kusama_Stacking_Widget
+
+// TODO: move to next config?
 const MATOMO_EVENT_CATEGORY = 'Lido_Frontend_Template';
 
 // Please, change the string to be relevant to your project.
