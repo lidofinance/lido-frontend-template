@@ -16,6 +16,7 @@ export interface FAQItem {
 export const getFaqList = async (list: string[]): Promise<FAQItem[]> => {
   return Promise.all(
     list.map(async (id) => {
+      // TODO: Fetch from Netlify
       const fullPath = path.join(faqDirectory, `${id}.md`);
 
       const fileContents = fs.readFileSync(fullPath, 'utf8');
