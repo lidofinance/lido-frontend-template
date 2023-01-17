@@ -6,6 +6,7 @@ import { CustomAppProps } from 'types';
 const { serverRuntimeConfig } = getConfig();
 const { cspTrustedHosts, cspReportOnly, cspReportUri } = serverRuntimeConfig;
 
+// TODO: move to next config??? (Andrew and Vsevolod)
 const trustedHosts = cspTrustedHosts
   ? cspTrustedHosts.split(',')
   : ['https://*.lido.fi'];
