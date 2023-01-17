@@ -26,6 +26,7 @@ const App = (props: AppProps): JSX.Element => {
   return <Component {...pageProps} />;
 };
 
+// TODO: remove memo
 const MemoApp = memo(App);
 
 const AppWrapper = (props: CustomAppProps): JSX.Element => {

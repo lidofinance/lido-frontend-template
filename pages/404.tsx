@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Head from 'next/head';
 import { ServicePage } from '@lidofinance/lido-ui';
 
+// TODO: move to common
 const Page404: FC = () => (
   <ServicePage title="404">
     <Head>
