@@ -9,6 +9,7 @@ export type ComponentProps<
   P extends Record<string, unknown> = { children?: ReactNode },
 > = Omit<JSX.IntrinsicElements[T], 'ref' | 'key' | keyof P> & P;
 
+// TODO: if it not using - remove
 export type Component<
   T extends keyof JSX.IntrinsicElements,
   P extends Record<string, unknown> = { children?: ReactNode },
