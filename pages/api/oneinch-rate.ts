@@ -7,9 +7,11 @@ import {
 import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
 import { serverLogger } from 'common/utils';
 
-// Proxy for third-party API.
-// Returns 1inch rate
-// Example showing how to use API wrappers (error handler and cahce control)
+/**
+ * Proxy example for third-party API.
+ * Example showing how to use API wrappers (error handler and cache control).
+ * @returns {rate: Number} Returns object with number of 1inch rate.
+ */
 const oneInchRate: API = async (req, res) => {
   const amount = 10 ** 18;
   const api = `https://api.1inch.exchange/v3.0/1/quote`;
@@ -19,12 +21,11 @@ const oneInchRate: API = async (req, res) => {
     amount: amount.toString(),
   });
   const url = `${api}?${query.toString()}`;
-  const response = await fetch(url);
 
+  const response = await fetch(url);
   const data: { toTokenAmount: string } = await response.json();
 
   const rate = parseFloat(data.toTokenAmount) / amount;
-
   res.json(rate);
 };
 
