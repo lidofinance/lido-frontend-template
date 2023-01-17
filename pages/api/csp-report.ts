@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { serverLogger } from 'common/utils/serverLogger';
 
+// TODO: to sentry soon
 export default function cspReport(
   req: NextApiRequest,
   res: NextApiResponse,

@@ -1,5 +1,6 @@
 import { cacheControlMiddlewareFactory } from '@lidofinance/next-cache-files-middleware';
 
+// TODO: go to Andrew for details
 // use only for cache files
 export const middleware = cacheControlMiddlewareFactory();
 
