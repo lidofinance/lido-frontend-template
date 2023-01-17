@@ -2,7 +2,7 @@ import {
   BackgroundGradientSvgStyle,
   BackgroundGradientStartStyle,
   BackgroundGradientStopStyle,
-} from './backgroundGradientStyles';
+} from './styles';
 import { BackgroundGradientComponent } from './types';
 
 // svg gradient looks better than css gradient in some browsers

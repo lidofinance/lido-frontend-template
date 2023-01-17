@@ -1,17 +1,20 @@
 import { FC } from 'react';
 import { Ldo as LdoIcon, Stake, Wrap } from '@lidofinance/lido-ui';
 
-import Header from 'common/components/header';
-import { INavigationLink } from 'common/components/header/components/navigation/components/navigationLink';
-import Main from 'common/components/main';
-import Footer from 'common/components/footer';
+import Header from '../header';
+import { INavigationLink } from '../header/components/navigation/components/navigationLink';
+import Main from '../main';
+import Footer from '../footer';
 
 import { LayoutTitleStyle, LayoutSubTitleStyle } from './styles';
 import { ILayout } from './types';
 
+// TODO: remove Layout
+// TODO: move all to _app.tsx
 const Layout: FC<ILayout> = (props: ILayout) => {
   const { title, subtitle, children } = props;
 
+  // TODO: move all to _app.tsx
   const pages = [
     {
       title: 'Stake',
@@ -35,7 +38,11 @@ const Layout: FC<ILayout> = (props: ILayout) => {
     <>
       <Header pages={pages} />
       <Main>
+        {/* TODO: use <h1> */}
+        {/* TODO: move to page component */}
         {title && <LayoutTitleStyle>{title}</LayoutTitleStyle>}
+        {/* TODO: use <h2> */}
+        {/* TODO: move to page component */}
         {subtitle && <LayoutSubTitleStyle>{subtitle}</LayoutSubTitleStyle>}
         {children}
       </Main>
