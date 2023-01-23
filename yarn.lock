@@ -1890,6 +1890,18 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/next-cache-files-middleware/-/next-cache-files-middleware-0.7.0.tgz#70aaa7384baa4746a8e1aa540c9ac0b4f952e622"
   integrity sha512-F9I20eNxWvvGqBS2XM42WcUXSMtg9l69R5ffNAellyBAwl1uAqQ4G59e8U/o8Il4BmOK3uc7rMIESyzx3hIuIg==
 
+"@lidofinance/next-pages@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/next-pages/-/next-pages-0.13.0.tgz#b2b7b1c48d5c360b04ab5b013473ba84f1a0ace6"
+  integrity sha512-g+oo64kDDm5oQlHsCZZqKGSkBbmn3t2ALmjulta7wtKZOD4Cfgjv6SPTcBQp4NQ6rfu+htaJWFN96gAIBuGbDw==
+
+"@lidofinance/rpc@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/rpc/-/rpc-0.13.0.tgz#c50a9b9161409b6a37059b3846fa5fc4f1774068"
+  integrity sha512-cVN6kyC6WAEbzPJS7ow0xX0jqXUqnI4EbgMZWzAmisxcpK4aMJPWZNY2DrQO6ejB+G5U43D+nqyoOjQUI2qKqw==
+  dependencies:
+    isomorphic-fetch "^3.0.0"
+
 "@metamask/safe-event-emitter@2.0.0", "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"
@@ -5631,6 +5643,14 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+isomorphic-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
+  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
+  dependencies:
+    node-fetch "^2.6.1"
+    whatwg-fetch "^3.4.1"
+
 isomorphic-ws@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/isomorphic-ws/-/isomorphic-ws-4.0.1.tgz#55fd4cd6c5e6491e76dc125938dd863f5cd4f2dc"
@@ -8471,6 +8491,11 @@ webidl-conversions@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-5.0.0.tgz#ae59c8a00b121543a2acc65c0434f57b0fc11aff"
   integrity sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA==
+
+whatwg-fetch@^3.4.1:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 whatwg-url-without-unicode@8.0.0-3:
   version "8.0.0-3"
