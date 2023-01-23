@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import metricsApiPage from 'common/pages/api/metrics';
 import { registry } from 'common/utils/metrics';
 import { contractInfo } from 'utils/metrics';
 
@@ -12,11 +12,4 @@ if (process.env.NODE_ENV === 'production') {
   // ```
 }
 
-type Metrics = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
-
-const metrics: Metrics = async (req, res) => {
-  const collectedMetrics = await registry.metrics();
-  res.send(collectedMetrics);
-};
-
-export default metrics;
+export default metricsApiPage;
