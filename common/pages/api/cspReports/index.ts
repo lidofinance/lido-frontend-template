@@ -1,2 +1,2 @@
-export { default as cspReportSentry } from './cspReportSentry';
-export { default as cspReportServerLogger } from './cspReportServerLogger';
+export { default as cspReportSentryApiPage } from './cspReportSentry';
+export { default as cspReportServerLoggerApiPage } from './cspReportServerLogger';

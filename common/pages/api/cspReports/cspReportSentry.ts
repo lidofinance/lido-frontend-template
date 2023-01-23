@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default function cspReportSentry(
+export default function cspReportSentryApiPage(
   req: NextApiRequest,
   res: NextApiResponse,
 ): void {
