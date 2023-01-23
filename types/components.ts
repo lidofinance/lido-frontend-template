@@ -1,5 +1,3 @@
-import { AppProps } from 'next/app';
-import { EnvConfig } from 'common/providers';
 import { FC, ReactNode } from 'react';
 
 // todo: will be splitted
@@ -19,5 +17,3 @@ export type Override<
   T extends Record<string, unknown>,
   P extends Record<string, unknown>,
 > = Omit<T, keyof P> & P;
-
-export type CustomAppProps = AppProps & { config: EnvConfig };
