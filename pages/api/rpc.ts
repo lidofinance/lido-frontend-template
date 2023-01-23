@@ -1,53 +1,57 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import getConfig from 'next/config';
-import { getRPCUrls } from '@lido-sdk/fetch';
+
 import { CHAINS } from '@lido-sdk/constants';
+import { trackedFetchRpcFactory } from '@lidofinance/api-rpc';
+import { rpcFactory } from '@lidofinance/next-pages';
 import {
-  wrapRequest,
   defaultErrorHandler,
+  wrapRequest,
 } from '@lidofinance/next-api-wrapper';
 
-import { fetchWithFallbacks } from 'common/utils/fetchWithFallbacks';
 import { serverLogger } from 'common/utils/serverLogger';
+import { registry } from 'common/utils/metrics';
+
+import { METRICS_PREFIX, dynamics } from 'config';
 
 const { serverRuntimeConfig } = getConfig();
-const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
-  serverRuntimeConfig as RuntimeConfig;
 
-type Rpc = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
-
-// TODO: use https://github.com/lidofinance/warehouse/blob/main/packages/next/pages/src/rpcFactory.ts#L40
-const rpc: Rpc = async (req, res) => {
-  serverLogger.debug('Request to RPC');
-  const chainId = Number(req.query.chainId);
-
-  if (!CHAINS[chainId]) {
-    throw new Error(`Chain ${chainId} is not supported`);
-  }
-
-  const urls = getRPCUrls(chainId, {
-    infura: infuraApiKey,
-    alchemy: alchemyApiKey,
-  });
-
-  const customProvider = apiProviderUrls?.[chainId];
-
-  if (customProvider) {
-    urls.unshift(customProvider);
-  }
-
-  const requested = await fetchWithFallbacks(urls, {
-    method: 'POST',
-    // Next by default parses our body for us, we don't want that here
-    body: JSON.stringify(req.body),
-  });
-
-  res.setHeader(
-    'Content-Type',
-    requested.headers.get('Content-Type') ?? 'application/json',
-  );
-  res.status(requested.status).send(requested.body);
+// TODO: make for SUPPORTED_CHAINS
+const providers: Record<string | number, [string, ...string[]]> = {
+  [CHAINS.Mainnet]: [
+    `https://mainnet.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
+    `https://eth-mainnet.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
+  ],
+  [CHAINS.Rinkeby]: [
+    `https://rinkeby.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
+    `https://eth-rinkeby.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
+  ],
+  [CHAINS.Goerli]: [
+    `https://goerli.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
+    `https://eth-goerli.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
+  ],
 };
+
+const fetchRPC = trackedFetchRpcFactory({
+  registry,
+  prefix: METRICS_PREFIX,
+});
+
+const rpc = rpcFactory({
+  fetchRPC,
+  serverLogger,
+  metrics: {
+    prefix: METRICS_PREFIX,
+    registry,
+  },
+  allowedRPCMethods: [
+    'eth_call',
+    'eth_gasPrice',
+    'eth_requestAccounts',
+    // Extra RPC methods can be added here
+  ],
+  defaultChain: dynamics.defaultChain,
+  providers,
+});
 
 // Error handler wrapper
 export default wrapRequest([

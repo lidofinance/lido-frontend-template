@@ -1869,6 +1869,11 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/api-metrics/-/api-metrics-0.13.0.tgz#77cc53d2f7a55e07b8146bc69011d25ff68e0b17"
   integrity sha512-XNOrqO5ciERa7PoWG0P+7rEKyceAe+NONoWw+lK7BLvAumP2huB0EMEztcfENoaNcA6+26RznHiG55ggyG6aFw==
 
+"@lidofinance/api-rpc@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/api-rpc/-/api-rpc-0.13.0.tgz#9dac8ba5965403e69abb019e48b4a118b358c784"
+  integrity sha512-BBg2O5D0j3nLZalm0xFmbafDDCOx+Rd0g4bF2fs8scsbwLkOV7IjQ3UeG7AJvT1f9PCJUem+8OBgU2uyyvVCVQ==
+
 "@lidofinance/lido-ui@^3.0.0-next.17":
   version "3.0.0-next.17"
   resolved "https://registry.yarnpkg.com/@lidofinance/lido-ui/-/lido-ui-3.0.0-next.17.tgz#086ddfde1a5da3c55e420f524a51aeda82952ba0"
