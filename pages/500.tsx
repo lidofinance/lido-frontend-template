@@ -1,15 +1,8 @@
 import { FC } from 'react';
-import Head from 'next/head';
-import { ServicePage } from '@lidofinance/lido-ui';
+import { PageError } from 'common/pages';
 
-// TODO: move to common
-const Page404: FC = () => (
-  <ServicePage title="500">
-    <Head>
-      <title>Lido | Internal Server Error</title>
-    </Head>
-    Internal Server Error
-  </ServicePage>
+const Page500: FC = () => (
+  <PageError title="500" content="Internal Server Error" />
 );
 
-export default Page404;
+export default Page500;
