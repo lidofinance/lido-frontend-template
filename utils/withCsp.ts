@@ -1,6 +1,6 @@
+import { FC } from 'react';
 import { withSecureHeaders } from 'next-secure-headers';
 import getConfig from 'next/config';
-import { FC } from 'react';
 import { CustomAppProps } from 'types';
 
 const { serverRuntimeConfig } = getConfig();
@@ -36,7 +36,7 @@ export const contentSecurityPolicy = {
     baseUri: ["'none'"],
     reportURI: cspReportUri,
   },
-  reportOnly: reportOnly,
+  reportOnly,
 };
 
 export const withCsp = (

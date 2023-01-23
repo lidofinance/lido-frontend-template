@@ -1,50 +1,22 @@
-import { memo } from 'react';
-import NextApp, { AppContext, AppProps } from 'next/app';
-import {
-  ToastContainer,
-  CookiesTooltip,
-  migrationAllowCookieToCrossDomainCookieClientSide,
-  migrationThemeCookiesToCrossDomainCookiesClientSide,
-} from '@lidofinance/lido-ui';
+import { AppProps } from 'next/app';
 
-import Providers from 'common/providers';
+import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
 
-import { CustomAppProps } from 'types';
+import { WidgetApp } from 'common/app';
 import { withCsp } from 'utils/withCsp';
 
-// Migrations old cookies to new cross domain cookies
-migrationThemeCookiesToCrossDomainCookiesClientSide();
-
 // Migrations old allow cookies to new cross domain cookies
+// It is here 'cause `keyOldCookies` may be different for widgets
 migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
 
-const App = (props: AppProps): JSX.Element => {
-  const { Component, pageProps } = props;
-
-  return <Component {...pageProps} />;
-};
-
-// TODO: remove memo
-const MemoApp = memo(App);
-
-const AppWrapper = (props: CustomAppProps): JSX.Element => {
-  const { ...rest } = props;
-
+const WidgetAppWrapper = (props: AppProps): JSX.Element => {
   return (
-    <Providers>
-      <MemoApp {...rest} />
-      <CookiesTooltip />
-      <ToastContainer />
-    </Providers>
+    <WidgetApp {...props}>{/* Extra components can be added here */}</WidgetApp>
   );
 };
 
-AppWrapper.getInitialProps = async (appContext: AppContext) => {
-  return await NextApp.getInitialProps(appContext);
-};
-
 export default process.env.NODE_ENV === 'development'
-  ? AppWrapper
-  : withCsp(AppWrapper);
+  ? WidgetAppWrapper
+  : withCsp(WidgetAppWrapper);
