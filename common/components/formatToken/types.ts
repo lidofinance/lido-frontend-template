@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Component } from 'types';
+import { Component } from 'common/types';
 
 export type FormatTokenComponent = Component<
   'span',

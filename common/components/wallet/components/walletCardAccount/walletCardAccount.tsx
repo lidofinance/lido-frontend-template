@@ -1,5 +1,5 @@
 import AddressBadge from 'common/components/addressBadge';
-import { Component } from 'types';
+import { Component } from 'common/types';
 import { useModal } from 'common/hooks';
 import { MODAL } from 'common/providers';
 

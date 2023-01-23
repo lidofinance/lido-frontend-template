@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'types';
+import { Component } from 'common/types';
 
 // TODO: `title`, `headerDecorator` is not necessary
 export type SectionComponent = Component<

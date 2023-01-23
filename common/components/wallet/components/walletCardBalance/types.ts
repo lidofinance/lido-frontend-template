@@ -1,4 +1,4 @@
-import { Component } from 'types';
+import { Component } from 'common/types';
 
 export type WalletCardBalanceComponent = Component<
   'div',
