@@ -1,4 +1,3 @@
-import { rpcResponse } from './metrics/rpcResponse';
 import { serverLogger } from './serverLogger';
 
 type FetchWithFallbacks = (
@@ -6,7 +5,6 @@ type FetchWithFallbacks = (
   init?: RequestInit | undefined,
 ) => Promise<Response>;
 
-// TODO: warehouse?
 export const fetchWithFallbacks: FetchWithFallbacks = async (inputs, init) => {
   const [input, ...restInputs] = inputs;
 
@@ -16,9 +14,10 @@ export const fetchWithFallbacks: FetchWithFallbacks = async (inputs, init) => {
     hostname = url.hostname;
 
     serverLogger.debug('Sending request to ' + hostname, init);
-    const end = rpcResponse.labels(hostname).startTimer();
+    // TODO: use metric rpcMetricsFactory().rpcResponseTime
+    // const end = rpcResponse.labels(hostname).startTimer();
     const response = await fetch(input, init);
-    end();
+    // end();
 
     if (response.ok) {
       serverLogger.debug(`Request to ${hostname} successful`, init);

@@ -1,21 +1,29 @@
-import { METRICS_PREFIX } from 'config';
-import { collectDefaultMetrics, Registry } from 'prom-client';
-import { buildInfo } from './buildInfo';
-import { chainInfo } from './chainInfo';
-import { contractInfo } from './contractInfo';
-import { rpcResponse } from './rpcResponse';
+import { Registry, collectDefaultMetrics } from 'prom-client';
+import {
+  collectStartupMetrics,
+  rpcMetricsFactory,
+} from '@lidofinance/api-metrics';
 
-const registry = new Registry();
+import { METRICS_PREFIX, dynamics } from 'config';
+import buildInfoJson from 'build-info.json';
 
-// todo: use and mix with
-// https://github.com/lidofinance/warehouse/blob/main/packages/api/metrics/src/collectStartupMetrics.ts#L28
+export const registry = new Registry();
+
 if (process.env.NODE_ENV === 'production') {
-  registry.registerMetric(buildInfo);
-  registry.registerMetric(chainInfo);
-  registry.registerMetric(contractInfo);
-  registry.registerMetric(rpcResponse);
+  // https://github.com/lidofinance/warehouse/tree/main/packages/api/metrics
+  collectStartupMetrics({
+    prefix: METRICS_PREFIX,
+    registry,
+    defaultChain: String(dynamics.defaultChain),
+    supportedChains: dynamics.supportedChains.map((chainId) => String(chainId)),
+    version: process.env.npm_package_version ?? 'unversioned',
+    commit: buildInfoJson.commit,
+    branch: buildInfoJson.branch,
+  });
 
   collectDefaultMetrics({ prefix: METRICS_PREFIX, register: registry });
-}
 
-export { registry };
+  // Collect PRC metrics
+  // https://github.com/lidofinance/warehouse/blob/main/packages/api/metrics/src/rpcMetricsFactory.ts
+  rpcMetricsFactory(METRICS_PREFIX, registry);
+}

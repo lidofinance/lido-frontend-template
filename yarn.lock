@@ -1864,6 +1864,11 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/analytics-matomo/-/analytics-matomo-0.9.0.tgz#94d19003fce72692f3947833fc7645dc28502cdf"
   integrity sha512-k0Rj2uVU711MxkpSX/vVJJR4uDaZUIYUnCfCzaYNW0KC9J8lt/Q1D4BqwZ4xnA7I5CokAz8kKjKNpMGfxyxwBg==
 
+"@lidofinance/api-metrics@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/api-metrics/-/api-metrics-0.13.0.tgz#77cc53d2f7a55e07b8146bc69011d25ff68e0b17"
+  integrity sha512-XNOrqO5ciERa7PoWG0P+7rEKyceAe+NONoWw+lK7BLvAumP2huB0EMEztcfENoaNcA6+26RznHiG55ggyG6aFw==
+
 "@lidofinance/lido-ui@^3.0.0-next.17":
   version "3.0.0-next.17"
   resolved "https://registry.yarnpkg.com/@lidofinance/lido-ui/-/lido-ui-3.0.0-next.17.tgz#086ddfde1a5da3c55e420f524a51aeda82952ba0"
