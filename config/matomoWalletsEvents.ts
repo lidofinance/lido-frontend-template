@@ -1,15 +1,14 @@
 import { MatomoEventType, trackEvent } from '@lidofinance/analytics-matomo';
 import { Metrics as WalletsMetrics } from 'reef-knot';
 
-// Please, change the string to be relevant to your project.
+// TODO: move to next config?
+// PAY ATTENTION: Change the string to be relevant to your project.
 // For example:
 // - Ethereum_Staking_Widget
 // - Kusama_Stacking_Widget
-
-// TODO: move to next config?
 const MATOMO_EVENT_CATEGORY = 'Lido_Frontend_Template';
 
-// Please, change the string to be relevant to your project.
+// PAY ATTENTION: Change, change the string to be relevant to your project.
 // For example:
 // - eth_widget_
 // - ksm_widget_
@@ -236,6 +235,7 @@ export const walletsMetrics: WalletsMetrics = {
   events: {
     click: {
       handlers: {
+        // TODO: to use a cycle
         onClickAmbire: bindEvent('onClickAmbire'),
         onClickBlockchaincom: bindEvent('onClickBlockchaincom'),
         onClickBrave: bindEvent('onClickBrave'),
@@ -256,6 +256,7 @@ export const walletsMetrics: WalletsMetrics = {
     },
     connect: {
       handlers: {
+        // TODO: to use a cycle
         onConnectAmbire: bindEvent('onConnectAmbire'),
         onConnectBlockchaincom: bindEvent('onConnectBlockchaincom'),
         onConnectBrave: bindEvent('onConnectBrave'),
