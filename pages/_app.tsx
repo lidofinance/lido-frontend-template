@@ -13,7 +13,9 @@ migrationAllowCookieToCrossDomainCookieClientSide(
 
 const WidgetAppWrapper = (props: AppProps): JSX.Element => {
   return (
-    <WidgetApp {...props}>{/* Extra components can be added here */}</WidgetApp>
+    <WidgetApp {...props}>
+      {/* PAY ATTENTION: Extra components can be added here */}
+    </WidgetApp>
   );
 };
 

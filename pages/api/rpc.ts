@@ -47,7 +47,7 @@ const rpc = rpcFactory({
     'eth_call',
     'eth_gasPrice',
     'eth_requestAccounts',
-    // Extra RPC methods can be added here
+    // PAY ATTENTION: Extra RPC methods can be added here
   ],
   defaultChain: dynamics.defaultChain,
   providers,
