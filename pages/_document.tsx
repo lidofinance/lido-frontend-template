@@ -45,13 +45,16 @@ export default class MyDocument extends Document {
     }
   }
 
+  // PAY ATTENTION: Put correct title
   private static metaTitle = 'Lido Frontend Template | Lido';
 
+  // PAY ATTENTION: Put correct description
   private static metaDescription =
     'Liquid staking with Lido. ' +
     'Stake {TOKEN} with Lido to earn daily rewards while keeping full control of your staked tokens. ' +
     'Start earning rewards in just a few clicks.';
 
+  // PAY ATTENTION: Put correct preview image URL
   private static get metaPreviewImgUrl(): string {
     return `${host}/lido-preview.png`;
   }

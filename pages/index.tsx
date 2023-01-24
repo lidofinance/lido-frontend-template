@@ -36,12 +36,13 @@ const InputWrapper = styled.div`
 
 const Home: FC<HomeProps> = ({ faqList }) => {
   useEffect(() => {
+    // TODO: needs?
+    // PAY ATTENTION: Remove. Example just to showing how to use a matomo events tracking
     const matomoSomeEvent: MatomoEventType = [
       'Lido_Frontend_Template',
       'Mount index component',
       'mount_index_component',
     ];
-
     trackEvent(...matomoSomeEvent);
   }, []);
 
