@@ -6,10 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   // Collect 'contract info' metrics
   registry.registerMetric(contractInfo);
 
-  // Extra metrics can be registered here
-  // code```
-  //  registry.registerMetric(someMetric);
-  // ```
+  // PAY ATTENTION: Extra metrics can be registered here
 }
 
 export default metricsApiPage;

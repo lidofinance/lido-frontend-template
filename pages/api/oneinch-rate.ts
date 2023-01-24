@@ -8,8 +8,8 @@ import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
 import { serverLogger } from 'common/utils';
 
 /**
+ * PAY ATTENTION: Example showing how to use API wrappers (error handler and cache control).
  * Proxy example for third-party API.
- * Example showing how to use API wrappers (error handler and cache control).
  * @returns {rate: Number} Returns object with number of 1inch rate.
  */
 const oneInchRate: API = async (req, res) => {

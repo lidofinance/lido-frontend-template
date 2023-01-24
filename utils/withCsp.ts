@@ -6,7 +6,9 @@ import { AppProps } from 'next/app';
 const { serverRuntimeConfig } = getConfig();
 const { cspTrustedHosts, cspReportOnly, cspReportUri } = serverRuntimeConfig;
 
-// TODO: move to next config??? (Andrew and Vsevolod)
+// PAY ATTENTION: Extra Content Security Policy can be added here
+
+// TODO: move to next config? (Andrew and Vsevolod)
 const trustedHosts = cspTrustedHosts
   ? cspTrustedHosts.split(',')
   : ['https://*.lido.fi'];

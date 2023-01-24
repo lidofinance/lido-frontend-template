@@ -60,6 +60,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* PAY ATTENTION: Put correct metadata */}
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link
@@ -92,7 +93,6 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
-          {/*  */}
           <meta name="description" content="Lido Template" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={MyDocument.metaTitle} />
