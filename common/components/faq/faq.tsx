@@ -1,8 +1,6 @@
 import { FC } from 'react';
 import { Accordion } from '@lidofinance/lido-ui';
 
-// import Section from 'common/components/section';
-
 import { FaqProps } from './types';
 import { FaqItem } from './faqStyles';
 
@@ -10,8 +8,6 @@ const Faq: FC<FaqProps> = (props) => {
   const { faqList } = props;
 
   return (
-    // TODO: {/* <Section > */} to top level
-    // <Section title="FAQ">
     <>
       {faqList.map(({ id, title, content }, index) => (
         <Accordion
@@ -27,7 +23,6 @@ const Faq: FC<FaqProps> = (props) => {
         </Accordion>
       ))}
     </>
-    //</Section>
   );
 };
 
