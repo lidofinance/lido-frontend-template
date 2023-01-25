@@ -1,3 +1,5 @@
+// PAY ATTENTION: Example showing how to configuration custom metrics
+
 import { Gauge } from 'prom-client';
 import { CHAINS } from '@lido-sdk/constants';
 import { dynamics, getExampleAddress, METRICS_PREFIX } from 'config';
