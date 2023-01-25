@@ -1,67 +1,18 @@
 import getConfig from 'next/config';
-import maskString from '@darkobits/mask-string';
+import { serverLoggerFactory } from '@lidofinance/api-logger';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
 
+// Wallet addresses
 const anyHexadecimal = new RegExp('0x[a-fA-F0-9]+', 'gi');
+// Wallet ENS addresses
 const anyEnsAddress = new RegExp('[a-zA-Z.]+\\.eth', 'gi');
 
-const secrets: (RegExp | string)[] = [
-  infuraApiKey,
-  alchemyApiKey,
-  anyHexadecimal,
-  anyEnsAddress,
-].filter(Boolean);
+export const defaultSecrets = [anyHexadecimal, anyEnsAddress];
 
-// TODO: warehouse???
-const mask = (message: string): string => maskString(secrets, message);
+infuraApiKey && defaultSecrets.push(infuraApiKey);
+alchemyApiKey && defaultSecrets.push(alchemyApiKey);
 
-enum LEVEL {
-  error = 'error',
-  warn = 'warn',
-  info = 'info',
-  debug = 'debug',
-}
-
-// TODO: warehouse???
-const stringify = (data: unknown) => {
-  let stringified = JSON.stringify(data);
-
-  if (data instanceof Error) {
-    // extract Error's non-enumerable props before stringifying
-    stringified = JSON.stringify({
-      message: data.message,
-      stack: data.stack,
-    });
-  }
-
-  return stringified;
-};
-
-// TODO: warehouse???
-const sanitize = (output: unknown[]) =>
-  JSON.parse(mask(JSON.stringify(output.map(stringify))));
-
-// TODO: warehouse???
-const log =
-  (level: LEVEL) =>
-  (...output: unknown[]): void => {
-    try {
-      console[level](sanitize(output));
-    } catch {
-      console.warn('Failed to sanitize output');
-    }
-  };
-
-// TODO: use https://github.com/lidofinance/warehouse/tree/main/packages/api/logger
-export const serverLogger =
-  process.env.NODE_ENV === 'production'
-    ? {
-        error: log(LEVEL.error),
-        warn: log(LEVEL.warn),
-        info: log(LEVEL.info),
-        debug: log(LEVEL.debug),
-        log: log(LEVEL.debug),
-      }
-    : console;
+// https://github.com/lidofinance/warehouse/tree/main/packages/api/logger
+export const serverLogger = serverLoggerFactory(defaultSecrets);

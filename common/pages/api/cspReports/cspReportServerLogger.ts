@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { serverLogger } from 'common/utils/serverLogger';
+import { serverLogger } from 'common/utils';
 
 export default function cspReportServerLoggerApiPage(
   req: NextApiRequest,
