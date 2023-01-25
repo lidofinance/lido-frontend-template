@@ -1,23 +1,13 @@
-import { FC, FormEventHandler, useEffect } from 'react';
+import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import styled from 'styled-components';
 
 import {
   useContractSWR,
   useSTETHContractRPC,
   useLidoSWR,
 } from '@lido-sdk/react';
-import {
-  Block,
-  Link,
-  DataTable,
-  DataTableRow,
-  Input,
-  Steth,
-  Button,
-} from '@lidofinance/lido-ui';
-import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
+import { Block, Link, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 
 import Faq from 'common/components/faq';
 import Section from 'common/components/section';
@@ -26,34 +16,13 @@ import Layout from 'common/layout/layout';
 import { FAQItem, getFaqList } from 'common/utils/faqList';
 import { standardFetcher } from 'common/utils';
 
+import StakeForm from 'components/stakeForm';
+
 interface HomeProps {
   faqList: FAQItem[];
 }
 
-const InputWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
-`;
-
 const Home: FC<HomeProps> = ({ faqList }) => {
-  useEffect(() => {
-    // TODO: needs?
-    // PAY ATTENTION: Remove. Example just to showing how to use a matomo events tracking
-    const matomoSomeEvent: MatomoEventType = [
-      'Lido_Frontend_Template',
-      'Mount index component',
-      'mount_index_component',
-    ];
-    trackEvent(...matomoSomeEvent);
-  }, []);
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (
-    event,
-  ) => {
-    event.preventDefault();
-    // TODO: remove
-    alert('Submitted');
-  };
-
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
     contract: contractRpc,
@@ -73,25 +42,9 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <title>Lido | Frontend Template</title>
       </Head>
 
-      {/* TODO: move from common to spec widget componetns */}
       <Section>
         <Wallet />
-        <Block>
-          {/* todo: remove form JSX tag */}
-          <form action="" method="post" onSubmit={handleSubmit}>
-            <InputWrapper>
-              <Input
-                fullwidth
-                placeholder="0"
-                leftDecorator={<Steth />}
-                label="Token amount"
-              />
-            </InputWrapper>
-            <Button fullwidth type="submit">
-              Submit
-            </Button>
-          </form>
-        </Block>
+        <StakeForm />
       </Section>
 
       {/* TODO: get Lido statistics from stake.lido.di as example */}
