@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
 
 import { WidgetApp } from 'common/app';
-import { withCsp } from 'utils/withCsp';
+import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
 // It is here 'cause `keyOldCookies` may be different for widgets
