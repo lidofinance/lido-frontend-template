@@ -2,36 +2,22 @@ import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import {
-  useContractSWR,
-  useSTETHContractRPC,
-  useLidoSWR,
-} from '@lido-sdk/react';
-import { Block, Link, DataTable, DataTableRow } from '@lidofinance/lido-ui';
+import { Link } from '@lidofinance/lido-ui';
 
 import Faq from 'common/components/faq';
 import Section from 'common/components/section';
 import Wallet from 'common/components/wallet';
 import Layout from 'common/layout/layout';
 import { FAQItem, getFaqList } from 'common/utils/faqList';
-import { standardFetcher } from 'common/utils';
 
 import StakeForm from 'components/stakeForm';
+import Statistics from 'components/statistics';
 
 interface HomeProps {
   faqList: FAQItem[];
 }
 
 const Home: FC<HomeProps> = ({ faqList }) => {
-  const contractRpc = useSTETHContractRPC();
-  const tokenName = useContractSWR({
-    contract: contractRpc,
-    method: 'name',
-  });
-
-  const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
-  const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
-
   return (
     // TODO: move Layout to app.
     <Layout
@@ -47,18 +33,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <StakeForm />
       </Section>
 
-      {/* TODO: get Lido statistics from stake.lido.di as example */}
       <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
-        <Block>
-          <DataTable>
-            <DataTableRow title="Token name" loading={tokenName.initialLoading}>
-              {tokenName.data}
-            </DataTableRow>
-            <DataTableRow title="1inch rate" loading={tokenName.initialLoading}>
-              {oneInchRate}
-            </DataTableRow>
-          </DataTable>
-        </Block>
+        <Statistics />
       </Section>
 
       <Section title="FAQ">
