@@ -9,7 +9,7 @@ import Document, {
 import { ServerStyleSheet } from 'styled-components';
 import { Fonts, LidoUIHead } from '@lidofinance/lido-ui';
 
-import { dynamics } from '../config';
+import { dynamics } from 'config';
 
 let host: string;
 
