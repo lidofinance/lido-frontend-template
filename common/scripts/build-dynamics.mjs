@@ -11,7 +11,7 @@ import { resolve, dirname } from 'node:path';
 import { ensureDirSync } from 'fs-extra';
 import { writeFileSync } from 'fs';
 
-// TODO: fix path (not use ../../*)
+// TODO: fix path (not use ../../*) or move to root
 import * as dynamics from '../../env-dynamics.mjs';
 
 export default () => {

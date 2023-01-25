@@ -50,6 +50,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
     event,
   ) => {
     event.preventDefault();
+    // TODO: remove
     alert('Submitted');
   };
 

@@ -19,6 +19,7 @@ const Footer: FC = () => (
 
     <FooterGroupStyle>
       <FooterTitleStyle>Resources</FooterTitleStyle>
+      {/* TODO: to mix FooterItemStyle and Link */}
       <FooterItemStyle>
         <Link href="https://stake.lido.fi/">Stake with Lido</Link>
       </FooterItemStyle>
