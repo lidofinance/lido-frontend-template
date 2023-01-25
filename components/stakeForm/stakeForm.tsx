@@ -1,19 +1,15 @@
 import { FC, FormEventHandler } from 'react';
-import { trackEvent, MatomoEventType } from '@lidofinance/analytics-matomo';
+import { trackEvent } from '@lidofinance/analytics-matomo';
 import { Block, Input, Steth, Button } from '@lidofinance/lido-ui';
+
+import { MATOMO_CLICK_EVENTS } from 'config';
 
 import { InputWrapper } from './styles';
 
 const submitTrackEvent = () => {
   // PAY ATTENTION: Remove. Example just to showing how to use a matomo events tracking
-  // TODO: move matomo event to config
-  const matomoSomeEvent: MatomoEventType = [
-    'Lido_Frontend_Template',
-    'Stake form submit',
-    'stake_form_submit',
-  ];
   // More details: https://github.com/lidofinance/warehouse/tree/main/packages/analytics/matomo
-  trackEvent(...matomoSomeEvent);
+  trackEvent(...MATOMO_CLICK_EVENTS.submitStake);
 };
 
 const StakeForm: FC = () => {

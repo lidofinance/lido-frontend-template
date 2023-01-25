@@ -6,3 +6,6 @@ export * from './locale';
 export * from './rpc';
 export * from './example';
 export * from './metrics';
+export * from './matomo';
+export * from './matomoClickEvents';
+export * from './matomoWalletsEvents';
