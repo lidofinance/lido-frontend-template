@@ -1,4 +1,4 @@
-import { SectionComponent } from './types';
+import { SectionType } from './types';
 import {
   SectionStyle,
   SectionHeaderStyle,
@@ -6,21 +6,21 @@ import {
   SectionHeaderDecoratorStyle,
 } from './styles';
 
-const Section: SectionComponent = (props) => {
-  // TODO: `title`, `headerDecorator` is not necessary
+const Section: SectionType = (props) => {
   const { title, headerDecorator, children, ...rest } = props;
-  const hasDecorator = !!headerDecorator;
 
   return (
     <SectionStyle {...rest}>
-      <SectionHeaderStyle>
-        <SectionTitleStyle>{title}</SectionTitleStyle>
-        {hasDecorator && (
-          <SectionHeaderDecoratorStyle>
-            {headerDecorator}
-          </SectionHeaderDecoratorStyle>
-        )}
-      </SectionHeaderStyle>
+      {title && (
+        <SectionHeaderStyle>
+          <SectionTitleStyle>{title}</SectionTitleStyle>
+          {headerDecorator && (
+            <SectionHeaderDecoratorStyle>
+              {headerDecorator}
+            </SectionHeaderDecoratorStyle>
+          )}
+        </SectionHeaderStyle>
+      )}
       {children}
     </SectionStyle>
   );
