@@ -17,7 +17,7 @@ const WidgetAppWrapper = (props: AppProps): JSX.Element => {
 
   return (
     <WidgetApp {...appPropsWithPages}>
-      {/* PAY ATTENTION: Extra components can be added here */}
+      {/* TODO: Extra components or providers can be added here */}
     </WidgetApp>
   );
 };
