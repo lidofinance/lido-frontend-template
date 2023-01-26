@@ -1,16 +1,18 @@
 import { FC } from 'react';
 import Head from 'next/head';
-
-import Layout from 'common/layout/layout';
+import { LayoutSubTitleStyle, LayoutTitleStyle } from 'common/layout/styles';
 
 // PAY ATTENTION: Example showing how to add page (and for routing test)
 const Example: FC = () => {
   return (
-    <Layout title="Example Page" subtitle="Just for routing test">
+    <>
       <Head>
-        <title>Lido | Frontend Template</title>
+        <title>Lido | Frontend Template | Example Page</title>
       </Head>
-    </Layout>
+
+      <LayoutTitleStyle>Example Page</LayoutTitleStyle>
+      <LayoutSubTitleStyle>Just for routing test</LayoutSubTitleStyle>
+    </>
   );
 };
 

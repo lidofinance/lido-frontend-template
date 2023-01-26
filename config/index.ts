@@ -5,6 +5,7 @@ export * from './api';
 export * from './locale';
 export * from './rpc';
 export * from './example';
+export * from './headerNavigations';
 export * from './metrics';
 export * from './matomo';
 export * from './matomoClickEvents';

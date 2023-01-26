@@ -14,7 +14,7 @@ export const LayoutTitleStyle = styled(H1)`
   }
 `;
 
-export const LayoutSubTitleStyle = styled.h4`
+export const LayoutSubTitleStyle = styled.h2`
   margin-bottom: ${({ theme }) => theme.spaceMap.md}px;
 
   font-weight: 500;

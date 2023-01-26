@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
 
 import { WidgetApp } from 'common/app';
+import { headerNavigations } from 'config';
 import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
@@ -12,8 +13,10 @@ migrationAllowCookieToCrossDomainCookieClientSide(
 );
 
 const WidgetAppWrapper = (props: AppProps): JSX.Element => {
+  const appPropsWithPages = { pages: headerNavigations, ...props };
+
   return (
-    <WidgetApp {...props}>
+    <WidgetApp {...appPropsWithPages}>
       {/* PAY ATTENTION: Extra components can be added here */}
     </WidgetApp>
   );
