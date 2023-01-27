@@ -8,7 +8,6 @@ export const CACHE_HEADERS_HTML_PAGE =
 export const CACHE_ALLOWED_LIST_FILES_PATHS = [
   { path: '/', headers: CACHE_HEADERS_HTML_PAGE },
   { path: '/example', headers: CACHE_HEADERS_HTML_PAGE },
-  // TODO: to approve for window-env.js
   { path: '/runtime/window-env.js', headers: CACHE_HEADERS_HTML_PAGE },
   // PAY ATTENTION: Extra paths can be added here
 ];
