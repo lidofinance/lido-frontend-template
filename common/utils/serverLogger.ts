@@ -4,12 +4,7 @@ import { serverLoggerFactory } from '@lidofinance/api-logger';
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
 
-// Wallet addresses
-const anyHexadecimal = new RegExp('0x[a-fA-F0-9]+', 'gi');
-// Wallet ENS addresses
-const anyEnsAddress = new RegExp('[a-zA-Z.]+\\.eth', 'gi');
-
-export const defaultSecrets = [anyHexadecimal, anyEnsAddress];
+export const defaultSecrets: string[] = [];
 
 infuraApiKey && defaultSecrets.push(infuraApiKey);
 alchemyApiKey && defaultSecrets.push(alchemyApiKey);
