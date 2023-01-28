@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { AppProps } from 'next/app';
 
 import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
@@ -12,12 +13,13 @@ migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
 
-const WidgetAppWrapper = (props: AppProps): JSX.Element => {
-  const appPropsWithPages = { pages: headerNavigations, ...props };
-
+const WidgetAppWrapper = ({
+  children,
+  ...rest
+}: PropsWithChildren<AppProps>): JSX.Element => {
   return (
-    <WidgetApp {...appPropsWithPages}>
-      {/* TODO: Extra components or providers can be added here */}
+    <WidgetApp {...rest} pages={headerNavigations}>
+      {children}
     </WidgetApp>
   );
 };
