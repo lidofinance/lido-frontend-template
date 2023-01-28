@@ -7,7 +7,7 @@ import { Link } from '@lidofinance/lido-ui';
 import Section from 'common/components/section';
 import Faq from 'common/components/faq';
 import Wallet from 'common/components/wallet';
-import { LayoutTitleStyle, LayoutSubTitleStyle } from 'common/layout/styles';
+import { LayoutTitle, LayoutSubTitle } from 'common/layout/styles';
 import { FAQItem, getFaqList } from 'common/utils/faqList';
 
 import StakeForm from 'components/stakeForm';
@@ -24,10 +24,8 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <title>Lido | Frontend Template</title>
       </Head>
 
-      <LayoutTitleStyle>Lido Frontend Template</LayoutTitleStyle>
-      <LayoutSubTitleStyle>
-        Develop Lido Apps without hassle
-      </LayoutSubTitleStyle>
+      <LayoutTitle>Lido Frontend Template</LayoutTitle>
+      <LayoutSubTitle>Develop Lido Apps without hassle</LayoutSubTitle>
 
       <Section>
         <Wallet />

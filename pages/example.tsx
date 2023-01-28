@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import { LayoutSubTitleStyle, LayoutTitleStyle } from 'common/layout/styles';
+import { LayoutSubTitle, LayoutTitle } from 'common/layout/styles';
 
 // PAY ATTENTION: Example showing how to add page (and for routing test)
 const Example: FC = () => {
@@ -10,8 +10,8 @@ const Example: FC = () => {
         <title>Lido | Frontend Template | Example Page</title>
       </Head>
 
-      <LayoutTitleStyle>Example Page</LayoutTitleStyle>
-      <LayoutSubTitleStyle>Just for routing test</LayoutSubTitleStyle>
+      <LayoutTitle>Example Page</LayoutTitle>
+      <LayoutSubTitle>Just for routing test</LayoutSubTitle>
     </>
   );
 };
