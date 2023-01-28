@@ -12,6 +12,7 @@ import { serverLogger } from 'common/utils';
  * Proxy example for third-party API.
  * @returns {rate: Number} Returns object with number of 1inch rate.
  */
+// TODO: change to Lido APR ('cause 1Inch rate is expensive)
 const oneInchRate: API = async (req, res) => {
   const amount = 10 ** 18;
   const api = `https://api.1inch.exchange/v3.0/1/quote`;

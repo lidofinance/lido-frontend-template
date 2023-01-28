@@ -18,7 +18,10 @@ const StakeForm: FC = () => {
   ) => {
     event.preventDefault();
     submitTrackEvent();
-    // TODO: remove
+    // TODO: remove alert
+    // TODO: make a user flow like in stake.lido.fi with emulation trx
+    // TODO: 1. loading modal (with timeout 3sec)
+    // TODO: 2. success trx model
     alert('Submitted');
   };
 

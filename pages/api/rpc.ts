@@ -21,10 +21,11 @@ const providers: Record<string | number, [string, ...string[]]> = {
     `https://mainnet.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
     `https://eth-mainnet.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
   ],
-  [CHAINS.Rinkeby]: [
-    `https://rinkeby.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
-    `https://eth-rinkeby.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
-  ],
+  // TODO: deprecated?
+  // [CHAINS.Rinkeby]: [
+  //   `https://rinkeby.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
+  //   `https://eth-rinkeby.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
+  // ],
   [CHAINS.Goerli]: [
     `https://goerli.infura.io/v3/${serverRuntimeConfig.infuraApiKey}`,
     `https://eth-goerli.alchemyapi.io/v2/${serverRuntimeConfig.alchemyApiKey}`,
