@@ -1,6 +1,6 @@
 import { CHAINS } from '@lido-sdk/constants';
 
-import buildDynamics from 'scripts/build-dynamics.mjs';
+import buildDynamics from './scripts/build-dynamics.mjs';
 
 buildDynamics();
 
