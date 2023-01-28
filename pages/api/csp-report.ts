@@ -1,3 +1,1 @@
-import { cspReportServerLoggerApiPage } from 'common/pages/api/cspReports';
-
-export default cspReportServerLoggerApiPage;
+export { cspReportServerLoggerApiPage as default } from 'common/pages/api/cspReports';
