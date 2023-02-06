@@ -1,19 +1,19 @@
-import { Container, Divider } from '@lidofinance/lido-ui';
+import { Container, Divider, Link } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
 
 export const FooterStyle = styled(Container)`
-  color: var(--lido-color-text);
   display: flex;
   flex-wrap: wrap;
   padding-top: 60px;
   padding-bottom: 20px;
+  color: var(--lido-color-text);
 
   ${({ theme }) => theme.mediaQueries.lg} {
     padding-top: 40px;
   }
 `;
 
-export const FooterDividerStyle = styled(Divider)`
+export const FooterDivider = styled(Divider)`
   flex-basis: 100%;
   margin-bottom: 60px;
 
@@ -22,9 +22,7 @@ export const FooterDividerStyle = styled(Divider)`
   }
 `;
 
-export const FooterLogoStyle = styled.div`
-  // TODO flex-grow
-  flex-grow: 25%;
+export const FooterLogo = styled.div`
   flex-grow: 1;
   margin-bottom: 40px;
   box-sizing: border-box;
@@ -35,7 +33,7 @@ export const FooterLogoStyle = styled.div`
   }
 `;
 
-export const FooterGroupStyle = styled.div`
+export const FooterGroup = styled.div`
   flex-grow: 1;
   margin-bottom: 40px;
   padding-right: 20px;
@@ -49,31 +47,36 @@ export const FooterGroupStyle = styled.div`
   }
 `;
 
-export const FooterTitleStyle = styled.h4`
-  // TODO margin
-  margin: 0.6em 0;
+export const FooterTitle = styled.h4`
+  margin: 0 0 1em;
+
   font-weight: 800;
   font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
   line-height: 1.4em;
-  margin: 0 0 1em;
 `;
 
-export const FooterItemStyle = styled.div`
-  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
-  line-height: 1.6em;
+export const FooterItemText = styled.div`
   margin: 0 0 0.8em;
 
-  a {
-    text-decoration: none;
-    opacity: 0.7;
+  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
+  line-height: 1.6em;
+`;
 
-    &,
-    &:hover {
-      color: var(--lido-color-text);
-    }
+export const FooterItemLink = styled(Link)`
+  display: block;
+  margin: 0 0 0.8em;
 
-    &:hover {
-      opacity: 1;
-    }
+  font-size: ${({ theme }) => theme.fontSizesMap.xs}px;
+  line-height: 1.6em;
+  text-decoration: none;
+  opacity: 0.7;
+
+  &,
+  &:hover {
+    color: var(--lido-color-text);
+  }
+
+  &:hover {
+    opacity: 1;
   }
 `;
