@@ -72,7 +72,8 @@ export const FooterItemLink = styled(Link)`
   opacity: 0.7;
 
   &,
-  &:hover {
+  &:hover,
+  &:visited {
     color: var(--lido-color-text);
   }
 
