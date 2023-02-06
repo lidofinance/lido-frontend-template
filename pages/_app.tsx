@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
 
-import { WidgetApp } from 'common/app';
+import { WidgetApp } from '@common/app';
 import { headerNavigations } from 'config';
 import { withCsp } from 'utils';
 

@@ -1,5 +1,5 @@
-import metricsApiPage from 'common/pages/api/metrics';
-import { registry } from 'common/utils/metrics';
+import metricsApiPage from '@common/pages/api/metrics';
+import { registry } from '@common/utils/metrics';
 import { contractInfo } from 'utils/metrics';
 
 if (process.env.NODE_ENV === 'production') {

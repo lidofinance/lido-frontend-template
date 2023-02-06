@@ -7,7 +7,7 @@ import {
 } from '@lido-sdk/react';
 import { Block, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 
-import { standardFetcher } from 'common/utils';
+import { standardFetcher } from '@common/utils';
 
 const Statistics: FC = () => {
   const contractRpc = useSTETHContractRPC();

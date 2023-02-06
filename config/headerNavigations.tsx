@@ -1,6 +1,6 @@
 import { Stake, Wrap, Ldo as LdoIcon } from '@lidofinance/lido-ui';
 
-import { INavigationLink } from 'common/layout/header/components/navigation/components/navigationLink';
+import { INavigationLink } from '@common/layout/header/components/navigation/components/navigationLink';
 
 // TODO: move to _app.tsx
 export const headerNavigations = [

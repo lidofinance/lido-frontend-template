@@ -3,7 +3,7 @@
 
 // import getConfig from 'next/config';
 import { serverLoggerFactory } from '@lidofinance/api-logger';
-import { defaultSecrets } from 'common/utils';
+import { defaultSecrets } from '@common/utils';
 
 // const { serverRuntimeConfig } = getConfig();
 // const { someValueForMasking } = serverRuntimeConfig;

@@ -8,10 +8,10 @@ import {
   wrapRequest,
 } from '@lidofinance/next-api-wrapper';
 
-import { registry } from 'common/utils/metrics';
+import { registry } from '@common/utils/metrics';
 
 import { METRICS_PREFIX, dynamics } from 'config';
-import { serverLogger } from 'common/utils';
+import { serverLogger } from '@common/utils';
 
 const { serverRuntimeConfig } = getConfig();
 

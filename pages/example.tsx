@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import { LayoutSubTitle, LayoutTitle } from 'common/layout/styles';
+import { LayoutSubTitle, LayoutTitle } from '@common/layout/styles';
 
 // PAY ATTENTION: Example showing how to add page (and for routing test)
 const Example: FC = () => {

@@ -4,11 +4,11 @@ import Head from 'next/head';
 
 import { Link } from '@lidofinance/lido-ui';
 
-import Section from 'common/components/section';
-import Faq from 'common/components/faq';
-import Wallet from 'common/components/wallet';
-import { LayoutTitle, LayoutSubTitle } from 'common/layout/styles';
-import { FAQItem, getFaqList } from 'common/utils/faqList';
+import Section from '@common/components/section';
+import Faq from '@common/components/faq';
+import Wallet from '@common/components/wallet';
+import { LayoutTitle, LayoutSubTitle } from '@common/layout/styles';
+import { FAQItem, getFaqList } from '@common/utils/faqList';
 
 import StakeForm from 'components/stakeForm';
 import Statistics from 'components/statistics';

@@ -5,7 +5,7 @@ import {
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
 import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
-import { serverLogger } from 'common/utils';
+import { serverLogger } from '@common/utils';
 
 /**
  * PAY ATTENTION: Example showing how to use API wrappers (error handler and cache control).
