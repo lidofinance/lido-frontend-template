@@ -56,6 +56,7 @@ export const FooterTitle = styled.h4`
 `;
 
 export const FooterItemText = styled.div`
+  display: block;
   margin: 0 0 0.8em;
 
   font-size: ${({ theme }) => theme.fontSizesMap.xs}px;

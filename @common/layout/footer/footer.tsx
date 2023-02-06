@@ -7,6 +7,7 @@ import {
   FooterGroup,
   FooterTitle,
   FooterItemLink,
+  FooterItemText,
 } from './styles';
 
 const Footer: FC = () => (
@@ -35,6 +36,7 @@ const Footer: FC = () => (
       <FooterItemLink href="https://lido.fi/static/LIDO_press_kit.zip">
         Press Kit
       </FooterItemLink>
+      <FooterItemText>Some text</FooterItemText>
     </FooterGroup>
 
     <FooterGroup>
@@ -51,12 +53,14 @@ const Footer: FC = () => (
         Reddit
       </FooterItemLink>
       <FooterItemLink href="https://blog.lido.fi/">Blog</FooterItemLink>
+      <FooterItemText>Some text</FooterItemText>
     </FooterGroup>
 
     <FooterGroup>
       <FooterTitle>Contacts</FooterTitle>
       <FooterItemLink href="mailto:info@lido.fi">info@lido.fi</FooterItemLink>
       <FooterItemLink href="https://help.lido.fi/">Help Center</FooterItemLink>
+      <FooterItemText>Some text</FooterItemText>
     </FooterGroup>
   </FooterStyle>
 );
