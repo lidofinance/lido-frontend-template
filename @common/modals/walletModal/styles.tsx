@@ -1,12 +1,10 @@
 import { Button } from '@lidofinance/lido-ui';
 import styled from 'styled-components';
 
-// TODO: order styles
-
 export const WalletModalContentStyle = styled.div`
+  padding: ${({ theme }) => theme.spaceMap.lg}px;
   background-color: var(--lido-color-background);
   border-radius: ${({ theme }) => theme.borderRadiusesMap.lg}px;
-  padding: ${({ theme }) => theme.spaceMap.lg}px;
 `;
 
 export const WalletModalConnectedStyle = styled.div`
@@ -15,13 +13,14 @@ export const WalletModalConnectedStyle = styled.div`
 `;
 
 export const WalletModalConnectorStyle = styled.div`
-  color: var(--lido-color-textSecondary);
-  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
-  line-height: 1.4em;
   flex-grow: 1;
-  padding-right: ${({ theme }) => theme.spaceMap.md}px;
   margin: ${({ theme }) => theme.spaceMap.sm}px 0;
   margin-right: auto;
+  padding-right: ${({ theme }) => theme.spaceMap.md}px;
+
+  font-size: ${({ theme }) => theme.fontSizesMap.xxs}px;
+  line-height: 1.4em;
+  color: var(--lido-color-textSecondary);
 `;
 
 export const WalletModalDisconnectStyle = styled(Button)`
@@ -36,9 +35,10 @@ export const WalletModalAccountStyle = styled.div`
 
 export const WalletModalAddressStyle = styled.div`
   margin-left: ${({ theme }) => theme.spaceMap.sm}px;
+
   font-size: ${({ theme }) => theme.fontSizesMap.sm}px;
-  line-height: 1.2em;
   font-weight: 800;
+  line-height: 1.2em;
 `;
 
 export const WalletModalActionsStyle = styled.div`
@@ -46,8 +46,8 @@ export const WalletModalActionsStyle = styled.div`
   margin-top: ${({ theme }) => theme.spaceMap.md}px;
 
   button {
+    margin-right: ${({ theme }) => theme.spaceMap.sm}px;
     padding-left: ${({ theme }) => theme.spaceMap.sm}px;
     padding-right: ${({ theme }) => theme.spaceMap.sm}px;
-    margin-right: ${({ theme }) => theme.spaceMap.sm}px;
   }
 `;
