@@ -22,7 +22,6 @@ const Navigation: FC<INavigation> = memo((props: INavigation) => {
   );
 });
 
-// TODO: ???
 Navigation.displayName = 'Navigation';
 
 export default Navigation;
