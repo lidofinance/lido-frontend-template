@@ -1,10 +1,15 @@
 import { PropsWithChildren } from 'react';
 import { AppProps } from 'next/app';
 
-import { migrationAllowCookieToCrossDomainCookieClientSide } from '@lidofinance/lido-ui';
-
+import {
+  Stake,
+  Ldo as LdoIcon,
+  Wrap,
+  migrationAllowCookieToCrossDomainCookieClientSide,
+} from '@lidofinance/lido-ui';
 import { WidgetApp } from '@common/app';
-import { headerNavigations } from 'config';
+import { INavigationLink } from '@common/layout/header/components/navigation/components/navigationLink';
+
 import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
@@ -13,12 +18,33 @@ migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
 
+// Header pages
+const headerPages = [
+  {
+    title: 'Stake',
+    href: '/',
+    icon: <Stake />,
+  },
+  {
+    title: 'Example',
+    href: '/example',
+    icon: <Wrap />,
+  },
+  {
+    title: 'Landing',
+    href: 'https://lido.fi/',
+    icon: <LdoIcon />,
+    external: true,
+  },
+] as INavigationLink[];
+
+// App wrapper
 const WidgetAppWrapper = ({
   children,
   ...rest
 }: PropsWithChildren<AppProps>): JSX.Element => {
   return (
-    <WidgetApp {...rest} pages={headerNavigations}>
+    <WidgetApp {...rest} pages={headerPages}>
       {children}
     </WidgetApp>
   );
