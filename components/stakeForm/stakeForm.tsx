@@ -1,4 +1,4 @@
-import { FC, FormEventHandler } from 'react';
+import { FC, EventHandler, SyntheticEvent } from 'react';
 import { trackEvent } from '@lidofinance/analytics-matomo';
 import { Block, Input, Steth, Button } from '@lidofinance/lido-ui';
 
@@ -13,10 +13,7 @@ const submitTrackEvent = () => {
 };
 
 const StakeForm: FC = () => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> | undefined = (
-    event,
-  ) => {
-    event.preventDefault();
+  const handleSubmit: EventHandler<SyntheticEvent> | undefined = () => {
     submitTrackEvent();
     // TODO: remove alert
     // TODO: make a user flow like in stake.lido.fi with emulation trx
@@ -27,20 +24,17 @@ const StakeForm: FC = () => {
 
   return (
     <Block>
-      {/* TODO: remove <form> */}
-      <form action="" method="post" onSubmit={handleSubmit}>
-        <InputWrapper>
-          <Input
-            fullwidth
-            placeholder="0"
-            leftDecorator={<Steth />}
-            label="Token amount"
-          />
-        </InputWrapper>
-        <Button fullwidth type="submit">
-          Submit
-        </Button>
-      </form>
+      <InputWrapper>
+        <Input
+          fullwidth
+          placeholder="0"
+          leftDecorator={<Steth />}
+          label="Token amount"
+        />
+      </InputWrapper>
+      <Button fullwidth onClick={handleSubmit}>
+        Submit
+      </Button>
     </Block>
   );
 };
