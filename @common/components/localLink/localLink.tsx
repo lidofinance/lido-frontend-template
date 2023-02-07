@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { LocalLinkProps } from './types';
 
 const LocalLink: FC<React.PropsWithChildren<LocalLinkProps>> = (props) => {
-  const { href, ...restProps } = props;
+  const { href, ...rest } = props;
 
   const router = useRouter();
   const { ref, embed } = router.query;
@@ -14,7 +14,7 @@ const LocalLink: FC<React.PropsWithChildren<LocalLinkProps>> = (props) => {
   if (ref) extraQuery.ref = ref;
   if (embed) extraQuery.embed = embed;
 
-  return <Link {...restProps} href={{ pathname: href, query: extraQuery }} />;
+  return <Link {...rest} href={{ pathname: href, query: extraQuery }} />;
 };
 
 export default LocalLink;
