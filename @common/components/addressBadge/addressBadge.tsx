@@ -7,12 +7,12 @@ const AddressBadge: AddressBadgeComponent = (props) => {
   const { address, ...rest } = props;
   const isMobile = useBreakpoint('md');
 
+  const mobileSymbols = 3;
+  const desktopSymbols = 6;
+  const symbols = isMobile ? mobileSymbols : desktopSymbols;
+
   return (
-    <AddressBadgeStyle
-      symbols={isMobile ? 3 : 6}
-      address={address ?? ''}
-      {...rest}
-    />
+    <AddressBadgeStyle symbols={symbols} address={address ?? ''} {...rest} />
   );
 };
 
