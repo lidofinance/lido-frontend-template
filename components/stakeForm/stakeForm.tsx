@@ -1,10 +1,12 @@
-import { FC, EventHandler, SyntheticEvent } from 'react';
+import { FC, useCallback, useState, EventHandler, SyntheticEvent } from 'react';
 import { trackEvent } from '@lidofinance/analytics-matomo';
 import { Block, Input, Steth, Button } from '@lidofinance/lido-ui';
 
 import { MATOMO_CLICK_EVENTS } from 'config';
+import TxStageModal, { TX_STAGE } from 'components/txStageModal';
 
 import { InputWrapper } from './styles';
+import { stakeProcessing } from './utils';
 
 const submitTrackEvent = () => {
   // PAY ATTENTION: Remove. Example just to showing how to use a matomo events tracking
@@ -13,29 +15,51 @@ const submitTrackEvent = () => {
 };
 
 const StakeForm: FC = () => {
-  const handleSubmit: EventHandler<SyntheticEvent> | undefined = () => {
-    submitTrackEvent();
-    // TODO: remove alert
-    // TODO: make a user flow like in stake.lido.fi with emulation trx
-    // TODO: 1. loading modal (with timeout 3sec)
-    // TODO: 2. success trx model
-    alert('Submitted');
-  };
+  // Modals
+  const [isTxModalOpen, setIsTxModalOpen] = useState<boolean>(false);
+
+  const openTxModal = useCallback(() => {
+    setIsTxModalOpen(true);
+  }, []);
+
+  const closeTxModal = useCallback(() => {
+    setIsTxModalOpen(false);
+  }, []);
+
+  const [txStage, setTxStage] = useState(TX_STAGE.IDLE);
+  // /Modals
+
+  const handleSubmit: EventHandler<SyntheticEvent> = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    async (event) => {
+      submitTrackEvent();
+      await stakeProcessing(openTxModal, setTxStage);
+    },
+    [openTxModal],
+  );
 
   return (
-    <Block>
-      <InputWrapper>
-        <Input
-          fullwidth
-          placeholder="0"
-          leftDecorator={<Steth />}
-          label="Token amount"
-        />
-      </InputWrapper>
-      <Button fullwidth onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Block>
+    <>
+      <Block>
+        <InputWrapper>
+          <Input
+            fullwidth
+            placeholder="0"
+            leftDecorator={<Steth />}
+            label="Token amount"
+          />
+        </InputWrapper>
+        <Button fullwidth onClick={handleSubmit}>
+          Submit
+        </Button>
+      </Block>
+
+      <TxStageModal
+        open={isTxModalOpen}
+        onClose={closeTxModal}
+        txStage={txStage}
+      />
+    </>
   );
 };
 

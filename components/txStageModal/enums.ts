@@ -1,0 +1,15 @@
+export enum TX_OPERATION {
+  STAKING,
+  APPROVING,
+  WRAPPING,
+  UNWRAPPING,
+}
+
+export enum TX_STAGE {
+  IDLE,
+  SIGN,
+  BLOCK,
+  SUCCESS,
+  FAIL,
+  LIMIT,
+}
