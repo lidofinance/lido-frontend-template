@@ -32,6 +32,8 @@
     "@lidofinance/api-logger": "^0.13.0",
     "@lidofinance/api-metrics": "^0.13.0",
     "@lidofinance/api-rpc": "^0.13.0",
+    "@lidofinance/eth-api-providers": "^0.15.0",
+    "@lidofinance/eth-providers": "^0.15.0",
     "@lidofinance/lido-ui": "^3.0.0-next.17",
     "@lidofinance/next-api-wrapper": "^0.7.0",
     "@lidofinance/next-cache-files-middleware": "^0.7.0",

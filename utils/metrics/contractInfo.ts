@@ -2,12 +2,12 @@
 
 import { Gauge } from 'prom-client';
 import { CHAINS } from '@lido-sdk/constants';
-import { dynamics, getExampleAddress, METRICS_PREFIX } from 'config';
+import { dynamics, getStethAddress, METRICS_PREFIX } from 'config';
 
 const chainId = +dynamics.defaultChain as CHAINS;
 
 const contracts: Record<string, string> = {
-  example: getExampleAddress(chainId),
+  stETH: getStethAddress(chainId as CHAINS.Mainnet | CHAINS.Goerli),
 };
 
 const contractNames = Object.keys(contracts);
