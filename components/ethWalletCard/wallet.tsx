@@ -11,15 +11,15 @@ import { useWeb3 } from '@reef-knot/web3-react';
 
 import FormatToken from '@common/components/formatToken';
 
-import TokenToWallet from './components/tokenToWallet';
-import FallbackWallet from './components/fallbackWallet';
-import WalletCard from './components/walletCard';
-import WalletCardBalance from './components/walletCardBalance';
-import WalletCardAccount from './components/walletCardAccount';
-import WalletCardRow from './components/walletCard/components/walletCardRow';
-import { WalletComponent } from './types';
+import TokenToWallet from '@common/components/wallet/components/tokenToWallet';
+import FallbackWallet from '@common/components/wallet/components/fallbackWallet';
+import WalletCard from '@common/components/wallet/components/walletCard';
+import WalletCardRow from '@common/components/wallet/components/walletCard/components/walletCardRow';
+import WalletCardBalance from '@common/components/wallet/components/walletCardBalance';
+import WalletCardAccount from '@common/components/wallet/components/walletCardAccount';
+import { EthWalletCardComponent } from './types';
 
-const Wallet: WalletComponent = (props) => {
+const EthWalletCard: EthWalletCardComponent = (props) => {
   const { account } = useSDK();
   const eth = useEthereumBalance();
   const steth = useSTETHBalance();
@@ -67,9 +67,9 @@ const Wallet: WalletComponent = (props) => {
   );
 };
 
-const WalletWrapper: WalletComponent = (props) => {
+const EthWalletCardWrapper: EthWalletCardComponent = (props) => {
   const { active } = useWeb3();
-  return active ? <Wallet {...props} /> : <FallbackWallet {...props} />;
+  return active ? <EthWalletCard {...props} /> : <FallbackWallet {...props} />;
 };
 
-export default WalletWrapper;
+export default EthWalletCardWrapper;
