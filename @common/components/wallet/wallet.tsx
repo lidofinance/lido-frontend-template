@@ -15,7 +15,7 @@ import TokenToWallet from './components/tokenToWallet';
 import FallbackWallet from './components/fallbackWallet';
 import WalletCard from './components/walletCard';
 import WalletCardBalance from './components/walletCardBalance';
-import WalletCardAccount from './components/walletCard';
+import WalletCardAccount from './components/walletCardAccount';
 import WalletCardRow from './components/walletCard/components/walletCardRow';
 import { WalletComponent } from './types';
 
