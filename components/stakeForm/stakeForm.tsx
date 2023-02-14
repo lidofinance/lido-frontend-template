@@ -5,7 +5,8 @@ import { Block, Input, Steth, Button } from '@lidofinance/lido-ui';
 import { MATOMO_CLICK_EVENTS } from 'config';
 import TxStageModal, { TX_STAGE } from 'components/txStageModal';
 
-import { InputWrapper } from './styles';
+import FutureTxInfo from './components/futureTxInfo';
+import { InputWrapper, PseudoFormWrapper } from './styles';
 import { stakeProcessing } from './utils';
 
 const submitTrackEvent = () => {
@@ -41,17 +42,21 @@ const StakeForm: FC = () => {
   return (
     <>
       <Block>
-        <InputWrapper>
-          <Input
-            fullwidth
-            placeholder="0"
-            leftDecorator={<Steth />}
-            label="Token amount"
-          />
-        </InputWrapper>
-        <Button fullwidth onClick={handleSubmit}>
-          Submit
-        </Button>
+        <PseudoFormWrapper>
+          <InputWrapper>
+            <Input
+              fullwidth
+              placeholder="0"
+              leftDecorator={<Steth />}
+              label="Token amount"
+            />
+          </InputWrapper>
+          <Button fullwidth onClick={handleSubmit}>
+            Submit
+          </Button>
+        </PseudoFormWrapper>
+
+        <FutureTxInfo />
       </Block>
 
       <TxStageModal
