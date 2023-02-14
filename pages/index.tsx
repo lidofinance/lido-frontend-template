@@ -10,7 +10,7 @@ import { LayoutTitle, LayoutSubTitle } from '@common/layout/styles';
 import { FAQItem, getFaqList } from '@common/utils/faqList';
 
 import StakeForm from 'components/stakeForm';
-import Statistics from 'components/statistics';
+import LidoStatistics from 'components/lidoStatistics';
 import EthWallet from 'components/ethWalletCard';
 
 interface HomeProps {
@@ -32,8 +32,15 @@ const Home: FC<HomeProps> = ({ faqList }) => {
         <StakeForm />
       </Section>
 
-      <Section title="Data table" headerDecorator={<Link href="#">Link</Link>}>
-        <Statistics />
+      <Section
+        title="Lido statistics"
+        headerDecorator={
+          <Link href="https://etherscan.io/token/0xae7ab96520de3a18e5e111b5eaab095312d7fe84">
+            View on Etherscan
+          </Link>
+        }
+      >
+        <LidoStatistics />
       </Section>
 
       <Section title="FAQ">

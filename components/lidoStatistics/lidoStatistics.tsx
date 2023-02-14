@@ -9,7 +9,7 @@ import { Block, DataTable, DataTableRow } from '@lidofinance/lido-ui';
 
 import { standardFetcher } from '@common/utils';
 
-const Statistics: FC = () => {
+const LidoStatistics: FC = () => {
   const contractRpc = useSTETHContractRPC();
   const tokenName = useContractSWR({
     contract: contractRpc,
@@ -34,4 +34,4 @@ const Statistics: FC = () => {
   );
 };
 
-export default Statistics;
+export default LidoStatistics;
