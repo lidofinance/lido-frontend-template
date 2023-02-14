@@ -1,6 +1,7 @@
 import { CHAINS } from '@lido-sdk/constants';
 import getConfig from 'next/config';
 
+// TODO
 const { serverRuntimeConfig } = getConfig();
 const { basePath } = serverRuntimeConfig;
 

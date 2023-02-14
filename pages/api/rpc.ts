@@ -24,10 +24,13 @@ const rpc = rpcFactory({
     registry,
   },
   allowedRPCMethods: [
+    // TODO
     'eth_call',
     'eth_gasPrice',
     'eth_requestAccounts',
     'eth_getBalance',
+    'eth_getBlockByNumber',
+    'eth_estimateGas',
     // PAY ATTENTION: Extra RPC methods can be added here
   ],
   defaultChain: dynamics.defaultChain,

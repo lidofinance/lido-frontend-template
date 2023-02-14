@@ -1,6 +1,7 @@
 import getConfig from 'next/config';
 export const { serverRuntimeConfig } = getConfig();
 
+export * from './aggregator';
 export * from './cache';
 export { default as dynamics } from './dynamics';
 export * from './matomo';
