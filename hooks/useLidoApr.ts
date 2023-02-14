@@ -3,10 +3,10 @@ import { SWRResponse, useLidoSWR } from '@lido-sdk/react';
 
 import { standardFetcher } from '@common/utils';
 
+// TODO
 const { serverRuntimeConfig } = getConfig();
 const { basePath } = serverRuntimeConfig;
 
-// TODO: only for front ?
 export const useLidoApr = (): SWRResponse<unknown> => {
   return useLidoSWR(
     `${basePath || ''}/api/steth-apr`,

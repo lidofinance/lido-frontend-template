@@ -4,6 +4,7 @@ import { useSDK, useLidoSWR } from '@lido-sdk/react';
 import { DATA_UNAVAILABLE } from '@common/texts';
 import { standardFetcher } from '@common/utils';
 
+// TODO
 const { serverRuntimeConfig } = getConfig();
 const { basePath } = serverRuntimeConfig;
 
@@ -14,7 +15,6 @@ export type ResponseData = {
   marketCap: number;
 };
 
-// TODO: only for front ?
 export const useLidoStats = (): {
   data: {
     totalStaked: string;
