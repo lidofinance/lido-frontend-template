@@ -1,13 +1,20 @@
 import { FC } from 'react';
 
 import {
-  useContractSWR,
-  useSTETHContractRPC,
-  useLidoSWR,
-} from '@lido-sdk/react';
-import { Block, DataTable, DataTableRow } from '@lidofinance/lido-ui';
+  Block,
+  DataTable,
+  DataTableRow,
+  Tooltip,
+  Question,
+} from '@lidofinance/lido-ui';
+import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
 
-import { standardFetcher } from '@common/utils';
+import { DATA_UNAVAILABLE } from '@common/texts';
+
+import { useLidoApr, useLidoStats } from 'hooks';
+import { LIDO_APR_TOOLTIP_TEXT } from 'texts';
+
+import { FlexCenterVertical } from './styles';
 
 const LidoStatistics: FC = () => {
   const contractRpc = useSTETHContractRPC();
@@ -16,18 +23,47 @@ const LidoStatistics: FC = () => {
     method: 'name',
   });
 
-  const { data } = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
-  const oneInchRate = data ? (100 - (1 / data) * 100).toFixed(2) : 1;
+  const lidoApr = useLidoApr();
+  const lidoStats = useLidoStats();
 
   return (
     <Block>
-      {/* TODO: get more statistics, for example get from stake.lido.fi */}
       <DataTable>
         <DataTableRow title="Token name" loading={tokenName.initialLoading}>
           {tokenName.data}
         </DataTableRow>
-        <DataTableRow title="1inch rate" loading={tokenName.initialLoading}>
-          {oneInchRate}
+
+        <DataTableRow
+          title={
+            <FlexCenterVertical>
+              Annual percentage rate
+              <Tooltip title={LIDO_APR_TOOLTIP_TEXT}>
+                <Question />
+              </Tooltip>
+            </FlexCenterVertical>
+          }
+          loading={lidoApr.initialLoading}
+          highlight
+        >
+          {lidoApr.data ? `${lidoApr.data}%` : DATA_UNAVAILABLE}
+        </DataTableRow>
+
+        <DataTableRow
+          title="Total staked with Lido"
+          loading={lidoStats.initialLoading}
+        >
+          {lidoStats.data.totalStaked}
+        </DataTableRow>
+
+        <DataTableRow title="Stakers" loading={lidoStats.initialLoading}>
+          {lidoStats.data.stakers}
+        </DataTableRow>
+
+        <DataTableRow
+          title="stETH market cap"
+          loading={lidoStats.initialLoading}
+        >
+          {lidoStats.data.marketCap}
         </DataTableRow>
       </DataTable>
     </Block>
