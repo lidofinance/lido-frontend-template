@@ -15,6 +15,15 @@ const apiProviderUrls = {
   [CHAINS.Kovan]: process.env[`API_PROVIDER_URL_${CHAINS.Kovan}`],
 };
 
+const subgraphMainnet = process.env.SUBGRAPH_MAINNET;
+const subgraphRopsten = process.env.SUBGRAPH_ROPSTEN;
+const subgraphRinkeby = process.env.SUBGRAPH_RINKEBY;
+const subgraphGoerli = process.env.SUBGRAPH_GOERLI;
+const subgraphKovan = process.env.SUBGRAPH_KOVAN;
+const subgraphKintsugi = process.env.SUBGRAPH_KINTSUGI;
+
+const subgraphRequestTimeout = process.env.SUBGRAPH_REQUEST_TIMEOUT;
+
 const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
@@ -56,5 +65,12 @@ export default {
     cspTrustedHosts,
     cspReportOnly,
     cspReportUri,
+    subgraphMainnet,
+    subgraphRopsten,
+    subgraphRinkeby,
+    subgraphGoerli,
+    subgraphKovan,
+    subgraphKintsugi,
+    subgraphRequestTimeout,
   },
 };
