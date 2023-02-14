@@ -1,10 +1,17 @@
 import { FC } from 'react';
 import { DataTable, DataTableRow } from '@lidofinance/lido-ui';
+import { useLidoSWR } from '@lido-sdk/react';
 
-// TODO: move
-const DATA_UNAVAILABLE = 'DATA_UNAVAILABLE';
+import { standardFetcher } from '@common/utils';
+import { DATA_UNAVAILABLE } from '@common/texts';
 
 const FutureTxInfo: FC = () => {
+  const oneInchData = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
+  const oneInchRate =
+    oneInchData && oneInchData.data
+      ? (100 - (1 / oneInchData.data) * 100).toFixed(2)
+      : 1;
+
   // TODO: fetch
   const willReceiveStEthValue = 1;
   const txCostInUsd = 2.38;
@@ -29,6 +36,9 @@ const FutureTxInfo: FC = () => {
         and is NOT taken from your staked amount. It is a fee on earnings only."
       >
         {!lidoFee.data ? DATA_UNAVAILABLE : `${lidoFee.data / 100}%`}
+      </DataTableRow>
+      <DataTableRow title="1inch rate" loading={oneInchData.initialLoading}>
+        {oneInchRate}
       </DataTableRow>
     </DataTable>
   );
