@@ -8,7 +8,7 @@ import { useWeb3 } from '@reef-knot/web3-react';
 import { getStaticRpcBatchProvider } from 'utils/rpcProviders';
 
 import { getBackendRPCPath, STETH_SUBMIT_GAS_LIMIT_DEFAULT } from 'config';
-import { ESTIMATE_ACCOUNT } from '../constants'; // TODO
+import { ESTIMATE_ACCOUNT } from 'consts';
 
 type UseStethSubmitGasLimit = () => number | undefined;
 

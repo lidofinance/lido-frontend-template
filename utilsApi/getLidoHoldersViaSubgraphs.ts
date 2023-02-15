@@ -1,16 +1,15 @@
-// TODO imports
 import { Cache } from 'memory-cache';
-// import Metrics from 'utilsApi/metrics';
+import ms from 'ms';
 import { standardFetcher, serverLogger } from '@common/utils';
-import { SubgraphChains } from 'types';
-import { getSubgraphUrl } from './getSubgraphUrl';
+
 import {
+  serverRuntimeConfig,
   CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY,
   CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_TTL,
 } from 'config';
-import getConfig from 'next/config';
-import ms from 'ms';
-const { serverRuntimeConfig } = getConfig();
+import { SubgraphChains } from 'types';
+
+import { getSubgraphUrl } from './getSubgraphUrl';
 
 const SUBGRAPH_ERROR_MESSAGE =
   '[getLidoHoldersViaSubgraphs] Subgraph request failed.';

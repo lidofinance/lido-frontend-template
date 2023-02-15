@@ -1,11 +1,12 @@
-// TODO imports
 import { formatEther } from '@ethersproject/units';
 import { CHAINS } from '@lido-sdk/constants';
-import { getStaticRpcBatchProvider } from './rpcProviders';
-import { getStethAddress, getStethContractFactory } from 'config';
-import { HEALTHY_RPC_SERVICES_ARE_OVER } from '../constants';
 import { serverLogger } from '@common/utils';
+
+import { getStethAddress, getStethContractFactory } from 'config';
+import { HEALTHY_RPC_SERVICES_ARE_OVER } from 'consts';
+
 import { rpcUrls } from './rpcUrls';
+import { getStaticRpcBatchProvider } from './rpcProviders';
 
 export const getTotalStaked = async (): Promise<string> => {
   const urls = rpcUrls[CHAINS.Mainnet];

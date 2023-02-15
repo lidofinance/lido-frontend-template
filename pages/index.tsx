@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Link } from '@lidofinance/lido-ui';
-
 import Section from '@common/components/section';
 import Faq from '@common/components/faq';
 import { LayoutTitle, LayoutSubTitle } from '@common/layout/styles';

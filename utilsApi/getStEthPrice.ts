@@ -1,13 +1,14 @@
-// TODO imports
 import { CHAINS } from '@lido-sdk/constants';
-import { getStaticRpcBatchProvider } from './rpcProviders';
+import { iterateUrls } from '@lidofinance/rpc';
+
+import { serverLogger } from '@common/utils';
 import {
   getAggregatorStEthUsdPriceFeedAddress,
   getAggregatorContractFactory,
 } from 'config';
-import { serverLogger } from '@common/utils';
+
 import { rpcUrls } from './rpcUrls';
-import { iterateUrls } from '@lidofinance/rpc';
+import { getStaticRpcBatchProvider } from './rpcProviders';
 
 export const getStEthPrice = async (): Promise<number> => {
   const urls = rpcUrls[CHAINS.Mainnet];

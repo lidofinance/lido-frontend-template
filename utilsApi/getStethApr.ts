@@ -4,7 +4,6 @@ import { iterateUrls } from '@lidofinance/rpc';
 import { serverLogger } from '@common/utils';
 
 import { rpcUrls } from './rpcUrls';
-
 import { getStaticRpcBatchProvider } from './rpcProviders';
 
 import {
