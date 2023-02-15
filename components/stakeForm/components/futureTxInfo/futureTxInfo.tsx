@@ -1,23 +1,12 @@
 import { FC } from 'react';
 import { DataTable, DataTableRow } from '@lidofinance/lido-ui';
-import {
-  useLidoSWR,
-  useSTETHContractRPC,
-  useContractSWR,
-} from '@lido-sdk/react';
+import { useSTETHContractRPC, useContractSWR } from '@lido-sdk/react';
 
-import { standardFetcher } from '@common/utils';
 import { DATA_UNAVAILABLE } from '@common/texts';
 
 import { useStethSubmitGasLimit, useTxCostInUsd } from 'hooks';
 
 const FutureTxInfo: FC = () => {
-  const oneInchData = useLidoSWR<number>('/api/oneinch-rate', standardFetcher);
-  const oneInchRate =
-    oneInchData && oneInchData.data
-      ? (100 - (1 / oneInchData.data) * 100).toFixed(2)
-      : 1;
-
   const contractRpc = useSTETHContractRPC();
   const lidoFee = useContractSWR({
     contract: contractRpc,
@@ -46,9 +35,6 @@ const FutureTxInfo: FC = () => {
         and is NOT taken from your staked amount. It is a fee on earnings only."
       >
         {!lidoFee.data ? DATA_UNAVAILABLE : `${lidoFee.data / 100}%`}
-      </DataTableRow>
-      <DataTableRow title="1inch rate" loading={oneInchData.initialLoading}>
-        {oneInchRate}
       </DataTableRow>
     </DataTable>
   );
