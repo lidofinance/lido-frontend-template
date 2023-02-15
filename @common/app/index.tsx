@@ -25,7 +25,7 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
   <CookieThemeProvider>
     <GlobalStyle />
     <Web3Provider {...props.web3ProviderConfig}>
-      <ModalProvider>
+      <ModalProvider {...props.reefKnotConfig}>
         <Header pages={props?.pages} />
         <Main>
           <NextApp {...props} />

@@ -7,10 +7,10 @@ import {
   FC,
   PropsWithChildren,
 } from 'react';
+import { Metrics as WalletsMetrics } from 'reef-knot';
 import { useThemeToggle } from '@lidofinance/lido-ui';
 import { WalletsModalForEth } from '@reef-knot/connect-wallet-modal';
 import WalletModal from '@common/modals/walletModal';
-import { walletsMetrics } from 'config';
 
 export type ModalContextValue = {
   openModal: (modal: MODAL) => void;
@@ -24,7 +24,17 @@ export enum MODAL {
 
 export const ModalContext = createContext({} as ModalContextValue);
 
-const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
+// TODO: make like ModalProviderProps.reefKnot.[walletsMetrics, hiddenWallets]?
+export type ModalProviderProps = {
+  walletsMetrics: WalletsMetrics;
+  // TODO: WalletId[] type
+  hiddenWallets?: string[];
+};
+
+const ModalProvider: FC<PropsWithChildren<ModalProviderProps>> = ({
+  children,
+  walletsMetrics,
+}) => {
   const [active, setActive] = useState<MODAL | null>(null);
   const { themeName } = useThemeToggle();
 
@@ -56,6 +66,7 @@ const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
       <WalletsModalForEth
         open={active === MODAL.connect}
         metrics={walletsMetrics}
+        // TODO: use hiddenWallets
         hiddenWallets={['Opera Wallet']}
         {...common}
       />
@@ -63,4 +74,4 @@ const ModalProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default memo<FC<PropsWithChildren>>(ModalProvider);
+export default memo<FC<PropsWithChildren<ModalProviderProps>>>(ModalProvider);

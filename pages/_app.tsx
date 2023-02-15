@@ -10,7 +10,7 @@ import {
 import { WidgetApp } from '@common/app';
 import { INavigationLink } from '@common/layout/header/components/navigation/components/navigationLink';
 
-import { dynamics } from 'config';
+import { dynamics, walletsMetrics } from 'config';
 import { backendRPC } from 'consts';
 import { withCsp } from 'utils';
 
@@ -53,6 +53,10 @@ const WidgetAppWrapper = ({
         defaultChainId: dynamics.defaultChain,
         supportedChainIds: dynamics.supportedChains,
         rpc: backendRPC,
+      }}
+      reefKnotConfig={{
+        walletsMetrics: walletsMetrics,
+        hiddenWallets: ['Opera Wallet'],
       }}
     >
       {children}
