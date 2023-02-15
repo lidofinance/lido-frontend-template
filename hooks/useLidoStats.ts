@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
-import { DATA_UNAVAILABLE } from '@common/texts';
+import { DATA_UNAVAILABLE } from '@common/constants';
 import { standardFetcher } from '@common/utils';
 
 import { serverRuntimeConfig } from 'config';

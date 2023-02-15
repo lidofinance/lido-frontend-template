@@ -9,7 +9,7 @@ import {
 } from '@lidofinance/lido-ui';
 import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
 
-import { DATA_UNAVAILABLE } from '@common/texts';
+import { DATA_UNAVAILABLE } from '@common/constants';
 
 import { LIDO_APR_TOOLTIP_TEXT } from 'consts';
 import { useLidoApr, useLidoStats } from 'hooks';
