@@ -8,23 +8,15 @@ import {
 } from '@lidofinance/lido-ui';
 
 import { GlobalStyle } from '@common/styles';
-import {
-  Web3Provider,
-  Web3ProviderProps,
-  ModalProvider,
-} from '@common/providers';
+import { Web3Provider, ModalProvider } from '@common/providers';
 import Header from '@common/layout/header';
 import Main from '@common/layout/main';
 import Footer from '@common/layout/footer';
 
-import { AppPropsWithPages } from './types';
+import { WidgetAppProps } from './types';
 
 // Migrations old cookies to new cross domain cookies
 migrationThemeCookiesToCrossDomainCookiesClientSide();
-
-export type WidgetAppProps = AppPropsWithPages & {
-  web3ProviderProps: Web3ProviderProps;
-};
 
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
   children,
@@ -32,7 +24,7 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
 }) => (
   <CookieThemeProvider>
     <GlobalStyle />
-    <Web3Provider {...props.web3ProviderProps}>
+    <Web3Provider {...props.web3ProviderConfig}>
       <ModalProvider>
         <Header pages={props?.pages} />
         <Main>

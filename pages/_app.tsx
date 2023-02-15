@@ -49,7 +49,7 @@ const WidgetAppWrapper = ({
     <WidgetApp
       {...rest}
       pages={headerPages}
-      web3ProviderProps={{
+      web3ProviderConfig={{
         defaultChainId: dynamics.defaultChain,
         supportedChainIds: dynamics.supportedChains,
         rpc: backendRPC,
