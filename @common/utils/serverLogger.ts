@@ -1,6 +1,8 @@
 import getConfig from 'next/config';
 import { serverLoggerFactory } from '@lidofinance/api-logger';
 
+// TODO: for another networks?
+// TODO: dependence from template?
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
 

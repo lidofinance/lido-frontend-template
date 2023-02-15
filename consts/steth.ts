@@ -1,16 +1,15 @@
 import { CHAINS, TOKENS, getTokenAddress } from '@lido-sdk/constants';
 import { StethAbi__factory } from 'generated';
-
-type MAINNET_GOERLI_CHAINS = CHAINS.Mainnet | CHAINS.Goerli;
+import { MAINNET_AND_GOERLI_CHAINS } from './chains';
 
 export const STETH_BY_NETWORK: {
-  [key in MAINNET_GOERLI_CHAINS]: string;
+  [key in MAINNET_AND_GOERLI_CHAINS]: string;
 } = {
   [CHAINS.Mainnet]: getTokenAddress(CHAINS.Mainnet, TOKENS.STETH),
   [CHAINS.Goerli]: getTokenAddress(CHAINS.Mainnet, TOKENS.STETH),
 };
 
-export const getStethAddress = (chainId: MAINNET_GOERLI_CHAINS): string => {
+export const getStethAddress = (chainId: MAINNET_AND_GOERLI_CHAINS): string => {
   return STETH_BY_NETWORK[chainId];
 };
 

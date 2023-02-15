@@ -3,15 +3,15 @@ import { CHAINS } from '@lido-sdk/constants';
 import { iterateUrls } from '@lidofinance/rpc';
 import { serverLogger } from '@common/utils';
 
-import { rpcUrls } from './rpcUrls';
-import { getStaticRpcBatchProvider } from './rpcProviders';
-
 import {
   getOracleAddress,
   getOracleContractFactory,
   getStethAddress,
   getStethContractFactory,
-} from 'config';
+} from 'consts';
+
+import { rpcUrls } from './rpcUrls';
+import { getStaticRpcBatchProvider } from './rpcProviders';
 
 export const getStethApr = async (): Promise<string> => {
   const urls = rpcUrls[CHAINS.Mainnet];

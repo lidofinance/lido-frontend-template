@@ -5,18 +5,16 @@ import {
   cacheControl,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
+import { serverLogger } from '@common/utils';
 
+import { dynamics } from 'config';
 import {
   CACHE_DEFAULT_HEADERS,
   CACHE_LIDO_SHORT_STATS_KEY,
   CACHE_LIDO_SHORT_STATS_TTL,
-  dynamics,
-} from 'config';
-import { serverLogger } from '@common/utils';
-
+} from 'consts';
 import { SubgraphChains } from 'types';
 import { parallelizePromises } from 'utils';
-
 import {
   getTotalStaked,
   getLidoHoldersViaSubgraphs,

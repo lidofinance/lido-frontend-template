@@ -5,7 +5,7 @@ import { serverLogger } from '@common/utils';
 import {
   getAggregatorStEthUsdPriceFeedAddress,
   getAggregatorContractFactory,
-} from 'config';
+} from 'consts';
 
 import { rpcUrls } from './rpcUrls';
 import { getStaticRpcBatchProvider } from './rpcProviders';

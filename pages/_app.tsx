@@ -10,6 +10,8 @@ import {
 import { WidgetApp } from '@common/app';
 import { INavigationLink } from '@common/layout/header/components/navigation/components/navigationLink';
 
+import { dynamics } from 'config';
+import { backendRPC } from 'consts';
 import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
@@ -44,7 +46,15 @@ const WidgetAppWrapper = ({
   ...rest
 }: PropsWithChildren<AppProps>): JSX.Element => {
   return (
-    <WidgetApp {...rest} pages={headerPages}>
+    <WidgetApp
+      {...rest}
+      pages={headerPages}
+      web3ProviderProps={{
+        defaultChainId: dynamics.defaultChain,
+        supportedChainIds: dynamics.supportedChains,
+        rpc: backendRPC,
+      }}
+    >
       {children}
     </WidgetApp>
   );

@@ -1,8 +1,9 @@
 // PAY ATTENTION: Example showing how to configuration custom metrics
-
 import { Gauge } from 'prom-client';
 import { CHAINS } from '@lido-sdk/constants';
-import { dynamics, getStethAddress, METRICS_PREFIX } from 'config';
+
+import { dynamics, METRICS_PREFIX } from 'config';
+import { getStethAddress } from 'consts';
 
 const chainId = +dynamics.defaultChain as CHAINS;
 

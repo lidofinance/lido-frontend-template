@@ -11,7 +11,7 @@ import {
   CACHE_STETH_APR_KEY,
   CACHE_STETH_APR_TTL,
   CACHE_DEFAULT_HEADERS,
-} from 'config';
+} from 'consts';
 import { getStethApr } from 'utilsApi/getStethApr';
 
 const cache = new Cache<typeof CACHE_STETH_APR_KEY, string>();

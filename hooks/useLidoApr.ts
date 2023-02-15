@@ -1,10 +1,8 @@
-import getConfig from 'next/config';
 import { SWRResponse, useLidoSWR } from '@lido-sdk/react';
-
 import { standardFetcher } from '@common/utils';
 
-// TODO
-const { serverRuntimeConfig } = getConfig();
+import { serverRuntimeConfig } from 'config';
+
 const { basePath } = serverRuntimeConfig;
 
 export const useLidoApr = (): SWRResponse<unknown> => {

@@ -2,11 +2,11 @@ import { Cache } from 'memory-cache';
 import ms from 'ms';
 import { standardFetcher, serverLogger } from '@common/utils';
 
+import { serverRuntimeConfig } from 'config';
 import {
-  serverRuntimeConfig,
   CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY,
   CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_TTL,
-} from 'config';
+} from 'consts';
 import { SubgraphChains } from 'types';
 
 import { getSubgraphUrl } from './getSubgraphUrl';

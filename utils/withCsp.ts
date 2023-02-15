@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import { withSecureHeaders } from 'next-secure-headers';
-import getConfig from 'next/config';
 import { AppProps } from 'next/app';
+import { withSecureHeaders } from 'next-secure-headers';
+import { serverRuntimeConfig } from 'config';
 
-const { serverRuntimeConfig } = getConfig();
 const { cspTrustedHosts, cspReportOnly, cspReportUri } = serverRuntimeConfig;
 
 // PAY ATTENTION: Extra Content Security Policy can be added here

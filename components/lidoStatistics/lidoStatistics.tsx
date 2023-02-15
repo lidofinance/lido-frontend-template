@@ -11,8 +11,8 @@ import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
 
 import { DATA_UNAVAILABLE } from '@common/texts';
 
+import { LIDO_APR_TOOLTIP_TEXT } from 'consts';
 import { useLidoApr, useLidoStats } from 'hooks';
-import { LIDO_APR_TOOLTIP_TEXT } from 'texts';
 
 import { FlexCenterVertical } from './styles';
 

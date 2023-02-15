@@ -1,11 +1,10 @@
 import { useMemo } from 'react';
-import getConfig from 'next/config';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
 import { DATA_UNAVAILABLE } from '@common/texts';
 import { standardFetcher } from '@common/utils';
 
-// TODO
-const { serverRuntimeConfig } = getConfig();
+import { serverRuntimeConfig } from 'config';
+
 const { basePath } = serverRuntimeConfig;
 
 export type ResponseData = {

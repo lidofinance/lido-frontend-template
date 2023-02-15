@@ -8,7 +8,7 @@ import { rpcFactory } from '@lidofinance/next-pages';
 import { registry } from '@common/utils/metrics';
 import { serverLogger } from '@common/utils';
 
-import { METRICS_PREFIX, dynamics } from 'config';
+import { dynamics, METRICS_PREFIX, ALLOWED_RPC_METHODS } from 'config';
 import { rpcUrls } from 'utilsApi/rpcUrls';
 
 const fetchRPC = trackedFetchRpcFactory({
@@ -23,16 +23,7 @@ const rpc = rpcFactory({
     prefix: METRICS_PREFIX,
     registry,
   },
-  allowedRPCMethods: [
-    // TODO
-    'eth_call',
-    'eth_gasPrice',
-    'eth_requestAccounts',
-    'eth_getBalance',
-    'eth_getBlockByNumber',
-    'eth_estimateGas',
-    // PAY ATTENTION: Extra RPC methods can be added here
-  ],
+  allowedRPCMethods: ALLOWED_RPC_METHODS,
   defaultChain: dynamics.defaultChain,
   providers: rpcUrls,
 });

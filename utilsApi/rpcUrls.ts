@@ -1,7 +1,6 @@
-import getConfig from 'next/config';
 import { CHAINS } from '@lido-sdk/constants';
+import { serverRuntimeConfig } from 'config';
 
-const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
 
 export const rpcUrls: Record<string | number, [string, ...string[]]> = {

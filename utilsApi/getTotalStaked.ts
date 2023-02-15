@@ -2,8 +2,11 @@ import { formatEther } from '@ethersproject/units';
 import { CHAINS } from '@lido-sdk/constants';
 import { serverLogger } from '@common/utils';
 
-import { getStethAddress, getStethContractFactory } from 'config';
-import { HEALTHY_RPC_SERVICES_ARE_OVER } from 'consts';
+import {
+  getStethAddress,
+  getStethContractFactory,
+  HEALTHY_RPC_SERVICES_ARE_OVER,
+} from 'consts';
 
 import { rpcUrls } from './rpcUrls';
 import { getStaticRpcBatchProvider } from './rpcProviders';
