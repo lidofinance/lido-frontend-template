@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSTETHContractRPC, useContractSWR } from '@lido-sdk/react';
 
@@ -6,7 +6,9 @@ import { DATA_UNAVAILABLE } from '@common/constants';
 
 import { useStethSubmitGasLimit, useTxCostInUsd } from 'hooks';
 
-const FutureTxInfo: FC = () => {
+import { FutureTxInfoProps } from './types';
+
+const FutureTxInfo: FC<FutureTxInfoProps> = ({ amount }) => {
   const contractRpc = useSTETHContractRPC();
   const lidoFee = useContractSWR({
     contract: contractRpc,
@@ -16,14 +18,9 @@ const FutureTxInfo: FC = () => {
   const submitGasLimit = useStethSubmitGasLimit();
   const txCostInUsd = useTxCostInUsd(submitGasLimit);
 
-  // TODO
-  const willReceiveStEthValue = 'N';
-
   return (
     <DataTable>
-      <DataTableRow title="You will receive">
-        {willReceiveStEthValue} stETH
-      </DataTableRow>
+      <DataTableRow title="You will receive">{amount} stETH</DataTableRow>
       <DataTableRow title="Exchange rate">1 ETH = 1 stETH</DataTableRow>
       <DataTableRow title="Transaction cost" loading={!txCostInUsd}>
         ${txCostInUsd?.toFixed(2)}
@@ -40,4 +37,4 @@ const FutureTxInfo: FC = () => {
   );
 };
 
-export default FutureTxInfo;
+export default memo<FC<FutureTxInfoProps>>(FutureTxInfo);

@@ -1,4 +1,11 @@
-import { FC, useCallback, useState, EventHandler, SyntheticEvent } from 'react';
+import {
+  FC,
+  useCallback,
+  useState,
+  EventHandler,
+  SyntheticEvent,
+  FormEvent,
+} from 'react';
 import { trackEvent } from '@lidofinance/analytics-matomo';
 import { Block, Input, Steth, Button } from '@lidofinance/lido-ui';
 
@@ -30,6 +37,24 @@ const StakeForm: FC = () => {
   const [txStage, setTxStage] = useState(TX_STAGE.IDLE);
   // /Modals
 
+  // Form
+  const [inputAmount, setInputAmount] = useState<number>(0);
+
+  const handleInputChange: EventHandler<FormEvent<HTMLInputElement>> =
+    useCallback(async (event) => {
+      const rawValue = event.currentTarget.value;
+
+      if (!rawValue) {
+        setInputAmount(0);
+      }
+
+      try {
+        setInputAmount(Number(rawValue));
+      } catch {
+        setInputAmount(0);
+      }
+    }, []);
+
   const handleSubmit: EventHandler<SyntheticEvent> = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async (event) => {
@@ -38,6 +63,7 @@ const StakeForm: FC = () => {
     },
     [openTxModal],
   );
+  // /Form
 
   return (
     <>
@@ -49,6 +75,7 @@ const StakeForm: FC = () => {
               placeholder="0"
               leftDecorator={<Steth />}
               label="Token amount"
+              onChange={handleInputChange}
             />
           </InputWrapper>
           <Button fullwidth onClick={handleSubmit}>
@@ -56,7 +83,7 @@ const StakeForm: FC = () => {
           </Button>
         </PseudoFormWrapper>
 
-        <FutureTxInfo />
+        <FutureTxInfo amount={inputAmount} />
       </Block>
 
       <TxStageModal
