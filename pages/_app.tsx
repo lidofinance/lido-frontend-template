@@ -49,12 +49,12 @@ const WidgetAppWrapper = ({
     <WidgetApp
       {...rest}
       pages={headerPages}
-      web3ProviderConfig={{
+      web3={{
         defaultChainId: dynamics.defaultChain,
         supportedChainIds: dynamics.supportedChains,
         rpc: backendRPC,
       }}
-      reefKnotConfig={{
+      reefKnot={{
         walletsMetrics: walletsMetrics,
         hiddenWallets: ['Opera Wallet'],
       }}
