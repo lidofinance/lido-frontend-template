@@ -3,7 +3,7 @@ import { Metrics as WalletsMetrics } from 'reef-knot';
 
 import { MATOMO_EVENT_CATEGORY, getMatomoEventNameWithPrefix } from './matomo';
 
-export const enum MATOMO_WALLETS_EVENTS_TYPES {
+export enum MATOMO_WALLETS_EVENTS_TYPES {
   onClickAmbire = 'onClickAmbire',
   onConnectAmbire = 'onConnectAmbire',
   onClickBlockchaincom = 'onClickBlockchaincom',
@@ -223,45 +223,38 @@ export const walletsMetrics: WalletsMetrics = {
   events: {
     click: {
       handlers: {
-        // TODO: to use a cycle
-        onClickAmbire: bindEvent('onClickAmbire'),
-        onClickBlockchaincom: bindEvent('onClickBlockchaincom'),
-        onClickBrave: bindEvent('onClickBrave'),
-        onClickCoin98: bindEvent('onClickCoin98'),
-        onClickCoinbase: bindEvent('onClickCoinbase'),
-        onClickExodus: bindEvent('onClickExodus'),
-        onClickGamestop: bindEvent('onClickGamestop'),
-        onClickLedger: bindEvent('onClickLedger'),
-        onClickMathWallet: bindEvent('onClickMathWallet'),
-        onClickMetamask: bindEvent('onClickMetamask'),
-        onClickOperaWallet: bindEvent('onClickOperaWallet'),
-        onClickTally: bindEvent('onClickTally'),
-        onClickTrust: bindEvent('onClickTrust'),
-        onClickWC: bindEvent('onClickWC'),
-        onClickXdefi: bindEvent('onClickXdefi'),
-        onClickZenGo: bindEvent('onClickZenGo'),
+        // This code returns:
+        // onClickAmbire: bindEvent('onClickAmbire'),
+        // onClickBlockchaincom: bindEvent('onClickBlockchaincom'),
+        // more...
+        ...(
+          Object.keys(MATOMO_WALLETS_EVENTS_TYPES) as Array<
+            keyof typeof MATOMO_WALLETS_EVENTS_TYPES
+          >
+        ).reduce<Record<string, () => void>>((accumulator, eventKey) => {
+          if (eventKey.indexOf('onClick') > -1) {
+            accumulator[eventKey] = bindEvent(eventKey);
+          }
+          return accumulator;
+        }, {}),
       },
     },
     connect: {
       handlers: {
-        // TODO: to use a cycle
-        onConnectAmbire: bindEvent('onConnectAmbire'),
-        onConnectBlockchaincom: bindEvent('onConnectBlockchaincom'),
-        onConnectBrave: bindEvent('onConnectBrave'),
-        onConnectCoin98: bindEvent('onConnectCoin98'),
-        onConnectCoinbase: bindEvent('onConnectCoinbase'),
-        onConnectExodus: bindEvent('onConnectExodus'),
-        onConnectGamestop: bindEvent('onConnectGamestop'),
-        onConnectImToken: bindEvent('onConnectImToken'),
-        onConnectLedger: bindEvent('onConnectLedger'),
-        onConnectMathWallet: bindEvent('onConnectMathWallet'),
-        onConnectMetamask: bindEvent('onConnectMetamask'),
-        onConnectOperaWallet: bindEvent('onConnectOperaWallet'),
-        onConnectTally: bindEvent('onConnectTally'),
-        onConnectTrust: bindEvent('onConnectTrust'),
-        onConnectWC: bindEvent('onConnectWC'),
-        onConnectXdefi: bindEvent('onConnectXdefi'),
-        onConnectZenGo: bindEvent('onConnectZenGo'),
+        // This code returns:
+        // onConnectAmbire: bindEvent('onConnectAmbire'),
+        // onConnectBlockchaincom: bindEvent('onConnectBlockchaincom'),
+        // more...
+        ...(
+          Object.keys(MATOMO_WALLETS_EVENTS_TYPES) as Array<
+            keyof typeof MATOMO_WALLETS_EVENTS_TYPES
+          >
+        ).reduce<Record<string, () => void>>((accumulator, eventKey) => {
+          if (eventKey.indexOf('onConnect') > -1) {
+            accumulator[eventKey] = bindEvent(eventKey);
+          }
+          return accumulator;
+        }, {}),
       },
     },
   },
