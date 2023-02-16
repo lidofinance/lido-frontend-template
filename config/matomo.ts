@@ -1,4 +1,3 @@
-// TODO: move to next.config?
 // PAY ATTENTION: Change the string to be relevant to your project.
 // For example:
 // - Ethereum_Staking_Widget
