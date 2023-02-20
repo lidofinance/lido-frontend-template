@@ -84,7 +84,4 @@ export default {
     subgraphRequestTimeout,
     allowedRpcMethods,
   },
-  publicRuntimeConfig: {
-
-  },
 };
