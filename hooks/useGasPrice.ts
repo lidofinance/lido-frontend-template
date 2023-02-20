@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
 
 import { useSDK } from '@lido-sdk/react';
-import { ONE_GWEI } from '@common/constants';
+
+import { ONE_GWEI } from 'consts';
 
 export const useGasPrice = (): BigNumber | undefined => {
   const [gasPrice, setGasPrice] = useState<BigNumber>();
