@@ -4,7 +4,7 @@ import {
   rpcMetricsFactory,
 } from '@lidofinance/api-metrics';
 
-import { METRICS_PREFIX, dynamics } from 'config';
+import { dynamics } from 'config';
 import buildInfoJson from 'build-info.json';
 
 export const registry = new Registry();
@@ -12,7 +12,7 @@ export const registry = new Registry();
 if (process.env.NODE_ENV === 'production') {
   // https://github.com/lidofinance/warehouse/tree/main/packages/api/metrics
   collectStartupMetrics({
-    prefix: METRICS_PREFIX,
+    prefix: dynamics.metricsPrefix,
     registry,
     defaultChain: String(dynamics.defaultChain),
     supportedChains: dynamics.supportedChains.map((chainId) => String(chainId)),
@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === 'production') {
     branch: buildInfoJson.branch,
   });
 
-  collectDefaultMetrics({ prefix: METRICS_PREFIX, register: registry });
+  collectDefaultMetrics({ prefix: dynamics.metricsPrefix, register: registry });
 
   // Collect PRC metrics
   // https://github.com/lidofinance/warehouse/blob/main/packages/api/metrics/src/rpcMetricsFactory.ts
-  rpcMetricsFactory(METRICS_PREFIX, registry);
+  rpcMetricsFactory(dynamics.metricsPrefix, registry);
 }

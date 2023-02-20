@@ -1,6 +1,9 @@
 import { MatomoEventType } from '@lidofinance/analytics-matomo';
 
-import { MATOMO_EVENT_CATEGORY, getMatomoEventNameWithPrefix } from './matomo';
+import { default as dynamics } from './dynamics';
+import { getMatomoEventNameWithPrefix } from './matomo';
+
+const MATOMO_EVENT_CATEGORY = dynamics.matomoEventCategory;
 
 export const enum MATOMO_CLICK_EVENTS_TYPES {
   submitStake = 'submitStake',

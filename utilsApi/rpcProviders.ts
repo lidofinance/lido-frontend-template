@@ -5,11 +5,11 @@ import {
 import { trackedJsonRpcProvider } from '@lidofinance/eth-api-providers';
 
 import { registry } from '@common/utils/metrics';
-import { METRICS_PREFIX } from 'config';
+import { dynamics } from 'config';
 
 export const getStaticRpcBatchProvider = providerFactory(
   trackedJsonRpcProvider({
-    prefix: METRICS_PREFIX,
+    prefix: dynamics.metricsPrefix,
     registry,
     Provider: StaticJsonRpcBatchProvider,
   }),

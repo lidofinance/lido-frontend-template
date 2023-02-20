@@ -5,5 +5,3 @@ export { default as dynamics } from './dynamics';
 export * from './matomo';
 export * from './matomoClickEvents';
 export * from './matomoWalletsEvents';
-export * from './metrics';
-export * from './rpc';

@@ -28,6 +28,16 @@ const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
 
+const allowedRpcMethods = [
+  'eth_call',
+  'eth_gasPrice',
+  'eth_requestAccounts',
+  'eth_getBalance',
+  'eth_getBlockByNumber',
+  'eth_estimateGas',
+  // PAY ATTENTION: Extra RPC methods can be added here
+];
+
 export default {
   basePath,
   eslint: {
@@ -72,5 +82,9 @@ export default {
     subgraphKovan,
     subgraphKintsugi,
     subgraphRequestTimeout,
+    allowedRpcMethods,
+  },
+  publicRuntimeConfig: {
+
   },
 };

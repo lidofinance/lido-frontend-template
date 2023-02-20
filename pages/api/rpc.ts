@@ -8,22 +8,22 @@ import { rpcFactory } from '@lidofinance/next-pages';
 import { registry } from '@common/utils/metrics';
 import { serverLogger } from '@common/utils';
 
-import { dynamics, METRICS_PREFIX, ALLOWED_RPC_METHODS } from 'config';
+import { dynamics, serverRuntimeConfig } from 'config';
 import { rpcUrls } from 'utilsApi/rpcUrls';
 
 const fetchRPC = trackedFetchRpcFactory({
   registry,
-  prefix: METRICS_PREFIX,
+  prefix: dynamics.metricsPrefix,
 });
 
 const rpc = rpcFactory({
   fetchRPC,
   serverLogger,
   metrics: {
-    prefix: METRICS_PREFIX,
+    prefix: dynamics.metricsPrefix,
     registry,
   },
-  allowedRPCMethods: ALLOWED_RPC_METHODS,
+  allowedRPCMethods: serverRuntimeConfig.allowedRpcMethods,
   defaultChain: dynamics.defaultChain,
   providers: rpcUrls,
 });

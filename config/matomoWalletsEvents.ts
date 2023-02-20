@@ -1,7 +1,10 @@
 import { MatomoEventType, trackEvent } from '@lidofinance/analytics-matomo';
 import { Metrics as WalletsMetrics } from 'reef-knot';
 
-import { MATOMO_EVENT_CATEGORY, getMatomoEventNameWithPrefix } from './matomo';
+import { default as dynamics } from './dynamics';
+import { getMatomoEventNameWithPrefix } from './matomo';
+
+const MATOMO_EVENT_CATEGORY = dynamics.matomoEventCategory;
 
 export enum MATOMO_WALLETS_EVENTS_TYPES {
   onClickAmbire = 'onClickAmbire',
