@@ -7,3 +7,4 @@ export * from './oracle';
 export * from './rpc';
 export * from './steth';
 export * from './texts';
+export * from './units';
