@@ -44,25 +44,21 @@ const headerPages = [
 const WidgetAppWrapper = ({
   children,
   ...rest
-}: PropsWithChildren<AppProps>): JSX.Element => {
-  return (
-    <WidgetApp
-      {...rest}
-      pages={headerPages}
-      web3={{
-        defaultChainId: dynamics.defaultChain,
-        supportedChainIds: dynamics.supportedChains,
-        rpc: backendRPC,
-      }}
-      reefKnot={{
-        walletsMetrics: walletsMetrics,
-        hiddenWallets: ['Opera Wallet'],
-      }}
-    >
-      {children}
-    </WidgetApp>
-  );
-};
+}: PropsWithChildren<AppProps>): JSX.Element => (
+  <WidgetApp
+    {...rest}
+    pages={headerPages}
+    web3={{
+      defaultChainId: dynamics.defaultChain,
+      supportedChainIds: dynamics.supportedChains,
+      rpc: backendRPC,
+    }}
+    reefKnot={{
+      walletsMetrics: walletsMetrics,
+      hiddenWallets: ['Opera Wallet'],
+    }}
+  />
+);
 
 export default process.env.NODE_ENV === 'development'
   ? WidgetAppWrapper

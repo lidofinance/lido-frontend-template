@@ -19,7 +19,6 @@ import { WidgetAppProps } from './types';
 migrationThemeCookiesToCrossDomainCookiesClientSide();
 
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
-  children,
   ...props
 }) => (
   <CookieThemeProvider>
@@ -29,7 +28,6 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
         <Header pages={props?.pages} />
         <Main>
           <NextApp {...props} />
-          {children}
         </Main>
         <Footer />
         <CookiesTooltip />
