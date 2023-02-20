@@ -27,8 +27,7 @@ export const ModalContext = createContext({} as ModalContextValue);
 // TODO: make like ModalProviderProps.reefKnot.[walletsMetrics, hiddenWallets]?
 export type ModalProviderProps = {
   walletsMetrics: WalletsMetrics;
-  // TODO: WalletId[] type
-  hiddenWallets?: string[];
+  hiddenWallets?: string[]; // TODO: WalletId[] type
 };
 
 const ModalProvider: FC<PropsWithChildren<ModalProviderProps>> = ({
@@ -66,10 +65,12 @@ const ModalProvider: FC<PropsWithChildren<ModalProviderProps>> = ({
       <WalletsModalForEth
         open={active === MODAL.connect}
         metrics={walletsMetrics}
-        // TODO: use hiddenWallets
+        // TODO: use hiddenWallets from props
+        // TODO: waiting reef-knot v1 or copy types from reef-knot repo
         hiddenWallets={['Opera Wallet']}
         {...common}
       />
+      {/* TODO: waiting reef-knot v1 for another modals */}
     </ModalContext.Provider>
   );
 };
