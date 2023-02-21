@@ -2,8 +2,6 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { CHAINS } from '@lido-sdk/constants';
 import { iterateUrls } from '@lidofinance/rpc';
 
-import { serverLogger } from './serverLogger';
-
 import {
   getOracleAddress,
   getOracleContractFactory,
@@ -11,15 +9,16 @@ import {
   getStethContractFactory,
 } from 'consts';
 
+import { serverLogger } from './serverLogger';
 import { rpcUrls } from './rpcUrls';
 import { getStaticRpcBatchProvider } from './rpcProviders';
 
-export const getStethApr = async (): Promise<string> => {
+export const getStEthApr = async (): Promise<string> => {
   const urls = rpcUrls[CHAINS.Mainnet];
-  return iterateUrls(urls, getStethAprWithFallbacks, serverLogger.error);
+  return iterateUrls(urls, getStEthAprWithFallbacks, serverLogger.error);
 };
 
-const getStethAprWithFallbacks = async (url: string): Promise<string> => {
+const getStEthAprWithFallbacks = async (url: string): Promise<string> => {
   const staticProvider = getStaticRpcBatchProvider(CHAINS.Mainnet, url);
 
   const oracleAddress = getOracleAddress(CHAINS.Mainnet);

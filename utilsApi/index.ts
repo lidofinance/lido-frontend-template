@@ -1,5 +1,5 @@
 export * from './getLidoHoldersViaSubgraphs';
-export * from './getStethApr';
+export * from './getStEthApr';
 export * from './getStEthPrice';
 export * from './getTotalStaked';
 export * from './rpcProviders';

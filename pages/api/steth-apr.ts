@@ -12,7 +12,7 @@ import {
   CACHE_STETH_APR_TTL,
   CACHE_DEFAULT_HEADERS,
 } from 'consts';
-import { getStethApr } from 'utilsApi/getStethApr';
+import { getStEthApr } from 'utilsApi/getStEthApr';
 
 const cache = new Cache<typeof CACHE_STETH_APR_KEY, string>();
 
@@ -27,7 +27,7 @@ const stethApr: API = async (req, res) => {
   if (cachedStETHApr) {
     res.json(cachedStETHApr);
   } else {
-    const stethApr = await getStethApr();
+    const stethApr = await getStEthApr();
     cache.put(CACHE_STETH_APR_KEY, stethApr, CACHE_STETH_APR_TTL);
 
     res.json(stethApr);

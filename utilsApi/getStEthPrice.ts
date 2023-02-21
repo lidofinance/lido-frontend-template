@@ -5,8 +5,8 @@ import {
   getAggregatorStEthUsdPriceFeedAddress,
   getAggregatorContractFactory,
 } from 'consts';
-import { serverLogger } from './serverLogger';
 
+import { serverLogger } from './serverLogger';
 import { rpcUrls } from './rpcUrls';
 import { getStaticRpcBatchProvider } from './rpcProviders';
 
