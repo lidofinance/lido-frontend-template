@@ -1,6 +1,8 @@
 import { Cache } from 'memory-cache';
 import ms from 'ms';
-import { standardFetcher, serverLogger } from '@common/utils';
+import { standardFetcher } from '@common/utils';
+
+import { serverLogger } from './serverLogger';
 
 import { serverRuntimeConfig } from 'config';
 import {

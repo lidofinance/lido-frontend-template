@@ -1,6 +1,7 @@
 import { formatEther } from '@ethersproject/units';
 import { CHAINS } from '@lido-sdk/constants';
-import { serverLogger } from '@common/utils';
+
+import { serverLogger } from './serverLogger';
 
 import {
   getStethAddress,

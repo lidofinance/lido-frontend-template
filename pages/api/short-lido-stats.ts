@@ -5,7 +5,7 @@ import {
   cacheControl,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
-import { serverLogger } from '@common/utils';
+import { serverLogger } from 'utilsApi';
 
 import { dynamics } from 'config';
 import {

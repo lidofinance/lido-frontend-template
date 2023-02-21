@@ -6,7 +6,7 @@ import {
 import { rpcFactory } from '@lidofinance/next-pages';
 
 import { registry } from '@common/utils/metrics';
-import { serverLogger } from '@common/utils';
+import { serverLogger } from 'utilsApi';
 
 import { dynamics, serverRuntimeConfig } from 'config';
 import { rpcUrls } from 'utilsApi/rpcUrls';

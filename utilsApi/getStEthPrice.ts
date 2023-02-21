@@ -1,11 +1,11 @@
 import { CHAINS } from '@lido-sdk/constants';
 import { iterateUrls } from '@lidofinance/rpc';
 
-import { serverLogger } from '@common/utils';
 import {
   getAggregatorStEthUsdPriceFeedAddress,
   getAggregatorContractFactory,
 } from 'consts';
+import { serverLogger } from './serverLogger';
 
 import { rpcUrls } from './rpcUrls';
 import { getStaticRpcBatchProvider } from './rpcProviders';
