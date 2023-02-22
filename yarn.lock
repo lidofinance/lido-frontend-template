@@ -1880,15 +1880,15 @@
     ua-parser-js "^1.0.2"
     use-callback-ref "1.2.5"
 
-"@lidofinance/next-api-wrapper@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@lidofinance/next-api-wrapper/-/next-api-wrapper-0.7.0.tgz#379519c96f7a2a39bda00daf0d166996e8d19b02"
-  integrity sha512-ZbNnE9vc2NQtlXcyn4zafWxHSmJnia9LVQsAsJNXVeoHqFpo7jFteGzRPpwOsns2RmGy9jMCwFaSregJA4KKcg==
+"@lidofinance/next-api-wrapper@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/next-api-wrapper/-/next-api-wrapper-0.16.0.tgz#8fa17eb5344f30256e8a4410c244ef3e35d24728"
+  integrity sha512-9MiGbd9862L6m0Y0Qk8otCowNvrIeUbSd0KuKAoMpLSQEHU5Z+ihoxKhu6fmNg7d5mduYXDkNUkUpcdk4tCT+A==
 
-"@lidofinance/next-cache-files-middleware@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@lidofinance/next-cache-files-middleware/-/next-cache-files-middleware-0.7.0.tgz#70aaa7384baa4746a8e1aa540c9ac0b4f952e622"
-  integrity sha512-F9I20eNxWvvGqBS2XM42WcUXSMtg9l69R5ffNAellyBAwl1uAqQ4G59e8U/o8Il4BmOK3uc7rMIESyzx3hIuIg==
+"@lidofinance/next-cache-files-middleware@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/next-cache-files-middleware/-/next-cache-files-middleware-0.16.0.tgz#3a3b2873f8c35958751ff9b1296fcec415822bd1"
+  integrity sha512-9UeJMb0WVfNfPNRoO0i9VrF2wvfULqKW7iJprQ20ghJQY4slWD+xMuMmFYUuKnYDKFwr2VS2G73dX6iPFy9d8A==
 
 "@metamask/safe-event-emitter@2.0.0", "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
