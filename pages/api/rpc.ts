@@ -6,7 +6,7 @@ import {
 import { rpcFactory } from '@lidofinance/next-pages';
 
 import { registry } from '@common/utils/metrics';
-import { serverLogger } from 'utilsApi';
+import { rateLimit, serverLogger } from 'utilsApi';
 
 import { dynamics, serverRuntimeConfig } from 'config';
 import { rpcUrls } from 'utilsApi/rpcUrls';
@@ -28,7 +28,7 @@ const rpc = rpcFactory({
   providers: rpcUrls,
 });
 
-// Error handler wrapper
 export default wrapRequest([
+  rateLimit,
   defaultErrorHandler({ serverLogger: serverLogger }),
 ])(rpc);

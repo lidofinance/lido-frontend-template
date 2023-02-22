@@ -24,6 +24,10 @@ const subgraphKintsugi = process.env.SUBGRAPH_KINTSUGI;
 
 const subgraphRequestTimeout = process.env.SUBGRAPH_REQUEST_TIMEOUT;
 
+// rate limit
+const rateLimit = process.env.RATE_LIMIT;
+const rateLimitTimeFrame = process.env.RATE_LIMIT_TIME_FRAME;
+
 const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
@@ -72,6 +76,8 @@ export default {
     infuraApiKey,
     alchemyApiKey,
     apiProviderUrls,
+    rateLimit,
+    rateLimitTimeFrame,
     cspTrustedHosts,
     cspReportOnly,
     cspReportUri,

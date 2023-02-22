@@ -29,6 +29,7 @@
     "@lidofinance/lido-ui": "^3.0.0-next.17",
     "@lidofinance/next-api-wrapper": "^0.7.0",
     "@lidofinance/next-cache-files-middleware": "^0.7.0",
+    "@lidofinance/next-ip-rate-limit": "^0.16.0",
     "@lidofinance/next-pages": "^0.13.0",
     "@lidofinance/rpc": "^0.13.0",
     "cookie": "^0.5.0",

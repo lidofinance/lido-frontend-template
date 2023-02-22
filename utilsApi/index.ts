@@ -3,6 +3,7 @@ export * from './getLidoHoldersViaSubgraphs';
 export * from './getStEthApr';
 export * from './getStEthPrice';
 export * from './getTotalStaked';
+export * from './rateLimit';
 export * from './rpcProviders';
 export * from './rpcUrls';
 export * from './serverLogger';

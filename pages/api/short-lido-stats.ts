@@ -5,7 +5,7 @@ import {
   cacheControl,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
-import { serverLogger } from 'utilsApi';
+import { rateLimit, serverLogger } from 'utilsApi';
 
 import { dynamics } from 'config';
 import {
@@ -58,8 +58,7 @@ const shortLidoStats: API = async (req, res) => {
 };
 
 export default wrapRequest([
-  // TODO
-  // rateLimit(),
+  rateLimit,
   // TODO
   // responseTimeMetric(Metrics.request.apiTimings, API_ROUTES.SHORT_LIDO_STATS),
   cacheControl({
