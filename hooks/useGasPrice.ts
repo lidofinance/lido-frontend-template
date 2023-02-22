@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
 
-import { useSDK } from '@lido-sdk/react';
+import { useWeb3 } from '@reef-knot/web3-react';
+import { CHAINS } from '@lido-sdk/constants';
 import { getStaticRpcBatchProvider } from '@lido-sdk/providers';
 
 import { ONE_GWEI, getBackendRPCPath } from 'consts';
 
 export const useGasPrice = (): BigNumber | undefined => {
   const [gasPrice, setGasPrice] = useState<BigNumber>();
-  const { chainId } = useSDK();
+  const { chainId } = useWeb3();
 
   const getGasPrice = useCallback(async () => {
     const staticProvider = getStaticRpcBatchProvider(
-      chainId,
-      getBackendRPCPath(chainId),
+      chainId as CHAINS,
+      getBackendRPCPath(chainId as CHAINS),
     );
 
     try {

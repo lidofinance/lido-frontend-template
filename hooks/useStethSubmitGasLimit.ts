@@ -27,8 +27,7 @@ export const useStethSubmitGasLimit: UseStethSubmitGasLimit = () => {
       }
 
       const provider = getStaticRpcBatchProvider(
-        chainId as string,
-        // TODO: add a way to type useWeb3 hook
+        chainId as CHAINS,
         getBackendRPCPath(chainId as CHAINS),
       );
 
