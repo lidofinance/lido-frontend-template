@@ -8,10 +8,14 @@ import { getStaticRpcBatchProvider } from '@lido-sdk/providers';
 import { ONE_GWEI, getBackendRPCPath } from 'consts';
 
 export const useGasPrice = (): BigNumber | undefined => {
-  const [gasPrice, setGasPrice] = useState<BigNumber>();
+  const [gasPrice, setGasPrice] = useState<BigNumber>(ONE_GWEI);
   const { chainId } = useWeb3();
 
   const getGasPrice = useCallback(async () => {
+    if (!chainId) {
+      return;
+    }
+
     const staticProvider = getStaticRpcBatchProvider(
       chainId as CHAINS,
       getBackendRPCPath(chainId as CHAINS),
@@ -22,7 +26,6 @@ export const useGasPrice = (): BigNumber | undefined => {
       setGasPrice(newGasPrice);
     } catch (e) {
       console.error(e);
-      setGasPrice(ONE_GWEI);
     }
   }, [chainId]);
 
