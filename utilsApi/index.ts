@@ -1,3 +1,4 @@
+export * from './metrics';
 export * from './getLidoHoldersViaSubgraphs';
 export * from './getStEthApr';
 export * from './getStEthPrice';

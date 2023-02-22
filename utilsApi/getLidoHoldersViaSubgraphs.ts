@@ -1,20 +1,11 @@
-import { Cache } from 'memory-cache';
 import ms from 'ms';
 import { standardFetcher } from '@common/utils';
 
-import { serverLogger } from './serverLogger';
-
 import { serverRuntimeConfig } from 'config';
-import {
-  CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY,
-  CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_TTL,
-} from 'consts';
 import { SubgraphChains } from 'types';
 
 import { getSubgraphUrl } from './getSubgraphUrl';
-
-const SUBGRAPH_ERROR_MESSAGE =
-  '[getLidoHoldersViaSubgraphs] Subgraph request failed.';
+import { subgraphsResponseTime } from './metrics';
 
 interface LidoHolders extends Response {
   data: {
@@ -25,80 +16,61 @@ interface LidoHolders extends Response {
   };
 }
 
-const cache = new Cache<
-  typeof CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY,
-  LidoHolders
->();
-
-type GetLidoHoldersViaSubgraphs = (
+type getLidoHoldersViaSubgraphsType = (
   chainId: SubgraphChains,
 ) => Promise<LidoHolders | null>;
 
-export const getLidoHoldersViaSubgraphs: GetLidoHoldersViaSubgraphs = async (
-  chainId: SubgraphChains,
-) => {
-  serverLogger.debug(
-    '[getLidoHoldersViaSubgraphs] Fetching lido holders from subgraph...',
-  );
-  const query = `
-    query {
-      stats (id: "") {
-        uniqueHolders
-        uniqueAnytimeHolders
+const SUBGRAPH_ERROR_MESSAGE =
+  '[getLidoHoldersViaSubgraphs] Subgraph request failed.';
+
+export const getLidoHoldersViaSubgraphs: getLidoHoldersViaSubgraphsType =
+  async (chainId: SubgraphChains) => {
+    try {
+      return fetchLidoHoldersViaSubgraphsWithMetrics(chainId);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message ?? SUBGRAPH_ERROR_MESSAGE);
+      } else {
+        throw new Error(SUBGRAPH_ERROR_MESSAGE);
       }
     }
-  `;
-
-  const controller = new AbortController();
-
-  const TIMEOUT = +serverRuntimeConfig.subgraphRequestTimeout || ms('5s');
-  const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
-
-  const params = {
-    method: 'POST',
-    body: JSON.stringify({ query }),
-    signal: controller.signal as AbortSignal,
   };
 
-  // TODO
-  // const endMetric = Metrics.subgraph.subgraphsResponseTime.startTimer();
+const fetchLidoHoldersViaSubgraphsWithMetrics: getLidoHoldersViaSubgraphsType =
+  async (chainId: SubgraphChains) => {
+    const endMetric = subgraphsResponseTime.startTimer();
+    const data = fetchLidoHoldersViaSubgraphs(chainId);
+    endMetric();
+    return data;
+  };
 
-  const url = getSubgraphUrl(chainId);
+export const fetchLidoHoldersViaSubgraphs: getLidoHoldersViaSubgraphsType =
+  async (chainId: SubgraphChains) => {
+    const abortController = new AbortController();
 
-  if (!url) {
-    throw new Error(`Error: subgraph chain is not supported ${chainId}`);
-  }
+    const timeoutMs = +serverRuntimeConfig.subgraphRequestTimeout || ms('5s');
+    const timeoutId = setTimeout(() => abortController.abort(), timeoutMs);
 
-  try {
-    const responseJsoned = await standardFetcher<LidoHolders>(url, params);
+    const url = getSubgraphUrl(chainId);
+    if (!url) {
+      throw new Error(`Error: subgraph chain is not supported ${chainId}`);
+    }
 
-    // endMetric();
+    const query = `
+      query {
+        stats (id: "") {
+          uniqueHolders
+          uniqueAnytimeHolders
+        }
+      }
+  `;
+    const data = await standardFetcher<LidoHolders>(url, {
+      method: 'POST',
+      body: JSON.stringify({ query }),
+      signal: abortController.signal as AbortSignal,
+    });
+
     clearTimeout(timeoutId);
 
-    serverLogger.debug(
-      '[getLidoHoldersViaSubgraphs] Lido holders: ',
-      responseJsoned,
-    );
-
-    cache.put(
-      CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY,
-      responseJsoned,
-      CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_TTL,
-    );
-
-    return responseJsoned;
-  } catch (error) {
-    const data = cache.get(CACHE_LIDO_HOLDERS_VIA_SUBGRAPHS_KEY);
-
-    if (data) {
-      serverLogger.error(`${SUBGRAPH_ERROR_MESSAGE} Using long-term cache...`);
-      return data;
-    }
-
-    if (error instanceof Error) {
-      throw new Error(error.message ?? SUBGRAPH_ERROR_MESSAGE);
-    } else {
-      throw new Error(SUBGRAPH_ERROR_MESSAGE);
-    }
-  }
-};
+    return data;
+  };
