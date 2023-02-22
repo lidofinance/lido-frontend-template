@@ -3,7 +3,7 @@ export * from './getLidoHoldersViaSubgraphs';
 export * from './getStEthApr';
 export * from './getStEthPrice';
 export * from './getTotalStaked';
-export * from './parallelizePromises';
+export * from './parallelizePromisesServerSide';
 export * from './rateLimit';
 export * from './rpcProviders';
 export * from './rpcUrls';

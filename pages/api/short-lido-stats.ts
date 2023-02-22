@@ -21,7 +21,7 @@ import {
   getLidoHoldersViaSubgraphs,
   getStEthPrice,
   rateLimit,
-  parallelizePromises,
+  parallelizePromisesServerSide,
   apiTimings,
   serverLogger,
 } from 'utilsApi';
@@ -49,11 +49,12 @@ const shortLidoStats: API = async (req, res) => {
   if (cachedLidoStats) {
     res.status(200).json(cachedLidoStats);
   } else {
-    const [lidoHolders, totalStaked, stEthPrice] = await parallelizePromises([
-      getLidoHoldersViaSubgraphs(chainId),
-      getTotalStaked(),
-      getStEthPrice(),
-    ]);
+    const [lidoHolders, totalStaked, stEthPrice] =
+      await parallelizePromisesServerSide([
+        getLidoHoldersViaSubgraphs(chainId),
+        getTotalStaked(),
+        getStEthPrice(),
+      ]);
 
     const shortLidoStats = {
       uniqueAnytimeHolders: lidoHolders?.data?.stats?.uniqueAnytimeHolders,
