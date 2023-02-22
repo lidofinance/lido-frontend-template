@@ -5,10 +5,12 @@ import {
   cacheControl,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
-import { rateLimit, serverLogger } from 'utilsApi';
+
+import { responseTimeMetric } from '@common/utils/metrics';
 
 import { dynamics } from 'config';
 import {
+  API_ROUTES,
   CACHE_DEFAULT_HEADERS,
   CACHE_LIDO_SHORT_STATS_KEY,
   CACHE_LIDO_SHORT_STATS_TTL,
@@ -19,6 +21,9 @@ import {
   getTotalStaked,
   getLidoHoldersViaSubgraphs,
   getStEthPrice,
+  rateLimit,
+  apiTimings,
+  serverLogger,
 } from 'utilsApi';
 
 const cache = new Cache<string, unknown>();
@@ -59,8 +64,7 @@ const shortLidoStats: API = async (req, res) => {
 
 export default wrapRequest([
   rateLimit,
-  // TODO
-  // responseTimeMetric(Metrics.request.apiTimings, API_ROUTES.SHORT_LIDO_STATS),
+  responseTimeMetric(apiTimings, API_ROUTES.SHORT_LIDO_STATS),
   cacheControl({
     headers: CACHE_DEFAULT_HEADERS,
   }),

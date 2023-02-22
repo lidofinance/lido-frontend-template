@@ -5,14 +5,16 @@ import {
   cacheControl,
   defaultErrorHandler,
 } from '@lidofinance/next-api-wrapper';
-import { rateLimit, serverLogger } from 'utilsApi';
+
+import { responseTimeMetric } from '@common/utils/metrics';
 
 import {
+  API_ROUTES,
   CACHE_STETH_APR_KEY,
   CACHE_STETH_APR_TTL,
   CACHE_DEFAULT_HEADERS,
 } from 'consts';
-import { getStEthApr } from 'utilsApi/getStEthApr';
+import { apiTimings, rateLimit, serverLogger, getStEthApr } from 'utilsApi';
 
 const cache = new Cache<typeof CACHE_STETH_APR_KEY, string>();
 
@@ -36,6 +38,7 @@ const stethApr: API = async (req, res) => {
 
 export default wrapRequest([
   rateLimit,
+  responseTimeMetric(apiTimings, API_ROUTES.STETH_APR),
   cacheControl({
     headers: CACHE_DEFAULT_HEADERS,
   }),
