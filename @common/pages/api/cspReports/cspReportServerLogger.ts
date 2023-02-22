@@ -1,15 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-// import { serverLogger } from 'utilsApi';
+import { serverLoggerFactory } from '@lidofinance/api-logger';
+
+const serverLogger = serverLoggerFactory([]);
 
 export default function cspReportServerLoggerApiPage(
   req: NextApiRequest,
   res: NextApiResponse,
 ): void {
-  // TODO: get `serverLogger` from props or use local copy?
-  // serverLogger.warn({
-  //   message: 'CSP Violation',
-  //   report: JSON.parse(req.body),
-  // });
+  serverLogger.warn({
+    message: 'CSP Violation',
+    report: JSON.parse(req.body),
+  });
 
   res.status(200).send({ status: 'ok' });
 }
