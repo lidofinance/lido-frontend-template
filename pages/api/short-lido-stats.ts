@@ -16,12 +16,12 @@ import {
   CACHE_LIDO_SHORT_STATS_TTL,
 } from 'consts';
 import { SubgraphChains } from 'types';
-import { parallelizePromises } from 'utils';
 import {
   getTotalStaked,
   getLidoHoldersViaSubgraphs,
   getStEthPrice,
   rateLimit,
+  parallelizePromises,
   apiTimings,
   serverLogger,
 } from 'utilsApi';
