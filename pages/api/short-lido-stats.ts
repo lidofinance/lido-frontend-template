@@ -28,8 +28,18 @@ import {
 
 const cache = new Cache<string, unknown>();
 
-// Proxy for third-party API.
-// Returns stETH token information
+/**
+ * PAY ATTENTION: Example showing how to use API wrappers (error handler and cache control).
+ * Proxy example for third-party API.
+ *
+ * @typedef {Object} ShortLidoStats
+ * @property {number} marketCap
+ * @property {string} totalStaked - number as string
+ * @property {string} uniqueAnytimeHolder - number as string
+ * @property {string} uniqueHolders - number as string
+ *
+ * @returns {ShortLidoStats} Returns stETH token information.
+ */
 const shortLidoStats: API = async (req, res) => {
   const chainId =
     (Number(req.query.chainId) as SubgraphChains) || dynamics.defaultChain;
