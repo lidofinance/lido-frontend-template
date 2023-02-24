@@ -1,6 +1,7 @@
 import { FormatTokenComponent } from './types';
 import { formatBalance } from '@common/utils';
 
+// TODO: move to UI
 const FormatToken: FormatTokenComponent = (props) => {
   const { amount, symbol, approx = false, ...rest } = props;
   const prefix = !approx || amount?.isZero() ? '' : '≈ ';

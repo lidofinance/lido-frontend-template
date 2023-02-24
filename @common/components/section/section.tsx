@@ -6,6 +6,7 @@ import {
   SectionHeaderDecoratorStyle,
 } from './styles';
 
+// TODO: move to UI ???
 const Section: SectionType = (props) => {
   const { title, headerDecorator, children, ...rest } = props;
 
