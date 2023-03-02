@@ -9,10 +9,8 @@ import {
 import { ProviderWeb3 } from '@reef-knot/web3-react';
 
 import { ModalProvider } from '@common/providers';
-import Header from '@common/layout/header';
-import Main from '@common/layout/main';
-import Footer from '@common/layout/footer';
 
+import { Header, Main, Footer } from './layoutComponents';
 import GlobalStyles from './globalStyles';
 import { WidgetAppProps } from './types';
 

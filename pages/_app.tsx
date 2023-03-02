@@ -8,7 +8,7 @@ import {
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
 import { WidgetApp } from '@common/app';
-import { INavigationLink } from '@common/layout/header/components/navigation/components/navigationLink';
+import { INavigationLink } from '@common/app/layoutComponents/header/components/navigation/components/navigationLink';
 
 import { dynamics, walletsMetrics } from 'config';
 import { backendRPC } from 'consts';
