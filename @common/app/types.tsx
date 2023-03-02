@@ -1,10 +1,11 @@
 import { AppProps } from 'next/app';
+import { ProviderWeb3Props } from '@reef-knot/web3-react';
 
 import { INavigationLink } from '../layout/header/components/navigation/components/navigationLink';
-import { ModalProviderProps, Web3ProviderProps } from '../providers';
+import { ModalProviderProps } from '../providers';
 
 export type WidgetAppProps = AppProps & {
   pages: INavigationLink[];
-  web3: Web3ProviderProps;
+  web3: ProviderWeb3Props;
   reefKnot: ModalProviderProps;
 };

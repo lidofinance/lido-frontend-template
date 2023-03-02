@@ -1,5 +1,5 @@
-import { MODAL } from './enums';
 import { Metrics as WalletsMetrics } from 'reef-knot';
+import { MODAL } from './enums';
 
 export type ModalProviderProps = {
   walletsMetrics: WalletsMetrics;

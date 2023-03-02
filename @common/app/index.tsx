@@ -6,13 +6,14 @@ import {
   CookiesTooltip,
   migrationThemeCookiesToCrossDomainCookiesClientSide,
 } from '@lidofinance/lido-ui';
+import { ProviderWeb3 } from '@reef-knot/web3-react';
 
-import { GlobalStyle } from '@common/styles';
-import { Web3Provider, ModalProvider } from '@common/providers';
+import { ModalProvider } from '@common/providers';
 import Header from '@common/layout/header';
 import Main from '@common/layout/main';
 import Footer from '@common/layout/footer';
 
+import GlobalStyles from './globalStyles';
 import { WidgetAppProps } from './types';
 
 // Migrations old cookies to new cross domain cookies
@@ -22,8 +23,8 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
   ...props
 }) => (
   <CookieThemeProvider>
-    <GlobalStyle />
-    <Web3Provider {...props.web3}>
+    <GlobalStyles />
+    <ProviderWeb3 {...props.web3}>
       <ModalProvider {...props.reefKnot}>
         <Header pages={props?.pages} />
         <Main>
@@ -33,6 +34,6 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = ({
         <CookiesTooltip />
         <ToastContainer />
       </ModalProvider>
-    </Web3Provider>
+    </ProviderWeb3>
   </CookieThemeProvider>
 );
