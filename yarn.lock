@@ -1939,6 +1939,15 @@
   dependencies:
     isomorphic-fetch "^3.0.0"
 
+"@lidofinance/widget-parts-app@file:.yalc/@lidofinance/widget-parts-app":
+  version "0.0.0"
+
+"@lidofinance/widget-parts-ui-primitives@file:.yalc/@lidofinance/widget-parts-ui-primitives":
+  version "0.0.0"
+
+"@lidofinance/widget-parts-wallet-modal@file:.yalc/@lidofinance/widget-parts-wallet-modal":
+  version "0.0.0"
+
 "@metamask/safe-event-emitter@2.0.0", "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"

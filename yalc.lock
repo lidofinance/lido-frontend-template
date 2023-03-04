@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "packages": {
+    "@lidofinance/widget-parts-app": {
+      "signature": "ac8373f524e383ae2d03dba1d7eb0f39",
+      "file": true
+    },
+    "@lidofinance/widget-parts-ui-primitives": {
+      "signature": "da8cf7e1243f6467d00b3884582af79b",
+      "file": true
+    },
+    "@lidofinance/widget-parts-wallet-modal": {
+      "signature": "447eee4c6d6b8805a1e68ab9a89e817c",
+      "file": true
+    }
+  }
+}
