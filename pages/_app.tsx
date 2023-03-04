@@ -1,14 +1,12 @@
 import { PropsWithChildren } from 'react';
-import { AppProps } from 'next/app';
-
+import NextApp, { AppProps } from 'next/app';
 import {
   Stake,
   Ldo as LdoIcon,
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { WidgetApp } from '@common/app';
-import { INavigationLink } from '@common/app/layoutComponents/header/components/navigation/components/navigationLink';
+import { WidgetApp, INavigationLink } from '@lidofinance/widget-parts-app';
 
 import { dynamics, walletsMetrics } from 'config';
 import { backendRPC } from 'consts';
@@ -42,11 +40,9 @@ const headerPages = [
 
 // App wrapper
 const WidgetAppWrapper = ({
-  children,
-  ...rest
+  ...props
 }: PropsWithChildren<AppProps>): JSX.Element => (
   <WidgetApp
-    {...rest}
     pages={headerPages}
     web3={{
       defaultChainId: dynamics.defaultChain,
@@ -57,7 +53,9 @@ const WidgetAppWrapper = ({
       walletsMetrics: walletsMetrics,
       hiddenWallets: ['Opera Wallet'],
     }}
-  />
+  >
+    <NextApp {...props} />
+  </WidgetApp>
 );
 
 export default process.env.NODE_ENV === 'development'
