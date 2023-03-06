@@ -12,11 +12,11 @@
     "browsers": "> 0.5%, last 2 versions, not dead"
   },
   "source": "./src/index.ts",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "parcel build",
+    "build": "tsc",
     "lint": "eslint . && prettier --check src",
     "lint:fix": "eslint --fix . && prettier --check src --write",
     "types": "tsc --noEmit"
@@ -29,5 +29,5 @@
     "react": "^18.2.0",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "447eee4c6d6b8805a1e68ab9a89e817c"
+  "yalcSig": "44aabba8009fb4ebab54fb23579cd50d"
 }
