@@ -22,7 +22,7 @@ export interface FaqProps {
     faqList: FAQItem[];
 }
 export const Faq: FC<FaqProps>;
-export const getFaqList: (list: string[], dirPath?: string) => Promise<FAQItem[]>;
+export const getFaqList: (list: string[]) => Promise<FAQItem[]>;
 type FormatBalance = (balance?: BigNumber, maxDecimalDigits?: number) => string;
 export const formatBalance: FormatBalance;
 type FormatTokenComponent = Component<'span', {

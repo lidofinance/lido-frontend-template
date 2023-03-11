@@ -2,13 +2,11 @@ import {jsx as $9LU3C$jsx, Fragment as $9LU3C$Fragment, jsxs as $9LU3C$jsxs} fro
 import {useMemo as $9LU3C$useMemo, useCallback as $9LU3C$useCallback} from "react";
 import {useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, Accordion as $9LU3C$Accordion, Block as $9LU3C$Block, Tooltip as $9LU3C$Tooltip, InlineLoader as $9LU3C$InlineLoader, ToastInfo as $9LU3C$ToastInfo} from "@lidofinance/lido-ui";
 import $9LU3C$styledcomponents from "styled-components";
-import $9LU3C$graymatter from "gray-matter";
-import {remark as $9LU3C$remark} from "remark";
-import $9LU3C$remarkhtml from "remark-html";
-import $9LU3C$remarkexternallinks from "remark-external-links";
 import {cwd as $9LU3C$cwd} from "process";
-import $9LU3C$path from "path";
 import $9LU3C$fs from "fs";
+import $9LU3C$path from "path";
+import $9LU3C$graymatter from "gray-matter";
+import $9LU3C$remark from "remark";
 import {utils as $9LU3C$utils, constants as $9LU3C$constants} from "ethers";
 import {useRouter as $9LU3C$useRouter} from "next/router";
 import $9LU3C$nextlink from "next/link";
@@ -149,22 +147,16 @@ $parcel$export($22c5d07cb270ee1a$exports, "getFaqList", function () { return $22
 
 
 
-
-
-const $22c5d07cb270ee1a$export$45c60b0bc8893fbe = async (list, dirPath = "faq")=>{
-    const faqDirectory = (0, $9LU3C$path).join($9LU3C$cwd(), dirPath);
+const $22c5d07cb270ee1a$var$faqDirectory = (0, $9LU3C$path).join($9LU3C$cwd(), "faq");
+const $22c5d07cb270ee1a$export$45c60b0bc8893fbe = async (list)=>{
     return Promise.all(list.map(async (id)=>{
         // TODO: Fetch from Netlify
-        const fullPath = (0, $9LU3C$path).join(faqDirectory, `${id}.md`);
+        const fullPath = (0, $9LU3C$path).join($22c5d07cb270ee1a$var$faqDirectory, `${id}.md`);
         const fileContents = (0, $9LU3C$fs).readFileSync(fullPath, "utf8");
         const matterResult = (0, $9LU3C$graymatter)(fileContents);
-        const processedContent = await (0, $9LU3C$remark)().use((0, $9LU3C$remarkexternallinks), {
-            target: "_blank",
-            rel: [
-                "nofollow",
-                "noopener"
-            ]
-        }).use((0, $9LU3C$remarkhtml)).process(matterResult.content);
+        const processedContent = await (0, $9LU3C$remark)()//   .use(externalLinks, { target: '_blank', rel: ['nofollow', 'noopener'] })
+        //   .use(html)
+        .process(matterResult.content);
         const content = processedContent.toString();
         const title = String(matterResult.data.title || id);
         return {

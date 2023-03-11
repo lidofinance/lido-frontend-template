@@ -60,6 +60,9 @@ export default {
       use: ['@svgr/webpack', 'url-loader'],
     });
 
+    // Fix: Module not found: Can't resolve 'fs'...
+    config.resolve.fallback = { fs: false };
+
     return config;
   },
   async headers() {

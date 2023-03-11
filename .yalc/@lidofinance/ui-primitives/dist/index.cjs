@@ -2,13 +2,11 @@ var $41D0Z$reactjsxruntime = require("react/jsx-runtime");
 var $41D0Z$react = require("react");
 var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $41D0Z$styledcomponents = require("styled-components");
+var $41D0Z$process = require("process");
+var $41D0Z$fs = require("fs");
+var $41D0Z$path = require("path");
 var $41D0Z$graymatter = require("gray-matter");
 var $41D0Z$remark = require("remark");
-var $41D0Z$remarkhtml = require("remark-html");
-var $41D0Z$remarkexternallinks = require("remark-external-links");
-var $41D0Z$process = require("process");
-var $41D0Z$path = require("path");
-var $41D0Z$fs = require("fs");
 var $41D0Z$ethers = require("ethers");
 var $41D0Z$nextrouter = require("next/router");
 var $41D0Z$nextlink = require("next/link");
@@ -152,22 +150,16 @@ $parcel$export($39d81cff88bd9aec$exports, "getFaqList", function () { return $39
 
 
 
-
-
-const $39d81cff88bd9aec$export$45c60b0bc8893fbe = async (list, dirPath = "faq")=>{
-    const faqDirectory = (0, ($parcel$interopDefault($41D0Z$path))).join($41D0Z$process.cwd(), dirPath);
+const $39d81cff88bd9aec$var$faqDirectory = (0, ($parcel$interopDefault($41D0Z$path))).join($41D0Z$process.cwd(), "faq");
+const $39d81cff88bd9aec$export$45c60b0bc8893fbe = async (list)=>{
     return Promise.all(list.map(async (id)=>{
         // TODO: Fetch from Netlify
-        const fullPath = (0, ($parcel$interopDefault($41D0Z$path))).join(faqDirectory, `${id}.md`);
+        const fullPath = (0, ($parcel$interopDefault($41D0Z$path))).join($39d81cff88bd9aec$var$faqDirectory, `${id}.md`);
         const fileContents = (0, ($parcel$interopDefault($41D0Z$fs))).readFileSync(fullPath, "utf8");
         const matterResult = (0, ($parcel$interopDefault($41D0Z$graymatter)))(fileContents);
-        const processedContent = await (0, $41D0Z$remark.remark)().use((0, ($parcel$interopDefault($41D0Z$remarkexternallinks))), {
-            target: "_blank",
-            rel: [
-                "nofollow",
-                "noopener"
-            ]
-        }).use((0, ($parcel$interopDefault($41D0Z$remarkhtml)))).process(matterResult.content);
+        const processedContent = await (0, ($parcel$interopDefault($41D0Z$remark)))()//   .use(externalLinks, { target: '_blank', rel: ['nofollow', 'noopener'] })
+        //   .use(html)
+        .process(matterResult.content);
         const content = processedContent.toString();
         const title = String(matterResult.data.title || id);
         return {

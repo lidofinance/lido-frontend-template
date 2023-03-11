@@ -29,9 +29,9 @@
     "copy-to-clipboard": "^3.3.3",
     "ethers": "^5.7.2",
     "gray-matter": "^4.0.3",
-    "remark": "^14.0.2",
+    "remark": "^13.0.0",
     "remark-external-links": "^9.0.1",
-    "remark-html": "^15.0.1"
+    "remark-html": "^14.0.1"
   },
   "peerDependencies": {
     "next": "^12.3.1",
@@ -39,8 +39,5 @@
     "styled-components": "^5.3.5",
     "@lidofinance/ui-wallet-modal": "*"
   },
-  "externals": [
-    "fs"
-  ],
-  "yalcSig": "5ae6237f919530be056a98ed6814b36a"
+  "yalcSig": "5556b03ab845536090b13f09fafddbc7"
 }
