@@ -7,6 +7,8 @@ import $9LU3C$fs from "fs";
 import $9LU3C$path from "path";
 import $9LU3C$graymatter from "gray-matter";
 import $9LU3C$remark from "remark";
+import $9LU3C$remarkhtml from "remark-html";
+import $9LU3C$remarkexternallinks from "remark-external-links";
 import {utils as $9LU3C$utils, constants as $9LU3C$constants} from "ethers";
 import {useRouter as $9LU3C$useRouter} from "next/router";
 import $9LU3C$nextlink from "next/link";
@@ -147,6 +149,8 @@ $parcel$export($22c5d07cb270ee1a$exports, "getFaqList", function () { return $22
 
 
 
+
+
 const $22c5d07cb270ee1a$var$faqDirectory = (0, $9LU3C$path).join($9LU3C$cwd(), "faq");
 const $22c5d07cb270ee1a$export$45c60b0bc8893fbe = async (list)=>{
     return Promise.all(list.map(async (id)=>{
@@ -154,9 +158,13 @@ const $22c5d07cb270ee1a$export$45c60b0bc8893fbe = async (list)=>{
         const fullPath = (0, $9LU3C$path).join($22c5d07cb270ee1a$var$faqDirectory, `${id}.md`);
         const fileContents = (0, $9LU3C$fs).readFileSync(fullPath, "utf8");
         const matterResult = (0, $9LU3C$graymatter)(fileContents);
-        const processedContent = await (0, $9LU3C$remark)()//   .use(externalLinks, { target: '_blank', rel: ['nofollow', 'noopener'] })
-        //   .use(html)
-        .process(matterResult.content);
+        const processedContent = await (0, $9LU3C$remark)().use((0, $9LU3C$remarkexternallinks), {
+            target: "_blank",
+            rel: [
+                "nofollow",
+                "noopener"
+            ]
+        }).use((0, $9LU3C$remarkhtml)).process(matterResult.content);
         const content = processedContent.toString();
         const title = String(matterResult.data.title || id);
         return {

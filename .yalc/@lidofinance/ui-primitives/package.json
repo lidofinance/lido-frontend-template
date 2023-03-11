@@ -30,8 +30,8 @@
     "ethers": "^5.7.2",
     "gray-matter": "^4.0.3",
     "remark": "^13.0.0",
-    "remark-external-links": "^9.0.1",
-    "remark-html": "^14.0.1"
+    "remark-external-links": "^8.0.0",
+    "remark-html": "^13.0.1"
   },
   "peerDependencies": {
     "next": "^12.3.1",
@@ -39,5 +39,5 @@
     "styled-components": "^5.3.5",
     "@lidofinance/ui-wallet-modal": "*"
   },
-  "yalcSig": "5556b03ab845536090b13f09fafddbc7"
+  "yalcSig": "2ca6bd9166f9fe88e537a01a7fdf56ce"
 }
