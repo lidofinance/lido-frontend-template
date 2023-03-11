@@ -1,0 +1,1 @@
+{"mappings":";AAIA,OAAO,MAAM,WAAW,GAAG;IAAE,KAAK,EAAE,MAAM,CAAC;IAAC,OAAO,EAAE,SAAS,CAAA;CAAE,CAU/D,CAAC","sources":["packages/next/ui-pages/src/src/pageError.tsx","packages/next/ui-pages/src/src/index.ts","packages/next/ui-pages/src/index.ts"],"sourcesContent":[null,null,"export * from './pageError'\n"],"names":[],"version":3,"file":"index.d.ts.map"}

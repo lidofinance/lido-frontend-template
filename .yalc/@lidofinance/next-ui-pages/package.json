@@ -1,0 +1,32 @@
+{
+  "name": "@lidofinance/next-ui-pages",
+  "description": "Common next UI pages",
+  "repository": "git@github.com:lidofinance/warehouse.git",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16",
+    "browsers": "> 0.5%, last 2 versions, not dead"
+  },
+  "source": "./src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "lint": "eslint . && prettier --check src",
+    "lint:fix": "eslint --fix . && prettier --check src --write",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lidofinance/lido-ui": "3.2.0"
+  },
+  "peerDependencies": {
+    "next": "^12.2.0",
+    "react": "17 || 18"
+  },
+  "yalcSig": "d3f7a1565c1e68f780d7fe27ae477d29"
+}

@@ -12,6 +12,10 @@
     "@lidofinance/ui-primitives": {
       "signature": "2ca6bd9166f9fe88e537a01a7fdf56ce",
       "file": true
+    },
+    "@lidofinance/next-ui-pages": {
+      "signature": "d3f7a1565c1e68f780d7fe27ae477d29",
+      "file": true
     }
   }
 }
