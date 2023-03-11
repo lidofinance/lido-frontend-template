@@ -6,7 +6,10 @@ import {
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { WidgetApp, INavigationLink } from '@lidofinance/widget-parts-app';
+import {
+  WidgetApp,
+  INavigationLink,
+} from '@lidofinance/next-staking-widget-app';
 
 import { dynamics, walletsMetrics } from 'config';
 import { backendRPC } from 'consts';

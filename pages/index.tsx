@@ -3,10 +3,11 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Link } from '@lidofinance/lido-ui';
-import Section from '@common/components/section';
-import Faq from '@common/components/faq';
-import { LayoutTitle, LayoutSubTitle } from '@common/layout/styles';
-import { FAQItem, getFaqList } from '@common/utils/faqList';
+import { Section, Faq, FAQItem, getFaqList } from '@lidofinance/ui-primitives';
+import {
+  LayoutTitle,
+  LayoutSubTitle,
+} from '@lidofinance/next-staking-widget-app';
 
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';

@@ -1,3 +1,3 @@
-import { WalletCardComponent } from '@common/components/wallet/components/walletCard';
+import { WalletCardComponent } from '@lidofinance/ui-primitives';
 
 export type EthWalletCardComponent = WalletCardComponent;
