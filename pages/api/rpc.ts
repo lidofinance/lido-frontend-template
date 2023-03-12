@@ -2,14 +2,19 @@ import { trackedFetchRpcFactory } from '@lidofinance/api-rpc';
 import {
   defaultErrorHandler,
   wrapRequest,
+  responseTimeMetric,
 } from '@lidofinance/next-api-wrapper';
 import { rpcFactory } from '@lidofinance/next-pages';
 
-import { registry, responseTimeMetric } from '@common/utils/metrics';
-
 import { API_ROUTES } from 'consts';
 import { dynamics, serverRuntimeConfig } from 'config';
-import { apiTimings, rateLimit, rpcUrls, serverLogger } from 'utilsApi';
+import {
+  registry,
+  apiTimings,
+  rateLimit,
+  rpcUrls,
+  serverLogger,
+} from 'utilsApi';
 
 const fetchRPC = trackedFetchRpcFactory({
   registry,

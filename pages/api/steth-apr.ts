@@ -4,9 +4,8 @@ import {
   wrapRequest,
   cacheControl,
   defaultErrorHandler,
+  responseTimeMetric,
 } from '@lidofinance/next-api-wrapper';
-
-import { responseTimeMetric } from '@common/utils/metrics';
 
 import {
   API_ROUTES,
