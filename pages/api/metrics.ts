@@ -1,7 +1,8 @@
-import metricsApiPage from '@common/pages/api/metrics';
-import { registry } from '@common/utils/metrics';
+import { metricsFactory } from '@lidofinance/next-pages';
+import { registry } from 'utilsApi/metrics';
 import { contractInfo } from 'utils/metrics';
 
+// TODO: move to another place
 if (process.env.NODE_ENV === 'production') {
   // Collect 'contract info' metrics
   registry.registerMetric(contractInfo);
@@ -9,4 +10,8 @@ if (process.env.NODE_ENV === 'production') {
   // PAY ATTENTION: Extra metrics can be registered here
 }
 
-export default metricsApiPage;
+const metrics = metricsFactory({
+  registry,
+});
+
+export default metrics;

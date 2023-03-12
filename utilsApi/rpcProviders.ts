@@ -4,8 +4,8 @@ import {
 } from '@lidofinance/eth-providers';
 import { trackedJsonRpcProvider } from '@lidofinance/eth-api-providers';
 
-import { registry } from '@common/utils/metrics';
 import { dynamics } from 'config';
+import { registry } from './metrics';
 
 export const getStaticRpcBatchProvider = providerFactory(
   trackedJsonRpcProvider({

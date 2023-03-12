@@ -1,5 +1,5 @@
 import { Histogram } from 'prom-client';
-import { registry } from '@common/utils/metrics';
+import { registry } from './init';
 
 import { dynamics, METRIC_NAMES } from 'config';
 
