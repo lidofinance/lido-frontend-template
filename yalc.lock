@@ -10,12 +10,17 @@
       "file": true
     },
     "@lidofinance/ui-primitives": {
-      "signature": "2ca6bd9166f9fe88e537a01a7fdf56ce",
+      "signature": "972b019d67c8c4d466fad4505edf7ffd",
       "file": true
     },
     "@lidofinance/next-ui-pages": {
       "signature": "d3f7a1565c1e68f780d7fe27ae477d29",
       "file": true
+    },
+    "@lidofinance/next-api-wrapper": {
+      "signature": "a788f7675b5aa178989cf774bee73a16",
+      "file": true,
+      "replaced": "^0.7.0"
     }
   }
 }

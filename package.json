@@ -27,7 +27,7 @@
     "@lidofinance/eth-api-providers": "^0.15.0",
     "@lidofinance/eth-providers": "^0.15.0",
     "@lidofinance/lido-ui": "^3.0.0-next.17",
-    "@lidofinance/next-api-wrapper": "^0.7.0",
+    "@lidofinance/next-api-wrapper": "file:.yalc/@lidofinance/next-api-wrapper",
     "@lidofinance/next-cache-files-middleware": "^0.7.0",
     "@lidofinance/next-ip-rate-limit": "^0.16.0",
     "@lidofinance/next-pages": "^0.13.0",

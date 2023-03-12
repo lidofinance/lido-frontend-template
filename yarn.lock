@@ -1921,10 +1921,8 @@
     ua-parser-js "^1.0.2"
     use-callback-ref "1.2.5"
 
-"@lidofinance/next-api-wrapper@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@lidofinance/next-api-wrapper/-/next-api-wrapper-0.7.0.tgz#379519c96f7a2a39bda00daf0d166996e8d19b02"
-  integrity sha512-ZbNnE9vc2NQtlXcyn4zafWxHSmJnia9LVQsAsJNXVeoHqFpo7jFteGzRPpwOsns2RmGy9jMCwFaSregJA4KKcg==
+"@lidofinance/next-api-wrapper@file:.yalc/@lidofinance/next-api-wrapper":
+  version "0.0.0"
 
 "@lidofinance/next-api-wrapper@~0.16.0":
   version "0.16.0"

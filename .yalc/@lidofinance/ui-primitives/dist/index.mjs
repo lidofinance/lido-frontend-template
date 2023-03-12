@@ -205,7 +205,27 @@ const $49b5f8700f8da98b$export$cc3bc0b518c1c6b8 = (balance = $49b5f8700f8da98b$v
 };
 
 
+var $04886483abe732d1$exports = {};
+
+$parcel$export($04886483abe732d1$exports, "standardFetcher", function () { return $04886483abe732d1$export$a265c7403141b2f4; });
+const $04886483abe732d1$var$DEFAULT_PARAMS = {
+    method: "GET",
+    headers: {
+        "Content-type": "application/json"
+    }
+};
+const $04886483abe732d1$export$a265c7403141b2f4 = async (url, params)=>{
+    const response = await fetch(url, {
+        ...$04886483abe732d1$var$DEFAULT_PARAMS,
+        ...params
+    });
+    if (!response.ok) throw new Error("An error occurred while fetching the data.");
+    return response.json();
+};
+
+
 $parcel$exportWildcard($6d94c9a60a544c13$exports, $49b5f8700f8da98b$exports);
+$parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
 
 
 const $85c0858cceeff774$export$2bbae861424212a5 = (props)=>{
@@ -677,5 +697,5 @@ $parcel$exportWildcard($ea5c9287e0f80725$exports, $53fc915a7c5aca97$exports);
 
 
 
-export {$2d2a02a641aeabb6$export$36cbab1c8a59f416 as AddressBadge, $210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $85c0858cceeff774$export$2bbae861424212a5 as FormatToken, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $0cd484ef9c611355$export$7d0c76f6a0418e11 as WalletCardRow, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $49b5f8700f8da98b$export$cc3bc0b518c1c6b8 as formatBalance};
+export {$2d2a02a641aeabb6$export$36cbab1c8a59f416 as AddressBadge, $210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $85c0858cceeff774$export$2bbae861424212a5 as FormatToken, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $0cd484ef9c611355$export$7d0c76f6a0418e11 as WalletCardRow, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $49b5f8700f8da98b$export$cc3bc0b518c1c6b8 as formatBalance, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
 //# sourceMappingURL=index.mjs.map

@@ -208,7 +208,27 @@ const $0d795ae2c3575e19$export$cc3bc0b518c1c6b8 = (balance = $0d795ae2c3575e19$v
 };
 
 
+var $79355003cd5eaada$exports = {};
+
+$parcel$export($79355003cd5eaada$exports, "standardFetcher", function () { return $79355003cd5eaada$export$a265c7403141b2f4; });
+const $79355003cd5eaada$var$DEFAULT_PARAMS = {
+    method: "GET",
+    headers: {
+        "Content-type": "application/json"
+    }
+};
+const $79355003cd5eaada$export$a265c7403141b2f4 = async (url, params)=>{
+    const response = await fetch(url, {
+        ...$79355003cd5eaada$var$DEFAULT_PARAMS,
+        ...params
+    });
+    if (!response.ok) throw new Error("An error occurred while fetching the data.");
+    return response.json();
+};
+
+
 $parcel$exportWildcard($e74efcd17907e7cd$exports, $0d795ae2c3575e19$exports);
+$parcel$exportWildcard($e74efcd17907e7cd$exports, $79355003cd5eaada$exports);
 
 
 const $9dd1933fa1b4dcdf$export$2bbae861424212a5 = (props)=>{

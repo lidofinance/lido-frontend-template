@@ -25,6 +25,8 @@ export const Faq: FC<FaqProps>;
 export const getFaqList: (list: string[]) => Promise<FAQItem[]>;
 type FormatBalance = (balance?: BigNumber, maxDecimalDigits?: number) => string;
 export const formatBalance: FormatBalance;
+type StandardFetcher = <T>(url: string, params?: RequestInit) => Promise<T>;
+export const standardFetcher: StandardFetcher;
 type FormatTokenComponent = Component<'span', {
     symbol: string;
     amount?: _BigNumber1;

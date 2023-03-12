@@ -1,0 +1,32 @@
+{
+  "name": "@lidofinance/next-api-wrapper",
+  "description": "Wrapper for next server api requests",
+  "repository": "git@github.com:lidofinance/warehouse.git",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16",
+    "browsers": "> 0.5%, last 2 versions, not dead"
+  },
+  "source": "./src/index.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "lint": "eslint . && prettier --check src",
+    "lint:fix": "eslint --fix . && prettier --check src --write",
+    "types": "tsc --noEmit",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "@lidofinance/api-logger": "*",
+    "@lidofinance/api-metrics": "*",
+    "next": "^12.2.0",
+    "prom-client": "^14.0.0"
+  },
+  "yalcSig": "a788f7675b5aa178989cf774bee73a16"
+}
