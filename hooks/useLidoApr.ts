@@ -1,5 +1,5 @@
 import { SWRResponse, useLidoSWR } from '@lido-sdk/react';
-import { standardFetcher } from '@common/utils';
+import { standardFetcher } from '@lidofinance/ui-primitives';
 
 import { serverRuntimeConfig } from 'config';
 

@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
-import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
-import { standardFetcher } from '@common/utils';
+import { DATA_UNAVAILABLE, standardFetcher } from '@lidofinance/ui-primitives';
 
 import { serverRuntimeConfig } from 'config';
 
