@@ -1,4 +1,4 @@
-import { formatEther } from '@ethersproject/units';
+import { utils as ethersUtils } from 'ethers';
 import { CHAINS } from '@lido-sdk/constants';
 import { iterateUrls } from '@lidofinance/rpc';
 
@@ -29,6 +29,6 @@ const getTotalStakedWithFallbacks = async (url: string): Promise<string> => {
 
   const totalSupplyStWei = await stethContract.totalSupply();
 
-  const totalSupplyStEth = formatEther(totalSupplyStWei);
+  const totalSupplyStEth = ethersUtils.formatEther(totalSupplyStWei);
   return Number(totalSupplyStEth).toFixed(8);
 };

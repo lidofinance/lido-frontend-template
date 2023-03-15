@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import ms from 'ms';
 import { standardFetcher } from '@lidofinance/ui-primitives';
 
@@ -67,7 +68,7 @@ export const fetchLidoHoldersViaSubgraphs: getLidoHoldersViaSubgraphsType =
     const data = await standardFetcher<LidoHolders>(url, {
       method: 'POST',
       body: JSON.stringify({ query }),
-      signal: abortController.signal as AbortSignal,
+      signal: abortController.signal,
     });
 
     clearTimeout(timeoutId);

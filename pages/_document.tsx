@@ -120,6 +120,8 @@ export default class MyDocument extends Document {
           <meta name="currentChain" content={String(dynamics.defaultChain)} />
           <Fonts />
           <LidoUIHead />
+          {/* /runtime/window-env.js needs for dynamic env */}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
           <script src="/runtime/window-env.js" />
         </Head>
         <body>

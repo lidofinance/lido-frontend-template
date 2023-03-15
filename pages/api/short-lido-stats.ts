@@ -55,7 +55,7 @@ const shortLidoStats: API = async (req, res) => {
         getStEthPrice(),
       ]);
 
-    const shortLidoStats = {
+    const freshedLidoStats = {
       uniqueAnytimeHolders: lidoHolders?.data?.stats?.uniqueAnytimeHolders,
       uniqueHolders: lidoHolders?.data?.stats?.uniqueHolders,
       totalStaked,
@@ -65,10 +65,10 @@ const shortLidoStats: API = async (req, res) => {
     // set the cache if there is all the data
     // because right now there is no request error handling in parallelizePromises
     if (lidoHolders && totalStaked && stEthPrice) {
-      cache.put(cacheKey, shortLidoStats, CACHE_LIDO_SHORT_STATS_TTL);
+      cache.put(cacheKey, freshedLidoStats, CACHE_LIDO_SHORT_STATS_TTL);
     }
 
-    res.status(200).json(shortLidoStats);
+    res.status(200).json(freshedLidoStats);
   }
 };
 

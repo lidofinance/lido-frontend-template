@@ -20,9 +20,9 @@ export const useTxCostInUsd: UseTxCostInUsd = (gasLimit) => {
   const calculateTxCostInUsd = useCallback(() => {
     if (!ethInUsd || !txCostInWei) return;
 
-    const txCostInEth = weiToEth(txCostInWei);
-    const txCostInUsd = txCostInEth * ethInUsd;
-    setTxCostInUsd(txCostInUsd);
+    const _txCostInEth = weiToEth(txCostInWei);
+    const _txCostInUsd = _txCostInEth * ethInUsd;
+    setTxCostInUsd(_txCostInUsd);
   }, [ethInUsd, txCostInWei]);
 
   useEffect(() => {

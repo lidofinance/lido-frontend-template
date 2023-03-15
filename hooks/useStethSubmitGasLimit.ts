@@ -1,6 +1,8 @@
-import { BigNumber } from 'ethers';
-import { AddressZero } from '@ethersproject/constants';
-import { parseEther } from '@ethersproject/units';
+import {
+  BigNumber,
+  constants as ethersConstants,
+  utils as ethersUtils,
+} from 'ethers';
 import { CHAINS } from '@lido-sdk/constants';
 import { useLidoSWR, useSTETHContractRPC } from '@lido-sdk/react';
 import { useWeb3 } from '@reef-knot/web3-react';
@@ -21,14 +23,14 @@ export const useStethSubmitGasLimit: UseStethSubmitGasLimit = () => {
   const { chainId } = useWeb3();
   const { data } = useLidoSWR(
     ['swr:submit-gas-limit', chainId],
-    async (_key, chainId) => {
-      if (!chainId) {
+    async (_key, _chainId) => {
+      if (!_chainId) {
         return;
       }
 
       const provider = getStaticRpcBatchProvider(
-        chainId as CHAINS,
-        getBackendRPCPath(chainId as CHAINS),
+        _chainId as CHAINS,
+        getBackendRPCPath(_chainId as CHAINS),
       );
 
       const feeData = await provider.getFeeData();
@@ -36,9 +38,9 @@ export const useStethSubmitGasLimit: UseStethSubmitGasLimit = () => {
       const maxFeePerGas = feeData.maxFeePerGas ?? undefined;
 
       const gasLimit = await stethContractRPC.estimateGas
-        .submit(AddressZero, {
+        .submit(ethersConstants.AddressZero, {
           from: ESTIMATE_ACCOUNT,
-          value: parseEther('0.001'),
+          value: ethersUtils.parseEther('0.001'),
           maxPriorityFeePerGas,
           maxFeePerGas,
         })

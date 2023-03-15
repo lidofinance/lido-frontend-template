@@ -41,7 +41,7 @@ const StakeForm: FC = () => {
   const [inputAmount, setInputAmount] = useState<number>(0);
 
   const handleInputChange: EventHandler<FormEvent<HTMLInputElement>> =
-    useCallback(async (event) => {
+    useCallback((event) => {
       const rawValue = event.currentTarget.value;
 
       if (!rawValue) {
@@ -55,14 +55,11 @@ const StakeForm: FC = () => {
       }
     }, []);
 
-  const handleSubmit: EventHandler<SyntheticEvent> = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async (event) => {
-      submitTrackEvent();
-      await stakeProcessing(openTxModal, setTxStage);
-    },
-    [openTxModal],
-  );
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  const handleSubmit: EventHandler<SyntheticEvent> = useCallback(async () => {
+    submitTrackEvent();
+    await stakeProcessing(openTxModal, setTxStage);
+  }, [openTxModal]);
   // /Form
 
   return (
