@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { FC } from 'react';
 import NextApp, { AppProps } from 'next/app';
 import {
   Stake,
@@ -22,7 +22,7 @@ migrationAllowCookieToCrossDomainCookieClientSide(
 );
 
 // Header pages
-const headerPages = [
+const headerPages: INavigationLink[] = [
   {
     title: 'Stake',
     href: '/',
@@ -39,12 +39,10 @@ const headerPages = [
     icon: <LdoIcon />,
     external: true,
   },
-] as INavigationLink[];
+];
 
 // App wrapper
-const WidgetAppWrapper = ({
-  ...props
-}: PropsWithChildren<AppProps>): JSX.Element => (
+const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
   <WidgetApp
     pages={headerPages}
     web3={{
