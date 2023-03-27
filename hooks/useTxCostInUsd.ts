@@ -4,9 +4,7 @@ import { weiToEth } from 'utils';
 
 import { useTxCostInWei } from './useTxCostInWei';
 
-type UseTxCostInUsd = (gasLimit?: number) => number | undefined;
-
-export const useTxCostInUsd: UseTxCostInUsd = (gasLimit) => {
+export const useTxCostInUsd = (gasLimit?: number): number | undefined => {
   const txCostInWei = useTxCostInWei(gasLimit);
 
   // useEthPrice hook works via mainnet chain!

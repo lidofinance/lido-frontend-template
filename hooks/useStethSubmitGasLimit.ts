@@ -7,17 +7,14 @@ import { CHAINS } from '@lido-sdk/constants';
 import { useLidoSWR, useSTETHContractRPC } from '@lido-sdk/react';
 import { useWeb3 } from '@reef-knot/web3-react';
 
-import { getStaticRpcBatchProvider } from 'utils/rpcProviders';
-
 import {
   getBackendRPCPath,
   STETH_SUBMIT_GAS_LIMIT_DEFAULT,
   ESTIMATE_ACCOUNT,
 } from 'consts';
+import { getStaticRpcBatchProvider } from 'utils/rpcProviders';
 
-type UseStethSubmitGasLimit = () => number | undefined;
-
-export const useStethSubmitGasLimit: UseStethSubmitGasLimit = () => {
+export const useStethSubmitGasLimit = (): number | undefined => {
   const stethContractRPC = useSTETHContractRPC();
 
   const { chainId } = useWeb3();

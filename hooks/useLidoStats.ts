@@ -1,26 +1,27 @@
 import { useMemo } from 'react';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
 import { DATA_UNAVAILABLE, standardFetcher } from '@lidofinance/ui-primitives';
-
 import { serverRuntimeConfig } from 'config';
 
 const { basePath } = serverRuntimeConfig;
 
-export type ResponseData = {
+type ResponseData = {
   uniqueAnytimeHolders: string;
   uniqueHolders: string;
   totalStaked: string;
   marketCap: number;
 };
 
-export const useLidoStats = (): {
+type UseLidoStatsType = {
   data: {
     totalStaked: string;
     stakers: string;
     marketCap: string;
   };
   initialLoading: boolean;
-} => {
+};
+
+export const useLidoStats = (): UseLidoStatsType => {
   const { chainId } = useSDK();
   const lidoStats = useLidoSWR<ResponseData>(
     `${basePath || ''}api/short-lido-stats?chainId=${chainId}`,

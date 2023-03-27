@@ -3,9 +3,7 @@ import { BigNumber } from 'ethers';
 
 import { useGasPrice } from './useGasPrice';
 
-type UseTxCostInWei = (gasLimit?: number) => BigNumber | undefined;
-
-export const useTxCostInWei: UseTxCostInWei = (gasLimit) => {
+export const useTxCostInWei = (gasLimit?: number): BigNumber | undefined => {
   const gasPrice = useGasPrice();
 
   const [txCostInWei, seTxCostInWei] = useState<BigNumber>();
