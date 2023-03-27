@@ -1,5 +1,4 @@
 var $41D0Z$reactjsxruntime = require("react/jsx-runtime");
-var $41D0Z$react = require("react");
 var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $41D0Z$styledcomponents = require("styled-components");
 var $41D0Z$process = require("process");
@@ -9,13 +8,12 @@ var $41D0Z$graymatter = require("gray-matter");
 var $41D0Z$remark = require("remark");
 var $41D0Z$remarkhtml = require("remark-html");
 var $41D0Z$remarkexternallinks = require("remark-external-links");
-var $41D0Z$ethers = require("ethers");
+var $41D0Z$react = require("react");
 var $41D0Z$nextrouter = require("next/router");
 var $41D0Z$nextlink = require("next/link");
 var $41D0Z$reefknotweb3react = require("@reef-knot/web3-react");
 var $41D0Z$lidosdkconstants = require("@lido-sdk/constants");
 var $41D0Z$lidosdkreact = require("@lido-sdk/react");
-var $41D0Z$lidofinanceuiwalletmodal = require("@lidofinance/ui-wallet-modal");
 var $41D0Z$copytoclipboard = require("copy-to-clipboard");
 
 function $parcel$exportWildcard(dest, source) {
@@ -41,50 +39,6 @@ function $parcel$interopDefault(a) {
   return a && a.__esModule ? a.default : a;
 }
 var $f812b98c92824ab2$exports = {};
-var $6641752b68d00970$exports = {};
-var $1d767216519ac54a$exports = {};
-
-$parcel$export($1d767216519ac54a$exports, "AddressBadge", function () { return $1d767216519ac54a$export$36cbab1c8a59f416; });
-
-
-
-
-
-let $57f0c6bc87d45f2d$var$_ = (t)=>t, $57f0c6bc87d45f2d$var$t;
-const $57f0c6bc87d45f2d$export$1afccb3bf4453be2 = (0, ($parcel$interopDefault($41D0Z$styledcomponents)))((0, $41D0Z$lidofinancelidoui.IdenticonBadge))($57f0c6bc87d45f2d$var$t || ($57f0c6bc87d45f2d$var$t = $57f0c6bc87d45f2d$var$_`
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-
-  & > * {
-    flex-shrink: 0;
-  }
-
-  & > :first-child {
-    flex-shrink: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-`));
-
-
-const $1d767216519ac54a$export$36cbab1c8a59f416 = (props)=>{
-    const { address: address , ...rest } = props;
-    const isMobile = (0, $41D0Z$lidofinancelidoui.useBreakpoint)("md");
-    const mobileSymbols = 3;
-    const desktopSymbols = 6;
-    const symbols = isMobile ? mobileSymbols : desktopSymbols;
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $57f0c6bc87d45f2d$export$1afccb3bf4453be2), {
-        symbols: symbols,
-        address: address !== null && address !== void 0 ? address : "",
-        ...rest
-    });
-};
-
-
-$parcel$exportWildcard($6641752b68d00970$exports, $1d767216519ac54a$exports);
-
-
 var $cc8b8a5508c6edd4$exports = {};
 var $bac48d5c687a5510$exports = {};
 
@@ -185,70 +139,6 @@ $parcel$exportWildcard($cc8b8a5508c6edd4$exports, $6a72821c8c345a3c$exports);
 $parcel$exportWildcard($cc8b8a5508c6edd4$exports, $39d81cff88bd9aec$exports);
 
 
-var $7c8b4bb44293c5d2$exports = {};
-var $9dd1933fa1b4dcdf$exports = {};
-
-$parcel$export($9dd1933fa1b4dcdf$exports, "FormatToken", function () { return $9dd1933fa1b4dcdf$export$2bbae861424212a5; });
-
-
-var $e74efcd17907e7cd$exports = {};
-var $0d795ae2c3575e19$exports = {};
-
-$parcel$export($0d795ae2c3575e19$exports, "formatBalance", function () { return $0d795ae2c3575e19$export$cc3bc0b518c1c6b8; });
-
-const { formatEther: $0d795ae2c3575e19$var$formatEther  } = (0, $41D0Z$ethers.utils);
-const { Zero: $0d795ae2c3575e19$var$Zero  } = (0, $41D0Z$ethers.constants);
-const $0d795ae2c3575e19$export$cc3bc0b518c1c6b8 = (balance = $0d795ae2c3575e19$var$Zero, maxDecimalDigits = 4)=>{
-    const balanceString = $0d795ae2c3575e19$var$formatEther(balance);
-    if (balanceString.includes(".")) {
-        const parts = balanceString.split(".");
-        return parts[0] + "." + parts[1].slice(0, maxDecimalDigits);
-    }
-    return balanceString;
-};
-
-
-var $79355003cd5eaada$exports = {};
-
-$parcel$export($79355003cd5eaada$exports, "standardFetcher", function () { return $79355003cd5eaada$export$a265c7403141b2f4; });
-const $79355003cd5eaada$var$DEFAULT_PARAMS = {
-    method: "GET",
-    headers: {
-        "Content-type": "application/json"
-    }
-};
-const $79355003cd5eaada$export$a265c7403141b2f4 = async (url, params)=>{
-    const response = await fetch(url, {
-        ...$79355003cd5eaada$var$DEFAULT_PARAMS,
-        ...params
-    });
-    if (!response.ok) throw new Error("An error occurred while fetching the data.");
-    return response.json();
-};
-
-
-$parcel$exportWildcard($e74efcd17907e7cd$exports, $0d795ae2c3575e19$exports);
-$parcel$exportWildcard($e74efcd17907e7cd$exports, $79355003cd5eaada$exports);
-
-
-const $9dd1933fa1b4dcdf$export$2bbae861424212a5 = (props)=>{
-    const { amount: amount , symbol: symbol , approx: approx = false , ...rest } = props;
-    const prefix = !approx || (amount === null || amount === void 0 ? void 0 : amount.isZero()) ? "" : "≈ ";
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsxs)("span", {
-        ...rest,
-        children: [
-            prefix,
-            (0, $0d795ae2c3575e19$export$cc3bc0b518c1c6b8)(amount),
-            "\xa0",
-            symbol
-        ]
-    });
-};
-
-
-$parcel$exportWildcard($7c8b4bb44293c5d2$exports, $9dd1933fa1b4dcdf$exports);
-
-
 var $e91da9bc1433f42b$exports = {};
 var $31d803d6a64351b5$exports = {};
 
@@ -260,6 +150,7 @@ $parcel$export($31d803d6a64351b5$exports, "LocalLink", function () { return $31d
 const $31d803d6a64351b5$export$eaf41e22530ae68d = (props)=>{
     const { href: href , ...rest } = props;
     const router = (0, $41D0Z$nextrouter.useRouter)();
+    // TODO: for `ref` and `embed` (Andrey) do we need it?
     const { ref: ref , embed: embed  } = router.query;
     const extraQuery = {};
     if (ref) extraQuery.ref = ref;
@@ -348,11 +239,10 @@ const $7a17262398464a60$export$23759efdd2d2dae9 = ()=>{
     const { error: error  } = (0, $41D0Z$reefknotweb3react.useWeb3)();
     const { isUnsupported: isUnsupported , supportedChains: supportedChains  } = (0, $41D0Z$reefknotweb3react.useSupportedChains)();
     const chains = (0, $41D0Z$react.useMemo)(()=>{
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $41D0Z$lidosdkconstants.CHAINS)[chainId] || name);
-        const lastChain = chains.pop();
+        const _chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $41D0Z$lidosdkconstants.CHAINS)[chainId] || name);
+        const lastChain = _chains.pop();
         return [
-            chains.join(", "),
+            _chains.join(", "),
             lastChain
         ].filter((chain)=>chain).join(" or ");
     }, [
@@ -419,18 +309,14 @@ const $09fea6027b185381$export$d700fd35c768af1d = (0, ($parcel$interopDefault($4
 `), ({ theme: theme  })=>theme.spaceMap.lg);
 
 
-const $80067e52f4e3e184$export$7d0c76f6a0418e11 = (props)=>{
+const $80067e52f4e3e184$export$7d0c76f6a0418e11 = ({ ...rest })=>{
     return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $09fea6027b185381$export$d700fd35c768af1d), {
-        ...props
+        ...rest
     });
 };
 
 
-var $20a713e8177eed2f$exports = {};
-
-
 $parcel$exportWildcard($27d4316cc7d6e57b$exports, $80067e52f4e3e184$exports);
-$parcel$exportWildcard($27d4316cc7d6e57b$exports, $20a713e8177eed2f$exports);
 
 
 $parcel$exportWildcard($fc137a99170e55e2$exports, $829e9b0c5c7aff2f$exports);
@@ -536,7 +422,6 @@ $parcel$export($ff73dbbcec53aa22$exports, "WalletCardAccount", function () { ret
 
 
 
-
 let $e071e57fc1f1505d$var$_ = (t)=>t, $e071e57fc1f1505d$var$t;
 const $e071e57fc1f1505d$export$125159fec6480082 = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($e071e57fc1f1505d$var$t || ($e071e57fc1f1505d$var$t = $e071e57fc1f1505d$var$_`
   align-self: stretch;
@@ -556,13 +441,17 @@ const $e071e57fc1f1505d$export$125159fec6480082 = (0, ($parcel$interopDefault($4
 
 
 const $ff73dbbcec53aa22$export$36be84b4aed0dcaa = (props)=>{
-    const { account: account , ...rest } = props;
-    const { openModal: openModal  } = (0, $41D0Z$lidofinanceuiwalletmodal.useModal)((0, $41D0Z$lidofinanceuiwalletmodal.WALLET_MODAL).wallet);
+    const { account: account , onClickCb: onClickCb , ...rest } = props;
+    const isMobile = (0, $41D0Z$lidofinancelidoui.useBreakpoint)("md");
+    const mobileSymbols = 3;
+    const desktopSymbols = 6;
+    const symbols = isMobile ? mobileSymbols : desktopSymbols;
     return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $e071e57fc1f1505d$export$125159fec6480082), {
         ...rest,
-        children: /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $1d767216519ac54a$export$36cbab1c8a59f416), {
-            address: account,
-            onClick: openModal,
+        children: /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $41D0Z$lidofinancelidoui.IdenticonBadge), {
+            address: account !== null && account !== void 0 ? account : "",
+            symbols: symbols,
+            onClick: onClickCb,
             color: "accent"
         })
     });
@@ -613,8 +502,8 @@ const $1eacde4e26b66524$export$8dce4e443c8afd41 = (0, ($parcel$interopDefault($4
 
 const $dc56f960f8e379a3$export$976f47e15d5defb0 = (props)=>{
     const { title: title , small: small = false , extra: extra , loading: loading = false , children: children , value: value , ...rest } = props;
-    const hasExtra = !!extra;
-    const hasChildren = !!children;
+    const hasExtra = extra != null;
+    const hasChildren = children != null;
     return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsxs)((0, $1eacde4e26b66524$export$2d1cff8340d03905), {
         ...rest,
         children: [
@@ -651,9 +540,7 @@ $parcel$exportWildcard($69db8755909407dc$exports, $5f7eb0c04a209cf0$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $dc104a3cfac37534$exports);
 
 
-$parcel$exportWildcard($f812b98c92824ab2$exports, $6641752b68d00970$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $cc8b8a5508c6edd4$exports);
-$parcel$exportWildcard($f812b98c92824ab2$exports, $7c8b4bb44293c5d2$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $e91da9bc1433f42b$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $962149836312035c$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $69db8755909407dc$exports);
@@ -675,12 +562,9 @@ var $81fdd56ab370cc2c$exports = {};
 $parcel$export($81fdd56ab370cc2c$exports, "useCopyToClipboard", function () { return $81fdd56ab370cc2c$export$b2199c37e85de4a7; });
 
 
-
 const $81fdd56ab370cc2c$export$b2199c37e85de4a7 = (text)=>{
     return (0, $41D0Z$react.useCallback)(()=>{
         (0, ($parcel$interopDefault($41D0Z$copytoclipboard)))(text);
-        // TODO: without ToastInfo?
-        (0, $41D0Z$lidofinancelidoui.ToastInfo)("Copied to clipboard");
     }, [
         text
     ]);
@@ -690,18 +574,32 @@ const $81fdd56ab370cc2c$export$b2199c37e85de4a7 = (text)=>{
 $parcel$exportWildcard($ab1640a4ee939ad1$exports, $81fdd56ab370cc2c$exports);
 
 
-var $2c7512b9c5a74a0c$exports = {};
-var $b3f58545aed70d4a$exports = {};
+var $e74efcd17907e7cd$exports = {};
+var $79355003cd5eaada$exports = {};
+
+$parcel$export($79355003cd5eaada$exports, "standardFetcher", function () { return $79355003cd5eaada$export$a265c7403141b2f4; });
+const $79355003cd5eaada$var$DEFAULT_PARAMS = {
+    method: "GET",
+    headers: {
+        "Content-type": "application/json"
+    }
+};
+const $79355003cd5eaada$export$a265c7403141b2f4 = async (url, params)=>{
+    const response = await fetch(url, {
+        ...$79355003cd5eaada$var$DEFAULT_PARAMS,
+        ...params
+    });
+    if (!response.ok) throw new Error("An error occurred while fetching the data.");
+    return response.json();
+};
 
 
-$parcel$exportWildcard($2c7512b9c5a74a0c$exports, $b3f58545aed70d4a$exports);
-
+$parcel$exportWildcard($e74efcd17907e7cd$exports, $79355003cd5eaada$exports);
 
 
 $parcel$exportWildcard(module.exports, $f812b98c92824ab2$exports);
 $parcel$exportWildcard(module.exports, $4e3ab5b3c97613f6$exports);
 $parcel$exportWildcard(module.exports, $ab1640a4ee939ad1$exports);
-$parcel$exportWildcard(module.exports, $2c7512b9c5a74a0c$exports);
 $parcel$exportWildcard(module.exports, $e74efcd17907e7cd$exports);
 
 

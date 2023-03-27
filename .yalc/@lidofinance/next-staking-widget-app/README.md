@@ -2,9 +2,19 @@
 
 Widget app wrapper for any staking widget based on Next
 
-## Installation
+### Installation
+```bash
+yarn add @lidofinance/next-staking-widget-app
 
-`yarn add @lidofinance/next-staking-widget-app`.
+# and react 17
+yarn add react@^17.0.0
+
+# or react 18
+yarn add react@^18.0.0
+
+# and next
+yarn add next@^12.3.0 @lidofinance/lido-ui@^3.2.0 @reef-knot/web3-react@^0.3.0
+```
 
 ### Custom error page in Next.js
 

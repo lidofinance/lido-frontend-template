@@ -1,14 +1,15 @@
 var $8sXRR$reactjsxruntime = require("react/jsx-runtime");
+var $8sXRR$react = require("react");
 var $8sXRR$lidofinancelidoui = require("@lidofinance/lido-ui");
-var $8sXRR$lidofinanceuiwalletmodal = require("@lidofinance/ui-wallet-modal");
+var $8sXRR$lidofinanceethuiwalletmodal = require("@lidofinance/eth-ui-wallet-modal");
 var $8sXRR$reefknotweb3react = require("@reef-knot/web3-react");
 var $8sXRR$styledcomponents = require("styled-components");
 var $8sXRR$nextlink = require("next/link");
 var $8sXRR$lidosdkconstants = require("@lido-sdk/constants");
 var $8sXRR$lidosdkreact = require("@lido-sdk/react");
-var $8sXRR$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
-var $8sXRR$react = require("react");
+var $8sXRR$lidofinanceethuiprimitives = require("@lidofinance/eth-ui-primitives");
 var $8sXRR$nextrouter = require("next/router");
+var $8sXRR$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 
 function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
@@ -20,6 +21,7 @@ function $parcel$interopDefault(a) {
 $parcel$export(module.exports, "WidgetApp", function () { return $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d; });
 $parcel$export(module.exports, "LayoutTitle", function () { return $a1e29508de594d16$export$de4797fa0cf99ab6; });
 $parcel$export(module.exports, "LayoutSubTitle", function () { return $a1e29508de594d16$export$731f89f04b9d0607; });
+
 
 
 
@@ -261,7 +263,6 @@ var $7656a73acf0c9f5b$export$2e2bcd8739ae039 = $7656a73acf0c9f5b$var$Footer;
 
 
 
-
 let $4b9a7a031e6fec14$var$_ = (t)=>t, $4b9a7a031e6fec14$var$t, $4b9a7a031e6fec14$var$t1, $4b9a7a031e6fec14$var$t2, $4b9a7a031e6fec14$var$t3;
 const $4b9a7a031e6fec14$export$b4b09ec636b8dc92 = (0, ($parcel$interopDefault($8sXRR$styledcomponents)))((0, $8sXRR$lidofinancelidoui.Button))($4b9a7a031e6fec14$var$t || ($4b9a7a031e6fec14$var$t = $4b9a7a031e6fec14$var$_`
   flex-shrink: 1;
@@ -290,7 +291,7 @@ const $4b9a7a031e6fec14$export$39c6911ce38c2d39 = (0, ($parcel$interopDefault($8
 
 const $2a2370d9ad289e04$export$eab4424f030fcb21 = (props)=>{
     const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $8sXRR$lidofinanceuiwalletmodal.useModal)((0, $8sXRR$lidofinanceuiwalletmodal.WALLET_MODAL).wallet);
+    const { openModal: openModal  } = (0, $8sXRR$lidofinanceethuiwalletmodal.useModal)((0, $8sXRR$lidofinanceethuiwalletmodal.WALLET_MODAL).wallet);
     const { account: account  } = (0, $8sXRR$lidosdkreact.useSDK)();
     const { data: balance , initialLoading: initialLoading  } = (0, $8sXRR$lidosdkreact.useEthereumBalance)();
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$b4b09ec636b8dc92), {
@@ -299,19 +300,14 @@ const $2a2370d9ad289e04$export$eab4424f030fcb21 = (props)=>{
         color: "secondary",
         onClick: openModal,
         ...rest,
-        children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $4b9a7a031e6fec14$export$1ba39b57e9c6b91f), {
-            children: [
-                /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$8d4cce15cb50cfeb), {
-                    children: initialLoading ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceuiprimitives.FormatToken), {
-                        amount: balance,
-                        symbol: "ETH"
-                    })
-                }),
-                /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceuiprimitives.AddressBadge), {
-                    address: account
+        children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$1ba39b57e9c6b91f), {
+            children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$8d4cce15cb50cfeb), {
+                children: initialLoading ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
+                /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiprimitives.FormatToken), {
+                    amount: balance,
+                    symbol: "ETH"
                 })
-            ]
+            })
         })
     });
 };
@@ -324,7 +320,7 @@ const $2a2370d9ad289e04$export$eab4424f030fcb21 = (props)=>{
 
 const $b08f4cec7d65a130$export$ba0ef3a0d99fcc8f = (props)=>{
     const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $8sXRR$lidofinanceuiwalletmodal.useModal)((0, $8sXRR$lidofinanceuiwalletmodal.WALLET_MODAL).connect);
+    const { openModal: openModal  } = (0, $8sXRR$lidofinanceethuiwalletmodal.useModal)((0, $8sXRR$lidofinanceethuiwalletmodal.WALLET_MODAL).connect);
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.Button), {
         onClick: openModal,
         ...rest,
@@ -345,15 +341,14 @@ const $67170ddf0bddbe01$export$8f0e76783cf20ca4 = (0, ($parcel$interopDefault($8
 
 
 const $48fa4a1d2610f545$export$5ff29b4461d0d45f = ()=>{
-    const { active: active  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
-    const { chainId: chainId  } = (0, $8sXRR$lidosdkreact.useSDK)();
-    const chainName = (0, $8sXRR$lidosdkconstants.CHAINS)[chainId];
+    const { active: active , chainId: chainId  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
+    const chainName = chainId ? (0, $8sXRR$lidosdkconstants.CHAINS)[chainId] : (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet;
     const testNet = chainId !== (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet;
     const showNet = testNet && active;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$reactjsxruntime.Fragment), {
         children: [
             showNet && /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $67170ddf0bddbe01$export$8f0e76783cf20ca4), {
-                $color: (0, $8sXRR$lidosdkconstants.getChainColor)(chainId),
+                $color: (0, $8sXRR$lidosdkconstants.getChainColor)(chainId || (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet),
                 children: chainName
             }),
             active ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $2a2370d9ad289e04$export$eab4424f030fcb21), {}) : /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $b08f4cec7d65a130$export$ba0ef3a0d99fcc8f), {
@@ -417,10 +412,12 @@ const $ad87e35dc0f90c3c$export$25da3807dbd81a49 = (0, ($parcel$interopDefault($8
 `), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
 
 
-const $cc0bdf7900abb503$export$721ee963a67379f1 = (props)=>{
-    const { icon: icon , title: title , href: href , external: external  } = props;
+const $cc0bdf7900abb503$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external  })=>{
+    // TODO: use ...rest for styling
+    // const { icon, title, href, external } = props
     const router = (0, $8sXRR$nextrouter.useRouter)();
     const searchParamsString = new URLSearchParams(router.query).toString();
+    // TODO: for `ref` and `embed` (Andrey) do we need it?
     const queryString = searchParamsString ? `?${searchParamsString}` : "";
     const pathWithQuery = href + `${queryString}`;
     return external ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $ad87e35dc0f90c3c$export$25da3807dbd81a49), {
@@ -632,7 +629,7 @@ const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e6450dc97509fa53$export$2e2bcd8739ae039), {}),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$reefknotweb3react.ProviderWeb3), {
                 ...props.web3,
-                children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinanceuiwalletmodal.ProviderWalletModal), {
+                children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinanceethuiwalletmodal.ProviderWalletModal), {
                     ...props.reefKnot,
                     children: [
                         /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {

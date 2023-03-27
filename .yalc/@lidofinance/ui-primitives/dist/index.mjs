@@ -1,6 +1,5 @@
 import {jsx as $9LU3C$jsx, Fragment as $9LU3C$Fragment, jsxs as $9LU3C$jsxs} from "react/jsx-runtime";
-import {useMemo as $9LU3C$useMemo, useCallback as $9LU3C$useCallback} from "react";
-import {useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, Accordion as $9LU3C$Accordion, Block as $9LU3C$Block, Tooltip as $9LU3C$Tooltip, InlineLoader as $9LU3C$InlineLoader, ToastInfo as $9LU3C$ToastInfo} from "@lidofinance/lido-ui";
+import {Accordion as $9LU3C$Accordion, Block as $9LU3C$Block, Tooltip as $9LU3C$Tooltip, useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, InlineLoader as $9LU3C$InlineLoader} from "@lidofinance/lido-ui";
 import $9LU3C$styledcomponents from "styled-components";
 import {cwd as $9LU3C$cwd} from "process";
 import $9LU3C$fs from "fs";
@@ -9,13 +8,12 @@ import $9LU3C$graymatter from "gray-matter";
 import $9LU3C$remark from "remark";
 import $9LU3C$remarkhtml from "remark-html";
 import $9LU3C$remarkexternallinks from "remark-external-links";
-import {utils as $9LU3C$utils, constants as $9LU3C$constants} from "ethers";
+import {useMemo as $9LU3C$useMemo, useCallback as $9LU3C$useCallback} from "react";
 import {useRouter as $9LU3C$useRouter} from "next/router";
 import $9LU3C$nextlink from "next/link";
 import {useWeb3 as $9LU3C$useWeb3, useSupportedChains as $9LU3C$useSupportedChains} from "@reef-knot/web3-react";
 import {CHAINS as $9LU3C$CHAINS} from "@lido-sdk/constants";
 import {useTokenToWallet as $9LU3C$useTokenToWallet} from "@lido-sdk/react";
-import {useModal as $9LU3C$useModal, WALLET_MODAL as $9LU3C$WALLET_MODAL} from "@lidofinance/ui-wallet-modal";
 import $9LU3C$copytoclipboard from "copy-to-clipboard";
 
 function $parcel$exportWildcard(dest, source) {
@@ -38,50 +36,6 @@ function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 var $2edec60da2794fb1$exports = {};
-var $e097b3ed457dd2dc$exports = {};
-var $2d2a02a641aeabb6$exports = {};
-
-$parcel$export($2d2a02a641aeabb6$exports, "AddressBadge", function () { return $2d2a02a641aeabb6$export$36cbab1c8a59f416; });
-
-
-
-
-
-let $4006d998ae8c4702$var$_ = (t)=>t, $4006d998ae8c4702$var$t;
-const $4006d998ae8c4702$export$1afccb3bf4453be2 = (0, $9LU3C$styledcomponents)((0, $9LU3C$IdenticonBadge))($4006d998ae8c4702$var$t || ($4006d998ae8c4702$var$t = $4006d998ae8c4702$var$_`
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-
-  & > * {
-    flex-shrink: 0;
-  }
-
-  & > :first-child {
-    flex-shrink: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-`));
-
-
-const $2d2a02a641aeabb6$export$36cbab1c8a59f416 = (props)=>{
-    const { address: address , ...rest } = props;
-    const isMobile = (0, $9LU3C$useBreakpoint)("md");
-    const mobileSymbols = 3;
-    const desktopSymbols = 6;
-    const symbols = isMobile ? mobileSymbols : desktopSymbols;
-    return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $4006d998ae8c4702$export$1afccb3bf4453be2), {
-        symbols: symbols,
-        address: address !== null && address !== void 0 ? address : "",
-        ...rest
-    });
-};
-
-
-$parcel$exportWildcard($e097b3ed457dd2dc$exports, $2d2a02a641aeabb6$exports);
-
-
 var $09016bddec447da4$exports = {};
 var $210e5afef337a25b$exports = {};
 
@@ -182,70 +136,6 @@ $parcel$exportWildcard($09016bddec447da4$exports, $86ac7e0950fa64d3$exports);
 $parcel$exportWildcard($09016bddec447da4$exports, $22c5d07cb270ee1a$exports);
 
 
-var $3c13f78eb03de316$exports = {};
-var $85c0858cceeff774$exports = {};
-
-$parcel$export($85c0858cceeff774$exports, "FormatToken", function () { return $85c0858cceeff774$export$2bbae861424212a5; });
-
-
-var $6d94c9a60a544c13$exports = {};
-var $49b5f8700f8da98b$exports = {};
-
-$parcel$export($49b5f8700f8da98b$exports, "formatBalance", function () { return $49b5f8700f8da98b$export$cc3bc0b518c1c6b8; });
-
-const { formatEther: $49b5f8700f8da98b$var$formatEther  } = (0, $9LU3C$utils);
-const { Zero: $49b5f8700f8da98b$var$Zero  } = (0, $9LU3C$constants);
-const $49b5f8700f8da98b$export$cc3bc0b518c1c6b8 = (balance = $49b5f8700f8da98b$var$Zero, maxDecimalDigits = 4)=>{
-    const balanceString = $49b5f8700f8da98b$var$formatEther(balance);
-    if (balanceString.includes(".")) {
-        const parts = balanceString.split(".");
-        return parts[0] + "." + parts[1].slice(0, maxDecimalDigits);
-    }
-    return balanceString;
-};
-
-
-var $04886483abe732d1$exports = {};
-
-$parcel$export($04886483abe732d1$exports, "standardFetcher", function () { return $04886483abe732d1$export$a265c7403141b2f4; });
-const $04886483abe732d1$var$DEFAULT_PARAMS = {
-    method: "GET",
-    headers: {
-        "Content-type": "application/json"
-    }
-};
-const $04886483abe732d1$export$a265c7403141b2f4 = async (url, params)=>{
-    const response = await fetch(url, {
-        ...$04886483abe732d1$var$DEFAULT_PARAMS,
-        ...params
-    });
-    if (!response.ok) throw new Error("An error occurred while fetching the data.");
-    return response.json();
-};
-
-
-$parcel$exportWildcard($6d94c9a60a544c13$exports, $49b5f8700f8da98b$exports);
-$parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
-
-
-const $85c0858cceeff774$export$2bbae861424212a5 = (props)=>{
-    const { amount: amount , symbol: symbol , approx: approx = false , ...rest } = props;
-    const prefix = !approx || (amount === null || amount === void 0 ? void 0 : amount.isZero()) ? "" : "≈ ";
-    return /*#__PURE__*/ (0, $9LU3C$jsxs)("span", {
-        ...rest,
-        children: [
-            prefix,
-            (0, $49b5f8700f8da98b$export$cc3bc0b518c1c6b8)(amount),
-            "\xa0",
-            symbol
-        ]
-    });
-};
-
-
-$parcel$exportWildcard($3c13f78eb03de316$exports, $85c0858cceeff774$exports);
-
-
 var $15053db04efb3bba$exports = {};
 var $89f5730a736d4546$exports = {};
 
@@ -257,6 +147,7 @@ $parcel$export($89f5730a736d4546$exports, "LocalLink", function () { return $89f
 const $89f5730a736d4546$export$eaf41e22530ae68d = (props)=>{
     const { href: href , ...rest } = props;
     const router = (0, $9LU3C$useRouter)();
+    // TODO: for `ref` and `embed` (Andrey) do we need it?
     const { ref: ref , embed: embed  } = router.query;
     const extraQuery = {};
     if (ref) extraQuery.ref = ref;
@@ -345,11 +236,10 @@ const $e5e7031b6c7bc871$export$23759efdd2d2dae9 = ()=>{
     const { error: error  } = (0, $9LU3C$useWeb3)();
     const { isUnsupported: isUnsupported , supportedChains: supportedChains  } = (0, $9LU3C$useSupportedChains)();
     const chains = (0, $9LU3C$useMemo)(()=>{
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $9LU3C$CHAINS)[chainId] || name);
-        const lastChain = chains.pop();
+        const _chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $9LU3C$CHAINS)[chainId] || name);
+        const lastChain = _chains.pop();
         return [
-            chains.join(", "),
+            _chains.join(", "),
             lastChain
         ].filter((chain)=>chain).join(" or ");
     }, [
@@ -416,18 +306,14 @@ const $8abe3e3dbdc35f17$export$d700fd35c768af1d = (0, $9LU3C$styledcomponents).d
 `), ({ theme: theme  })=>theme.spaceMap.lg);
 
 
-const $0cd484ef9c611355$export$7d0c76f6a0418e11 = (props)=>{
+const $0cd484ef9c611355$export$7d0c76f6a0418e11 = ({ ...rest })=>{
     return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $8abe3e3dbdc35f17$export$d700fd35c768af1d), {
-        ...props
+        ...rest
     });
 };
 
 
-var $a5afb298c940136e$exports = {};
-
-
 $parcel$exportWildcard($1622f26a537fbfd0$exports, $0cd484ef9c611355$exports);
-$parcel$exportWildcard($1622f26a537fbfd0$exports, $a5afb298c940136e$exports);
 
 
 $parcel$exportWildcard($31d06770d11bf20e$exports, $14bfac055f2980c0$exports);
@@ -533,7 +419,6 @@ $parcel$export($24f5534c5a2a2725$exports, "WalletCardAccount", function () { ret
 
 
 
-
 let $0fb84f8a31124cdc$var$_ = (t)=>t, $0fb84f8a31124cdc$var$t;
 const $0fb84f8a31124cdc$export$125159fec6480082 = (0, $9LU3C$styledcomponents).div($0fb84f8a31124cdc$var$t || ($0fb84f8a31124cdc$var$t = $0fb84f8a31124cdc$var$_`
   align-self: stretch;
@@ -553,13 +438,17 @@ const $0fb84f8a31124cdc$export$125159fec6480082 = (0, $9LU3C$styledcomponents).d
 
 
 const $24f5534c5a2a2725$export$36be84b4aed0dcaa = (props)=>{
-    const { account: account , ...rest } = props;
-    const { openModal: openModal  } = (0, $9LU3C$useModal)((0, $9LU3C$WALLET_MODAL).wallet);
+    const { account: account , onClickCb: onClickCb , ...rest } = props;
+    const isMobile = (0, $9LU3C$useBreakpoint)("md");
+    const mobileSymbols = 3;
+    const desktopSymbols = 6;
+    const symbols = isMobile ? mobileSymbols : desktopSymbols;
     return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $0fb84f8a31124cdc$export$125159fec6480082), {
         ...rest,
-        children: /*#__PURE__*/ (0, $9LU3C$jsx)((0, $2d2a02a641aeabb6$export$36cbab1c8a59f416), {
-            address: account,
-            onClick: openModal,
+        children: /*#__PURE__*/ (0, $9LU3C$jsx)((0, $9LU3C$IdenticonBadge), {
+            address: account !== null && account !== void 0 ? account : "",
+            symbols: symbols,
+            onClick: onClickCb,
             color: "accent"
         })
     });
@@ -610,8 +499,8 @@ const $ca8b781e1b38cbcc$export$8dce4e443c8afd41 = (0, $9LU3C$styledcomponents).d
 
 const $f979852e26257adb$export$976f47e15d5defb0 = (props)=>{
     const { title: title , small: small = false , extra: extra , loading: loading = false , children: children , value: value , ...rest } = props;
-    const hasExtra = !!extra;
-    const hasChildren = !!children;
+    const hasExtra = extra != null;
+    const hasChildren = children != null;
     return /*#__PURE__*/ (0, $9LU3C$jsxs)((0, $ca8b781e1b38cbcc$export$2d1cff8340d03905), {
         ...rest,
         children: [
@@ -648,9 +537,7 @@ $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $debd5b9d56016368$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $5e4f3f5938f09cef$exports);
 
 
-$parcel$exportWildcard($2edec60da2794fb1$exports, $e097b3ed457dd2dc$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $09016bddec447da4$exports);
-$parcel$exportWildcard($2edec60da2794fb1$exports, $3c13f78eb03de316$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $15053db04efb3bba$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $8e37d69f73d5e5f4$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $bee4c5e5a65c56cf$exports);
@@ -672,12 +559,9 @@ var $7ed617aa6b701fa6$exports = {};
 $parcel$export($7ed617aa6b701fa6$exports, "useCopyToClipboard", function () { return $7ed617aa6b701fa6$export$b2199c37e85de4a7; });
 
 
-
 const $7ed617aa6b701fa6$export$b2199c37e85de4a7 = (text)=>{
     return (0, $9LU3C$useCallback)(()=>{
         (0, $9LU3C$copytoclipboard)(text);
-        // TODO: without ToastInfo?
-        (0, $9LU3C$ToastInfo)("Copied to clipboard");
     }, [
         text
     ]);
@@ -687,15 +571,30 @@ const $7ed617aa6b701fa6$export$b2199c37e85de4a7 = (text)=>{
 $parcel$exportWildcard($fb78df27aae727e9$exports, $7ed617aa6b701fa6$exports);
 
 
-var $ea5c9287e0f80725$exports = {};
-var $53fc915a7c5aca97$exports = {};
+var $6d94c9a60a544c13$exports = {};
+var $04886483abe732d1$exports = {};
+
+$parcel$export($04886483abe732d1$exports, "standardFetcher", function () { return $04886483abe732d1$export$a265c7403141b2f4; });
+const $04886483abe732d1$var$DEFAULT_PARAMS = {
+    method: "GET",
+    headers: {
+        "Content-type": "application/json"
+    }
+};
+const $04886483abe732d1$export$a265c7403141b2f4 = async (url, params)=>{
+    const response = await fetch(url, {
+        ...$04886483abe732d1$var$DEFAULT_PARAMS,
+        ...params
+    });
+    if (!response.ok) throw new Error("An error occurred while fetching the data.");
+    return response.json();
+};
 
 
-$parcel$exportWildcard($ea5c9287e0f80725$exports, $53fc915a7c5aca97$exports);
+$parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
 
 
 
 
-
-export {$2d2a02a641aeabb6$export$36cbab1c8a59f416 as AddressBadge, $210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $85c0858cceeff774$export$2bbae861424212a5 as FormatToken, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $0cd484ef9c611355$export$7d0c76f6a0418e11 as WalletCardRow, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $49b5f8700f8da98b$export$cc3bc0b518c1c6b8 as formatBalance, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
+export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $0cd484ef9c611355$export$7d0c76f6a0418e11 as WalletCardRow, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
 //# sourceMappingURL=index.mjs.map

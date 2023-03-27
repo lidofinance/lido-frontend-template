@@ -1,14 +1,16 @@
 import {jsxs as $7XpC5$jsxs, jsx as $7XpC5$jsx, Fragment as $7XpC5$Fragment} from "react/jsx-runtime";
+import {memo as $7XpC5$memo} from "react";
 import {migrationThemeCookiesToCrossDomainCookiesClientSide as $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $7XpC5$CookieThemeProvider, CookiesTooltip as $7XpC5$CookiesTooltip, ToastContainer as $7XpC5$ToastContainer, LidoLogo as $7XpC5$LidoLogo, Container as $7XpC5$Container, Divider as $7XpC5$Divider, Link as $7XpC5$Link, ThemeToggler as $7XpC5$ThemeToggler, Button as $7XpC5$Button, InlineLoader as $7XpC5$InlineLoader} from "@lidofinance/lido-ui";
-import {ProviderWalletModal as $7XpC5$ProviderWalletModal, useModal as $7XpC5$useModal, WALLET_MODAL as $7XpC5$WALLET_MODAL} from "@lidofinance/ui-wallet-modal";
+import {ProviderWalletModal as $7XpC5$ProviderWalletModal, useModal as $7XpC5$useModal, WALLET_MODAL as $7XpC5$WALLET_MODAL} from "@lidofinance/eth-ui-wallet-modal";
 import {ProviderWeb3 as $7XpC5$ProviderWeb3, useWeb3 as $7XpC5$useWeb3} from "@reef-knot/web3-react";
 import $7XpC5$styledcomponents, {createGlobalStyle as $7XpC5$createGlobalStyle, css as $7XpC5$css} from "styled-components";
 import $7XpC5$nextlink from "next/link";
 import {CHAINS as $7XpC5$CHAINS, getChainColor as $7XpC5$getChainColor} from "@lido-sdk/constants";
 import {useSDK as $7XpC5$useSDK, useEthereumBalance as $7XpC5$useEthereumBalance} from "@lido-sdk/react";
-import {FormatToken as $7XpC5$FormatToken, AddressBadge as $7XpC5$AddressBadge, LocalLink as $7XpC5$LocalLink} from "@lidofinance/ui-primitives";
-import {memo as $7XpC5$memo} from "react";
+import {FormatToken as $7XpC5$FormatToken} from "@lidofinance/eth-ui-primitives";
 import {useRouter as $7XpC5$useRouter} from "next/router";
+import {LocalLink as $7XpC5$LocalLink} from "@lidofinance/ui-primitives";
+
 
 
 
@@ -251,7 +253,6 @@ var $587ae881875a0357$export$2e2bcd8739ae039 = $587ae881875a0357$var$Footer;
 
 
 
-
 let $f3dac3ad0c6afc00$var$_ = (t)=>t, $f3dac3ad0c6afc00$var$t, $f3dac3ad0c6afc00$var$t1, $f3dac3ad0c6afc00$var$t2, $f3dac3ad0c6afc00$var$t3;
 const $f3dac3ad0c6afc00$export$b4b09ec636b8dc92 = (0, $7XpC5$styledcomponents)((0, $7XpC5$Button))($f3dac3ad0c6afc00$var$t || ($f3dac3ad0c6afc00$var$t = $f3dac3ad0c6afc00$var$_`
   flex-shrink: 1;
@@ -289,19 +290,14 @@ const $9488d9f52eb8d5ae$export$eab4424f030fcb21 = (props)=>{
         color: "secondary",
         onClick: openModal,
         ...rest,
-        children: /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $f3dac3ad0c6afc00$export$1ba39b57e9c6b91f), {
-            children: [
-                /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$8d4cce15cb50cfeb), {
-                    children: initialLoading ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$FormatToken), {
-                        amount: balance,
-                        symbol: "ETH"
-                    })
-                }),
-                /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$AddressBadge), {
-                    address: account
+        children: /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$1ba39b57e9c6b91f), {
+            children: /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$8d4cce15cb50cfeb), {
+                children: initialLoading ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
+                /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$FormatToken), {
+                    amount: balance,
+                    symbol: "ETH"
                 })
-            ]
+            })
         })
     });
 };
@@ -335,15 +331,14 @@ const $2de0cf6e87228824$export$8f0e76783cf20ca4 = (0, $7XpC5$styledcomponents).s
 
 
 const $b56e92e639f015e6$export$5ff29b4461d0d45f = ()=>{
-    const { active: active  } = (0, $7XpC5$useWeb3)();
-    const { chainId: chainId  } = (0, $7XpC5$useSDK)();
-    const chainName = (0, $7XpC5$CHAINS)[chainId];
+    const { active: active , chainId: chainId  } = (0, $7XpC5$useWeb3)();
+    const chainName = chainId ? (0, $7XpC5$CHAINS)[chainId] : (0, $7XpC5$CHAINS).Mainnet;
     const testNet = chainId !== (0, $7XpC5$CHAINS).Mainnet;
     const showNet = testNet && active;
     return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$Fragment), {
         children: [
             showNet && /*#__PURE__*/ (0, $7XpC5$jsx)((0, $2de0cf6e87228824$export$8f0e76783cf20ca4), {
-                $color: (0, $7XpC5$getChainColor)(chainId),
+                $color: (0, $7XpC5$getChainColor)(chainId || (0, $7XpC5$CHAINS).Mainnet),
                 children: chainName
             }),
             active ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $9488d9f52eb8d5ae$export$eab4424f030fcb21), {}) : /*#__PURE__*/ (0, $7XpC5$jsx)((0, $271aafb49a2509a6$export$ba0ef3a0d99fcc8f), {
@@ -407,10 +402,12 @@ const $5ec3ac63a2ac1a77$export$25da3807dbd81a49 = (0, $7XpC5$styledcomponents).a
 `), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
 
 
-const $40c7776ca68d16e5$export$721ee963a67379f1 = (props)=>{
-    const { icon: icon , title: title , href: href , external: external  } = props;
+const $40c7776ca68d16e5$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external  })=>{
+    // TODO: use ...rest for styling
+    // const { icon, title, href, external } = props
     const router = (0, $7XpC5$useRouter)();
     const searchParamsString = new URLSearchParams(router.query).toString();
+    // TODO: for `ref` and `embed` (Andrey) do we need it?
     const queryString = searchParamsString ? `?${searchParamsString}` : "";
     const pathWithQuery = href + `${queryString}`;
     return external ? /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $5ec3ac63a2ac1a77$export$25da3807dbd81a49), {
