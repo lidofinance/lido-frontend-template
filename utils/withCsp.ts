@@ -7,7 +7,6 @@ const { cspTrustedHosts, cspReportOnly, cspReportUri } = serverRuntimeConfig;
 
 // PAY ATTENTION: Extra Content Security Policy can be added here
 
-// TODO: move a settings to next.config (need more research!)
 const trustedHosts = cspTrustedHosts
   ? cspTrustedHosts.split(',')
   : ['https://*.lido.fi'];

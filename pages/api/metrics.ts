@@ -2,7 +2,6 @@ import { metricsFactory } from '@lidofinance/next-pages';
 import { registry } from 'utilsApi/metrics';
 import { contractInfo } from 'utils/metrics';
 
-// TODO: move to another place
 if (process.env.NODE_ENV === 'production') {
   // Collect 'contract info' metrics
   registry.registerMetric(contractInfo);
