@@ -1,7 +1,6 @@
 import { FC, memo } from 'react';
 import { DataTable, DataTableRow } from '@lidofinance/lido-ui';
 import { useSTETHContractRPC, useContractSWR } from '@lido-sdk/react';
-
 import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
 
 import { useStethSubmitGasLimit, useTxCostInUsd } from 'hooks';
