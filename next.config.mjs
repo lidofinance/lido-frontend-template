@@ -46,11 +46,6 @@ export default {
     loader: 'custom',
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack', 'url-loader'],
-    });
-
     // Fix: Module not found: Can't resolve 'fs'...
     config.resolve.fallback = { fs: false };
 
