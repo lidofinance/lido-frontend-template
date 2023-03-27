@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
-import { DATA_UNAVAILABLE, standardFetcher } from '@lidofinance/ui-primitives';
+import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
 import { serverRuntimeConfig } from 'config';
+import { swrFetcher } from 'utils';
 
 const { basePath } = serverRuntimeConfig;
 
@@ -25,7 +26,7 @@ export const useLidoStats = (): UseLidoStatsType => {
   const { chainId } = useSDK();
   const lidoStats = useLidoSWR<ResponseData>(
     `${basePath || ''}api/short-lido-stats?chainId=${chainId}`,
-    standardFetcher,
+    swrFetcher,
   );
 
   const data = useMemo(() => {
