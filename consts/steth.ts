@@ -13,8 +13,10 @@ export const getStethAddress = (chainId: MAINNET_AND_GOERLI_CHAINS): string => {
   return STETH_BY_NETWORK[chainId];
 };
 
+// Just for example
 export type ContractSteth = typeof StethAbi__factory;
 
+// Just for example
 export const getStethContractFactory = (): ContractSteth => {
   return StethAbi__factory;
 };
