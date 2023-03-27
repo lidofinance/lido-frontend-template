@@ -6,8 +6,7 @@ import {
 } from '@lidofinance/next-api-wrapper';
 import { rpcFactory } from '@lidofinance/next-pages';
 
-import { API_ROUTES } from 'consts';
-import { dynamics, serverRuntimeConfig } from 'config';
+import { API_ROUTES, dynamics, serverRuntimeConfig } from 'config';
 import {
   registry,
   apiTimings,

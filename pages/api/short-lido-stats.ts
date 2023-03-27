@@ -6,7 +6,7 @@ import {
   responseTimeMetric,
 } from '@lidofinance/next-api-wrapper';
 
-import { API_ROUTES, CACHE_DEFAULT_HEADERS } from 'consts';
+import { API_ROUTES, CACHE_DEFAULT_HEADERS } from 'config';
 import { rateLimit, apiTimings, serverLogger } from 'utilsApi';
 
 /**

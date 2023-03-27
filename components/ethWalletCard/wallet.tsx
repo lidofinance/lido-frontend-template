@@ -1,4 +1,4 @@
-import { Divider } from '@lidofinance/lido-ui';
+import { useWeb3 } from '@reef-knot/web3-react';
 import {
   useEthereumBalance,
   useSDK,
@@ -6,10 +6,9 @@ import {
   useTokenAddress,
   useWSTETHBalance,
 } from '@lido-sdk/react';
-import { WALLET_MODAL, useModal } from '@lidofinance/eth-ui-wallet-modal';
 import { TOKENS } from '@lido-sdk/constants';
-import { useWeb3 } from '@reef-knot/web3-react';
-
+import { Divider } from '@lidofinance/lido-ui';
+import { WALLET_MODAL, useModal } from '@lidofinance/eth-ui-wallet-modal';
 import {
   TokenToWallet,
   FallbackWallet,
@@ -18,7 +17,6 @@ import {
   WalletCardBalance,
   WalletCardAccount,
 } from '@lidofinance/ui-primitives';
-
 import { FormatToken } from '@lidofinance/eth-ui-primitives';
 
 import { EthWalletCardComponent } from './types';

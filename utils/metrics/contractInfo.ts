@@ -2,8 +2,7 @@
 import { Gauge } from 'prom-client';
 import { CHAINS } from '@lido-sdk/constants';
 
-import { dynamics } from 'config';
-import { getStethAddress } from 'consts';
+import { dynamics, getStethAddress } from 'config';
 
 const chainId = +dynamics.defaultChain as CHAINS;
 

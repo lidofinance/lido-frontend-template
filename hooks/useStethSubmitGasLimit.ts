@@ -11,7 +11,7 @@ import {
   getBackendRPCPath,
   STETH_SUBMIT_GAS_LIMIT_DEFAULT,
   ESTIMATE_ACCOUNT,
-} from 'consts';
+} from 'config';
 import { getStaticRpcBatchProvider } from 'utils/rpcProviders';
 
 export const useStethSubmitGasLimit = (): number | undefined => {

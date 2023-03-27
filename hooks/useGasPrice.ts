@@ -5,7 +5,7 @@ import { useWeb3 } from '@reef-knot/web3-react';
 import { CHAINS } from '@lido-sdk/constants';
 import { getStaticRpcBatchProvider } from '@lido-sdk/providers';
 
-import { ONE_GWEI, getBackendRPCPath } from 'consts';
+import { ONE_GWEI, getBackendRPCPath } from 'config';
 
 export const useGasPrice = (): BigNumber | undefined => {
   const [gasPrice, setGasPrice] = useState<BigNumber>(ONE_GWEI);

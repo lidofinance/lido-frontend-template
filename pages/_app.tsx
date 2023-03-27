@@ -11,8 +11,7 @@ import {
   INavigationLink,
 } from '@lidofinance/next-staking-widget-app';
 
-import { dynamics, walletsMetrics } from 'config';
-import { backendRPC } from 'consts';
+import { backendRPC, dynamics, walletsMetrics } from 'config';
 import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
