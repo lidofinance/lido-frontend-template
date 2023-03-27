@@ -6,11 +6,11 @@ import {
   useTokenAddress,
   useWSTETHBalance,
 } from '@lido-sdk/react';
+import { WALLET_MODAL, useModal } from '@lidofinance/eth-ui-wallet-modal';
 import { TOKENS } from '@lido-sdk/constants';
 import { useWeb3 } from '@reef-knot/web3-react';
 
 import {
-  FormatToken,
   TokenToWallet,
   FallbackWallet,
   WalletCard,
@@ -18,6 +18,8 @@ import {
   WalletCardBalance,
   WalletCardAccount,
 } from '@lidofinance/ui-primitives';
+
+import { FormatToken } from '@lidofinance/eth-ui-primitives';
 
 import { EthWalletCardComponent } from './types';
 
@@ -30,6 +32,8 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
   const stethAddress = useTokenAddress(TOKENS.STETH);
   const wstethAddress = useTokenAddress(TOKENS.WSTETH);
 
+  const { openModal } = useModal(WALLET_MODAL.wallet);
+
   return (
     <WalletCard {...props}>
       <WalletCardRow>
@@ -38,7 +42,7 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
           loading={eth.initialLoading}
           value={<FormatToken amount={eth.data} symbol="ETH" />}
         />
-        <WalletCardAccount account={account} />
+        <WalletCardAccount account={account} onClickCb={openModal} />
       </WalletCardRow>
       <Divider />
       <WalletCardRow>
