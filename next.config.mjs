@@ -15,15 +15,6 @@ const apiProviderUrls = {
   [CHAINS.Kovan]: process.env[`API_PROVIDER_URL_${CHAINS.Kovan}`],
 };
 
-const subgraphMainnet = process.env.SUBGRAPH_MAINNET;
-const subgraphRopsten = process.env.SUBGRAPH_ROPSTEN;
-const subgraphRinkeby = process.env.SUBGRAPH_RINKEBY;
-const subgraphGoerli = process.env.SUBGRAPH_GOERLI;
-const subgraphKovan = process.env.SUBGRAPH_KOVAN;
-const subgraphKintsugi = process.env.SUBGRAPH_KINTSUGI;
-
-const subgraphRequestTimeout = process.env.SUBGRAPH_REQUEST_TIMEOUT;
-
 // rate limit
 const rateLimit = process.env.RATE_LIMIT;
 const rateLimitTimeFrame = process.env.RATE_LIMIT_TIME_FRAME;
@@ -84,13 +75,6 @@ export default {
     cspTrustedHosts,
     cspReportOnly,
     cspReportUri,
-    subgraphMainnet,
-    subgraphRopsten,
-    subgraphRinkeby,
-    subgraphGoerli,
-    subgraphKovan,
-    subgraphKintsugi,
-    subgraphRequestTimeout,
     allowedRpcMethods,
   },
 };

@@ -1,4 +1,3 @@
-import { Cache } from 'memory-cache';
 import {
   API,
   wrapRequest,
@@ -7,25 +6,8 @@ import {
   responseTimeMetric,
 } from '@lidofinance/next-api-wrapper';
 
-import { dynamics } from 'config';
-import {
-  API_ROUTES,
-  CACHE_DEFAULT_HEADERS,
-  CACHE_LIDO_SHORT_STATS_KEY,
-  CACHE_LIDO_SHORT_STATS_TTL,
-} from 'consts';
-import { SubgraphChains } from 'types';
-import {
-  getTotalStaked,
-  getLidoHoldersViaSubgraphs,
-  getStEthPrice,
-  rateLimit,
-  parallelizePromisesServerSide,
-  apiTimings,
-  serverLogger,
-} from 'utilsApi';
-
-const cache = new Cache<string, unknown>();
+import { API_ROUTES, CACHE_DEFAULT_HEADERS } from 'consts';
+import { rateLimit, apiTimings, serverLogger } from 'utilsApi';
 
 /**
  * PAY ATTENTION: Example showing how to use API wrappers (error handler and cache control).
@@ -33,43 +15,21 @@ const cache = new Cache<string, unknown>();
  *
  * @typedef {Object} ShortLidoStats
  * @property {number} marketCap
- * @property {string} totalStaked - number as string
- * @property {string} uniqueAnytimeHolder - number as string
- * @property {string} uniqueHolders - number as string
+ * @property {number} totalStaked
+ * @property {number} uniqueAnytimeHolder
+ * @property {number} uniqueHolders
  *
  * @returns {ShortLidoStats} Returns stETH token information.
  */
-const shortLidoStats: API = async (req, res) => {
-  const chainId =
-    (Number(req.query.chainId) as SubgraphChains) || dynamics.defaultChain;
-  const cacheKey = `${CACHE_LIDO_SHORT_STATS_KEY}_${chainId}`;
+const shortLidoStats: API = (_, res) => {
+  const mockData = {
+    uniqueAnytimeHolders: 180443,
+    uniqueHolders: 168792,
+    totalStaked: 5873072.67502321,
+    marketCap: 10021169145.625982,
+  };
 
-  const cachedLidoStats = cache.get(cacheKey);
-  if (cachedLidoStats) {
-    res.status(200).json(cachedLidoStats);
-  } else {
-    const [lidoHolders, totalStaked, stEthPrice] =
-      await parallelizePromisesServerSide([
-        getLidoHoldersViaSubgraphs(chainId),
-        getTotalStaked(),
-        getStEthPrice(),
-      ]);
-
-    const freshedLidoStats = {
-      uniqueAnytimeHolders: lidoHolders?.data?.stats?.uniqueAnytimeHolders,
-      uniqueHolders: lidoHolders?.data?.stats?.uniqueHolders,
-      totalStaked,
-      marketCap: Number(totalStaked) * stEthPrice,
-    };
-
-    // set the cache if there is all the data
-    // because right now there is no request error handling in parallelizePromises
-    if (lidoHolders && totalStaked && stEthPrice) {
-      cache.put(cacheKey, freshedLidoStats, CACHE_LIDO_SHORT_STATS_TTL);
-    }
-
-    res.status(200).json(freshedLidoStats);
-  }
+  res.status(200).json(mockData);
 };
 
 export default wrapRequest([
