@@ -21,7 +21,7 @@ import { rateLimit, apiTimings, serverLogger } from 'utilsApi';
  *
  * @returns {ShortLidoStats} Returns stETH token information.
  */
-const shortLidoStats: API = (_, res) => {
+const mockLidoStats: API = (_, res) => {
   const mockData = {
     uniqueAnytimeHolders: 180443,
     uniqueHolders: 168792,
@@ -39,4 +39,4 @@ export default wrapRequest([
     headers: CACHE_DEFAULT_HEADERS,
   }),
   defaultErrorHandler({ serverLogger }),
-])(shortLidoStats);
+])(mockLidoStats);
