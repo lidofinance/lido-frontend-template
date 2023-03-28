@@ -25,7 +25,7 @@ type UseLidoStatsType = {
 export const useLidoStats = (): UseLidoStatsType => {
   const { chainId } = useSDK();
   const lidoStats = useLidoSWR<ResponseData>(
-    `${basePath || ''}api/short-lido-stats?chainId=${chainId}`,
+    `${basePath || ''}api/mock-lido-stats?chainId=${chainId}`,
     swrFetcher,
   );
 

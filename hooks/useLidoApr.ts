@@ -5,5 +5,5 @@ import { swrFetcher } from 'utils';
 const { basePath } = serverRuntimeConfig;
 
 export const useLidoApr = (): SWRResponse<unknown> => {
-  return useLidoSWR(`${basePath || ''}/api/steth-apr`, swrFetcher);
+  return useLidoSWR(`${basePath || ''}/api/mock-apr`, swrFetcher);
 };
