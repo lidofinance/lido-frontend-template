@@ -1,6 +1,6 @@
 {
   "name": "@lidofinance/eth-ui-wallet-modal",
-  "description": "EVM wallet modal part.",
+  "description": "EVM wallet modal",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -33,5 +33,5 @@
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "05800a860e780c30b827ce9b4e607c40"
+  "yalcSig": "8e3949135f88fe744890b95867d367ae"
 }

@@ -1,5 +1,13 @@
+// import { FC, PropsWithChildren } from 'react';
+// import NextApp, { AppProps } from 'next/app';
+// import { ProviderWeb3 } from '@reef-knot/web3-react'
+// import { ProviderWalletModal, WalletButton, WalletConnectButton } from '@lidofinance/eth-ui-wallet-modal'
 import { FC } from 'react';
 import NextApp, { AppProps } from 'next/app';
+import {
+  WalletButton,
+  WalletConnectButton,
+} from '@lidofinance/eth-ui-wallet-modal';
 import {
   Stake,
   Ldo as LdoIcon,
@@ -40,10 +48,25 @@ const headerPages: INavigationLink[] = [
   },
 ];
 
+// const Providers: FC<PropsWithChildren> = ({ children }) => (
+//   <ProviderWeb3
+//     defaultChainId={dynamics.defaultChain}
+//     supportedChainIds={dynamics.supportedChains}
+//     rpc={backendRPC}
+//   >
+//     <ProviderWalletModal
+//       walletsMetrics={walletsMetrics}
+//       hiddenWallets={['Opera Wallet']}
+//     >
+//       {children}
+//     </ProviderWalletModal>
+//   </ProviderWeb3>
+// );
+
 // App wrapper
 const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
   <WidgetApp
-    pages={headerPages}
+    navigation={headerPages}
     web3={{
       defaultChainId: dynamics.defaultChain,
       supportedChainIds: dynamics.supportedChains,
@@ -53,6 +76,11 @@ const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
       walletsMetrics: walletsMetrics,
       hiddenWallets: ['Opera Wallet'],
     }}
+    connectedWalletInfoButton={WalletButton}
+    walletConnectButton={WalletConnectButton}
+    // connectedWalletInfoButton={<WalletButton />}
+    // walletConnectButton={<WalletConnectButton size="sm" />}
+    // providers={Providers}
   >
     <NextApp {...props} />
   </WidgetApp>

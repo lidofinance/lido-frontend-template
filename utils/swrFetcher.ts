@@ -14,8 +14,7 @@ export const swrFetcher: SwrFetcher = async (url, params) => {
   });
 
   if (!response.ok) {
-    // TODO:
-    throw new Error('An error occurred while fetching the data.');
+    throw new Error('[swrFetcher]: An error occurred while fetching the data.');
   }
 
   return response.json();

@@ -1,13 +1,10 @@
 import {jsxs as $7XpC5$jsxs, jsx as $7XpC5$jsx, Fragment as $7XpC5$Fragment} from "react/jsx-runtime";
 import {memo as $7XpC5$memo} from "react";
-import {migrationThemeCookiesToCrossDomainCookiesClientSide as $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $7XpC5$CookieThemeProvider, CookiesTooltip as $7XpC5$CookiesTooltip, ToastContainer as $7XpC5$ToastContainer, LidoLogo as $7XpC5$LidoLogo, Container as $7XpC5$Container, Divider as $7XpC5$Divider, Link as $7XpC5$Link, ThemeToggler as $7XpC5$ThemeToggler, Button as $7XpC5$Button, InlineLoader as $7XpC5$InlineLoader} from "@lidofinance/lido-ui";
-import {ProviderWalletModal as $7XpC5$ProviderWalletModal, useModal as $7XpC5$useModal, WALLET_MODAL as $7XpC5$WALLET_MODAL} from "@lidofinance/eth-ui-wallet-modal";
+import {migrationThemeCookiesToCrossDomainCookiesClientSide as $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $7XpC5$CookieThemeProvider, CookiesTooltip as $7XpC5$CookiesTooltip, ToastContainer as $7XpC5$ToastContainer, LidoLogo as $7XpC5$LidoLogo, Container as $7XpC5$Container, Divider as $7XpC5$Divider, Link as $7XpC5$Link, ThemeToggler as $7XpC5$ThemeToggler} from "@lidofinance/lido-ui";
+import {ProviderWalletModal as $7XpC5$ProviderWalletModal, WalletButton as $7XpC5$WalletButton, WalletConnectButton as $7XpC5$WalletConnectButton} from "@lidofinance/eth-ui-wallet-modal";
 import {ProviderWeb3 as $7XpC5$ProviderWeb3, useWeb3 as $7XpC5$useWeb3} from "@reef-knot/web3-react";
 import $7XpC5$styledcomponents, {createGlobalStyle as $7XpC5$createGlobalStyle, css as $7XpC5$css} from "styled-components";
 import $7XpC5$nextlink from "next/link";
-import {CHAINS as $7XpC5$CHAINS, getChainColor as $7XpC5$getChainColor} from "@lido-sdk/constants";
-import {useSDK as $7XpC5$useSDK, useEthereumBalance as $7XpC5$useEthereumBalance} from "@lido-sdk/react";
-import {FormatToken as $7XpC5$FormatToken} from "@lidofinance/eth-ui-primitives";
 import {useRouter as $7XpC5$useRouter} from "next/router";
 import {LocalLink as $7XpC5$LocalLink} from "@lidofinance/ui-primitives";
 
@@ -243,105 +240,52 @@ var $587ae881875a0357$export$2e2bcd8739ae039 = $587ae881875a0357$var$Footer;
 
 
 
+// import React, { FC } from 'react'
+// import { useWeb3 } from '@reef-knot/web3-react'
+// import { ThemeToggler } from '@lidofinance/lido-ui'
+//
+// import { IHeaderActions } from './types';
+// import { HeaderActionsStyle } from './styles';
+//
+// export const HeaderActions: FC<IHeaderActions> = (props) => {
+//   const { leftSlot, connectedWalletInfoButton, walletConnectButton } = props
+//   const { active } = useWeb3()
+//
+//   const Aaa = connectedWalletInfoButton;
+//   const Bbb = walletConnectButton;
+//
+//   return (
+//     <HeaderActionsStyle>
+//       <>
+//         {leftSlot}
+//         {active ? <Aaa /> : <Bbb />}
+//         <ThemeToggler />
+//       </>
+//     </HeaderActionsStyle>
+//   )
+// }
 
 
 
 
 
-
-
-
-
-
-let $f3dac3ad0c6afc00$var$_ = (t)=>t, $f3dac3ad0c6afc00$var$t, $f3dac3ad0c6afc00$var$t1, $f3dac3ad0c6afc00$var$t2, $f3dac3ad0c6afc00$var$t3;
-const $f3dac3ad0c6afc00$export$b4b09ec636b8dc92 = (0, $7XpC5$styledcomponents)((0, $7XpC5$Button))($f3dac3ad0c6afc00$var$t || ($f3dac3ad0c6afc00$var$t = $f3dac3ad0c6afc00$var$_`
-  flex-shrink: 1;
-  min-width: unset;
+let $dca673c434ed9137$var$_ = (t)=>t, $dca673c434ed9137$var$t;
+const $dca673c434ed9137$export$af0f646b086814d1 = (0, $7XpC5$styledcomponents).div($dca673c434ed9137$var$t || ($dca673c434ed9137$var$t = $dca673c434ed9137$var$_`
   overflow: hidden;
-`));
-const $f3dac3ad0c6afc00$export$1ba39b57e9c6b91f = (0, $7XpC5$styledcomponents).span($f3dac3ad0c6afc00$var$t1 || ($f3dac3ad0c6afc00$var$t1 = $f3dac3ad0c6afc00$var$_`
+
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin: -10px -18px;
-`));
-const $f3dac3ad0c6afc00$export$8d4cce15cb50cfeb = (0, $7XpC5$styledcomponents).span($f3dac3ad0c6afc00$var$t2 || ($f3dac3ad0c6afc00$var$t2 = $f3dac3ad0c6afc00$var$_`
-  margin-right: 12px;
-  margin-left: 4px;
-  font-size: ${0}px;
+  flex-shrink: 1;
 
-  ${0} {
-    display: none;
-  }
-`), ({ theme: theme  })=>theme.fontSizesMap.xs, ({ theme: theme  })=>theme.mediaQueries.md);
-const $f3dac3ad0c6afc00$export$39c6911ce38c2d39 = (0, $7XpC5$styledcomponents)((0, $7XpC5$InlineLoader))($f3dac3ad0c6afc00$var$t3 || ($f3dac3ad0c6afc00$var$t3 = $f3dac3ad0c6afc00$var$_`
-  width: 60px;
+  margin-left: auto;
 `));
 
 
-const $9488d9f52eb8d5ae$export$eab4424f030fcb21 = (props)=>{
-    const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $7XpC5$useModal)((0, $7XpC5$WALLET_MODAL).wallet);
-    const { account: account  } = (0, $7XpC5$useSDK)();
-    const { data: balance , initialLoading: initialLoading  } = (0, $7XpC5$useEthereumBalance)();
-    return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$b4b09ec636b8dc92), {
-        size: "sm",
-        variant: "text",
-        color: "secondary",
-        onClick: openModal,
-        ...rest,
-        children: /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$1ba39b57e9c6b91f), {
-            children: /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$8d4cce15cb50cfeb), {
-                children: initialLoading ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $f3dac3ad0c6afc00$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
-                /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$FormatToken), {
-                    amount: balance,
-                    symbol: "ETH"
-                })
-            })
-        })
-    });
-};
-
-
-
-
-
-
-
-const $271aafb49a2509a6$export$ba0ef3a0d99fcc8f = (props)=>{
-    const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $7XpC5$useModal)((0, $7XpC5$WALLET_MODAL).connect);
-    return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$Button), {
-        onClick: openModal,
-        ...rest,
-        children: "Connect wallet"
-    });
-};
-
-
-
-
-
-let $2de0cf6e87228824$var$_ = (t)=>t, $2de0cf6e87228824$var$t;
-const $2de0cf6e87228824$export$8f0e76783cf20ca4 = (0, $7XpC5$styledcomponents).span($2de0cf6e87228824$var$t || ($2de0cf6e87228824$var$t = $2de0cf6e87228824$var$_`
-  margin-right: ${0}px;
-  color: ${0};
-  line-height: 1.2em;
-`), ({ theme: theme  })=>theme.spaceMap.xl, ({ $color: $color  })=>$color);
-
-
-const $b56e92e639f015e6$export$5ff29b4461d0d45f = ()=>{
-    const { active: active , chainId: chainId  } = (0, $7XpC5$useWeb3)();
-    const chainName = chainId ? (0, $7XpC5$CHAINS)[chainId] : (0, $7XpC5$CHAINS).Mainnet;
-    const testNet = chainId !== (0, $7XpC5$CHAINS).Mainnet;
-    const showNet = testNet && active;
-    return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$Fragment), {
+const $e00a6233c706df22$export$223875819fd7cf93 = ()=>{
+    const { active: active  } = (0, $7XpC5$useWeb3)();
+    return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $dca673c434ed9137$export$af0f646b086814d1), {
         children: [
-            showNet && /*#__PURE__*/ (0, $7XpC5$jsx)((0, $2de0cf6e87228824$export$8f0e76783cf20ca4), {
-                $color: (0, $7XpC5$getChainColor)(chainId || (0, $7XpC5$CHAINS).Mainnet),
-                children: chainName
-            }),
-            active ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $9488d9f52eb8d5ae$export$eab4424f030fcb21), {}) : /*#__PURE__*/ (0, $7XpC5$jsx)((0, $271aafb49a2509a6$export$ba0ef3a0d99fcc8f), {
+            active ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$WalletButton), {}) : /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$WalletConnectButton), {
                 size: "sm"
             }),
             /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ThemeToggler), {})
@@ -484,10 +428,10 @@ const $e0081a5845b1218c$export$f8af16d8231e3b4e = (0, $7XpC5$styledcomponents).d
 
 
 const $ce4f5f968a825d48$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $7XpC5$memo)((props)=>{
-    const { pages: pages  } = props;
-    if (!pages) return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$Fragment), {});
+    const { links: links  } = props;
+    if (!links) return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$Fragment), {});
     return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $e0081a5845b1218c$export$f8af16d8231e3b4e), {
-        children: pages.map((pageProps)=>/*#__PURE__*/ (0, $7XpC5$jsx)((0, $40c7776ca68d16e5$export$721ee963a67379f1), {
+        children: links.map((pageProps)=>/*#__PURE__*/ (0, $7XpC5$jsx)((0, $40c7776ca68d16e5$export$721ee963a67379f1), {
                 ...pageProps
             }, pageProps.href))
     });
@@ -501,7 +445,7 @@ $ce4f5f968a825d48$export$b8a61e5c71402559.displayName = "Navigation";
 
 
 
-let $3cc67041739bea3b$var$_ = (t)=>t, $3cc67041739bea3b$var$t, $3cc67041739bea3b$var$t1, $3cc67041739bea3b$var$t2;
+let $3cc67041739bea3b$var$_ = (t)=>t, $3cc67041739bea3b$var$t, $3cc67041739bea3b$var$t1;
 const $3cc67041739bea3b$export$54a719cd6595ff5c = (0, $7XpC5$styledcomponents)((0, $7XpC5$Container))($3cc67041739bea3b$var$t || ($3cc67041739bea3b$var$t = $3cc67041739bea3b$var$_`
   display: flex;
   align-items: center;
@@ -517,19 +461,10 @@ const $3cc67041739bea3b$export$d69c4113bed92823 = (0, $7XpC5$styledcomponents).d
     width: 14px;
   }
 `), ({ theme: theme  })=>theme.mediaQueries.md);
-const $3cc67041739bea3b$export$af0f646b086814d1 = (0, $7XpC5$styledcomponents).div($3cc67041739bea3b$var$t2 || ($3cc67041739bea3b$var$t2 = $3cc67041739bea3b$var$_`
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  flex-shrink: 1;
-
-  margin-left: auto;
-`));
 
 
 const $a0b144425d48bbae$var$Header = (props)=>{
-    const { pages: pages  } = props;
+    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
     return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $3cc67041739bea3b$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -543,10 +478,11 @@ const $a0b144425d48bbae$var$Header = (props)=>{
                 })
             }),
             /*#__PURE__*/ (0, $7XpC5$jsx)((0, $ce4f5f968a825d48$export$b8a61e5c71402559), {
-                pages: pages
+                links: navigation
             }),
-            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $3cc67041739bea3b$export$af0f646b086814d1), {
-                children: /*#__PURE__*/ (0, $7XpC5$jsx)((0, $b56e92e639f015e6$export$5ff29b4461d0d45f), {})
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $e00a6233c706df22$export$223875819fd7cf93), {
+                walletConnectButton: walletConnectButton,
+                connectedWalletInfoButton: connectedWalletInfoButton
             })
         ]
     });
@@ -623,7 +559,9 @@ const $c9750bb567934a74$export$8e0cdabd0fe32f2d = ({ ...props })=>{
                     ...props.reefKnot,
                     children: [
                         /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
-                            pages: props === null || props === void 0 ? void 0 : props.pages
+                            connectedWalletInfoButton: props.connectedWalletInfoButton,
+                            walletConnectButton: props.walletConnectButton,
+                            navigation: props === null || props === void 0 ? void 0 : props.navigation
                         }),
                         /*#__PURE__*/ (0, $7XpC5$jsx)((0, $24679ce90808b5b4$export$2e2bcd8739ae039), {
                             children: props.children

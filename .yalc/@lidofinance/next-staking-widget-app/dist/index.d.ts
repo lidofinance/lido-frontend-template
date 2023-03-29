@@ -7,10 +7,12 @@ export interface INavigationLink {
     href: string;
     external?: boolean;
 }
-export const LayoutTitle: import("styled-components").StyledComponent<"h1", any, {}, never>;
-export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", any, {}, never>;
+export const LayoutTitle: import("styled-components").StyledComponent<"h1", import("styled-components").DefaultTheme, {}, never>;
+export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", import("styled-components").DefaultTheme, {}, never>;
 type WidgetAppProps = {
-    pages: INavigationLink[];
+    navigation: INavigationLink[];
+    connectedWalletInfoButton: FC;
+    walletConnectButton: FC;
     web3: ProviderWeb3Props;
     reefKnot: ProviderWalletModalProps;
 };

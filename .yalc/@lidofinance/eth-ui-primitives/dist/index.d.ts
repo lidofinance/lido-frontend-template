@@ -1,12 +1,12 @@
+import { BigNumber } from "ethers";
 import { FC } from "react";
-import { BigNumber } from "@ethersproject/bignumber";
-import { BigNumber as _BigNumber1 } from "ethers";
+import { BigNumber as _BigNumber1 } from "@ethersproject/bignumber";
+export const formatFloorEtherBalance: (balance?: BigNumber, maxDecimalDigits?: number) => string;
 type FormatTokenComponent = FC<{
     symbol: string;
-    amount?: BigNumber;
+    amount?: _BigNumber1;
     approx?: boolean;
 }>;
 export const FormatToken: FormatTokenComponent;
-export const formatEtherFloorBalance: (balance?: _BigNumber1, maxDecimalDigits?: number) => string;
 
 //# sourceMappingURL=index.d.ts.map

@@ -5,9 +5,6 @@ var $8sXRR$lidofinanceethuiwalletmodal = require("@lidofinance/eth-ui-wallet-mod
 var $8sXRR$reefknotweb3react = require("@reef-knot/web3-react");
 var $8sXRR$styledcomponents = require("styled-components");
 var $8sXRR$nextlink = require("next/link");
-var $8sXRR$lidosdkconstants = require("@lido-sdk/constants");
-var $8sXRR$lidosdkreact = require("@lido-sdk/react");
-var $8sXRR$lidofinanceethuiprimitives = require("@lidofinance/eth-ui-primitives");
 var $8sXRR$nextrouter = require("next/router");
 var $8sXRR$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 
@@ -253,105 +250,52 @@ var $7656a73acf0c9f5b$export$2e2bcd8739ae039 = $7656a73acf0c9f5b$var$Footer;
 
 
 
+// import React, { FC } from 'react'
+// import { useWeb3 } from '@reef-knot/web3-react'
+// import { ThemeToggler } from '@lidofinance/lido-ui'
+//
+// import { IHeaderActions } from './types';
+// import { HeaderActionsStyle } from './styles';
+//
+// export const HeaderActions: FC<IHeaderActions> = (props) => {
+//   const { leftSlot, connectedWalletInfoButton, walletConnectButton } = props
+//   const { active } = useWeb3()
+//
+//   const Aaa = connectedWalletInfoButton;
+//   const Bbb = walletConnectButton;
+//
+//   return (
+//     <HeaderActionsStyle>
+//       <>
+//         {leftSlot}
+//         {active ? <Aaa /> : <Bbb />}
+//         <ThemeToggler />
+//       </>
+//     </HeaderActionsStyle>
+//   )
+// }
 
 
 
 
 
-
-
-
-
-
-let $4b9a7a031e6fec14$var$_ = (t)=>t, $4b9a7a031e6fec14$var$t, $4b9a7a031e6fec14$var$t1, $4b9a7a031e6fec14$var$t2, $4b9a7a031e6fec14$var$t3;
-const $4b9a7a031e6fec14$export$b4b09ec636b8dc92 = (0, ($parcel$interopDefault($8sXRR$styledcomponents)))((0, $8sXRR$lidofinancelidoui.Button))($4b9a7a031e6fec14$var$t || ($4b9a7a031e6fec14$var$t = $4b9a7a031e6fec14$var$_`
-  flex-shrink: 1;
-  min-width: unset;
+let $f9de4ef1c51f48bb$var$_ = (t)=>t, $f9de4ef1c51f48bb$var$t;
+const $f9de4ef1c51f48bb$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).div($f9de4ef1c51f48bb$var$t || ($f9de4ef1c51f48bb$var$t = $f9de4ef1c51f48bb$var$_`
   overflow: hidden;
-`));
-const $4b9a7a031e6fec14$export$1ba39b57e9c6b91f = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).span($4b9a7a031e6fec14$var$t1 || ($4b9a7a031e6fec14$var$t1 = $4b9a7a031e6fec14$var$_`
+
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin: -10px -18px;
-`));
-const $4b9a7a031e6fec14$export$8d4cce15cb50cfeb = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).span($4b9a7a031e6fec14$var$t2 || ($4b9a7a031e6fec14$var$t2 = $4b9a7a031e6fec14$var$_`
-  margin-right: 12px;
-  margin-left: 4px;
-  font-size: ${0}px;
+  flex-shrink: 1;
 
-  ${0} {
-    display: none;
-  }
-`), ({ theme: theme  })=>theme.fontSizesMap.xs, ({ theme: theme  })=>theme.mediaQueries.md);
-const $4b9a7a031e6fec14$export$39c6911ce38c2d39 = (0, ($parcel$interopDefault($8sXRR$styledcomponents)))((0, $8sXRR$lidofinancelidoui.InlineLoader))($4b9a7a031e6fec14$var$t3 || ($4b9a7a031e6fec14$var$t3 = $4b9a7a031e6fec14$var$_`
-  width: 60px;
+  margin-left: auto;
 `));
 
 
-const $2a2370d9ad289e04$export$eab4424f030fcb21 = (props)=>{
-    const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $8sXRR$lidofinanceethuiwalletmodal.useModal)((0, $8sXRR$lidofinanceethuiwalletmodal.WALLET_MODAL).wallet);
-    const { account: account  } = (0, $8sXRR$lidosdkreact.useSDK)();
-    const { data: balance , initialLoading: initialLoading  } = (0, $8sXRR$lidosdkreact.useEthereumBalance)();
-    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$b4b09ec636b8dc92), {
-        size: "sm",
-        variant: "text",
-        color: "secondary",
-        onClick: openModal,
-        ...rest,
-        children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$1ba39b57e9c6b91f), {
-            children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$8d4cce15cb50cfeb), {
-                children: initialLoading ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $4b9a7a031e6fec14$export$39c6911ce38c2d39), {}) : // TODO: 'ETH' to dynamic symbol
-                /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiprimitives.FormatToken), {
-                    amount: balance,
-                    symbol: "ETH"
-                })
-            })
-        })
-    });
-};
-
-
-
-
-
-
-
-const $b08f4cec7d65a130$export$ba0ef3a0d99fcc8f = (props)=>{
-    const { onClick: onClick , ...rest } = props;
-    const { openModal: openModal  } = (0, $8sXRR$lidofinanceethuiwalletmodal.useModal)((0, $8sXRR$lidofinanceethuiwalletmodal.WALLET_MODAL).connect);
-    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.Button), {
-        onClick: openModal,
-        ...rest,
-        children: "Connect wallet"
-    });
-};
-
-
-
-
-
-let $67170ddf0bddbe01$var$_ = (t)=>t, $67170ddf0bddbe01$var$t;
-const $67170ddf0bddbe01$export$8f0e76783cf20ca4 = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).span($67170ddf0bddbe01$var$t || ($67170ddf0bddbe01$var$t = $67170ddf0bddbe01$var$_`
-  margin-right: ${0}px;
-  color: ${0};
-  line-height: 1.2em;
-`), ({ theme: theme  })=>theme.spaceMap.xl, ({ $color: $color  })=>$color);
-
-
-const $48fa4a1d2610f545$export$5ff29b4461d0d45f = ()=>{
-    const { active: active , chainId: chainId  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
-    const chainName = chainId ? (0, $8sXRR$lidosdkconstants.CHAINS)[chainId] : (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet;
-    const testNet = chainId !== (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet;
-    const showNet = testNet && active;
-    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$reactjsxruntime.Fragment), {
+const $8598dd1843cf2dd0$export$223875819fd7cf93 = ()=>{
+    const { active: active  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
+    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $f9de4ef1c51f48bb$export$af0f646b086814d1), {
         children: [
-            showNet && /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $67170ddf0bddbe01$export$8f0e76783cf20ca4), {
-                $color: (0, $8sXRR$lidosdkconstants.getChainColor)(chainId || (0, $8sXRR$lidosdkconstants.CHAINS).Mainnet),
-                children: chainName
-            }),
-            active ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $2a2370d9ad289e04$export$eab4424f030fcb21), {}) : /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $b08f4cec7d65a130$export$ba0ef3a0d99fcc8f), {
+            active ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiwalletmodal.WalletButton), {}) : /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiwalletmodal.WalletConnectButton), {
                 size: "sm"
             }),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ThemeToggler), {})
@@ -494,10 +438,10 @@ const $3fa6ac820e09fb1b$export$f8af16d8231e3b4e = (0, ($parcel$interopDefault($8
 
 
 const $34ecc3937e49ed62$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $8sXRR$react.memo)((props)=>{
-    const { pages: pages  } = props;
-    if (!pages) return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$reactjsxruntime.Fragment), {});
+    const { links: links  } = props;
+    if (!links) return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$reactjsxruntime.Fragment), {});
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $3fa6ac820e09fb1b$export$f8af16d8231e3b4e), {
-        children: pages.map((pageProps)=>/*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $cc0bdf7900abb503$export$721ee963a67379f1), {
+        children: links.map((pageProps)=>/*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $cc0bdf7900abb503$export$721ee963a67379f1), {
                 ...pageProps
             }, pageProps.href))
     });
@@ -511,7 +455,7 @@ $34ecc3937e49ed62$export$b8a61e5c71402559.displayName = "Navigation";
 
 
 
-let $d95585507c8542b3$var$_ = (t)=>t, $d95585507c8542b3$var$t, $d95585507c8542b3$var$t1, $d95585507c8542b3$var$t2;
+let $d95585507c8542b3$var$_ = (t)=>t, $d95585507c8542b3$var$t, $d95585507c8542b3$var$t1;
 const $d95585507c8542b3$export$54a719cd6595ff5c = (0, ($parcel$interopDefault($8sXRR$styledcomponents)))((0, $8sXRR$lidofinancelidoui.Container))($d95585507c8542b3$var$t || ($d95585507c8542b3$var$t = $d95585507c8542b3$var$_`
   display: flex;
   align-items: center;
@@ -527,19 +471,10 @@ const $d95585507c8542b3$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
     width: 14px;
   }
 `), ({ theme: theme  })=>theme.mediaQueries.md);
-const $d95585507c8542b3$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).div($d95585507c8542b3$var$t2 || ($d95585507c8542b3$var$t2 = $d95585507c8542b3$var$_`
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  flex-shrink: 1;
-
-  margin-left: auto;
-`));
 
 
 const $e161151a9ec97516$var$Header = (props)=>{
-    const { pages: pages  } = props;
+    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $d95585507c8542b3$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -553,10 +488,11 @@ const $e161151a9ec97516$var$Header = (props)=>{
                 })
             }),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $34ecc3937e49ed62$export$b8a61e5c71402559), {
-                pages: pages
+                links: navigation
             }),
-            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $d95585507c8542b3$export$af0f646b086814d1), {
-                children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $48fa4a1d2610f545$export$5ff29b4461d0d45f), {})
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8598dd1843cf2dd0$export$223875819fd7cf93), {
+                walletConnectButton: walletConnectButton,
+                connectedWalletInfoButton: connectedWalletInfoButton
             })
         ]
     });
@@ -633,7 +569,9 @@ const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
                     ...props.reefKnot,
                     children: [
                         /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
-                            pages: props === null || props === void 0 ? void 0 : props.pages
+                            connectedWalletInfoButton: props.connectedWalletInfoButton,
+                            walletConnectButton: props.walletConnectButton,
+                            navigation: props === null || props === void 0 ? void 0 : props.navigation
                         }),
                         /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
                             children: props.children

@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react";
-import { ModalProps } from "@lidofinance/lido-ui";
+import { ModalProps, ButtonProps } from "@lidofinance/lido-ui";
 import { Metrics } from "@reef-knot/connect-wallet-modal";
-export const WalletModal: FC<ModalProps>;
+export const ConnectedWalletInfoModal: FC<ModalProps>;
 export enum WALLET_MODAL {
     connect = 0,
     wallet = 1
@@ -35,11 +35,13 @@ export const WALLET_IDS: {
     readonly ZERION: "Zerion";
 };
 export type WalletId = (typeof WALLET_IDS)[keyof typeof WALLET_IDS];
-export const ProviderWalletModal: FC<PropsWithChildren<ProviderWalletModalProps>>;
-type UseModal = (wModal: WALLET_MODAL) => {
+type UseModalType = (wModal: WALLET_MODAL) => {
     openModal: () => void;
     closeModal: () => void;
 };
-export const useModal: UseModal;
+export const useModal: UseModalType;
+export const WalletButton: FC<ButtonProps>;
+export const WalletConnectButton: FC<ButtonProps>;
+export const ProviderWalletModal: FC<PropsWithChildren<ProviderWalletModalProps>>;
 
 //# sourceMappingURL=index.d.ts.map
