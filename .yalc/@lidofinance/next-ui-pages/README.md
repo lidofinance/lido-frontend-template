@@ -1,80 +1,33 @@
-# @lidofinance/next-pages
+# @lidofinance/ui-next-pages
 
-Common next pages.
+Common next UI pages.
 
-## Installation
+### Installation
+```bash
+yarn add @lidofinance/ui-next-pages
 
-`yarn add @lidofinance/next-pages`.
+# and react 17
+yarn add react@^17.0.0
+
+# or react 18
+yarn add react@^18.0.0
+
+# and next
+yarn add next@^12.3.0
+```
 
 ## Getting started
 
-### health
+### Custom error page in Next.js
 
-```ts
-import { health } from '@lidofinance/next-pages';
+Example for `pages/404.tsx`
 
-export default health;
-```
+```tsx
+import { FC } from 'react';
+import { PageError } from '@lidofinance/next-ui-pages';
 
-### metrics
+const Page404: FC = () => <PageError title="404" content="Page Not Found" />;
 
-```ts
-import { registry } from 'utilsApi/metrics';
-import { metricsFactory } from '@lidofinance/next-pages';
+export default Page404;
 
-const metrics = metricsFactory({
-  registry,
-});
-
-export default metrics;
-```
-
-### rpc
-
-```ts
-import getConfig from 'next/config';
-import { registry } from 'utilsApi/metrics';
-import { rpcFactory } from '@lidofinance/api-pages';
-import { METRICS_PREFIX } from '../../config';
-import { fetchRPC, serverLogger } from 'utilsApi';
-
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
-const { defaultChain } = publicRuntimeConfig;
-const { infuraApiKey, alchemyApiKey } = serverRuntimeConfig;
-
-// Should be a separate file
-export const enum CHAINS {
-  Mainnet = 1,
-  Goerli = 5,
-}
-
-// Should be a separate file 
-export const providers: Record<CHAINS, [string, ...string[]]> = {
-  [CHAINS.Mainnet]: [
-    `https://mainnet.infura.io/v3/${infuraApiKey}`,
-    `https://eth-mainnet.alchemyapi.io/v2/${alchemyApiKey}`,
-  ],
-  [CHAINS.Goerli]: [
-    `https://goerli.infura.io/v3/${infuraApiKey}`,
-    `https://eth-goerli.alchemyapi.io/v2/${alchemyApiKey}`,
-  ],
-};
-
-const rpc = rpcFactory({
-  fetchRPC,
-  serverLogger,
-  metrics: {
-    prefix: METRICS_PREFIX,
-    registry,
-  },
-  allowedRPCMethods: [
-    'eth_call',
-    'eth_gasPrice',
-    // ...
-  ],
-  defaultChain,
-  providers,
-});
-
-export default rpc;
 ```

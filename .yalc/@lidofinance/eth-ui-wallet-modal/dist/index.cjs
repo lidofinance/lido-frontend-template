@@ -5,6 +5,7 @@ var $53sus$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 var $53sus$lidosdkreact = require("@lido-sdk/react");
 var $53sus$reefknotweb3react = require("@reef-knot/web3-react");
 var $53sus$styledcomponents = require("styled-components");
+var $53sus$lidofinanceethuiprimitives = require("@lidofinance/eth-ui-primitives");
 var $53sus$reefknotconnectwalletmodal = require("@reef-knot/connect-wallet-modal");
 
 function $parcel$exportWildcard(dest, source) {
@@ -246,7 +247,7 @@ const $8604b09e4a8b0413$export$eab4424f030fcb21 = (props)=>{
         children: /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsxs)((0, $0bbbc23952131f32$export$1ba39b57e9c6b91f), {
             children: [
                 /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $0bbbc23952131f32$export$8d4cce15cb50cfeb), {
-                    children: initialLoading ? /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $0bbbc23952131f32$export$39c6911ce38c2d39), {}) : /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinanceuiprimitives.FormatToken), {
+                    children: initialLoading ? /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $0bbbc23952131f32$export$39c6911ce38c2d39), {}) : /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinanceethuiprimitives.FormatToken), {
                         amount: balance,
                         symbol: "ETH"
                     })

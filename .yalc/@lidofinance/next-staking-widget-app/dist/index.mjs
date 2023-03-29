@@ -1,14 +1,11 @@
 import {jsxs as $7XpC5$jsxs, jsx as $7XpC5$jsx, Fragment as $7XpC5$Fragment} from "react/jsx-runtime";
 import {memo as $7XpC5$memo} from "react";
 import {migrationThemeCookiesToCrossDomainCookiesClientSide as $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $7XpC5$CookieThemeProvider, CookiesTooltip as $7XpC5$CookiesTooltip, ToastContainer as $7XpC5$ToastContainer, LidoLogo as $7XpC5$LidoLogo, Container as $7XpC5$Container, Divider as $7XpC5$Divider, Link as $7XpC5$Link, ThemeToggler as $7XpC5$ThemeToggler} from "@lidofinance/lido-ui";
-import {ProviderWalletModal as $7XpC5$ProviderWalletModal, WalletButton as $7XpC5$WalletButton, WalletConnectButton as $7XpC5$WalletConnectButton} from "@lidofinance/eth-ui-wallet-modal";
-import {ProviderWeb3 as $7XpC5$ProviderWeb3, useWeb3 as $7XpC5$useWeb3} from "@reef-knot/web3-react";
 import $7XpC5$styledcomponents, {createGlobalStyle as $7XpC5$createGlobalStyle, css as $7XpC5$css} from "styled-components";
 import $7XpC5$nextlink from "next/link";
+import {useWeb3 as $7XpC5$useWeb3} from "@reef-knot/web3-react";
 import {useRouter as $7XpC5$useRouter} from "next/router";
 import {LocalLink as $7XpC5$LocalLink} from "@lidofinance/ui-primitives";
-
-
 
 
 
@@ -240,30 +237,6 @@ var $587ae881875a0357$export$2e2bcd8739ae039 = $587ae881875a0357$var$Footer;
 
 
 
-// import React, { FC } from 'react'
-// import { useWeb3 } from '@reef-knot/web3-react'
-// import { ThemeToggler } from '@lidofinance/lido-ui'
-//
-// import { IHeaderActions } from './types';
-// import { HeaderActionsStyle } from './styles';
-//
-// export const HeaderActions: FC<IHeaderActions> = (props) => {
-//   const { leftSlot, connectedWalletInfoButton, walletConnectButton } = props
-//   const { active } = useWeb3()
-//
-//   const Aaa = connectedWalletInfoButton;
-//   const Bbb = walletConnectButton;
-//
-//   return (
-//     <HeaderActionsStyle>
-//       <>
-//         {leftSlot}
-//         {active ? <Aaa /> : <Bbb />}
-//         <ThemeToggler />
-//       </>
-//     </HeaderActionsStyle>
-//   )
-// }
 
 
 
@@ -281,15 +254,17 @@ const $dca673c434ed9137$export$af0f646b086814d1 = (0, $7XpC5$styledcomponents).d
 `));
 
 
-const $e00a6233c706df22$export$223875819fd7cf93 = ()=>{
+const $e00a6233c706df22$export$223875819fd7cf93 = (props)=>{
+    const { leftSlot: leftSlot , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
     const { active: active  } = (0, $7XpC5$useWeb3)();
-    return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $dca673c434ed9137$export$af0f646b086814d1), {
-        children: [
-            active ? /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$WalletButton), {}) : /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$WalletConnectButton), {
-                size: "sm"
-            }),
-            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ThemeToggler), {})
-        ]
+    return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $dca673c434ed9137$export$af0f646b086814d1), {
+        children: /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$Fragment), {
+            children: [
+                leftSlot,
+                active ? connectedWalletInfoButton : walletConnectButton,
+                /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ThemeToggler), {})
+            ]
+        })
     });
 };
 
@@ -550,27 +525,24 @@ const $e165915a57846d7d$export$731f89f04b9d0607 = (0, $7XpC5$styledcomponents).h
 // Migrations old cookies to new cross domain cookies
 (0, $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide)();
 const $c9750bb567934a74$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    /*#__PURE__*/ return (0, $7XpC5$jsxs)((0, $7XpC5$CookieThemeProvider), {
+    const Providers = props.providers;
+    return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $7XpC5$jsx)((0, $43576bcd02538192$export$2e2bcd8739ae039), {}),
-            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ProviderWeb3), {
-                ...props.web3,
-                children: /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$ProviderWalletModal), {
-                    ...props.reefKnot,
-                    children: [
-                        /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
-                            connectedWalletInfoButton: props.connectedWalletInfoButton,
-                            walletConnectButton: props.walletConnectButton,
-                            navigation: props === null || props === void 0 ? void 0 : props.navigation
-                        }),
-                        /*#__PURE__*/ (0, $7XpC5$jsx)((0, $24679ce90808b5b4$export$2e2bcd8739ae039), {
-                            children: props.children
-                        }),
-                        /*#__PURE__*/ (0, $7XpC5$jsx)((0, $587ae881875a0357$export$2e2bcd8739ae039), {}),
-                        /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$CookiesTooltip), {}),
-                        /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ToastContainer), {})
-                    ]
-                })
+            /*#__PURE__*/ (0, $7XpC5$jsxs)(Providers, {
+                children: [
+                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
+                        connectedWalletInfoButton: props.connectedWalletInfoButton,
+                        walletConnectButton: props.walletConnectButton,
+                        navigation: props === null || props === void 0 ? void 0 : props.navigation
+                    }),
+                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $24679ce90808b5b4$export$2e2bcd8739ae039), {
+                        children: props.children
+                    }),
+                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $587ae881875a0357$export$2e2bcd8739ae039), {}),
+                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$CookiesTooltip), {}),
+                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ToastContainer), {})
+                ]
             })
         ]
     });

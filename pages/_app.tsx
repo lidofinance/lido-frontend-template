@@ -1,10 +1,8 @@
-// import { FC, PropsWithChildren } from 'react';
-// import NextApp, { AppProps } from 'next/app';
-// import { ProviderWeb3 } from '@reef-knot/web3-react'
-// import { ProviderWalletModal, WalletButton, WalletConnectButton } from '@lidofinance/eth-ui-wallet-modal'
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import NextApp, { AppProps } from 'next/app';
+import { ProviderWeb3 } from '@reef-knot/web3-react';
 import {
+  ProviderWalletModal,
   WalletButton,
   WalletConnectButton,
 } from '@lidofinance/eth-ui-wallet-modal';
@@ -48,39 +46,28 @@ const headerPages: INavigationLink[] = [
   },
 ];
 
-// const Providers: FC<PropsWithChildren> = ({ children }) => (
-//   <ProviderWeb3
-//     defaultChainId={dynamics.defaultChain}
-//     supportedChainIds={dynamics.supportedChains}
-//     rpc={backendRPC}
-//   >
-//     <ProviderWalletModal
-//       walletsMetrics={walletsMetrics}
-//       hiddenWallets={['Opera Wallet']}
-//     >
-//       {children}
-//     </ProviderWalletModal>
-//   </ProviderWeb3>
-// );
+const Providers: FC<PropsWithChildren> = ({ children }) => (
+  <ProviderWeb3
+    defaultChainId={dynamics.defaultChain}
+    supportedChainIds={dynamics.supportedChains}
+    rpc={backendRPC}
+  >
+    <ProviderWalletModal
+      walletsMetrics={walletsMetrics}
+      hiddenWallets={['Opera Wallet']}
+    >
+      {children}
+    </ProviderWalletModal>
+  </ProviderWeb3>
+);
 
 // App wrapper
 const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
   <WidgetApp
     navigation={headerPages}
-    web3={{
-      defaultChainId: dynamics.defaultChain,
-      supportedChainIds: dynamics.supportedChains,
-      rpc: backendRPC,
-    }}
-    reefKnot={{
-      walletsMetrics: walletsMetrics,
-      hiddenWallets: ['Opera Wallet'],
-    }}
-    connectedWalletInfoButton={WalletButton}
-    walletConnectButton={WalletConnectButton}
-    // connectedWalletInfoButton={<WalletButton />}
-    // walletConnectButton={<WalletConnectButton size="sm" />}
-    // providers={Providers}
+    connectedWalletInfoButton={<WalletButton />}
+    walletConnectButton={<WalletConnectButton size="sm" />}
+    providers={Providers}
   >
     <NextApp {...props} />
   </WidgetApp>

@@ -21,12 +21,10 @@
     "lint:fix": "eslint --fix . && prettier --check src --write",
     "types": "tsc --noEmit"
   },
-  "dependencies": {
-    "@lidofinance/lido-ui": "3.2.0"
-  },
   "peerDependencies": {
-    "next": "^12.2.0",
+    "@lidofinance/lido-ui": "^3.0.0",
+    "next": "^12.3.0",
     "react": "17 || 18"
   },
-  "yalcSig": "d3f7a1565c1e68f780d7fe27ae477d29"
+  "yalcSig": "55a98ae6035ae5abfe5f37edd18faf42"
 }

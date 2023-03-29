@@ -1,10 +1,9 @@
 var $8sXRR$reactjsxruntime = require("react/jsx-runtime");
 var $8sXRR$react = require("react");
 var $8sXRR$lidofinancelidoui = require("@lidofinance/lido-ui");
-var $8sXRR$lidofinanceethuiwalletmodal = require("@lidofinance/eth-ui-wallet-modal");
-var $8sXRR$reefknotweb3react = require("@reef-knot/web3-react");
 var $8sXRR$styledcomponents = require("styled-components");
 var $8sXRR$nextlink = require("next/link");
+var $8sXRR$reefknotweb3react = require("@reef-knot/web3-react");
 var $8sXRR$nextrouter = require("next/router");
 var $8sXRR$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 
@@ -18,8 +17,6 @@ function $parcel$interopDefault(a) {
 $parcel$export(module.exports, "WidgetApp", function () { return $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d; });
 $parcel$export(module.exports, "LayoutTitle", function () { return $a1e29508de594d16$export$de4797fa0cf99ab6; });
 $parcel$export(module.exports, "LayoutSubTitle", function () { return $a1e29508de594d16$export$731f89f04b9d0607; });
-
-
 
 
 
@@ -250,30 +247,6 @@ var $7656a73acf0c9f5b$export$2e2bcd8739ae039 = $7656a73acf0c9f5b$var$Footer;
 
 
 
-// import React, { FC } from 'react'
-// import { useWeb3 } from '@reef-knot/web3-react'
-// import { ThemeToggler } from '@lidofinance/lido-ui'
-//
-// import { IHeaderActions } from './types';
-// import { HeaderActionsStyle } from './styles';
-//
-// export const HeaderActions: FC<IHeaderActions> = (props) => {
-//   const { leftSlot, connectedWalletInfoButton, walletConnectButton } = props
-//   const { active } = useWeb3()
-//
-//   const Aaa = connectedWalletInfoButton;
-//   const Bbb = walletConnectButton;
-//
-//   return (
-//     <HeaderActionsStyle>
-//       <>
-//         {leftSlot}
-//         {active ? <Aaa /> : <Bbb />}
-//         <ThemeToggler />
-//       </>
-//     </HeaderActionsStyle>
-//   )
-// }
 
 
 
@@ -291,15 +264,17 @@ const $f9de4ef1c51f48bb$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8
 `));
 
 
-const $8598dd1843cf2dd0$export$223875819fd7cf93 = ()=>{
+const $8598dd1843cf2dd0$export$223875819fd7cf93 = (props)=>{
+    const { leftSlot: leftSlot , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
     const { active: active  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
-    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $f9de4ef1c51f48bb$export$af0f646b086814d1), {
-        children: [
-            active ? /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiwalletmodal.WalletButton), {}) : /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinanceethuiwalletmodal.WalletConnectButton), {
-                size: "sm"
-            }),
-            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ThemeToggler), {})
-        ]
+    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $f9de4ef1c51f48bb$export$af0f646b086814d1), {
+        children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$reactjsxruntime.Fragment), {
+            children: [
+                leftSlot,
+                active ? connectedWalletInfoButton : walletConnectButton,
+                /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ThemeToggler), {})
+            ]
+        })
     });
 };
 
@@ -560,27 +535,24 @@ const $a1e29508de594d16$export$731f89f04b9d0607 = (0, ($parcel$interopDefault($8
 // Migrations old cookies to new cross domain cookies
 (0, $8sXRR$lidofinancelidoui.migrationThemeCookiesToCrossDomainCookiesClientSide)();
 const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    /*#__PURE__*/ return (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinancelidoui.CookieThemeProvider), {
+    const Providers = props.providers;
+    return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinancelidoui.CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e6450dc97509fa53$export$2e2bcd8739ae039), {}),
-            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$reefknotweb3react.ProviderWeb3), {
-                ...props.web3,
-                children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinanceethuiwalletmodal.ProviderWalletModal), {
-                    ...props.reefKnot,
-                    children: [
-                        /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
-                            connectedWalletInfoButton: props.connectedWalletInfoButton,
-                            walletConnectButton: props.walletConnectButton,
-                            navigation: props === null || props === void 0 ? void 0 : props.navigation
-                        }),
-                        /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
-                            children: props.children
-                        }),
-                        /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $7656a73acf0c9f5b$export$2e2bcd8739ae039), {}),
-                        /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.CookiesTooltip), {}),
-                        /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ToastContainer), {})
-                    ]
-                })
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)(Providers, {
+                children: [
+                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
+                        connectedWalletInfoButton: props.connectedWalletInfoButton,
+                        walletConnectButton: props.walletConnectButton,
+                        navigation: props === null || props === void 0 ? void 0 : props.navigation
+                    }),
+                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
+                        children: props.children
+                    }),
+                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $7656a73acf0c9f5b$export$2e2bcd8739ae039), {}),
+                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.CookiesTooltip), {}),
+                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ToastContainer), {})
+                ]
             })
         ]
     });

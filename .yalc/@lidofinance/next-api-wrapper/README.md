@@ -98,3 +98,27 @@ const someRequest: API = async (req, res) => await fetch()
 
 export default defaultErrorAndCacheWrapper(someRequest)
 ```
+
+### Response time metric
+
+```ts
+import { wrapRequest, responseTimeMetric } from '@lidofinance/next-api-wrapper'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { Registry, Histogram } from 'prom-client';
+
+export type API = (req: NextApiRequest, res: NextApiResponse) => Promise<void>
+
+const apiTimings = new Histogram({
+  name: 'frontend_template_api_response_internal',
+  help: 'API response time',
+  labelNames: ['hostname', 'route', 'entity', 'status'],
+  buckets: [0.1, 0.2, 0.3, 0.6, 1, 1.5, 2, 5],
+  registers: new Registry(),
+});
+
+const someRequest: API = async (req, res) => await fetch()
+
+export default wrapRequest([responseTimeMetric(apiTimings, 'api/some-request')])(
+  someRequest,
+)
+```

@@ -1,6 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
-import { ProviderWeb3Props } from "@reef-knot/web3-react";
-import { ProviderWalletModalProps } from "@lidofinance/eth-ui-wallet-modal";
+import React, { FC, PropsWithChildren, ReactNode } from "react";
 export interface INavigationLink {
     icon: React.ReactNode;
     title: string;
@@ -10,11 +8,10 @@ export interface INavigationLink {
 export const LayoutTitle: import("styled-components").StyledComponent<"h1", import("styled-components").DefaultTheme, {}, never>;
 export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", import("styled-components").DefaultTheme, {}, never>;
 type WidgetAppProps = {
+    connectedWalletInfoButton: ReactNode;
+    walletConnectButton: ReactNode;
+    providers: FC<PropsWithChildren>;
     navigation: INavigationLink[];
-    connectedWalletInfoButton: FC;
-    walletConnectButton: FC;
-    web3: ProviderWeb3Props;
-    reefKnot: ProviderWalletModalProps;
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;
 
