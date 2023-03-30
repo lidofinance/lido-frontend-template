@@ -284,41 +284,8 @@ const $14bfac055f2980c0$export$fa10365278598d8a = (props)=>{
 var $89c2ac5a977e85c3$exports = {};
 
 
-var $1622f26a537fbfd0$exports = {};
-var $0cd484ef9c611355$exports = {};
-
-$parcel$export($0cd484ef9c611355$exports, "WalletCardRow", function () { return $0cd484ef9c611355$export$7d0c76f6a0418e11; });
-
-
-
-let $8abe3e3dbdc35f17$var$_ = (t)=>t, $8abe3e3dbdc35f17$var$t;
-const $8abe3e3dbdc35f17$export$d700fd35c768af1d = (0, $9LU3C$styledcomponents).div($8abe3e3dbdc35f17$var$t || ($8abe3e3dbdc35f17$var$t = $8abe3e3dbdc35f17$var$_`
-  display: flex;
-  margin: ${0}px 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`), ({ theme: theme  })=>theme.spaceMap.lg);
-
-
-const $0cd484ef9c611355$export$7d0c76f6a0418e11 = ({ ...rest })=>{
-    return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $8abe3e3dbdc35f17$export$d700fd35c768af1d), {
-        ...rest
-    });
-};
-
-
-$parcel$exportWildcard($1622f26a537fbfd0$exports, $0cd484ef9c611355$exports);
-
-
 $parcel$exportWildcard($31d06770d11bf20e$exports, $14bfac055f2980c0$exports);
 $parcel$exportWildcard($31d06770d11bf20e$exports, $89c2ac5a977e85c3$exports);
-$parcel$exportWildcard($31d06770d11bf20e$exports, $1622f26a537fbfd0$exports);
 
 
 let $52cd780f58c84aa8$var$_ = (t)=>t, $52cd780f58c84aa8$var$t;
@@ -530,11 +497,44 @@ $parcel$exportWildcard($5e4f3f5938f09cef$exports, $f979852e26257adb$exports);
 $parcel$exportWildcard($5e4f3f5938f09cef$exports, $4ca907ef309e3a2e$exports);
 
 
+var $12f586c8987d12ce$exports = {};
+var $85abde3fc4d2318a$exports = {};
+
+$parcel$export($85abde3fc4d2318a$exports, "WalletCardRow", function () { return $85abde3fc4d2318a$export$7d0c76f6a0418e11; });
+
+
+
+let $850e0b5661e19f5b$var$_ = (t)=>t, $850e0b5661e19f5b$var$t;
+const $850e0b5661e19f5b$export$d700fd35c768af1d = (0, $9LU3C$styledcomponents).div($850e0b5661e19f5b$var$t || ($850e0b5661e19f5b$var$t = $850e0b5661e19f5b$var$_`
+  display: flex;
+  margin: ${0}px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`), ({ theme: theme  })=>theme.spaceMap.lg);
+
+
+const $85abde3fc4d2318a$export$7d0c76f6a0418e11 = ({ ...rest })=>{
+    return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $850e0b5661e19f5b$export$d700fd35c768af1d), {
+        ...rest
+    });
+};
+
+
+$parcel$exportWildcard($12f586c8987d12ce$exports, $85abde3fc4d2318a$exports);
+
+
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $2652ea905a175dd7$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $bebed6c7df22589f$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $31d06770d11bf20e$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $debd5b9d56016368$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $5e4f3f5938f09cef$exports);
+$parcel$exportWildcard($bee4c5e5a65c56cf$exports, $12f586c8987d12ce$exports);
 
 
 $parcel$exportWildcard($2edec60da2794fb1$exports, $09016bddec447da4$exports);
@@ -596,5 +596,5 @@ $parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
 
 
 
-export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $0cd484ef9c611355$export$7d0c76f6a0418e11 as WalletCardRow, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
+export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
 //# sourceMappingURL=index.mjs.map

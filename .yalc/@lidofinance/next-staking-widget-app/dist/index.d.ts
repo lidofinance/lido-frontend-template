@@ -11,7 +11,8 @@ type WidgetAppProps = {
     connectedWalletInfoButton: ReactNode;
     walletConnectButton: ReactNode;
     providers: FC<PropsWithChildren>;
-    navigation: INavigationLink[];
+    navigation?: INavigationLink[];
+    walletActionsLeftSlot?: ReactNode;
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;
 

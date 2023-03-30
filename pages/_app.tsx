@@ -18,10 +18,12 @@ import {
 } from '@lidofinance/next-staking-widget-app';
 
 import { backendRPC, dynamics, walletsMetrics } from 'config';
+import { HeaderWalletActionsLeftSlot } from 'components/headerWalletActionsLeftSlot';
 import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
 // It is here 'cause `keyOldCookies` may be different for widgets
+// One day it will be deprecated
 migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
@@ -46,6 +48,7 @@ const headerPages: INavigationLink[] = [
   },
 ];
 
+// PAY ATTENTION: Providers will be inserted in CookieThemeProvider before layout components
 const Providers: FC<PropsWithChildren> = ({ children }) => (
   <ProviderWeb3
     defaultChainId={dynamics.defaultChain}
@@ -63,14 +66,18 @@ const Providers: FC<PropsWithChildren> = ({ children }) => (
 
 // App wrapper
 const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
+  // PAY ATTENTION: You can put here some providers, if they don't depend on CookieThemeProvider:
+  // <SomeProvider>
   <WidgetApp
     navigation={headerPages}
     connectedWalletInfoButton={<WalletButton />}
     walletConnectButton={<WalletConnectButton size="sm" />}
+    walletActionsLeftSlot={<HeaderWalletActionsLeftSlot />}
     providers={Providers}
   >
     <NextApp {...props} />
   </WidgetApp>
+  // </SomeProvider>
 );
 
 export default process.env.NODE_ENV === 'development'

@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@lidofinance/next-staking-widget-app": {
-      "signature": "364fcb6bb7ee4bf16a177a1e55bc3908",
+      "signature": "e53a765967b3b52c7cd29eb3b92e31ce",
       "file": true
     },
     "@lidofinance/ui-wallet-modal": {
@@ -10,7 +10,7 @@
       "file": true
     },
     "@lidofinance/ui-primitives": {
-      "signature": "d476e732a76ac59d9be27fccf7caccca",
+      "signature": "2203ae083980a04747069510b03acefc",
       "file": true
     },
     "@lidofinance/next-ui-pages": {
@@ -27,7 +27,7 @@
       "file": true
     },
     "@lidofinance/eth-ui-primitives": {
-      "signature": "7af45da03faf1469f14ef57eaaca2298",
+      "signature": "db1b1ddc62295325886fc31c924b5ac6",
       "file": true
     }
   }

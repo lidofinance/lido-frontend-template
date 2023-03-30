@@ -22,7 +22,6 @@ type SectionType = FC<PropsWithChildren<{
 export const Section: SectionType;
 export type WalletCardComponent = FC<BlockProps>;
 export const WalletCard: WalletCardComponent;
-export const WalletCardRow: FC<PropsWithChildren>;
 export type FallbackWalletComponent = WalletCardComponent;
 export const FallbackWallet: FallbackWalletComponent;
 type TokenToWalletComponent = FC<{
@@ -42,6 +41,7 @@ export type WalletCardBalanceComponent = FC<PropsWithChildren<{
     extra?: React.ReactNode;
 }>>;
 export const WalletCardBalance: WalletCardBalanceComponent;
+export const WalletCardRow: FC<PropsWithChildren>;
 export const DATA_UNAVAILABLE = "N/A";
 export const useCopyToClipboard: (text: string) => (() => void);
 type StandardFetcher = <T>(url: string, params?: RequestInit) => Promise<T>;

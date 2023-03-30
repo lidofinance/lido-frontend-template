@@ -449,7 +449,7 @@ const $d95585507c8542b3$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
 
 
 const $e161151a9ec97516$var$Header = (props)=>{
-    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
+    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $d95585507c8542b3$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -467,7 +467,8 @@ const $e161151a9ec97516$var$Header = (props)=>{
             }),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8598dd1843cf2dd0$export$223875819fd7cf93), {
                 walletConnectButton: walletConnectButton,
-                connectedWalletInfoButton: connectedWalletInfoButton
+                connectedWalletInfoButton: connectedWalletInfoButton,
+                leftSlot: walletActionsLeftSlot
             })
         ]
     });
@@ -544,7 +545,8 @@ const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
                     /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
                         connectedWalletInfoButton: props.connectedWalletInfoButton,
                         walletConnectButton: props.walletConnectButton,
-                        navigation: props === null || props === void 0 ? void 0 : props.navigation
+                        navigation: props === null || props === void 0 ? void 0 : props.navigation,
+                        walletActionsLeftSlot: props === null || props === void 0 ? void 0 : props.walletActionsLeftSlot
                     }),
                     /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
                         children: props.children

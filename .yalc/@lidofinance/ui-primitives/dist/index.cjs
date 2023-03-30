@@ -287,41 +287,8 @@ const $829e9b0c5c7aff2f$export$fa10365278598d8a = (props)=>{
 var $49c05fc6d54eab50$exports = {};
 
 
-var $27d4316cc7d6e57b$exports = {};
-var $80067e52f4e3e184$exports = {};
-
-$parcel$export($80067e52f4e3e184$exports, "WalletCardRow", function () { return $80067e52f4e3e184$export$7d0c76f6a0418e11; });
-
-
-
-let $09fea6027b185381$var$_ = (t)=>t, $09fea6027b185381$var$t;
-const $09fea6027b185381$export$d700fd35c768af1d = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($09fea6027b185381$var$t || ($09fea6027b185381$var$t = $09fea6027b185381$var$_`
-  display: flex;
-  margin: ${0}px 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`), ({ theme: theme  })=>theme.spaceMap.lg);
-
-
-const $80067e52f4e3e184$export$7d0c76f6a0418e11 = ({ ...rest })=>{
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $09fea6027b185381$export$d700fd35c768af1d), {
-        ...rest
-    });
-};
-
-
-$parcel$exportWildcard($27d4316cc7d6e57b$exports, $80067e52f4e3e184$exports);
-
-
 $parcel$exportWildcard($fc137a99170e55e2$exports, $829e9b0c5c7aff2f$exports);
 $parcel$exportWildcard($fc137a99170e55e2$exports, $49c05fc6d54eab50$exports);
-$parcel$exportWildcard($fc137a99170e55e2$exports, $27d4316cc7d6e57b$exports);
 
 
 let $e1d849ff39566916$var$_ = (t)=>t, $e1d849ff39566916$var$t;
@@ -533,11 +500,44 @@ $parcel$exportWildcard($dc104a3cfac37534$exports, $dc56f960f8e379a3$exports);
 $parcel$exportWildcard($dc104a3cfac37534$exports, $545e26adc3aea4d2$exports);
 
 
+var $cc2f4aa216efbbda$exports = {};
+var $16311673d4ed5791$exports = {};
+
+$parcel$export($16311673d4ed5791$exports, "WalletCardRow", function () { return $16311673d4ed5791$export$7d0c76f6a0418e11; });
+
+
+
+let $e0c76ff559ce91ed$var$_ = (t)=>t, $e0c76ff559ce91ed$var$t;
+const $e0c76ff559ce91ed$export$d700fd35c768af1d = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($e0c76ff559ce91ed$var$t || ($e0c76ff559ce91ed$var$t = $e0c76ff559ce91ed$var$_`
+  display: flex;
+  margin: ${0}px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`), ({ theme: theme  })=>theme.spaceMap.lg);
+
+
+const $16311673d4ed5791$export$7d0c76f6a0418e11 = ({ ...rest })=>{
+    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $e0c76ff559ce91ed$export$d700fd35c768af1d), {
+        ...rest
+    });
+};
+
+
+$parcel$exportWildcard($cc2f4aa216efbbda$exports, $16311673d4ed5791$exports);
+
+
 $parcel$exportWildcard($69db8755909407dc$exports, $f3b0f9e318fd86df$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $c9b8f94f888eda16$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $fc137a99170e55e2$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $5f7eb0c04a209cf0$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $dc104a3cfac37534$exports);
+$parcel$exportWildcard($69db8755909407dc$exports, $cc2f4aa216efbbda$exports);
 
 
 $parcel$exportWildcard($f812b98c92824ab2$exports, $cc8b8a5508c6edd4$exports);
