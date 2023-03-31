@@ -10,13 +10,12 @@ import { TOKENS } from '@lido-sdk/constants';
 import { Divider } from '@lidofinance/lido-ui';
 import { WALLET_MODAL, useModal } from '@lidofinance/eth-ui-wallet-modal';
 import {
-  TokenToWallet,
-  FallbackWallet,
   WalletCard,
   WalletCardRow,
   WalletCardBalance,
   WalletCardAccount,
 } from '@lidofinance/ui-primitives';
+import { TokenToWallet, WalletFallback } from '@lidofinance/eth-ui-primitives';
 import { FormatToken } from '@lidofinance/eth-ui-primitives';
 
 import { EthWalletCardComponent } from './types';
@@ -73,7 +72,7 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
 
 const EthWalletCardWrapper: EthWalletCardComponent = (props) => {
   const { active } = useWeb3();
-  return active ? <EthWalletCard {...props} /> : <FallbackWallet {...props} />;
+  return active ? <EthWalletCard {...props} /> : <WalletFallback {...props} />;
 };
 
 export default EthWalletCardWrapper;

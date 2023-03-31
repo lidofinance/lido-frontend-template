@@ -17,12 +17,6 @@ export type LocalLinkProps = LinkProps & {
 export const LocalLink: FC<React.PropsWithChildren<LocalLinkProps>>;
 export type WalletCardComponent = FC<BlockProps>;
 export const WalletCard: WalletCardComponent;
-export type FallbackWalletComponent = WalletCardComponent;
-export const FallbackWallet: FallbackWalletComponent;
-type TokenToWalletComponent = FC<{
-    address: string;
-}>;
-export const TokenToWallet: TokenToWalletComponent;
 type WalletCardAccountProps = {
     account?: string | null;
     onClickCb: (T: unknown) => unknown;
@@ -37,6 +31,10 @@ export type WalletCardBalanceComponent = FC<PropsWithChildren<{
 }>>;
 export const WalletCardBalance: WalletCardBalanceComponent;
 export const WalletCardRow: FC<PropsWithChildren>;
+export type FallbackWalletComponent = FC<BlockProps & {
+    error: string;
+}>;
+export const WalletFallback: FallbackWalletComponent;
 export const DATA_UNAVAILABLE = "N/A";
 export const useCopyToClipboard: (text: string) => (() => void);
 type StandardFetcher = <T>(url: string, params?: RequestInit) => Promise<T>;

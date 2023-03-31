@@ -3,7 +3,6 @@ import {memo as $7XpC5$memo} from "react";
 import {migrationThemeCookiesToCrossDomainCookiesClientSide as $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $7XpC5$CookieThemeProvider, CookiesTooltip as $7XpC5$CookiesTooltip, ToastContainer as $7XpC5$ToastContainer, LidoLogo as $7XpC5$LidoLogo, Container as $7XpC5$Container, Divider as $7XpC5$Divider, Link as $7XpC5$Link, ThemeToggler as $7XpC5$ThemeToggler} from "@lidofinance/lido-ui";
 import $7XpC5$styledcomponents, {createGlobalStyle as $7XpC5$createGlobalStyle, css as $7XpC5$css} from "styled-components";
 import $7XpC5$nextlink from "next/link";
-import {useWeb3 as $7XpC5$useWeb3} from "@reef-knot/web3-react";
 import {useRouter as $7XpC5$useRouter} from "next/router";
 import {LocalLink as $7XpC5$LocalLink} from "@lidofinance/ui-primitives";
 
@@ -241,7 +240,6 @@ var $587ae881875a0357$export$2e2bcd8739ae039 = $587ae881875a0357$var$Footer;
 
 
 
-
 let $dca673c434ed9137$var$_ = (t)=>t, $dca673c434ed9137$var$t;
 const $dca673c434ed9137$export$af0f646b086814d1 = (0, $7XpC5$styledcomponents).div($dca673c434ed9137$var$t || ($dca673c434ed9137$var$t = $dca673c434ed9137$var$_`
   overflow: hidden;
@@ -255,13 +253,12 @@ const $dca673c434ed9137$export$af0f646b086814d1 = (0, $7XpC5$styledcomponents).d
 
 
 const $e00a6233c706df22$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
-    const { active: active  } = (0, $7XpC5$useWeb3)();
+    const { connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , leftSlot: leftSlot  } = props;
     return /*#__PURE__*/ (0, $7XpC5$jsx)((0, $dca673c434ed9137$export$af0f646b086814d1), {
         children: /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$Fragment), {
             children: [
                 leftSlot,
-                active ? connectedWalletInfoButton : walletConnectButton,
+                walletIsActive ? connectedWalletInfoButton : walletConnectButton,
                 /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ThemeToggler), {})
             ]
         })
@@ -439,7 +436,7 @@ const $3cc67041739bea3b$export$d69c4113bed92823 = (0, $7XpC5$styledcomponents).d
 
 
 const $a0b144425d48bbae$var$Header = (props)=>{
-    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
+    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
     return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $3cc67041739bea3b$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -456,6 +453,7 @@ const $a0b144425d48bbae$var$Header = (props)=>{
                 links: navigation
             }),
             /*#__PURE__*/ (0, $7XpC5$jsx)((0, $e00a6233c706df22$export$223875819fd7cf93), {
+                walletIsActive: walletIsActive,
                 walletConnectButton: walletConnectButton,
                 connectedWalletInfoButton: connectedWalletInfoButton,
                 leftSlot: walletActionsLeftSlot
@@ -535,6 +533,7 @@ const $c9750bb567934a74$export$8e0cdabd0fe32f2d = ({ ...props })=>{
                     /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
                         connectedWalletInfoButton: props.connectedWalletInfoButton,
                         walletConnectButton: props.walletConnectButton,
+                        walletIsActive: props.walletIsActive,
                         navigation: props === null || props === void 0 ? void 0 : props.navigation,
                         walletActionsLeftSlot: props === null || props === void 0 ? void 0 : props.walletActionsLeftSlot
                     }),

@@ -3,7 +3,6 @@ var $8sXRR$react = require("react");
 var $8sXRR$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $8sXRR$styledcomponents = require("styled-components");
 var $8sXRR$nextlink = require("next/link");
-var $8sXRR$reefknotweb3react = require("@reef-knot/web3-react");
 var $8sXRR$nextrouter = require("next/router");
 var $8sXRR$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 
@@ -251,7 +250,6 @@ var $7656a73acf0c9f5b$export$2e2bcd8739ae039 = $7656a73acf0c9f5b$var$Footer;
 
 
 
-
 let $f9de4ef1c51f48bb$var$_ = (t)=>t, $f9de4ef1c51f48bb$var$t;
 const $f9de4ef1c51f48bb$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8sXRR$styledcomponents))).div($f9de4ef1c51f48bb$var$t || ($f9de4ef1c51f48bb$var$t = $f9de4ef1c51f48bb$var$_`
   overflow: hidden;
@@ -265,13 +263,12 @@ const $f9de4ef1c51f48bb$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8
 
 
 const $8598dd1843cf2dd0$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton  } = props;
-    const { active: active  } = (0, $8sXRR$reefknotweb3react.useWeb3)();
+    const { connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , leftSlot: leftSlot  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $f9de4ef1c51f48bb$export$af0f646b086814d1), {
         children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$reactjsxruntime.Fragment), {
             children: [
                 leftSlot,
-                active ? connectedWalletInfoButton : walletConnectButton,
+                walletIsActive ? connectedWalletInfoButton : walletConnectButton,
                 /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ThemeToggler), {})
             ]
         })
@@ -449,7 +446,7 @@ const $d95585507c8542b3$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
 
 
 const $e161151a9ec97516$var$Header = (props)=>{
-    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
+    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $d95585507c8542b3$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -466,6 +463,7 @@ const $e161151a9ec97516$var$Header = (props)=>{
                 links: navigation
             }),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8598dd1843cf2dd0$export$223875819fd7cf93), {
+                walletIsActive: walletIsActive,
                 walletConnectButton: walletConnectButton,
                 connectedWalletInfoButton: connectedWalletInfoButton,
                 leftSlot: walletActionsLeftSlot
@@ -545,6 +543,7 @@ const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
                     /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
                         connectedWalletInfoButton: props.connectedWalletInfoButton,
                         walletConnectButton: props.walletConnectButton,
+                        walletIsActive: props.walletIsActive,
                         navigation: props === null || props === void 0 ? void 0 : props.navigation,
                         walletActionsLeftSlot: props === null || props === void 0 ? void 0 : props.walletActionsLeftSlot
                     }),

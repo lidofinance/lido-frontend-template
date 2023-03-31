@@ -11,9 +11,6 @@ var $41D0Z$remarkexternallinks = require("remark-external-links");
 var $41D0Z$react = require("react");
 var $41D0Z$nextrouter = require("next/router");
 var $41D0Z$nextlink = require("next/link");
-var $41D0Z$reefknotweb3react = require("@reef-knot/web3-react");
-var $41D0Z$lidosdkconstants = require("@lido-sdk/constants");
-var $41D0Z$lidosdkreact = require("@lido-sdk/react");
 var $41D0Z$copytoclipboard = require("copy-to-clipboard");
 
 function $parcel$exportWildcard(dest, source) {
@@ -173,34 +170,6 @@ $parcel$exportWildcard($e91da9bc1433f42b$exports, $a84ec17ac1c5107b$exports);
 
 
 var $69db8755909407dc$exports = {};
-var $f3b0f9e318fd86df$exports = {};
-var $c4ae1644b1df147b$exports = {};
-
-$parcel$export($c4ae1644b1df147b$exports, "FallbackWallet", function () { return $c4ae1644b1df147b$export$5d1acc5361300eff; });
-
-
-
-
-
-const $7a17262398464a60$export$23759efdd2d2dae9 = ()=>{
-    const { error: error  } = (0, $41D0Z$reefknotweb3react.useWeb3)();
-    const { isUnsupported: isUnsupported , supportedChains: supportedChains  } = (0, $41D0Z$reefknotweb3react.useSupportedChains)();
-    const chains = (0, $41D0Z$react.useMemo)(()=>{
-        const _chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $41D0Z$lidosdkconstants.CHAINS)[chainId] || name);
-        const lastChain = _chains.pop();
-        return [
-            _chains.join(", "),
-            lastChain
-        ].filter((chain)=>chain).join(" or ");
-    }, [
-        supportedChains
-    ]);
-    if (isUnsupported) return `Unsupported chain. Please switch to ${chains} in your wallet`;
-    return error === null || error === void 0 ? void 0 : error.message;
-};
-
-
-
 var $fc137a99170e55e2$exports = {};
 var $829e9b0c5c7aff2f$exports = {};
 
@@ -236,96 +205,6 @@ var $49c05fc6d54eab50$exports = {};
 
 $parcel$exportWildcard($fc137a99170e55e2$exports, $829e9b0c5c7aff2f$exports);
 $parcel$exportWildcard($fc137a99170e55e2$exports, $49c05fc6d54eab50$exports);
-
-
-let $e1d849ff39566916$var$_ = (t)=>t, $e1d849ff39566916$var$t;
-const $e1d849ff39566916$export$37593eea88cd94ab = (0, ($parcel$interopDefault($41D0Z$styledcomponents)))((0, $829e9b0c5c7aff2f$export$fa10365278598d8a))($e1d849ff39566916$var$t || ($e1d849ff39566916$var$t = $e1d849ff39566916$var$_`
-  text-align: center;
-  background: var(--lido-color-error);
-  background-image: none !important;
-`));
-
-
-const $c4ae1644b1df147b$export$5d1acc5361300eff = (props)=>{
-    const error = (0, $7a17262398464a60$export$23759efdd2d2dae9)();
-    if (error) return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $e1d849ff39566916$export$37593eea88cd94ab), {
-        ...props,
-        children: error
-    });
-    return null;
-};
-
-
-var $7481ee0a855ef4c1$exports = {};
-
-
-$parcel$exportWildcard($f3b0f9e318fd86df$exports, $c4ae1644b1df147b$exports);
-$parcel$exportWildcard($f3b0f9e318fd86df$exports, $7481ee0a855ef4c1$exports);
-
-
-var $c9b8f94f888eda16$exports = {};
-var $d7c2f13043dccb08$exports = {};
-
-$parcel$export($d7c2f13043dccb08$exports, "TokenToWallet", function () { return $d7c2f13043dccb08$export$8c8f4b533d324773; });
-
-
-
-
-
-let $eb3f121fc3df87e6$var$_ = (t)=>t, $eb3f121fc3df87e6$var$t;
-const $eb3f121fc3df87e6$export$38a986a8dd613d5c = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).button($eb3f121fc3df87e6$var$t || ($eb3f121fc3df87e6$var$t = $eb3f121fc3df87e6$var$_`
-  border: 0;
-  padding: 0;
-  width: 15px;
-  height: 15px;
-  line-height: 0;
-  vertical-align: middle;
-  position: relative;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -2px;
-  margin-left: 4px;
-  background: var(--lido-color-accentDarken);
-
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    background: var(--lido-color-accentContrast);
-    width: 7px;
-    height: 1px;
-    top: 7px;
-    left: 4px;
-    border-radius: 0.5px;
-  }
-
-  &:after {
-    height: 7px;
-    width: 1px;
-    top: 4px;
-    left: 7px;
-  }
-`));
-
-
-const $d7c2f13043dccb08$export$8c8f4b533d324773 = (props)=>{
-    const { address: address , ...rest } = props;
-    const { addToken: addToken  } = (0, $41D0Z$lidosdkreact.useTokenToWallet)(address);
-    if (!addToken) return null;
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $41D0Z$lidofinancelidoui.Tooltip), {
-        placement: "bottomLeft",
-        title: "Add tokens to wallet",
-        children: /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $eb3f121fc3df87e6$export$38a986a8dd613d5c), {
-            tabIndex: -1,
-            onClick: addToken,
-            ...rest
-        })
-    });
-};
-
-
-$parcel$exportWildcard($c9b8f94f888eda16$exports, $d7c2f13043dccb08$exports);
-
 
 
 var $5f7eb0c04a209cf0$exports = {};
@@ -479,12 +358,44 @@ const $16311673d4ed5791$export$7d0c76f6a0418e11 = ({ ...rest })=>{
 $parcel$exportWildcard($cc2f4aa216efbbda$exports, $16311673d4ed5791$exports);
 
 
-$parcel$exportWildcard($69db8755909407dc$exports, $f3b0f9e318fd86df$exports);
-$parcel$exportWildcard($69db8755909407dc$exports, $c9b8f94f888eda16$exports);
+var $20047e2ea2e5f098$exports = {};
+var $35ce4da3f038e635$exports = {};
+
+$parcel$export($35ce4da3f038e635$exports, "WalletFallback", function () { return $35ce4da3f038e635$export$db542de45b23291e; });
+
+
+
+
+let $221726d8ec45542f$var$_ = (t)=>t, $221726d8ec45542f$var$t;
+const $221726d8ec45542f$export$37593eea88cd94ab = (0, ($parcel$interopDefault($41D0Z$styledcomponents)))((0, $829e9b0c5c7aff2f$export$fa10365278598d8a))($221726d8ec45542f$var$t || ($221726d8ec45542f$var$t = $221726d8ec45542f$var$_`
+  text-align: center;
+  background: var(--lido-color-error);
+  background-image: none !important;
+`));
+
+
+const $35ce4da3f038e635$export$db542de45b23291e = (props)=>{
+    const { error: error  } = props;
+    if (error) return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $221726d8ec45542f$export$37593eea88cd94ab), {
+        ...props,
+        children: error
+    });
+    return null;
+};
+
+
+var $6855ad9057b75c52$exports = {};
+
+
+$parcel$exportWildcard($20047e2ea2e5f098$exports, $35ce4da3f038e635$exports);
+$parcel$exportWildcard($20047e2ea2e5f098$exports, $6855ad9057b75c52$exports);
+
+
 $parcel$exportWildcard($69db8755909407dc$exports, $fc137a99170e55e2$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $5f7eb0c04a209cf0$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $dc104a3cfac37534$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $cc2f4aa216efbbda$exports);
+$parcel$exportWildcard($69db8755909407dc$exports, $20047e2ea2e5f098$exports);
 
 
 $parcel$exportWildcard($f812b98c92824ab2$exports, $cc8b8a5508c6edd4$exports);
