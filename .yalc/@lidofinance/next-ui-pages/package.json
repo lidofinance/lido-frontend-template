@@ -22,9 +22,9 @@
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@lidofinance/lido-ui": "^3.0.0",
+    "@lidofinance/lido-ui": "^3.6.1",
     "next": "^12.3.0",
     "react": "17 || 18"
   },
-  "yalcSig": "55a98ae6035ae5abfe5f37edd18faf42"
+  "yalcSig": "d5901a74c76b2c18b88e05608ff8a515"
 }

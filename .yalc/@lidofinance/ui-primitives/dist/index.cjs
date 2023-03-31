@@ -172,59 +172,6 @@ $parcel$exportWildcard($e91da9bc1433f42b$exports, $31d803d6a64351b5$exports);
 $parcel$exportWildcard($e91da9bc1433f42b$exports, $a84ec17ac1c5107b$exports);
 
 
-var $962149836312035c$exports = {};
-var $15ff73673169e132$exports = {};
-
-$parcel$export($15ff73673169e132$exports, "Section", function () { return $15ff73673169e132$export$6e2c8f0811a474ce; });
-
-
-
-let $8642870dcaaa815e$var$_ = (t)=>t, $8642870dcaaa815e$var$t, $8642870dcaaa815e$var$t1, $8642870dcaaa815e$var$t2, $8642870dcaaa815e$var$t3;
-const $8642870dcaaa815e$export$cd87aee0bbf87c7e = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).section($8642870dcaaa815e$var$t || ($8642870dcaaa815e$var$t = $8642870dcaaa815e$var$_`
-  margin: ${0}px 0;
-`), ({ theme: theme  })=>theme.spaceMap.xxl);
-const $8642870dcaaa815e$export$1bd64a0c872eae5f = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($8642870dcaaa815e$var$t1 || ($8642870dcaaa815e$var$t1 = $8642870dcaaa815e$var$_`
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: ${0}px;
-`), ({ theme: theme  })=>theme.fontSizesMap.xxs);
-const $8642870dcaaa815e$export$3cbb88b8e1425ee9 = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).h2($8642870dcaaa815e$var$t2 || ($8642870dcaaa815e$var$t2 = $8642870dcaaa815e$var$_`
-  margin-right: auto;
-  font-weight: 800;
-  font-size: ${0}px;
-  line-height: 1.3em;
-`), ({ theme: theme  })=>theme.fontSizesMap.md);
-const $8642870dcaaa815e$export$41f4a0193a23e802 = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($8642870dcaaa815e$var$t3 || ($8642870dcaaa815e$var$t3 = $8642870dcaaa815e$var$_`
-  margin-left: ${0}px;
-  font-size: ${0}px;
-  line-height: 1.5em;
-`), ({ theme: theme  })=>theme.spaceMap.lg, ({ theme: theme  })=>theme.fontSizesMap.xxs);
-
-
-const $15ff73673169e132$export$6e2c8f0811a474ce = (props)=>{
-    const { title: title , headerDecorator: headerDecorator , children: children , ...rest } = props;
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsxs)((0, $8642870dcaaa815e$export$cd87aee0bbf87c7e), {
-        ...rest,
-        children: [
-            title && /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsxs)((0, $8642870dcaaa815e$export$1bd64a0c872eae5f), {
-                children: [
-                    /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $8642870dcaaa815e$export$3cbb88b8e1425ee9), {
-                        children: title
-                    }),
-                    headerDecorator && /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $8642870dcaaa815e$export$41f4a0193a23e802), {
-                        children: headerDecorator
-                    })
-                ]
-            }),
-            children
-        ]
-    });
-};
-
-
-$parcel$exportWildcard($962149836312035c$exports, $15ff73673169e132$exports);
-
-
 var $69db8755909407dc$exports = {};
 var $f3b0f9e318fd86df$exports = {};
 var $c4ae1644b1df147b$exports = {};
@@ -542,7 +489,6 @@ $parcel$exportWildcard($69db8755909407dc$exports, $cc2f4aa216efbbda$exports);
 
 $parcel$exportWildcard($f812b98c92824ab2$exports, $cc8b8a5508c6edd4$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $e91da9bc1433f42b$exports);
-$parcel$exportWildcard($f812b98c92824ab2$exports, $962149836312035c$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $69db8755909407dc$exports);
 
 

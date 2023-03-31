@@ -15,11 +15,6 @@ export type LocalLinkProps = LinkProps & {
     href: string;
 };
 export const LocalLink: FC<React.PropsWithChildren<LocalLinkProps>>;
-type SectionType = FC<PropsWithChildren<{
-    title?: React.ReactNode;
-    headerDecorator?: React.ReactNode;
-}>>;
-export const Section: SectionType;
 export type WalletCardComponent = FC<BlockProps>;
 export const WalletCard: WalletCardComponent;
 export type FallbackWalletComponent = WalletCardComponent;

@@ -172,6 +172,7 @@ $parcel$export($8604b09e4a8b0413$exports, "WalletButton", function () { return $
 
 
 
+
 var $74a600b2737e9d2e$exports = {};
 
 $parcel$export($74a600b2737e9d2e$exports, "useModal", function () { return $74a600b2737e9d2e$export$33ffd74ebf07f060; });
@@ -252,7 +253,9 @@ const $8604b09e4a8b0413$export$eab4424f030fcb21 = (props)=>{
                         symbol: "ETH"
                     })
                 }),
-                account
+                /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinancelidoui.AddressBadge), {
+                    address: account !== null && account !== void 0 ? account : ""
+                })
             ]
         })
     });

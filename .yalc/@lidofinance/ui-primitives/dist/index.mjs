@@ -169,59 +169,6 @@ $parcel$exportWildcard($15053db04efb3bba$exports, $89f5730a736d4546$exports);
 $parcel$exportWildcard($15053db04efb3bba$exports, $b79613d19ba93c17$exports);
 
 
-var $8e37d69f73d5e5f4$exports = {};
-var $33f03c880841e3dc$exports = {};
-
-$parcel$export($33f03c880841e3dc$exports, "Section", function () { return $33f03c880841e3dc$export$6e2c8f0811a474ce; });
-
-
-
-let $61b9bf403210ca24$var$_ = (t)=>t, $61b9bf403210ca24$var$t, $61b9bf403210ca24$var$t1, $61b9bf403210ca24$var$t2, $61b9bf403210ca24$var$t3;
-const $61b9bf403210ca24$export$cd87aee0bbf87c7e = (0, $9LU3C$styledcomponents).section($61b9bf403210ca24$var$t || ($61b9bf403210ca24$var$t = $61b9bf403210ca24$var$_`
-  margin: ${0}px 0;
-`), ({ theme: theme  })=>theme.spaceMap.xxl);
-const $61b9bf403210ca24$export$1bd64a0c872eae5f = (0, $9LU3C$styledcomponents).div($61b9bf403210ca24$var$t1 || ($61b9bf403210ca24$var$t1 = $61b9bf403210ca24$var$_`
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: ${0}px;
-`), ({ theme: theme  })=>theme.fontSizesMap.xxs);
-const $61b9bf403210ca24$export$3cbb88b8e1425ee9 = (0, $9LU3C$styledcomponents).h2($61b9bf403210ca24$var$t2 || ($61b9bf403210ca24$var$t2 = $61b9bf403210ca24$var$_`
-  margin-right: auto;
-  font-weight: 800;
-  font-size: ${0}px;
-  line-height: 1.3em;
-`), ({ theme: theme  })=>theme.fontSizesMap.md);
-const $61b9bf403210ca24$export$41f4a0193a23e802 = (0, $9LU3C$styledcomponents).div($61b9bf403210ca24$var$t3 || ($61b9bf403210ca24$var$t3 = $61b9bf403210ca24$var$_`
-  margin-left: ${0}px;
-  font-size: ${0}px;
-  line-height: 1.5em;
-`), ({ theme: theme  })=>theme.spaceMap.lg, ({ theme: theme  })=>theme.fontSizesMap.xxs);
-
-
-const $33f03c880841e3dc$export$6e2c8f0811a474ce = (props)=>{
-    const { title: title , headerDecorator: headerDecorator , children: children , ...rest } = props;
-    return /*#__PURE__*/ (0, $9LU3C$jsxs)((0, $61b9bf403210ca24$export$cd87aee0bbf87c7e), {
-        ...rest,
-        children: [
-            title && /*#__PURE__*/ (0, $9LU3C$jsxs)((0, $61b9bf403210ca24$export$1bd64a0c872eae5f), {
-                children: [
-                    /*#__PURE__*/ (0, $9LU3C$jsx)((0, $61b9bf403210ca24$export$3cbb88b8e1425ee9), {
-                        children: title
-                    }),
-                    headerDecorator && /*#__PURE__*/ (0, $9LU3C$jsx)((0, $61b9bf403210ca24$export$41f4a0193a23e802), {
-                        children: headerDecorator
-                    })
-                ]
-            }),
-            children
-        ]
-    });
-};
-
-
-$parcel$exportWildcard($8e37d69f73d5e5f4$exports, $33f03c880841e3dc$exports);
-
-
 var $bee4c5e5a65c56cf$exports = {};
 var $2652ea905a175dd7$exports = {};
 var $0eca08bb850086be$exports = {};
@@ -539,7 +486,6 @@ $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $12f586c8987d12ce$exports);
 
 $parcel$exportWildcard($2edec60da2794fb1$exports, $09016bddec447da4$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $15053db04efb3bba$exports);
-$parcel$exportWildcard($2edec60da2794fb1$exports, $8e37d69f73d5e5f4$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $bee4c5e5a65c56cf$exports);
 
 
@@ -596,5 +542,5 @@ $parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
 
 
 
-export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $33f03c880841e3dc$export$6e2c8f0811a474ce as Section, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
+export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $0eca08bb850086be$export$5d1acc5361300eff as FallbackWallet, $cd16ad6f30ec4e05$export$8c8f4b533d324773 as TokenToWallet, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
 //# sourceMappingURL=index.mjs.map

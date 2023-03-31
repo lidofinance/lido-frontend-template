@@ -1,6 +1,6 @@
 import {jsx as $5Wt9e$jsx, jsxs as $5Wt9e$jsxs} from "react/jsx-runtime";
 import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, createContext as $5Wt9e$createContext, memo as $5Wt9e$memo, useState as $5Wt9e$useState, useMemo as $5Wt9e$useMemo} from "react";
-import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle} from "@lidofinance/lido-ui";
+import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle} from "@lidofinance/lido-ui";
 import {useCopyToClipboard as $5Wt9e$useCopyToClipboard} from "@lidofinance/ui-primitives";
 import {useSDK as $5Wt9e$useSDK, useEtherscanOpen as $5Wt9e$useEtherscanOpen, useEthereumBalance as $5Wt9e$useEthereumBalance} from "@lido-sdk/react";
 import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "@reef-knot/web3-react";
@@ -169,6 +169,7 @@ $parcel$export($bba7b9e54db80c5d$exports, "WalletButton", function () { return $
 
 
 
+
 var $486a2f92a2295f7f$exports = {};
 
 $parcel$export($486a2f92a2295f7f$exports, "useModal", function () { return $486a2f92a2295f7f$export$33ffd74ebf07f060; });
@@ -249,7 +250,9 @@ const $bba7b9e54db80c5d$export$eab4424f030fcb21 = (props)=>{
                         symbol: "ETH"
                     })
                 }),
-                account
+                /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$AddressBadge), {
+                    address: account !== null && account !== void 0 ? account : ""
+                })
             ]
         })
     });
