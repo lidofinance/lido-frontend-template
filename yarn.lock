@@ -1923,10 +1923,10 @@
   dependencies:
     "@lido-sdk/react" "^1.18.1"
 
-"@lidofinance/lido-ui@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@lidofinance/lido-ui/-/lido-ui-3.2.0.tgz#f46f5103268e3324a48589f6ffc9edee04cb6cf7"
-  integrity sha512-tNeePz3CyxIqLrRs2n++Dt9pBcCzsdSieUTuqAe1Tan8Oe5pzNUcqSodP2i+X8ohUbelcccEI5SkyoD9tKPuHg==
+"@lidofinance/lido-ui@^3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@lidofinance/lido-ui/-/lido-ui-3.6.1.tgz#ad64cbb9eb21873dd5a5b3090d9300903a90bd45"
+  integrity sha512-aowyhWdQdHDebFDWEIC3KWPXunDjqcmHNicy0waEdSMrTtBplaf6t+DaTNFMY9p0Drxy0KQ4P8YA3kSQVo5AdQ==
   dependencies:
     "@styled-system/should-forward-prop" "5.1.5"
     "@swc/helpers" "^0.4.11"
