@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { Link } from '@lidofinance/lido-ui';
-import { Section, Faq, FAQItem, getFaqList } from '@lidofinance/ui-primitives';
+import { Section, Link } from '@lidofinance/lido-ui';
+import { Faq, FAQItem, getFaqList } from '@lidofinance/ui-primitives';
 import {
   LayoutTitle,
   LayoutSubTitle,
