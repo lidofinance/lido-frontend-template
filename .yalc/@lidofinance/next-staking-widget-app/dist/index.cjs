@@ -263,12 +263,11 @@ const $f9de4ef1c51f48bb$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8
 
 
 const $8598dd1843cf2dd0$export$223875819fd7cf93 = (props)=>{
-    const { connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , leftSlot: leftSlot  } = props;
+    const { leftSlot: leftSlot  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $f9de4ef1c51f48bb$export$af0f646b086814d1), {
         children: /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$reactjsxruntime.Fragment), {
             children: [
                 leftSlot,
-                walletIsActive ? connectedWalletInfoButton : walletConnectButton,
                 /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ThemeToggler), {})
             ]
         })
@@ -446,7 +445,7 @@ const $d95585507c8542b3$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
 
 
 const $e161151a9ec97516$var$Header = (props)=>{
-    const { navigation: navigation , connectedWalletInfoButton: connectedWalletInfoButton , walletConnectButton: walletConnectButton , walletIsActive: walletIsActive , walletActionsLeftSlot: walletActionsLeftSlot  } = props;
+    const { navigation: navigation , headerActions: headerActions  } = props;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $d95585507c8542b3$export$54a719cd6595ff5c), {
         size: "full",
         forwardedAs: "header",
@@ -463,10 +462,7 @@ const $e161151a9ec97516$var$Header = (props)=>{
                 links: navigation
             }),
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8598dd1843cf2dd0$export$223875819fd7cf93), {
-                walletIsActive: walletIsActive,
-                walletConnectButton: walletConnectButton,
-                connectedWalletInfoButton: connectedWalletInfoButton,
-                leftSlot: walletActionsLeftSlot
+                leftSlot: headerActions
             })
         ]
     });
@@ -541,11 +537,8 @@ const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)(Providers, {
                 children: [
                     /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
-                        connectedWalletInfoButton: props.connectedWalletInfoButton,
-                        walletConnectButton: props.walletConnectButton,
-                        walletIsActive: props.walletIsActive,
-                        navigation: props === null || props === void 0 ? void 0 : props.navigation,
-                        walletActionsLeftSlot: props === null || props === void 0 ? void 0 : props.walletActionsLeftSlot
+                        headerActions: props.headerActions,
+                        navigation: props === null || props === void 0 ? void 0 : props.navigation
                     }),
                     /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
                         children: props.children

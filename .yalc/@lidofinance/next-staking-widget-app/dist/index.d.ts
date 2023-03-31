@@ -8,12 +8,9 @@ export interface INavigationLink {
 export const LayoutTitle: import("styled-components").StyledComponent<"h1", import("styled-components").DefaultTheme, {}, never>;
 export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", import("styled-components").DefaultTheme, {}, never>;
 type WidgetAppProps = {
-    connectedWalletInfoButton: ReactNode;
-    walletConnectButton: ReactNode;
+    headerActions: ReactNode;
     providers: FC<PropsWithChildren>;
-    walletIsActive: boolean;
     navigation?: INavigationLink[];
-    walletActionsLeftSlot?: ReactNode;
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;
 

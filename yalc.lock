@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@lidofinance/next-staking-widget-app": {
-      "signature": "b145a41bfa28d892a05f6de2b8b2d64f",
+      "signature": "cad767bdb43303fe9d65c4fc4e3e991f",
       "file": true
     },
     "@lidofinance/ui-wallet-modal": {
