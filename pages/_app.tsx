@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import NextApp, { AppProps } from 'next/app';
-import { ProviderWeb3 } from '@reef-knot/web3-react';
+import { ProviderWeb3, useWeb3 } from '@reef-knot/web3-react';
 import {
   ProviderWalletModal,
   WalletButton,
@@ -50,35 +50,40 @@ const headerPages: INavigationLink[] = [
 
 // PAY ATTENTION: Providers will be inserted in CookieThemeProvider before layout components
 const Providers: FC<PropsWithChildren> = ({ children }) => (
-  <ProviderWeb3
-    defaultChainId={dynamics.defaultChain}
-    supportedChainIds={dynamics.supportedChains}
-    rpc={backendRPC}
+  <ProviderWalletModal
+    walletsMetrics={walletsMetrics}
+    hiddenWallets={['Opera Wallet']}
   >
-    <ProviderWalletModal
-      walletsMetrics={walletsMetrics}
-      hiddenWallets={['Opera Wallet']}
-    >
-      {children}
-    </ProviderWalletModal>
-  </ProviderWeb3>
+    {children}
+  </ProviderWalletModal>
 );
 
 // App wrapper
-const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
-  // PAY ATTENTION: You can put here some providers, if they don't depend on CookieThemeProvider:
-  // <SomeProvider>
-  <WidgetApp
-    navigation={headerPages}
-    connectedWalletInfoButton={<WalletButton />}
-    walletConnectButton={<WalletConnectButton size="sm" />}
-    walletActionsLeftSlot={<HeaderWalletActionsLeftSlot />}
-    providers={Providers}
-  >
-    <NextApp {...props} />
-  </WidgetApp>
-  // </SomeProvider>
-);
+const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => {
+  const { active } = useWeb3();
+
+  return (
+    // PAY ATTENTION: You can put here some providers, if they don't depend on CookieThemeProvider:
+    // <SomeProvider>
+    <ProviderWeb3
+      defaultChainId={dynamics.defaultChain}
+      supportedChainIds={dynamics.supportedChains}
+      rpc={backendRPC}
+    >
+      <WidgetApp
+        navigation={headerPages}
+        connectedWalletInfoButton={<WalletButton />}
+        walletConnectButton={<WalletConnectButton size="sm" />}
+        walletActionsLeftSlot={<HeaderWalletActionsLeftSlot />}
+        walletIsActive={active}
+        providers={Providers}
+      >
+        <NextApp {...props} />
+      </WidgetApp>
+    </ProviderWeb3>
+    // </SomeProvider>
+  );
+};
 
 export default process.env.NODE_ENV === 'development'
   ? WidgetAppWrapper
