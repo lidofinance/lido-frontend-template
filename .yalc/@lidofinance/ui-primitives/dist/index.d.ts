@@ -1,16 +1,6 @@
-import React, { FC, PropsWithChildren } from "react";
 import { LinkProps } from "next/link";
+import React, { FC, PropsWithChildren } from "react";
 import { BlockProps } from "@lidofinance/lido-ui";
-export interface FAQItem {
-    id: string;
-    content: string;
-    title: string;
-}
-export interface FaqProps {
-    faqList: FAQItem[];
-}
-export const Faq: FC<FaqProps>;
-export const getFaqList: (list: string[]) => Promise<FAQItem[]>;
 export type LocalLinkProps = LinkProps & {
     href: string;
 };
@@ -37,7 +27,5 @@ export type FallbackWalletComponent = FC<BlockProps & {
 export const WalletFallback: FallbackWalletComponent;
 export const DATA_UNAVAILABLE = "N/A";
 export const useCopyToClipboard: (text: string) => (() => void);
-type StandardFetcher = <T>(url: string, params?: RequestInit) => Promise<T>;
-export const standardFetcher: StandardFetcher;
 
 //# sourceMappingURL=index.d.ts.map

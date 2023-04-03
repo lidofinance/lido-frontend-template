@@ -1,16 +1,9 @@
-import {jsx as $9LU3C$jsx, Fragment as $9LU3C$Fragment, jsxs as $9LU3C$jsxs} from "react/jsx-runtime";
-import {Accordion as $9LU3C$Accordion, Block as $9LU3C$Block, useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, InlineLoader as $9LU3C$InlineLoader} from "@lidofinance/lido-ui";
-import $9LU3C$styledcomponents from "styled-components";
-import {cwd as $9LU3C$cwd} from "process";
-import $9LU3C$fs from "fs";
-import $9LU3C$path from "path";
-import $9LU3C$graymatter from "gray-matter";
-import $9LU3C$remark from "remark";
-import $9LU3C$remarkhtml from "remark-html";
-import $9LU3C$remarkexternallinks from "remark-external-links";
+import {jsx as $9LU3C$jsx, jsxs as $9LU3C$jsxs} from "react/jsx-runtime";
 import {useCallback as $9LU3C$useCallback} from "react";
 import {useRouter as $9LU3C$useRouter} from "next/router";
 import $9LU3C$nextlink from "next/link";
+import $9LU3C$styledcomponents from "styled-components";
+import {Block as $9LU3C$Block, useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, InlineLoader as $9LU3C$InlineLoader} from "@lidofinance/lido-ui";
 import $9LU3C$copytoclipboard from "copy-to-clipboard";
 
 function $parcel$exportWildcard(dest, source) {
@@ -33,106 +26,6 @@ function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 var $2edec60da2794fb1$exports = {};
-var $09016bddec447da4$exports = {};
-var $210e5afef337a25b$exports = {};
-
-$parcel$export($210e5afef337a25b$exports, "Faq", function () { return $210e5afef337a25b$export$7562e752e5ef1fad; });
-
-
-
-let $4f769db1bdb714df$var$_ = (t)=>t, $4f769db1bdb714df$var$t;
-const $4f769db1bdb714df$export$eb463a824a473e05 = (0, $9LU3C$styledcomponents).div($4f769db1bdb714df$var$t || ($4f769db1bdb714df$var$t = $4f769db1bdb714df$var$_`
-  p {
-    margin: 0 0 1.6em;
-  }
-
-  p + ul,
-  p + ol,
-  ul + p,
-  ol + p {
-    margin-top: -1.6em;
-  }
-
-  ul > li,
-  ol > li {
-    margin-top: 0;
-    margin-bottom: 0;
-
-    & > p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  a {
-    text-decoration: none;
-  }
-`));
-
-
-const $210e5afef337a25b$export$7562e752e5ef1fad = (props)=>{
-    const { faqList: faqList  } = props;
-    return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $9LU3C$Fragment), {
-        children: faqList.map(({ id: id , title: title , content: content  }, index)=>/*#__PURE__*/ (0, $9LU3C$jsx)((0, $9LU3C$Accordion), {
-                defaultExpanded: index === 0,
-                summary: String(title),
-                children: /*#__PURE__*/ (0, $9LU3C$jsx)((0, $4f769db1bdb714df$export$eb463a824a473e05), {
-                    dangerouslySetInnerHTML: {
-                        __html: content
-                    }
-                })
-            }, id))
-    });
-};
-
-
-var $0cdb420e70926c27$exports = {};
-
-
-var $86ac7e0950fa64d3$exports = {};
-
-
-var $22c5d07cb270ee1a$exports = {};
-
-$parcel$export($22c5d07cb270ee1a$exports, "getFaqList", function () { return $22c5d07cb270ee1a$export$45c60b0bc8893fbe; });
-
-
-
-
-
-
-
-const $22c5d07cb270ee1a$var$faqDirectory = (0, $9LU3C$path).join($9LU3C$cwd(), "faq");
-const $22c5d07cb270ee1a$export$45c60b0bc8893fbe = async (list)=>{
-    return Promise.all(list.map(async (id)=>{
-        // TODO: Fetch from Netlify
-        const fullPath = (0, $9LU3C$path).join($22c5d07cb270ee1a$var$faqDirectory, `${id}.md`);
-        const fileContents = (0, $9LU3C$fs).readFileSync(fullPath, "utf8");
-        const matterResult = (0, $9LU3C$graymatter)(fileContents);
-        const processedContent = await (0, $9LU3C$remark)().use((0, $9LU3C$remarkexternallinks), {
-            target: "_blank",
-            rel: [
-                "nofollow",
-                "noopener"
-            ]
-        }).use((0, $9LU3C$remarkhtml)).process(matterResult.content);
-        const content = processedContent.toString();
-        const title = String(matterResult.data.title || id);
-        return {
-            id: id,
-            content: content,
-            title: title
-        };
-    }));
-};
-
-
-$parcel$exportWildcard($09016bddec447da4$exports, $210e5afef337a25b$exports);
-$parcel$exportWildcard($09016bddec447da4$exports, $0cdb420e70926c27$exports);
-$parcel$exportWildcard($09016bddec447da4$exports, $86ac7e0950fa64d3$exports);
-$parcel$exportWildcard($09016bddec447da4$exports, $22c5d07cb270ee1a$exports);
-
-
 var $15053db04efb3bba$exports = {};
 var $89f5730a736d4546$exports = {};
 
@@ -395,7 +288,6 @@ $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $12f586c8987d12ce$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $cd9ba9fc910e1e75$exports);
 
 
-$parcel$exportWildcard($2edec60da2794fb1$exports, $09016bddec447da4$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $15053db04efb3bba$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $bee4c5e5a65c56cf$exports);
 
@@ -428,30 +320,7 @@ const $7ed617aa6b701fa6$export$b2199c37e85de4a7 = (text)=>{
 $parcel$exportWildcard($fb78df27aae727e9$exports, $7ed617aa6b701fa6$exports);
 
 
-var $6d94c9a60a544c13$exports = {};
-var $04886483abe732d1$exports = {};
-
-$parcel$export($04886483abe732d1$exports, "standardFetcher", function () { return $04886483abe732d1$export$a265c7403141b2f4; });
-const $04886483abe732d1$var$DEFAULT_PARAMS = {
-    method: "GET",
-    headers: {
-        "Content-type": "application/json"
-    }
-};
-const $04886483abe732d1$export$a265c7403141b2f4 = async (url, params)=>{
-    const response = await fetch(url, {
-        ...$04886483abe732d1$var$DEFAULT_PARAMS,
-        ...params
-    });
-    if (!response.ok) throw new Error("An error occurred while fetching the data.");
-    return response.json();
-};
 
 
-$parcel$exportWildcard($6d94c9a60a544c13$exports, $04886483abe732d1$exports);
-
-
-
-
-export {$210e5afef337a25b$export$7562e752e5ef1fad as Faq, $22c5d07cb270ee1a$export$45c60b0bc8893fbe as getFaqList, $89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $69868d219c84490b$export$db542de45b23291e as WalletFallback, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard, $04886483abe732d1$export$a265c7403141b2f4 as standardFetcher};
+export {$89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $69868d219c84490b$export$db542de45b23291e as WalletFallback, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard};
 //# sourceMappingURL=index.mjs.map

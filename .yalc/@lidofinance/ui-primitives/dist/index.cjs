@@ -1,16 +1,9 @@
 var $41D0Z$reactjsxruntime = require("react/jsx-runtime");
-var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
-var $41D0Z$styledcomponents = require("styled-components");
-var $41D0Z$process = require("process");
-var $41D0Z$fs = require("fs");
-var $41D0Z$path = require("path");
-var $41D0Z$graymatter = require("gray-matter");
-var $41D0Z$remark = require("remark");
-var $41D0Z$remarkhtml = require("remark-html");
-var $41D0Z$remarkexternallinks = require("remark-external-links");
 var $41D0Z$react = require("react");
 var $41D0Z$nextrouter = require("next/router");
 var $41D0Z$nextlink = require("next/link");
+var $41D0Z$styledcomponents = require("styled-components");
+var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $41D0Z$copytoclipboard = require("copy-to-clipboard");
 
 function $parcel$exportWildcard(dest, source) {
@@ -29,113 +22,13 @@ function $parcel$exportWildcard(dest, source) {
 
   return dest;
 }
-function $parcel$export(e, n, v, s) {
-  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
-}
 function $parcel$interopDefault(a) {
   return a && a.__esModule ? a.default : a;
 }
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
 var $f812b98c92824ab2$exports = {};
-var $cc8b8a5508c6edd4$exports = {};
-var $bac48d5c687a5510$exports = {};
-
-$parcel$export($bac48d5c687a5510$exports, "Faq", function () { return $bac48d5c687a5510$export$7562e752e5ef1fad; });
-
-
-
-let $f4ffaed52dfcc1d0$var$_ = (t)=>t, $f4ffaed52dfcc1d0$var$t;
-const $f4ffaed52dfcc1d0$export$eb463a824a473e05 = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($f4ffaed52dfcc1d0$var$t || ($f4ffaed52dfcc1d0$var$t = $f4ffaed52dfcc1d0$var$_`
-  p {
-    margin: 0 0 1.6em;
-  }
-
-  p + ul,
-  p + ol,
-  ul + p,
-  ol + p {
-    margin-top: -1.6em;
-  }
-
-  ul > li,
-  ol > li {
-    margin-top: 0;
-    margin-bottom: 0;
-
-    & > p {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  a {
-    text-decoration: none;
-  }
-`));
-
-
-const $bac48d5c687a5510$export$7562e752e5ef1fad = (props)=>{
-    const { faqList: faqList  } = props;
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $41D0Z$reactjsxruntime.Fragment), {
-        children: faqList.map(({ id: id , title: title , content: content  }, index)=>/*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $41D0Z$lidofinancelidoui.Accordion), {
-                defaultExpanded: index === 0,
-                summary: String(title),
-                children: /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $f4ffaed52dfcc1d0$export$eb463a824a473e05), {
-                    dangerouslySetInnerHTML: {
-                        __html: content
-                    }
-                })
-            }, id))
-    });
-};
-
-
-var $99468020df73a4cc$exports = {};
-
-
-var $6a72821c8c345a3c$exports = {};
-
-
-var $39d81cff88bd9aec$exports = {};
-
-$parcel$export($39d81cff88bd9aec$exports, "getFaqList", function () { return $39d81cff88bd9aec$export$45c60b0bc8893fbe; });
-
-
-
-
-
-
-
-const $39d81cff88bd9aec$var$faqDirectory = (0, ($parcel$interopDefault($41D0Z$path))).join($41D0Z$process.cwd(), "faq");
-const $39d81cff88bd9aec$export$45c60b0bc8893fbe = async (list)=>{
-    return Promise.all(list.map(async (id)=>{
-        // TODO: Fetch from Netlify
-        const fullPath = (0, ($parcel$interopDefault($41D0Z$path))).join($39d81cff88bd9aec$var$faqDirectory, `${id}.md`);
-        const fileContents = (0, ($parcel$interopDefault($41D0Z$fs))).readFileSync(fullPath, "utf8");
-        const matterResult = (0, ($parcel$interopDefault($41D0Z$graymatter)))(fileContents);
-        const processedContent = await (0, ($parcel$interopDefault($41D0Z$remark)))().use((0, ($parcel$interopDefault($41D0Z$remarkexternallinks))), {
-            target: "_blank",
-            rel: [
-                "nofollow",
-                "noopener"
-            ]
-        }).use((0, ($parcel$interopDefault($41D0Z$remarkhtml)))).process(matterResult.content);
-        const content = processedContent.toString();
-        const title = String(matterResult.data.title || id);
-        return {
-            id: id,
-            content: content,
-            title: title
-        };
-    }));
-};
-
-
-$parcel$exportWildcard($cc8b8a5508c6edd4$exports, $bac48d5c687a5510$exports);
-$parcel$exportWildcard($cc8b8a5508c6edd4$exports, $99468020df73a4cc$exports);
-$parcel$exportWildcard($cc8b8a5508c6edd4$exports, $6a72821c8c345a3c$exports);
-$parcel$exportWildcard($cc8b8a5508c6edd4$exports, $39d81cff88bd9aec$exports);
-
-
 var $e91da9bc1433f42b$exports = {};
 var $31d803d6a64351b5$exports = {};
 
@@ -398,7 +291,6 @@ $parcel$exportWildcard($69db8755909407dc$exports, $cc2f4aa216efbbda$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $20047e2ea2e5f098$exports);
 
 
-$parcel$exportWildcard($f812b98c92824ab2$exports, $cc8b8a5508c6edd4$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $e91da9bc1433f42b$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $69db8755909407dc$exports);
 
@@ -431,33 +323,9 @@ const $81fdd56ab370cc2c$export$b2199c37e85de4a7 = (text)=>{
 $parcel$exportWildcard($ab1640a4ee939ad1$exports, $81fdd56ab370cc2c$exports);
 
 
-var $e74efcd17907e7cd$exports = {};
-var $79355003cd5eaada$exports = {};
-
-$parcel$export($79355003cd5eaada$exports, "standardFetcher", function () { return $79355003cd5eaada$export$a265c7403141b2f4; });
-const $79355003cd5eaada$var$DEFAULT_PARAMS = {
-    method: "GET",
-    headers: {
-        "Content-type": "application/json"
-    }
-};
-const $79355003cd5eaada$export$a265c7403141b2f4 = async (url, params)=>{
-    const response = await fetch(url, {
-        ...$79355003cd5eaada$var$DEFAULT_PARAMS,
-        ...params
-    });
-    if (!response.ok) throw new Error("An error occurred while fetching the data.");
-    return response.json();
-};
-
-
-$parcel$exportWildcard($e74efcd17907e7cd$exports, $79355003cd5eaada$exports);
-
-
 $parcel$exportWildcard(module.exports, $f812b98c92824ab2$exports);
 $parcel$exportWildcard(module.exports, $4e3ab5b3c97613f6$exports);
 $parcel$exportWildcard(module.exports, $ab1640a4ee939ad1$exports);
-$parcel$exportWildcard(module.exports, $e74efcd17907e7cd$exports);
 
 
 //# sourceMappingURL=index.cjs.map

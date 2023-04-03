@@ -3,15 +3,15 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Section, Link } from '@lidofinance/lido-ui';
-import { Faq, FAQItem, getFaqList } from '@lidofinance/ui-primitives';
 import {
   LayoutTitle,
   LayoutSubTitle,
 } from '@lidofinance/next-staking-widget-app';
 
+import { Faq, FAQItem, getFaqList } from 'components/faq';
+import EthWallet from 'components/ethWalletCard';
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';
-import EthWallet from 'components/ethWalletCard';
 
 interface HomeProps {
   faqList: FAQItem[];

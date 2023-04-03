@@ -24,11 +24,7 @@
   "dependencies": {
     "@lido-sdk/constants": "^1.6.0",
     "@lido-sdk/react": "^1.18.1",
-    "copy-to-clipboard": "^3.3.3",
-    "gray-matter": "^4.0.3",
-    "remark": "^13.0.0",
-    "remark-external-links": "^8.0.0",
-    "remark-html": "^13.0.1"
+    "copy-to-clipboard": "^3.3.3"
   },
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.6.1",
@@ -36,5 +32,5 @@
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "93438eb2f4d0ed7dc14ca15381fd6e82"
+  "yalcSig": "a53ea03b2097058172429fc33217c82d"
 }

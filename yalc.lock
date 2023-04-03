@@ -10,7 +10,7 @@
       "file": true
     },
     "@lidofinance/ui-primitives": {
-      "signature": "93438eb2f4d0ed7dc14ca15381fd6e82",
+      "signature": "a53ea03b2097058172429fc33217c82d",
       "file": true
     },
     "@lidofinance/next-ui-pages": {
@@ -23,7 +23,7 @@
       "replaced": "^0.7.0"
     },
     "@lidofinance/eth-ui-wallet-modal": {
-      "signature": "c2bf48546d2fb5851dbf01c19656fc50",
+      "signature": "6dc1013d3c636b898b1e99f75214eb23",
       "file": true
     },
     "@lidofinance/eth-ui-primitives": {
