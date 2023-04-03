@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import NextApp, { AppProps } from 'next/app';
 import { ProviderWeb3 } from '@reef-knot/web3-react';
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
@@ -44,8 +44,8 @@ const headerNavigation: INavigationLink[] = [
   },
 ];
 
-// PAY ATTENTION: Providers will be inserted in CookieThemeProvider before layout components
-const Providers: FC<PropsWithChildren> = ({ children }) => (
+// App wrapper
+const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
   <ProviderWeb3
     defaultChainId={dynamics.defaultChain}
     supportedChainIds={dynamics.supportedChains}
@@ -55,23 +55,14 @@ const Providers: FC<PropsWithChildren> = ({ children }) => (
       walletsMetrics={walletsMetrics}
       hiddenWallets={['Opera Wallet']}
     >
-      {children}
+      <WidgetApp
+        navigation={headerNavigation}
+        headerActions={<HeaderActions />}
+      >
+        <NextApp {...props} />
+      </WidgetApp>
     </ProviderWalletModal>
   </ProviderWeb3>
-);
-
-// App wrapper
-const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
-  // PAY ATTENTION: You can put here some providers, if they don't depend on CookieThemeProvider:
-  // <SomeProvider>
-  <WidgetApp
-    navigation={headerNavigation}
-    headerActions={<HeaderActions />}
-    providers={Providers}
-  >
-    <NextApp {...props} />
-  </WidgetApp>
-  // </SomeProvider>
 );
 
 export default process.env.NODE_ENV === 'development'

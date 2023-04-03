@@ -520,24 +520,19 @@ const $e165915a57846d7d$export$731f89f04b9d0607 = (0, $7XpC5$styledcomponents).h
 // Migrations old cookies to new cross domain cookies
 (0, $7XpC5$migrationThemeCookiesToCrossDomainCookiesClientSide)();
 const $c9750bb567934a74$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    const Providers = props.providers;
     return /*#__PURE__*/ (0, $7XpC5$jsxs)((0, $7XpC5$CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $7XpC5$jsx)((0, $43576bcd02538192$export$2e2bcd8739ae039), {}),
-            /*#__PURE__*/ (0, $7XpC5$jsxs)(Providers, {
-                children: [
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
-                        headerActions: props.headerActions,
-                        navigation: props === null || props === void 0 ? void 0 : props.navigation
-                    }),
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $24679ce90808b5b4$export$2e2bcd8739ae039), {
-                        children: props.children
-                    }),
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $587ae881875a0357$export$2e2bcd8739ae039), {}),
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$CookiesTooltip), {}),
-                    /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ToastContainer), {})
-                ]
-            })
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $a0b144425d48bbae$export$2e2bcd8739ae039), {
+                headerActions: props.headerActions,
+                navigation: props === null || props === void 0 ? void 0 : props.navigation
+            }),
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $24679ce90808b5b4$export$2e2bcd8739ae039), {
+                children: props.children
+            }),
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $587ae881875a0357$export$2e2bcd8739ae039), {}),
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$CookiesTooltip), {}),
+            /*#__PURE__*/ (0, $7XpC5$jsx)((0, $7XpC5$ToastContainer), {})
         ]
     });
 };

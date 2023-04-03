@@ -530,24 +530,19 @@ const $a1e29508de594d16$export$731f89f04b9d0607 = (0, ($parcel$interopDefault($8
 // Migrations old cookies to new cross domain cookies
 (0, $8sXRR$lidofinancelidoui.migrationThemeCookiesToCrossDomainCookiesClientSide)();
 const $15ef3cfe99bd30c4$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    const Providers = props.providers;
     return /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)((0, $8sXRR$lidofinancelidoui.CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e6450dc97509fa53$export$2e2bcd8739ae039), {}),
-            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsxs)(Providers, {
-                children: [
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
-                        headerActions: props.headerActions,
-                        navigation: props === null || props === void 0 ? void 0 : props.navigation
-                    }),
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
-                        children: props.children
-                    }),
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $7656a73acf0c9f5b$export$2e2bcd8739ae039), {}),
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.CookiesTooltip), {}),
-                    /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ToastContainer), {})
-                ]
-            })
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $e161151a9ec97516$export$2e2bcd8739ae039), {
+                headerActions: props.headerActions,
+                navigation: props === null || props === void 0 ? void 0 : props.navigation
+            }),
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $be939b77e53cc8c9$export$2e2bcd8739ae039), {
+                children: props.children
+            }),
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $7656a73acf0c9f5b$export$2e2bcd8739ae039), {}),
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.CookiesTooltip), {}),
+            /*#__PURE__*/ (0, $8sXRR$reactjsxruntime.jsx)((0, $8sXRR$lidofinancelidoui.ToastContainer), {})
         ]
     });
 };

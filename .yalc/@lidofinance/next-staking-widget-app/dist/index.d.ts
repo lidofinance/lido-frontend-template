@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, ReactNode } from "react";
+import React, { ReactNode, FC, PropsWithChildren } from "react";
 export interface INavigationLink {
     icon: React.ReactNode;
     title: string;
@@ -9,7 +9,6 @@ export const LayoutTitle: import("styled-components").StyledComponent<"h1", impo
 export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", import("styled-components").DefaultTheme, {}, never>;
 type WidgetAppProps = {
     headerActions: ReactNode;
-    providers: FC<PropsWithChildren>;
     navigation?: INavigationLink[];
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;

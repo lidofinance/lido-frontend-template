@@ -302,7 +302,7 @@ $parcel$export($7e65aae0f2757818$exports, "ProviderWalletModal", function () { r
 
 
 
-const $7e65aae0f2757818$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $53sus$react.memo)(({ children: children , walletsMetrics: walletsMetrics , hiddenWallets: hiddenWallets  })=>{
+const $7e65aae0f2757818$var$_ShadowProviderWalletModal = ({ children: children , walletsMetrics: walletsMetrics , hiddenWallets: hiddenWallets  })=>{
     const [active, setActive] = (0, $53sus$react.useState)(null);
     const { themeName: themeName  } = (0, $53sus$lidofinancelidoui.useThemeToggle)();
     const openModal = (0, $53sus$react.useCallback)((wModal)=>{
@@ -340,6 +340,13 @@ const $7e65aae0f2757818$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $53sus$react
                 ...common
             })
         ]
+    });
+};
+const $7e65aae0f2757818$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $53sus$react.memo)((props)=>{
+    return /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinancelidoui.CookieThemeProvider), {
+        children: /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)($7e65aae0f2757818$var$_ShadowProviderWalletModal, {
+            ...props
+        })
     });
 });
 $7e65aae0f2757818$export$20f61e42ab13a53f.displayName = "ProviderWalletModal";

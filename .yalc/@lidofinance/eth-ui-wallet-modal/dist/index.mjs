@@ -1,6 +1,6 @@
 import {jsx as $5Wt9e$jsx, jsxs as $5Wt9e$jsxs} from "react/jsx-runtime";
-import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, createContext as $5Wt9e$createContext, memo as $5Wt9e$memo, useState as $5Wt9e$useState, useMemo as $5Wt9e$useMemo} from "react";
-import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle} from "@lidofinance/lido-ui";
+import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, createContext as $5Wt9e$createContext, useState as $5Wt9e$useState, useMemo as $5Wt9e$useMemo, memo as $5Wt9e$memo} from "react";
+import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle, CookieThemeProvider as $5Wt9e$CookieThemeProvider} from "@lidofinance/lido-ui";
 import {useCopyToClipboard as $5Wt9e$useCopyToClipboard} from "@lidofinance/ui-primitives";
 import {useSDK as $5Wt9e$useSDK, useEtherscanOpen as $5Wt9e$useEtherscanOpen, useEthereumBalance as $5Wt9e$useEthereumBalance} from "@lido-sdk/react";
 import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "@reef-knot/web3-react";
@@ -299,7 +299,7 @@ $parcel$export($83d393f0f45b5747$exports, "ProviderWalletModal", function () { r
 
 
 
-const $83d393f0f45b5747$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $5Wt9e$memo)(({ children: children , walletsMetrics: walletsMetrics , hiddenWallets: hiddenWallets  })=>{
+const $83d393f0f45b5747$var$_ShadowProviderWalletModal = ({ children: children , walletsMetrics: walletsMetrics , hiddenWallets: hiddenWallets  })=>{
     const [active, setActive] = (0, $5Wt9e$useState)(null);
     const { themeName: themeName  } = (0, $5Wt9e$useThemeToggle)();
     const openModal = (0, $5Wt9e$useCallback)((wModal)=>{
@@ -337,6 +337,13 @@ const $83d393f0f45b5747$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $5Wt9e$memo)
                 ...common
             })
         ]
+    });
+};
+const $83d393f0f45b5747$export$20f61e42ab13a53f = /*#__PURE__*/ (0, $5Wt9e$memo)((props)=>{
+    return /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$CookieThemeProvider), {
+        children: /*#__PURE__*/ (0, $5Wt9e$jsx)($83d393f0f45b5747$var$_ShadowProviderWalletModal, {
+            ...props
+        })
     });
 });
 $83d393f0f45b5747$export$20f61e42ab13a53f.displayName = "ProviderWalletModal";
