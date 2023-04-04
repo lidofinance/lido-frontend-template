@@ -1,6 +1,6 @@
 {
-  "name": "@lidofinance/next-staking-widget-app",
-  "description": "Widget app wrapper for any staking widget based on Next",
+  "name": "@lidofinance/next-widget-app",
+  "description": "Widget app wrapper for any widgets based on Next",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -28,5 +28,5 @@
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "953db7918a5da39dff4a954e6e59c84b"
+  "yalcSig": "bba1c24cf85699b3ca7eb5a9d941ec90"
 }

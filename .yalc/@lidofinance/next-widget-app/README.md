@@ -1,6 +1,6 @@
-# @lidofinance/next-staking-widget-app
+# @lidofinance/next-widget-app
 
-Widget app wrapper for any staking widget based on Next
+Widget app wrapper for any widgets based on Next
 
 ### Installation
 ```bash
