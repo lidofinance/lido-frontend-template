@@ -1966,10 +1966,10 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/next-pages/-/next-pages-0.13.0.tgz#b2b7b1c48d5c360b04ab5b013473ba84f1a0ace6"
   integrity sha512-g+oo64kDDm5oQlHsCZZqKGSkBbmn3t2ALmjulta7wtKZOD4Cfgjv6SPTcBQp4NQ6rfu+htaJWFN96gAIBuGbDw==
 
-"@lidofinance/next-staking-widget-app@file:.yalc/@lidofinance/next-staking-widget-app":
+"@lidofinance/next-ui-pages@file:.yalc/@lidofinance/next-ui-pages":
   version "0.0.0"
 
-"@lidofinance/next-ui-pages@file:.yalc/@lidofinance/next-ui-pages":
+"@lidofinance/next-widget-app@file:.yalc/@lidofinance/next-widget-app":
   version "0.0.0"
 
 "@lidofinance/rpc@^0.13.0":
@@ -1985,10 +1985,6 @@
     "@lido-sdk/constants" "^1.6.0"
     "@lido-sdk/react" "^1.18.1"
     copy-to-clipboard "^3.3.3"
-    gray-matter "^4.0.3"
-    remark "^13.0.0"
-    remark-external-links "^8.0.0"
-    remark-html "^13.0.1"
 
 "@metamask/safe-event-emitter@2.0.0", "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"

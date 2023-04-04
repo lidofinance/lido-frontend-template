@@ -1,9 +1,6 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import {
-  LayoutSubTitle,
-  LayoutTitle,
-} from '@lidofinance/next-staking-widget-app';
+import { LayoutSubTitle, LayoutTitle } from '@lidofinance/next-widget-app';
 
 // PAY ATTENTION: Example showing how to add page (and for routing test)
 const Example: FC = () => {
