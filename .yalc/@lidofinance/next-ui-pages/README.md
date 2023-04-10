@@ -12,8 +12,8 @@ yarn add react@^17.0.0
 # or react 18
 yarn add react@^18.0.0
 
-# and next
-yarn add next@^12.3.0
+# and additional
+yarn add next@^12.3.0 @lidofinance/lido-ui@^3.6.1
 ```
 
 ## Getting started
