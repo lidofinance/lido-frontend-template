@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useSDK, useLidoSWR } from '@lido-sdk/react';
-import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
-import { serverRuntimeConfig } from 'config';
+import { DATA_UNAVAILABLE, serverRuntimeConfig } from 'config';
 import { swrFetcher } from 'utils';
 
 const { basePath } = serverRuntimeConfig;

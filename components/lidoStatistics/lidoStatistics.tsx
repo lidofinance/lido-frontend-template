@@ -9,9 +9,7 @@ import {
 } from '@lidofinance/lido-ui';
 import { useContractSWR, useSTETHContractRPC } from '@lido-sdk/react';
 
-import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
-
-import { LIDO_APR_TOOLTIP_TEXT } from 'config';
+import { DATA_UNAVAILABLE, LIDO_APR_TOOLTIP_TEXT } from 'config';
 import { useLidoApr, useLidoStats } from 'hooks';
 
 import { FlexCenterVertical } from './styles';

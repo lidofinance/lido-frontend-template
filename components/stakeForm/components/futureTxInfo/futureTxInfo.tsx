@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
 import { useSTETHContractRPC, useContractSWR } from '@lido-sdk/react';
 import { DataTable, DataTableRow } from '@lidofinance/lido-ui';
-import { DATA_UNAVAILABLE } from '@lidofinance/ui-primitives';
 
+import { DATA_UNAVAILABLE } from 'config';
 import { useStethSubmitGasLimit, useTxCostInUsd } from 'hooks';
 
 import { FutureTxInfoProps } from './types';
