@@ -23,10 +23,10 @@
   },
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.6.1",
-    "@lidofinance/ui-primitives": "*",
+    "@lidofinance/next-ui-primitives": "*",
     "next": "^12.3.0",
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "3dbaee39d159cdcc33aa8792b9335ad1"
+  "yalcSig": "dcb239849c3e45ee4f300d89b627a50a"
 }

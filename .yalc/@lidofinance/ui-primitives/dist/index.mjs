@@ -1,7 +1,5 @@
 import {jsx as $9LU3C$jsx, jsxs as $9LU3C$jsxs} from "react/jsx-runtime";
 import {useCallback as $9LU3C$useCallback} from "react";
-import {useRouter as $9LU3C$useRouter} from "next/router";
-import $9LU3C$nextlink from "next/link";
 import $9LU3C$styledcomponents from "styled-components";
 import {Block as $9LU3C$Block, useBreakpoint as $9LU3C$useBreakpoint, IdenticonBadge as $9LU3C$IdenticonBadge, InlineLoader as $9LU3C$InlineLoader} from "@lidofinance/lido-ui";
 import $9LU3C$copytoclipboard from "copy-to-clipboard";
@@ -26,39 +24,6 @@ function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 var $2edec60da2794fb1$exports = {};
-var $15053db04efb3bba$exports = {};
-var $89f5730a736d4546$exports = {};
-
-$parcel$export($89f5730a736d4546$exports, "LocalLink", function () { return $89f5730a736d4546$export$eaf41e22530ae68d; });
-
-
-
-
-const $89f5730a736d4546$export$eaf41e22530ae68d = (props)=>{
-    const { href: href , ...rest } = props;
-    const router = (0, $9LU3C$useRouter)();
-    // TODO: for `ref` and `embed` (Andrey) do we need it?
-    const { ref: ref , embed: embed  } = router.query;
-    const extraQuery = {};
-    if (ref) extraQuery.ref = ref;
-    if (embed) extraQuery.embed = embed;
-    return /*#__PURE__*/ (0, $9LU3C$jsx)((0, $9LU3C$nextlink), {
-        ...rest,
-        href: {
-            pathname: href,
-            query: extraQuery
-        }
-    });
-};
-
-
-var $b79613d19ba93c17$exports = {};
-
-
-$parcel$exportWildcard($15053db04efb3bba$exports, $89f5730a736d4546$exports);
-$parcel$exportWildcard($15053db04efb3bba$exports, $b79613d19ba93c17$exports);
-
-
 var $bee4c5e5a65c56cf$exports = {};
 var $31d06770d11bf20e$exports = {};
 var $14bfac055f2980c0$exports = {};
@@ -288,18 +253,7 @@ $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $12f586c8987d12ce$exports);
 $parcel$exportWildcard($bee4c5e5a65c56cf$exports, $cd9ba9fc910e1e75$exports);
 
 
-$parcel$exportWildcard($2edec60da2794fb1$exports, $15053db04efb3bba$exports);
 $parcel$exportWildcard($2edec60da2794fb1$exports, $bee4c5e5a65c56cf$exports);
-
-
-var $2aef88d4808430da$exports = {};
-var $769c4b98231bad39$exports = {};
-
-$parcel$export($769c4b98231bad39$exports, "DATA_UNAVAILABLE", function () { return $769c4b98231bad39$export$4872120a4614b963; });
-const $769c4b98231bad39$export$4872120a4614b963 = "N/A";
-
-
-$parcel$exportWildcard($2aef88d4808430da$exports, $769c4b98231bad39$exports);
 
 
 var $fb78df27aae727e9$exports = {};
@@ -322,5 +276,5 @@ $parcel$exportWildcard($fb78df27aae727e9$exports, $7ed617aa6b701fa6$exports);
 
 
 
-export {$89f5730a736d4546$export$eaf41e22530ae68d as LocalLink, $14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $69868d219c84490b$export$db542de45b23291e as WalletFallback, $769c4b98231bad39$export$4872120a4614b963 as DATA_UNAVAILABLE, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard};
+export {$14bfac055f2980c0$export$fa10365278598d8a as WalletCard, $24f5534c5a2a2725$export$36be84b4aed0dcaa as WalletCardAccount, $f979852e26257adb$export$976f47e15d5defb0 as WalletCardBalance, $85abde3fc4d2318a$export$7d0c76f6a0418e11 as WalletCardRow, $69868d219c84490b$export$db542de45b23291e as WalletFallback, $7ed617aa6b701fa6$export$b2199c37e85de4a7 as useCopyToClipboard};
 //# sourceMappingURL=index.mjs.map

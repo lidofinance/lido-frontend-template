@@ -1,4 +1,4 @@
-import { metricsFactory } from '@lidofinance/next-pages';
+import { metricsFactory } from '@lidofinance/next-pages/api';
 import { registry } from 'utilsApi/metrics';
 import { contractInfo } from 'utils/metrics';
 

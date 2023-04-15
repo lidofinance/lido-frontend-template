@@ -1,8 +1,3 @@
-import { FC } from 'react';
-import { PageError } from '@lidofinance/next-ui-pages';
-
-const Page500: FC = () => (
-  <PageError title="500" content="Internal Server Error" />
-);
+import { Page500 } from '@lidofinance/next-pages';
 
 export default Page500;

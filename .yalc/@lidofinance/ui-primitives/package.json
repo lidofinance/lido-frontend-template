@@ -1,6 +1,6 @@
 {
   "name": "@lidofinance/ui-primitives",
-  "description": "UI primitives (client-side: components, constants, types, hooks, utils)",
+  "description": "UI primitives (client-side: components, constants, hooks)",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -22,15 +22,12 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@lido-sdk/constants": "^1.6.0",
-    "@lido-sdk/react": "^1.18.1",
     "copy-to-clipboard": "^3.3.3"
   },
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.6.1",
-    "next": "^12.3.0",
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "5c28d9d715c78999340a0e68a54901e7"
+  "yalcSig": "0c18392d1e813397a885406f12a29420"
 }

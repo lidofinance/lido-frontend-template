@@ -1,10 +1,10 @@
 import {jsxs as $gv0PY$jsxs, jsx as $gv0PY$jsx, Fragment as $gv0PY$Fragment} from "react/jsx-runtime";
-import {memo as $gv0PY$memo} from "react";
+import $gv0PY$react, {memo as $gv0PY$memo} from "react";
 import {migrationThemeCookiesToCrossDomainCookiesClientSide as $gv0PY$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer, LidoLogo as $gv0PY$LidoLogo, Container as $gv0PY$Container, Divider as $gv0PY$Divider, Link as $gv0PY$Link, ThemeToggler as $gv0PY$ThemeToggler} from "@lidofinance/lido-ui";
 import $gv0PY$styledcomponents, {createGlobalStyle as $gv0PY$createGlobalStyle, css as $gv0PY$css} from "styled-components";
 import $gv0PY$nextlink from "next/link";
 import {useRouter as $gv0PY$useRouter} from "next/router";
-import {LocalLink as $gv0PY$LocalLink} from "@lidofinance/ui-primitives";
+import {LidoLink as $gv0PY$LidoLink} from "@lidofinance/next-ui-primitives";
 
 
 
@@ -131,7 +131,8 @@ const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((
 `), ({ theme: theme  })=>theme.fontSizesMap.xs);
 
 
-const $acdcb1d026776f13$var$Footer = ()=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
+const $acdcb1d026776f13$var$Footer = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
+        ...rest,
         size: "full",
         forwardedAs: "footer",
         children: [
@@ -253,14 +254,13 @@ const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).d
 
 
 const $cbf1a2d5ec325762$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot  } = props;
-    return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $7861520291ce5a13$export$af0f646b086814d1), {
-        children: /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$Fragment), {
-            children: [
-                leftSlot,
-                /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ThemeToggler), {})
-            ]
-        })
+    const { leftSlot: leftSlot , ...rest } = props;
+    return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $7861520291ce5a13$export$af0f646b086814d1), {
+        ...rest,
+        children: [
+            leftSlot,
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ThemeToggler), {})
+        ]
     });
 };
 
@@ -273,8 +273,9 @@ const $cbf1a2d5ec325762$export$223875819fd7cf93 = (props)=>{
 
 
 
+
 let $1b182eeff22f5ff5$var$_ = (t)=>t, $1b182eeff22f5ff5$var$t;
-const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents).a($1b182eeff22f5ff5$var$t || ($1b182eeff22f5ff5$var$t = $1b182eeff22f5ff5$var$_`
+const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((0, $gv0PY$LidoLink))($1b182eeff22f5ff5$var$t || ($1b182eeff22f5ff5$var$t = $1b182eeff22f5ff5$var$_`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -314,34 +315,60 @@ const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents).a
     line-height: 1.2em;
     letter-spacing: 0;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
+`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs)// import styled from 'styled-components'
+//
+// export const NavigationLinkStyle = styled.div<{ active: boolean }>`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//
+//   font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
+//   line-height: 1.7em;
+//   font-weight: 800;
+//   text-transform: uppercase;
+//   text-decoration: none !important;
+//   letter-spacing: 0.04em;
+//   color: var(--lido-color-secondary);
+//
+//   opacity: ${(props) => (props.active ? 1 : 0.8)};
+//   cursor: pointer;
+//
+//   a:hover {
+//     color: var(--lido-color-secondary);
+//     opacity: 1;
+//   }
+//   a:visited {
+//     color: var(--lido-color-secondary);
+//   }
+//   a:not(:last-of-type) {
+//     margin-right: 32px;
+//   }
+//
+//   a > svg {
+//     fill: ${({ active }) => (active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`)};
+//   }
+//
+//   ${({ theme }) => theme.mediaQueries.lg} {
+//     flex-direction: column;
+//     text-transform: none;
+//     font-weight: 500;
+//     font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
+//     line-height: 1.2em;
+//     letter-spacing: 0;
+//   }
+// `
+;
 
 
-const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external  })=>{
-    // TODO: use ...rest for styling
-    // const { icon, title, href, external } = props
-    const router = (0, $gv0PY$useRouter)();
-    const searchParamsString = new URLSearchParams(router.query).toString();
-    // TODO: for `ref` and `embed` (Andrey) do we need it?
-    const queryString = searchParamsString ? `?${searchParamsString}` : "";
-    const pathWithQuery = href + `${queryString}`;
-    return external ? /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
-        href: pathWithQuery,
-        active: router.pathname === href,
-        target: "_blank",
-        children: [
-            icon,
-            /*#__PURE__*/ (0, $gv0PY$jsx)("span", {
-                children: title
-            })
-        ]
-    }) : // Fix hydration error https://github.com/vercel/next.js/issues/42358#issuecomment-1307230409
-    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$LocalLink), {
+const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external , ...rest })=>{
+    const { pathname: pathname  } = (0, $gv0PY$useRouter)();
+    return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
+        ...rest,
         href: href,
-        passHref: true,
-        legacyBehavior: true,
-        children: /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
-            active: router.pathname === href,
+        external: external,
+        active: pathname === href,
+        children: /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$react).Fragment, {
             children: [
                 icon,
                 /*#__PURE__*/ (0, $gv0PY$jsx)("span", {
@@ -399,9 +426,10 @@ const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $gv0PY$styledcomponents).d
 
 
 const $783d85da9b1dc834$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $gv0PY$memo)((props)=>{
-    const { links: links  } = props;
+    const { links: links , ...rest } = props;
     if (!links) return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Fragment), {});
     return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $f275cfeaf9486c8e$export$f8af16d8231e3b4e), {
+        ...rest,
         children: links.map((pageProps)=>/*#__PURE__*/ (0, $gv0PY$jsx)((0, $158badbcc92b8a29$export$721ee963a67379f1), {
                 ...pageProps
             }, pageProps.href))
@@ -437,6 +465,7 @@ const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).d
 const $e06737997a3d64a1$var$Header = (props)=>{
     const { navigation: navigation , headerActions: headerActions  } = props;
     return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $af46b3954d96e837$export$54a719cd6595ff5c), {
+        ...props,
         size: "full",
         forwardedAs: "header",
         children: [

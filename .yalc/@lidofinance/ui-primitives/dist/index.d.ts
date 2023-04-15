@@ -1,10 +1,5 @@
-import { LinkProps } from "next/link";
 import React, { FC, PropsWithChildren } from "react";
 import { BlockProps } from "@lidofinance/lido-ui";
-export type LocalLinkProps = LinkProps & {
-    href: string;
-};
-export const LocalLink: FC<React.PropsWithChildren<LocalLinkProps>>;
 export type WalletCardComponent = FC<BlockProps>;
 export const WalletCard: WalletCardComponent;
 type WalletCardAccountProps = {
@@ -25,7 +20,6 @@ export type FallbackWalletComponent = FC<BlockProps & {
     error: string;
 }>;
 export const WalletFallback: FallbackWalletComponent;
-export const DATA_UNAVAILABLE = "N/A";
 export const useCopyToClipboard: (text: string) => (() => void);
 
 //# sourceMappingURL=index.d.ts.map

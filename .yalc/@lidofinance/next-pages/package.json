@@ -1,0 +1,48 @@
+{
+  "name": "@lidofinance/next-pages",
+  "description": "Common next API and UI pages",
+  "repository": "git@github.com:lidofinance/warehouse.git",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16",
+    "browsers": "> 0.5%, last 2 versions, not dead"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . && prettier --check src",
+    "lint:fix": "eslint --fix . && prettier --check src --write",
+    "types": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./dist/ui/index.js",
+    "./ui": "./dist/ui/index.js",
+    "./api": "./dist/api/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/ui/index.d.ts"
+      ],
+      "ui": [
+        "./dist/ui/index.d.ts"
+      ],
+      "api": [
+        "./dist/api/index.d.ts"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@lidofinance/api-logger": "*",
+    "@lidofinance/api-rpc": "*",
+    "@lidofinance/rpc": "*",
+    "@lidofinance/lido-ui": "^3.6.1",
+    "next": "^12.2.0",
+    "prom-client": "^14.0.0",
+    "react": "17 || 18"
+  },
+  "yalcSig": "279515cb61911db3e5523214322e3bb9"
+}

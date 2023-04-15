@@ -1,6 +1,6 @@
 {
-  "name": "@lidofinance/next-ui-pages",
-  "description": "Common next UI pages",
+  "name": "@lidofinance/next-ui-primitives",
+  "description": "Next UI primitives (client-side: components, constants, hooks)",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -22,9 +22,8 @@
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@lidofinance/lido-ui": "^3.6.1",
     "next": "^12.3.0",
     "react": "17 || 18"
   },
-  "yalcSig": "fb24ec573044804e79bccb7afe98b7e4"
+  "yalcSig": "76cd1f577affd5989246f02984ca7609"
 }

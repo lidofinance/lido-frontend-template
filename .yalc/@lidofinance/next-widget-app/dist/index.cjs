@@ -4,7 +4,7 @@ var $80aVp$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $80aVp$styledcomponents = require("styled-components");
 var $80aVp$nextlink = require("next/link");
 var $80aVp$nextrouter = require("next/router");
-var $80aVp$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
+var $80aVp$lidofinancenextuiprimitives = require("@lidofinance/next-ui-primitives");
 
 function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
@@ -141,7 +141,8 @@ const $3b51e8e45c2a2f25$export$70ac745ffa2bea38 = (0, ($parcel$interopDefault($8
 `), ({ theme: theme  })=>theme.fontSizesMap.xs);
 
 
-const $7d98dd07dc8f6815$var$Footer = ()=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $3b51e8e45c2a2f25$export$51574cb47565ad4f), {
+const $7d98dd07dc8f6815$var$Footer = ({ ...rest })=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $3b51e8e45c2a2f25$export$51574cb47565ad4f), {
+        ...rest,
         size: "full",
         forwardedAs: "footer",
         children: [
@@ -263,14 +264,13 @@ const $c420bc8b2b359a15$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8
 
 
 const $6c9b3dcd1f47cff5$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot  } = props;
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $c420bc8b2b359a15$export$af0f646b086814d1), {
-        children: /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $80aVp$reactjsxruntime.Fragment), {
-            children: [
-                leftSlot,
-                /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$lidofinancelidoui.ThemeToggler), {})
-            ]
-        })
+    const { leftSlot: leftSlot , ...rest } = props;
+    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $c420bc8b2b359a15$export$af0f646b086814d1), {
+        ...rest,
+        children: [
+            leftSlot,
+            /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$lidofinancelidoui.ThemeToggler), {})
+        ]
     });
 };
 
@@ -283,8 +283,9 @@ const $6c9b3dcd1f47cff5$export$223875819fd7cf93 = (props)=>{
 
 
 
+
 let $ec8c7e2f9b35d8f1$var$_ = (t)=>t, $ec8c7e2f9b35d8f1$var$t;
-const $ec8c7e2f9b35d8f1$export$25da3807dbd81a49 = (0, ($parcel$interopDefault($80aVp$styledcomponents))).a($ec8c7e2f9b35d8f1$var$t || ($ec8c7e2f9b35d8f1$var$t = $ec8c7e2f9b35d8f1$var$_`
+const $ec8c7e2f9b35d8f1$export$25da3807dbd81a49 = (0, ($parcel$interopDefault($80aVp$styledcomponents)))((0, $80aVp$lidofinancenextuiprimitives.LidoLink))($ec8c7e2f9b35d8f1$var$t || ($ec8c7e2f9b35d8f1$var$t = $ec8c7e2f9b35d8f1$var$_`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -324,34 +325,60 @@ const $ec8c7e2f9b35d8f1$export$25da3807dbd81a49 = (0, ($parcel$interopDefault($8
     line-height: 1.2em;
     letter-spacing: 0;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
+`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs)// import styled from 'styled-components'
+//
+// export const NavigationLinkStyle = styled.div<{ active: boolean }>`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//
+//   font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
+//   line-height: 1.7em;
+//   font-weight: 800;
+//   text-transform: uppercase;
+//   text-decoration: none !important;
+//   letter-spacing: 0.04em;
+//   color: var(--lido-color-secondary);
+//
+//   opacity: ${(props) => (props.active ? 1 : 0.8)};
+//   cursor: pointer;
+//
+//   a:hover {
+//     color: var(--lido-color-secondary);
+//     opacity: 1;
+//   }
+//   a:visited {
+//     color: var(--lido-color-secondary);
+//   }
+//   a:not(:last-of-type) {
+//     margin-right: 32px;
+//   }
+//
+//   a > svg {
+//     fill: ${({ active }) => (active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`)};
+//   }
+//
+//   ${({ theme }) => theme.mediaQueries.lg} {
+//     flex-direction: column;
+//     text-transform: none;
+//     font-weight: 500;
+//     font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
+//     line-height: 1.2em;
+//     letter-spacing: 0;
+//   }
+// `
+;
 
 
-const $94587fdd87edefce$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external  })=>{
-    // TODO: use ...rest for styling
-    // const { icon, title, href, external } = props
-    const router = (0, $80aVp$nextrouter.useRouter)();
-    const searchParamsString = new URLSearchParams(router.query).toString();
-    // TODO: for `ref` and `embed` (Andrey) do we need it?
-    const queryString = searchParamsString ? `?${searchParamsString}` : "";
-    const pathWithQuery = href + `${queryString}`;
-    return external ? /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $ec8c7e2f9b35d8f1$export$25da3807dbd81a49), {
-        href: pathWithQuery,
-        active: router.pathname === href,
-        target: "_blank",
-        children: [
-            icon,
-            /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)("span", {
-                children: title
-            })
-        ]
-    }) : // Fix hydration error https://github.com/vercel/next.js/issues/42358#issuecomment-1307230409
-    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$lidofinanceuiprimitives.LocalLink), {
+const $94587fdd87edefce$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external , ...rest })=>{
+    const { pathname: pathname  } = (0, $80aVp$nextrouter.useRouter)();
+    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $ec8c7e2f9b35d8f1$export$25da3807dbd81a49), {
+        ...rest,
         href: href,
-        passHref: true,
-        legacyBehavior: true,
-        children: /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $ec8c7e2f9b35d8f1$export$25da3807dbd81a49), {
-            active: router.pathname === href,
+        external: external,
+        active: pathname === href,
+        children: /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, ($parcel$interopDefault($80aVp$react))).Fragment, {
             children: [
                 icon,
                 /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)("span", {
@@ -409,9 +436,10 @@ const $0f0af5405694d290$export$f8af16d8231e3b4e = (0, ($parcel$interopDefault($8
 
 
 const $a07f17e7c68bb26f$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $80aVp$react.memo)((props)=>{
-    const { links: links  } = props;
+    const { links: links , ...rest } = props;
     if (!links) return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$reactjsxruntime.Fragment), {});
     return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $0f0af5405694d290$export$f8af16d8231e3b4e), {
+        ...rest,
         children: links.map((pageProps)=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $94587fdd87edefce$export$721ee963a67379f1), {
                 ...pageProps
             }, pageProps.href))
@@ -447,6 +475,7 @@ const $3b3e5656b8e7ca1c$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
 const $2b0c08c25f103129$var$Header = (props)=>{
     const { navigation: navigation , headerActions: headerActions  } = props;
     return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $3b3e5656b8e7ca1c$export$54a719cd6595ff5c), {
+        ...props,
         size: "full",
         forwardedAs: "header",
         children: [

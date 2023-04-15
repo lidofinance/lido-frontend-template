@@ -1,7 +1,5 @@
 var $41D0Z$reactjsxruntime = require("react/jsx-runtime");
 var $41D0Z$react = require("react");
-var $41D0Z$nextrouter = require("next/router");
-var $41D0Z$nextlink = require("next/link");
 var $41D0Z$styledcomponents = require("styled-components");
 var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $41D0Z$copytoclipboard = require("copy-to-clipboard");
@@ -22,46 +20,13 @@ function $parcel$exportWildcard(dest, source) {
 
   return dest;
 }
-function $parcel$interopDefault(a) {
-  return a && a.__esModule ? a.default : a;
-}
 function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
+function $parcel$interopDefault(a) {
+  return a && a.__esModule ? a.default : a;
+}
 var $f812b98c92824ab2$exports = {};
-var $e91da9bc1433f42b$exports = {};
-var $31d803d6a64351b5$exports = {};
-
-$parcel$export($31d803d6a64351b5$exports, "LocalLink", function () { return $31d803d6a64351b5$export$eaf41e22530ae68d; });
-
-
-
-
-const $31d803d6a64351b5$export$eaf41e22530ae68d = (props)=>{
-    const { href: href , ...rest } = props;
-    const router = (0, $41D0Z$nextrouter.useRouter)();
-    // TODO: for `ref` and `embed` (Andrey) do we need it?
-    const { ref: ref , embed: embed  } = router.query;
-    const extraQuery = {};
-    if (ref) extraQuery.ref = ref;
-    if (embed) extraQuery.embed = embed;
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, ($parcel$interopDefault($41D0Z$nextlink))), {
-        ...rest,
-        href: {
-            pathname: href,
-            query: extraQuery
-        }
-    });
-};
-
-
-var $a84ec17ac1c5107b$exports = {};
-
-
-$parcel$exportWildcard($e91da9bc1433f42b$exports, $31d803d6a64351b5$exports);
-$parcel$exportWildcard($e91da9bc1433f42b$exports, $a84ec17ac1c5107b$exports);
-
-
 var $69db8755909407dc$exports = {};
 var $fc137a99170e55e2$exports = {};
 var $829e9b0c5c7aff2f$exports = {};
@@ -291,18 +256,7 @@ $parcel$exportWildcard($69db8755909407dc$exports, $cc2f4aa216efbbda$exports);
 $parcel$exportWildcard($69db8755909407dc$exports, $20047e2ea2e5f098$exports);
 
 
-$parcel$exportWildcard($f812b98c92824ab2$exports, $e91da9bc1433f42b$exports);
 $parcel$exportWildcard($f812b98c92824ab2$exports, $69db8755909407dc$exports);
-
-
-var $4e3ab5b3c97613f6$exports = {};
-var $d2b464fb2f5b381f$exports = {};
-
-$parcel$export($d2b464fb2f5b381f$exports, "DATA_UNAVAILABLE", function () { return $d2b464fb2f5b381f$export$4872120a4614b963; });
-const $d2b464fb2f5b381f$export$4872120a4614b963 = "N/A";
-
-
-$parcel$exportWildcard($4e3ab5b3c97613f6$exports, $d2b464fb2f5b381f$exports);
 
 
 var $ab1640a4ee939ad1$exports = {};
@@ -324,7 +278,6 @@ $parcel$exportWildcard($ab1640a4ee939ad1$exports, $81fdd56ab370cc2c$exports);
 
 
 $parcel$exportWildcard(module.exports, $f812b98c92824ab2$exports);
-$parcel$exportWildcard(module.exports, $4e3ab5b3c97613f6$exports);
 $parcel$exportWildcard(module.exports, $ab1640a4ee939ad1$exports);
 
 

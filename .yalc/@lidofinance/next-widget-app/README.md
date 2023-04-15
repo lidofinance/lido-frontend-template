@@ -16,7 +16,7 @@ yarn add react@^17.0.0
 yarn add react@^18.0.0
 
 # and additional
-yarn add next@^12.3.0 styled-components@^5.3.5 @lidofinance/lido-ui@^3.6.1 @lidofinance/ui-primitives@^<TODO>
+yarn add next@^12.3.0 styled-components@^5.3.5 @lidofinance/lido-ui@^3.6.1 @lidofinance/next-ui-primitives@^<TODO>
 ```
 
 ### Custom error page in Next.js

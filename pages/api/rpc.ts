@@ -4,7 +4,7 @@ import {
   wrapRequest,
   responseTimeMetric,
 } from '@lidofinance/next-api-wrapper';
-import { rpcFactory } from '@lidofinance/next-pages';
+import { rpcFactory } from '@lidofinance/next-pages/api';
 
 import { API_ROUTES, dynamics, serverRuntimeConfig } from 'config';
 import {
