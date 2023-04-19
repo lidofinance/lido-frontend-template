@@ -53,7 +53,10 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
               <TokenToWallet address={stethAddress} />
             </>
           }
-        />
+          extra={'Extra content here'}
+        >
+          Children content here
+        </WalletCardBalance>
         <WalletCardBalance
           small
           title="Token balance"
@@ -64,7 +67,10 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
               <TokenToWallet address={wstethAddress} />
             </>
           }
-        />
+          extra={'Extra content here'}
+        >
+          Children content here
+        </WalletCardBalance>
       </WalletCardRow>
     </WalletCard>
   );
