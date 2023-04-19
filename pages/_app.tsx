@@ -8,7 +8,7 @@ import {
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { WidgetApp, INavigationLink } from '@lidofinance/next-widget-app';
+import { WidgetApp, NavigationLinkProps } from '@lidofinance/next-widget-app';
 
 import { backendRPC, dynamics, walletsMetrics } from 'config';
 import { HeaderActions } from 'components/headerActions';
@@ -22,7 +22,7 @@ migrationAllowCookieToCrossDomainCookieClientSide(
 );
 
 // Header pages
-const headerNavigation: INavigationLink[] = [
+const headerNavigation: NavigationLinkProps[] = [
   {
     title: 'Stake',
     href: '/',
@@ -37,7 +37,6 @@ const headerNavigation: INavigationLink[] = [
     title: 'Landing',
     href: 'https://lido.fi/',
     icon: <LdoIcon />,
-    external: true,
   },
 ];
 
