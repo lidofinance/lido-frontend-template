@@ -18,6 +18,8 @@ yarn add styled-components@^5.3.5 @reef-knot/web3-react@^0.3.0 @lidofinance/lido
 
 ## Getting started
 
+Make sure that your **project** was wrapped by `CookieThemeProvider` from [@lidofinance/lido-ui](https://github.com/lidofinance/ui/tree/main/packages/theme).
+
 ### Components
 
 #### FormatToken:
@@ -49,7 +51,7 @@ export const Component: FC = () => {
 }
 ```
 
-#### WalletFallback (Ethereum directional):
+#### WalletFallback:
 ```tsx
 // `useWeb3` and other imports what is out of context here
 const EthWalletCard: EthWalletCardComponent = (props) => {

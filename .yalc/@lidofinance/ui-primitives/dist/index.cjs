@@ -1,5 +1,5 @@
 var $41D0Z$reactjsxruntime = require("react/jsx-runtime");
-var $41D0Z$react = require("react");
+require("react");
 var $41D0Z$styledcomponents = require("styled-components");
 var $41D0Z$lidofinancelidoui = require("@lidofinance/lido-ui");
 var $41D0Z$copytoclipboard = require("copy-to-clipboard");
@@ -58,11 +58,7 @@ const $829e9b0c5c7aff2f$export$fa10365278598d8a = (props)=>{
 };
 
 
-var $49c05fc6d54eab50$exports = {};
-
-
 $parcel$exportWildcard($fc137a99170e55e2$exports, $829e9b0c5c7aff2f$exports);
-$parcel$exportWildcard($fc137a99170e55e2$exports, $49c05fc6d54eab50$exports);
 
 
 var $5f7eb0c04a209cf0$exports = {};
@@ -177,19 +173,13 @@ const $dc56f960f8e379a3$export$976f47e15d5defb0 = (props)=>{
 };
 
 
-var $545e26adc3aea4d2$exports = {};
-
-
 $parcel$exportWildcard($dc104a3cfac37534$exports, $dc56f960f8e379a3$exports);
-$parcel$exportWildcard($dc104a3cfac37534$exports, $545e26adc3aea4d2$exports);
 
 
 var $cc2f4aa216efbbda$exports = {};
 var $16311673d4ed5791$exports = {};
 
 $parcel$export($16311673d4ed5791$exports, "WalletCardRow", function () { return $16311673d4ed5791$export$7d0c76f6a0418e11; });
-
-
 
 let $e0c76ff559ce91ed$var$_ = (t)=>t, $e0c76ff559ce91ed$var$t;
 const $e0c76ff559ce91ed$export$d700fd35c768af1d = (0, ($parcel$interopDefault($41D0Z$styledcomponents))).div($e0c76ff559ce91ed$var$t || ($e0c76ff559ce91ed$var$t = $e0c76ff559ce91ed$var$_`
@@ -206,11 +196,7 @@ const $e0c76ff559ce91ed$export$d700fd35c768af1d = (0, ($parcel$interopDefault($4
 `), ({ theme: theme  })=>theme.spaceMap.lg);
 
 
-const $16311673d4ed5791$export$7d0c76f6a0418e11 = ({ ...rest })=>{
-    return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $e0c76ff559ce91ed$export$d700fd35c768af1d), {
-        ...rest
-    });
-};
+const $16311673d4ed5791$export$7d0c76f6a0418e11 = (0, $e0c76ff559ce91ed$export$d700fd35c768af1d);
 
 
 $parcel$exportWildcard($cc2f4aa216efbbda$exports, $16311673d4ed5791$exports);
@@ -232,21 +218,16 @@ const $221726d8ec45542f$export$37593eea88cd94ab = (0, ($parcel$interopDefault($4
 `));
 
 
-const $35ce4da3f038e635$export$db542de45b23291e = (props)=>{
-    const { error: error  } = props;
+const $35ce4da3f038e635$export$db542de45b23291e = ({ error: error , ...rest })=>{
     if (error) return /*#__PURE__*/ (0, $41D0Z$reactjsxruntime.jsx)((0, $221726d8ec45542f$export$37593eea88cd94ab), {
-        ...props,
+        ...rest,
         children: error
     });
     return null;
 };
 
 
-var $6855ad9057b75c52$exports = {};
-
-
 $parcel$exportWildcard($20047e2ea2e5f098$exports, $35ce4da3f038e635$exports);
-$parcel$exportWildcard($20047e2ea2e5f098$exports, $6855ad9057b75c52$exports);
 
 
 $parcel$exportWildcard($69db8755909407dc$exports, $fc137a99170e55e2$exports);
@@ -264,14 +245,7 @@ var $81fdd56ab370cc2c$exports = {};
 
 $parcel$export($81fdd56ab370cc2c$exports, "useCopyToClipboard", function () { return $81fdd56ab370cc2c$export$b2199c37e85de4a7; });
 
-
-const $81fdd56ab370cc2c$export$b2199c37e85de4a7 = (text)=>{
-    return (0, $41D0Z$react.useCallback)(()=>{
-        (0, ($parcel$interopDefault($41D0Z$copytoclipboard)))(text);
-    }, [
-        text
-    ]);
-};
+const $81fdd56ab370cc2c$export$b2199c37e85de4a7 = (text)=>()=>(0, ($parcel$interopDefault($41D0Z$copytoclipboard)))(text);
 
 
 $parcel$exportWildcard($ab1640a4ee939ad1$exports, $81fdd56ab370cc2c$exports);

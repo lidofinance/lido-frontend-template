@@ -42,6 +42,7 @@ $parcel$export($3bb79efd86bad224$exports, "formatFloorEtherBalance", function ()
 const { formatEther: $3bb79efd86bad224$var$formatEther  } = (0, $iajOg$utils);
 const { Zero: $3bb79efd86bad224$var$Zero  } = (0, $iajOg$constants);
 const $3bb79efd86bad224$export$f9c87f30bf8ee9ba = (balance = $3bb79efd86bad224$var$Zero, maxDecimalDigits = 4)=>{
+    // ETH is divisible to 18 decimal places
     const modulo = (0, $iajOg$BigNumber).from(10).pow(Math.max(0, 18 - maxDecimalDigits));
     return $3bb79efd86bad224$var$formatEther(balance.sub(balance.mod(modulo)));
 };
@@ -90,12 +91,14 @@ const $88b5526897664120$export$38a986a8dd613d5c = (0, $iajOg$styledcomponents).b
   cursor: pointer;
   margin-top: -2px;
   margin-left: 4px;
+  // more info: https://github.com/lidofinance/ui/tree/main/packages/theme
   background: var(--lido-color-accentDarken);
 
   &:before,
   &:after {
     content: '';
     position: absolute;
+    // more info: https://github.com/lidofinance/ui/tree/main/packages/theme
     background: var(--lido-color-accentContrast);
     width: 7px;
     height: 1px;
@@ -147,11 +150,10 @@ const $5dd21b300492e219$export$23759efdd2d2dae9 = ()=>{
     const { isUnsupported: isUnsupported , supportedChains: supportedChains  } = (0, $iajOg$useSupportedChains)();
     const chains = (0, $iajOg$useMemo)(()=>{
         const _chains = supportedChains.map(({ chainId: chainId , name: name  })=>(0, $iajOg$CHAINS)[chainId] || name);
-        const lastChain = _chains.pop();
-        return [
-            _chains.join(", "),
-            lastChain
-        ].filter((chain)=>chain).join(" or ");
+        return new Intl.ListFormat("en", {
+            style: "long",
+            type: "disjunction"
+        }).format(_chains);
     }, [
         supportedChains
     ]);
@@ -169,11 +171,7 @@ const $cae6e30ca9e6c4b9$export$db542de45b23291e = (props)=>{
 };
 
 
-var $902b87ee8e07f7be$exports = {};
-
-
 $parcel$exportWildcard($9820260e2d9442c5$exports, $cae6e30ca9e6c4b9$exports);
-$parcel$exportWildcard($9820260e2d9442c5$exports, $902b87ee8e07f7be$exports);
 
 
 $parcel$exportWildcard($b4bee4a53d79e7e7$exports, $26e00d193c06e055$exports);

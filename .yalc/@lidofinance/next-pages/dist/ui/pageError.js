@@ -7,5 +7,5 @@ exports.PageError = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const head_1 = __importDefault(require("next/head"));
 const lido_ui_1 = require("@lidofinance/lido-ui");
-const PageError = ({ title, content }) => ((0, jsx_runtime_1.jsxs)(lido_ui_1.ServicePage, { title: title, children: [(0, jsx_runtime_1.jsx)(head_1.default, { children: (0, jsx_runtime_1.jsxs)("title", { children: ["Lido | ", title] }) }), content] }));
+const PageError = ({ title, content, ...rest }) => ((0, jsx_runtime_1.jsxs)(lido_ui_1.ServicePage, { ...rest, title: title, children: [(0, jsx_runtime_1.jsx)(head_1.default, { children: (0, jsx_runtime_1.jsxs)("title", { children: ["Lido | ", title] }) }), content] }));
 exports.PageError = PageError;

@@ -1,6 +1,6 @@
 # @lidofinance/ui-primitives
 
-Widget UI primitives: components, constants, hooks.
+Widget UI primitives: components, hooks.
 
 This component abstracted from the blockchain network,
 other words you can use it for any widgets for any blockchains.
@@ -50,7 +50,8 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
           title="Eth balance"
           loading={false}
           value={'100.00 ETH'}
-        />
+          extra={'Extra content here'}
+        >Children content here</WalletCardBalance>
         <WalletCardAccount account={account} onClickCb={openModal} />
       </WalletCardRow>
       <Divider />
@@ -60,13 +61,15 @@ const EthWalletCard: EthWalletCardComponent = (props) => {
           title="Token balance"
           loading={false}
           value={'1000.00 stETH'}
-        />
+          extra={'Extra content here'}
+        >Children content here</WalletCardBalance>
         <WalletCardBalance
           small
           title="Token balance"
           loading={false}
           value={'1000.00 wstETH'}
-        />
+          extra={'Extra content here'}
+        >Children content here</WalletCardBalance>
       </WalletCardRow>
     </WalletCard>
   )
@@ -87,9 +90,9 @@ export default EthWalletCardWrapper
 ```tsx
 import { useCopyToClipboard } from '@lidofinance/ui-primitives'
 
-const handleCopy = useCopyToClipboard('Some text, for example account address')
-
 const EthWalletCard: EthWalletCardComponent = (props) => {
+  const handleCopy = useCopyToClipboard('Some text, for example account address')
+  
   return (
     <Button onClick={handleCopy} >
       Copy text

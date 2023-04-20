@@ -40,9 +40,9 @@
     "@lidofinance/api-rpc": "*",
     "@lidofinance/rpc": "*",
     "@lidofinance/lido-ui": "^3.6.1",
-    "next": "^12.2.0",
-    "prom-client": "^14.0.0",
+    "next": "^12.3.1",
+    "prom-client": "^14.1.0",
     "react": "17 || 18"
   },
-  "yalcSig": "279515cb61911db3e5523214322e3bb9"
+  "yalcSig": "446d2be2f971632ee4d57aac60b27b5b"
 }

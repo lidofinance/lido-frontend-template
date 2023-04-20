@@ -29,7 +29,7 @@ import NextApp, { AppProps } from 'next/app';
 import { ProviderWeb3 } from '@reef-knot/web3-react';
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
 import { Stake as StakeLogo } from '@lidofinance/lido-ui';
-import { WidgetApp, INavigationLink } from '@lidofinance/next-widget-app';
+import { WidgetApp, NavigationLinkProps } from '@lidofinance/next-widget-app';
 
 import { backendRPC, dynamics, walletsMetrics } from 'config';
 // To `HeaderActions` need to pass FC, which contain `connect wallet` button and `show connect wallet info` button
@@ -38,7 +38,7 @@ import { HeaderActions } from 'components/headerActions';
 import { withCsp } from 'utils';
 
 // Header links
-const headerPages = [
+const headerNavigation: NavigationLinkProps[] = [
   {
     title: 'Internal link',
     href: '/',
@@ -50,7 +50,7 @@ const headerPages = [
     icon: <StakeLogo />,
     external: true,
   },
-] as INavigationLink[];
+];
 
 // App wrapper
 const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (

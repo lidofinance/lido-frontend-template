@@ -1,26 +1,38 @@
 # @lidofinance/next-pages
 
-Common next pages.
+Common API and UI next pages.
 
 ## Installation
 
-`yarn add @lidofinance/next-pages`.
+```bash
+yarn add @lidofinance/next-pages
+
+# and react 17
+yarn add react@^17.0.0
+# or react 18
+yarn add react@^18.0.0
+
+# and additional
+yarn add next@^12.3.0 prom-client@^14.0.0 @lidofinance/lido-ui@^3.6.1
+```
 
 ## Getting started
 
-### health
+### API pages
+
+#### Health
 
 ```ts
-import { health } from '@lidofinance/next-pages';
+import { health } from '@lidofinance/next-pages/api';
 
 export default health;
 ```
 
-### metrics
+#### Metrics
 
 ```ts
 import { registry } from 'utilsApi/metrics';
-import { metricsFactory } from '@lidofinance/next-pages';
+import { metricsFactory } from '@lidofinance/next-pages/api';
 
 const metrics = metricsFactory({
   registry,
@@ -29,14 +41,14 @@ const metrics = metricsFactory({
 export default metrics;
 ```
 
-### rpc
+#### RPC
 
 ```ts
 import getConfig from 'next/config';
-import { registry } from 'utilsApi/metrics';
-import { rpcFactory } from '@lidofinance/api-pages';
-import { METRICS_PREFIX } from '../../config';
+import { rpcFactory } from '@lidofinance/api-pages/api';
 import { fetchRPC, serverLogger } from 'utilsApi';
+import { registry } from 'utilsApi/metrics';
+import { METRICS_PREFIX } from '../../config';
 
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 const { defaultChain } = publicRuntimeConfig;
@@ -77,4 +89,41 @@ const rpc = rpcFactory({
 });
 
 export default rpc;
+```
+
+### UI pages
+
+#### Page Error (ready implementations)
+
+- **Page404**
+- **Page500**
+
+Example for `pages/404.tsx`
+```tsx
+import { Page404 } from '@lidofinance/next-ui-pages';
+// or import { Page404 } from '@lidofinance/next-ui-pages/ui';
+
+export default Page404;
+```
+
+Example for `pages/500.tsx`
+```tsx
+import { Page500 } from '@lidofinance/next-ui-pages';
+// or import { Page500 } from '@lidofinance/next-ui-pages/ui';
+
+export default Page500;
+```
+
+#### Error page as generic component
+
+Example for `pages/404.tsx`
+
+```tsx
+import { FC } from 'react';
+import { PageError } from '@lidofinance/next-ui-pages';
+// or import { PageError } from '@lidofinance/next-ui-pages/ui';
+
+const Page404: FC = () => <PageError title="404" content="Page Not Found" />;
+
+export default Page404;
 ```

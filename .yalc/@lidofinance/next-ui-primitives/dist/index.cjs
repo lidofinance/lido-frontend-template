@@ -26,16 +26,16 @@ function $parcel$export(e, n, v, s) {
   Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 var $9eb49ab02efff021$exports = {};
-var $d3b4970e2efa4eeb$exports = {};
-var $466cb55d4d6a4bd9$exports = {};
+var $abd0d426949c0843$exports = {};
 
-$parcel$export($466cb55d4d6a4bd9$exports, "LidoLink", function () { return $466cb55d4d6a4bd9$export$d97afdf95912bfad; });
-
+$parcel$export($abd0d426949c0843$exports, "LidoLink", function () { return $abd0d426949c0843$export$d97afdf95912bfad; });
 
 
 
-const $466cb55d4d6a4bd9$export$d97afdf95912bfad = (props)=>{
-    const { href: href , external: external , ...rest } = props;
+
+const $abd0d426949c0843$export$d97afdf95912bfad = (props)=>{
+    var _url_searchParams, _url_searchParams1;
+    const { href: href , ...rest } = props;
     const { // `ref` is needed for referral program
     // `embed` is needed for support of `staking widget` via iframe in `ledger-live`
     query: { ref: ref , embed: embed  }  } = (0, $93xws$nextrouter.useRouter)();
@@ -45,31 +45,23 @@ const $466cb55d4d6a4bd9$export$d97afdf95912bfad = (props)=>{
     const [mounted, setMounted] = (0, $93xws$react.useState)(false);
     (0, $93xws$react.useEffect)(()=>setMounted(true), []);
     if (!mounted) return null;
-    if (external) return /*#__PURE__*/ (0, $93xws$reactjsxruntime.jsx)("a", {
+    // Code below is only executed on the client side (due to line above)
+    const url = new URL(href, window.location.origin);
+    if (url.origin !== window.location.origin) return /*#__PURE__*/ (0, $93xws$reactjsxruntime.jsx)("a", {
         target: "_blank",
-        ...props
+        ...props,
+        href: url.href
     });
-    const searchParams = new URLSearchParams();
-    if (ref) searchParams === null || searchParams === void 0 ? void 0 : searchParams.set("ref", ref);
-    if (embed) searchParams === null || searchParams === void 0 ? void 0 : searchParams.set("embed", embed);
-    const searchParamsString = searchParams.toString();
-    const queryString = searchParamsString ? `?${searchParamsString}` : "";
-    const pathWithQuery = href + `${queryString}`;
+    if (ref) (_url_searchParams = url.searchParams) === null || _url_searchParams === void 0 ? void 0 : _url_searchParams.set("ref", ref);
+    if (embed) (_url_searchParams1 = url.searchParams) === null || _url_searchParams1 === void 0 ? void 0 : _url_searchParams1.set("embed", embed);
     return /*#__PURE__*/ (0, $93xws$reactjsxruntime.jsx)((0, ($parcel$interopDefault($93xws$nextlink))), {
         ...rest,
-        href: pathWithQuery
+        href: url.href
     });
 };
 
 
-var $2db163e5be929f49$exports = {};
-
-
-$parcel$exportWildcard($d3b4970e2efa4eeb$exports, $466cb55d4d6a4bd9$exports);
-$parcel$exportWildcard($d3b4970e2efa4eeb$exports, $2db163e5be929f49$exports);
-
-
-$parcel$exportWildcard($9eb49ab02efff021$exports, $d3b4970e2efa4eeb$exports);
+$parcel$exportWildcard($9eb49ab02efff021$exports, $abd0d426949c0843$exports);
 
 
 $parcel$exportWildcard(module.exports, $9eb49ab02efff021$exports);

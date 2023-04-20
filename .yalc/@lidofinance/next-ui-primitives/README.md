@@ -1,6 +1,6 @@
 # @lidofinance/next-ui-primitives
 
-Next UI primitives: components, constants, hooks.
+Next UI primitives: components, constants, hooks etc.
 
 This component abstracted from the blockchain network,
 other words you can use it for any widgets for any blockchains.
@@ -25,23 +25,48 @@ yarn add next@^12.3.0
 
 ### Components
 
-#### LocalLink:
+#### LidoLink:
+
+Should use for **external** (https://lido.fi/) or **local links** (`/example-page?ref=SOME_REF&embed=SOME_EMBED`).
+
+You can pass a `ref` and `embed` query string parameters between **local links**:
+
+- `ref` is needed for referral program;
+- `embed` is needed for support of `staking widget` via iframe in `ledger live`.
+
+Below an example how to make custom styles of **LidoLink**:
 
 ```tsx
-import { LocalLink } from '@lidofinance/next-ui-primitives'
-// imports FC, INavigationLink, CustomLocalLinkStyle...
+import React, { FC } from 'react'
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
+import { LidoLink, LidoLinkProps } from '@lidofinance/next-ui-primitives'
 
-export const Component: FC<INavigationLink> = ({ icon, title, href }) => {
+export type NavigationLinkProps = LidoLinkProps & {
+  icon: React.ReactNode
+  title: string
+  href: string
+}
+
+export const NavigationLinkStyle = styled(LidoLink)<{ $active: boolean }>`
+  // Some custom styles...
+`
+
+export const Component: FC<NavigationLinkProps> = ({ icon, title, href, ...rest }) => {
+  const { pathname } = useRouter()
+
+  // compare without query string
+  const active = pathname === href.split('?')[0]
+
   return (
-    // Fix hydration error via `legacyBehavior` https://github.com/vercel/next.js/issues/42358#issuecomment-1307230409
-    <LocalLink href={href} passHref legacyBehavior>
-      <CustomLocalLinkStyle active={true}>
+    <NavigationLinkStyle {...rest} href={href} $active={active}>
+
+    <React.Fragment>
         {icon}
         <span>{title}</span>
-      </CustomLocalLinkStyle>
-    </LocalLink>
+      </React.Fragment>
+    </NavigationLinkStyle>
   )
 }
 ```
-
-Also, see `navigationLink` in `/packages/next/widget-app/src/layoutComponents/header/components/navigation/components/navigationLink/navigationLink.tsx`
+Also, see [NavigationLink component](./packages/next/widget-app/src/layoutComponents/header/components/navigation/components/navigationLink/navigationLink.tsx) 

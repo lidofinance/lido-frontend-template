@@ -1,8 +1,7 @@
-import { LinkProps } from "next/link";
 import React, { FC } from "react";
+import { LinkProps } from "next/link";
 export type LidoLinkProps = LinkProps & {
     href: string;
-    external: boolean | undefined;
 };
 export const LidoLink: FC<React.PropsWithChildren<LidoLinkProps>>;
 

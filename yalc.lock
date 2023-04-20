@@ -6,7 +6,7 @@
       "file": true
     },
     "@lidofinance/ui-primitives": {
-      "signature": "0c18392d1e813397a885406f12a29420",
+      "signature": "26336c7250ed3747c7012fa55ff73da0",
       "file": true
     },
     "@lidofinance/next-api-wrapper": {
@@ -19,19 +19,19 @@
       "file": true
     },
     "@lidofinance/eth-ui-primitives": {
-      "signature": "92a122b68054074d16320e6697598a99",
+      "signature": "cf5854b1d79cb086ae75a72be3e8571b",
       "file": true
     },
     "@lidofinance/next-widget-app": {
-      "signature": "dcb239849c3e45ee4f300d89b627a50a",
+      "signature": "1a7e5a3a50f1c5db2cf06e70a0e4990a",
       "file": true
     },
     "@lidofinance/next-ui-primitives": {
-      "signature": "76cd1f577affd5989246f02984ca7609",
+      "signature": "2d8eea2e29f3edd7f341b18d0003135f",
       "file": true
     },
     "@lidofinance/next-pages": {
-      "signature": "279515cb61911db3e5523214322e3bb9",
+      "signature": "446d2be2f971632ee4d57aac60b27b5b",
       "file": true,
       "replaced": "^0.13.0"
     }

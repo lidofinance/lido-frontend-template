@@ -11,7 +11,7 @@ import {LidoLink as $gv0PY$LidoLink} from "@lidofinance/next-ui-primitives";
 
 
 let $9443e46d40e21d27$var$_ = (t)=>t, $9443e46d40e21d27$var$t;
-const $9443e46d40e21d27$var$GlobalStyles = (0, $gv0PY$createGlobalStyle)($9443e46d40e21d27$var$t || ($9443e46d40e21d27$var$t = $9443e46d40e21d27$var$_`
+const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)($9443e46d40e21d27$var$t || ($9443e46d40e21d27$var$t = $9443e46d40e21d27$var$_`
   * {
     margin: 0;
     padding: 0;
@@ -46,7 +46,6 @@ const $9443e46d40e21d27$var$GlobalStyles = (0, $gv0PY$createGlobalStyle)($9443e4
     }
   }
 `), ({ theme: theme  })=>theme.fontSizesMap.xs);
-var $9443e46d40e21d27$export$2e2bcd8739ae039 = $9443e46d40e21d27$var$GlobalStyles;
 
 
 
@@ -131,7 +130,7 @@ const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((
 `), ({ theme: theme  })=>theme.fontSizesMap.xs);
 
 
-const $acdcb1d026776f13$var$Footer = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
+const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
         ...rest,
         size: "full",
         forwardedAs: "footer",
@@ -228,8 +227,6 @@ const $acdcb1d026776f13$var$Footer = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsx
             })
         ]
     });
-var $acdcb1d026776f13$export$2e2bcd8739ae039 = $acdcb1d026776f13$var$Footer;
-
 
 
 
@@ -315,59 +312,17 @@ const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((
     line-height: 1.2em;
     letter-spacing: 0;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, (props)=>props.active ? 1 : 0.8, ({ active: active  })=>active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs)// import styled from 'styled-components'
-//
-// export const NavigationLinkStyle = styled.div<{ active: boolean }>`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//
-//   font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
-//   line-height: 1.7em;
-//   font-weight: 800;
-//   text-transform: uppercase;
-//   text-decoration: none !important;
-//   letter-spacing: 0.04em;
-//   color: var(--lido-color-secondary);
-//
-//   opacity: ${(props) => (props.active ? 1 : 0.8)};
-//   cursor: pointer;
-//
-//   a:hover {
-//     color: var(--lido-color-secondary);
-//     opacity: 1;
-//   }
-//   a:visited {
-//     color: var(--lido-color-secondary);
-//   }
-//   a:not(:last-of-type) {
-//     margin-right: 32px;
-//   }
-//
-//   a > svg {
-//     fill: ${({ active }) => (active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`)};
-//   }
-//
-//   ${({ theme }) => theme.mediaQueries.lg} {
-//     flex-direction: column;
-//     text-transform: none;
-//     font-weight: 500;
-//     font-size: ${({ theme }) => theme.fontSizesMap.xxxs}px;
-//     line-height: 1.2em;
-//     letter-spacing: 0;
-//   }
-// `
-;
+`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, ({ $active: $active  })=>$active ? 1 : 0.8, ({ $active: $active  })=>$active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
 
 
-const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , external: external , ...rest })=>{
+const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , ...rest })=>{
     const { pathname: pathname  } = (0, $gv0PY$useRouter)();
+    // compare without query string
+    const active = pathname === href.split("?")[0];
     return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
         ...rest,
         href: href,
-        external: external,
-        active: pathname === href,
+        $active: active,
         children: /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$react).Fragment, {
             children: [
                 icon,
@@ -378,8 +333,6 @@ const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title ,
         })
     });
 };
-
-
 
 
 
@@ -442,8 +395,6 @@ $783d85da9b1dc834$export$b8a61e5c71402559.displayName = "Navigation";
 
 
 
-
-
 let $af46b3954d96e837$var$_ = (t)=>t, $af46b3954d96e837$var$t, $af46b3954d96e837$var$t1;
 const $af46b3954d96e837$export$54a719cd6595ff5c = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))($af46b3954d96e837$var$t || ($af46b3954d96e837$var$t = $af46b3954d96e837$var$_`
   display: flex;
@@ -462,7 +413,7 @@ const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).d
 `), ({ theme: theme  })=>theme.mediaQueries.md);
 
 
-const $e06737997a3d64a1$var$Header = (props)=>{
+const $e06737997a3d64a1$export$8b251419efc915eb = (props)=>{
     const { navigation: navigation , headerActions: headerActions  } = props;
     return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $af46b3954d96e837$export$54a719cd6595ff5c), {
         ...props,
@@ -486,7 +437,6 @@ const $e06737997a3d64a1$var$Header = (props)=>{
         ]
     });
 };
-var $e06737997a3d64a1$export$2e2bcd8739ae039 = $e06737997a3d64a1$var$Header;
 
 
 
@@ -502,14 +452,13 @@ const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $gv0PY$styledcomponents)((0
 `), ({ theme: theme  })=>theme.spaceMap.sm, ({ theme: theme  })=>theme.spaceMap.sm);
 
 
-const $0ca4c26db704cb04$var$Main = (props)=>{
+const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>{
     return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $d478dafe5e1a4039$export$1098d4de7cbde8b), {
         size: "tight",
         forwardedAs: "main",
         ...props
     });
 };
-var $0ca4c26db704cb04$export$2e2bcd8739ae039 = $0ca4c26db704cb04$var$Main;
 
 
 
@@ -551,15 +500,15 @@ const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h
 const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = ({ ...props })=>{
     return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$CookieThemeProvider), {
         children: [
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $9443e46d40e21d27$export$2e2bcd8739ae039), {}),
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $e06737997a3d64a1$export$2e2bcd8739ae039), {
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $9443e46d40e21d27$export$c507fb1c2e1ac13a), {}),
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $e06737997a3d64a1$export$8b251419efc915eb), {
                 headerActions: props.headerActions,
                 navigation: props === null || props === void 0 ? void 0 : props.navigation
             }),
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $0ca4c26db704cb04$export$2e2bcd8739ae039), {
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $0ca4c26db704cb04$export$861edd1ccea2f746), {
                 children: props.children
             }),
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $acdcb1d026776f13$export$2e2bcd8739ae039), {}),
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $acdcb1d026776f13$export$a06f1c675e846f6f), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$CookiesTooltip), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ToastContainer), {})
         ]
