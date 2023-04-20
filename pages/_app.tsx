@@ -42,6 +42,7 @@ const headerNavigation: NavigationLinkProps[] = [
 
 // App wrapper
 const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
+  // @ts-expect-error ProviderWeb3 accepts children, but some problem with type
   <ProviderWeb3
     defaultChainId={dynamics.defaultChain}
     supportedChainIds={dynamics.supportedChains}
