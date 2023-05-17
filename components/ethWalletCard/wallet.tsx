@@ -15,8 +15,11 @@ import {
   WalletCardBalance,
   WalletCardAccount,
 } from '@lidofinance/ui-primitives';
-import { TokenToWallet, WalletFallback } from '@lidofinance/eth-ui-primitives';
-import { FormatToken } from '@lidofinance/eth-ui-primitives';
+import {
+  FormatToken,
+  TokenToWallet,
+  WalletFallback,
+} from '@lidofinance/eth-ui-primitives';
 
 import { EthWalletCardComponent } from './types';
 
