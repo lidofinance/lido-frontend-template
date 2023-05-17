@@ -1,7 +1,7 @@
 import {jsx as $5Wt9e$jsx, jsxs as $5Wt9e$jsxs} from "react/jsx-runtime";
 import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, createContext as $5Wt9e$createContext, useState as $5Wt9e$useState, useMemo as $5Wt9e$useMemo, memo as $5Wt9e$memo} from "react";
+import $5Wt9e$copytoclipboard from "copy-to-clipboard";
 import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle, CookieThemeProvider as $5Wt9e$CookieThemeProvider} from "@lidofinance/lido-ui";
-import {useCopyToClipboard as $5Wt9e$useCopyToClipboard} from "@lidofinance/ui-primitives";
 import {useSDK as $5Wt9e$useSDK, useEtherscanOpen as $5Wt9e$useEtherscanOpen, useEthereumBalance as $5Wt9e$useEthereumBalance} from "@lido-sdk/react";
 import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "@reef-knot/web3-react";
 import $5Wt9e$styledcomponents from "styled-components";
@@ -99,7 +99,6 @@ const $4834fb6c2a5fac26$export$cb2837f914c2c08c = (props)=>{
         disconnect,
         onClose
     ]);
-    const handleCopy = (0, $5Wt9e$useCopyToClipboard)(account !== null && account !== void 0 ? account : "");
     const handleEtherscan = (0, $5Wt9e$useEtherscanOpen)(account !== null && account !== void 0 ? account : "", "address");
     return /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$Modal), {
         title: "Account",
@@ -138,7 +137,9 @@ const $4834fb6c2a5fac26$export$cb2837f914c2c08c = (props)=>{
                 /*#__PURE__*/ (0, $5Wt9e$jsxs)((0, $5706f6898733c77a$export$abf0394beab7496c), {
                     children: [
                         /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$ButtonIcon), {
-                            onClick: handleCopy,
+                            onClick: ()=>{
+                                (0, $5Wt9e$copytoclipboard)(account !== null && account !== void 0 ? account : "");
+                            },
                             icon: /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$Copy), {}),
                             size: "xs",
                             variant: "ghost",
@@ -166,6 +167,7 @@ var $4f1a2d4fd3bc9e09$exports = {};
 var $bba7b9e54db80c5d$exports = {};
 
 $parcel$export($bba7b9e54db80c5d$exports, "WalletButton", function () { return $bba7b9e54db80c5d$export$eab4424f030fcb21; });
+
 
 
 
@@ -270,6 +272,7 @@ $parcel$export($b874c96d005179d3$exports, "WalletConnectButton", function () { r
 
 
 
+
 const $b874c96d005179d3$export$2a466333ed714424 = (props)=>{
     const { onClick: onClick , ...rest } = props;
     const { openModal: openModal  } = (0, $486a2f92a2295f7f$export$33ffd74ebf07f060)((0, $fece9a1d04edf865$export$abb12153ded04b4d).connect);
@@ -332,7 +335,7 @@ const $83d393f0f45b5747$var$_ShadowProviderWalletModal = ({ children: children ,
                 metrics: walletsMetrics,
                 // Controlled exception!!!
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
+                // @ts-expect-error
                 hiddenWallets: hiddenWallets,
                 ...common
             })

@@ -1,7 +1,7 @@
 var $53sus$reactjsxruntime = require("react/jsx-runtime");
 var $53sus$react = require("react");
+var $53sus$copytoclipboard = require("copy-to-clipboard");
 var $53sus$lidofinancelidoui = require("@lidofinance/lido-ui");
-var $53sus$lidofinanceuiprimitives = require("@lidofinance/ui-primitives");
 var $53sus$lidosdkreact = require("@lido-sdk/react");
 var $53sus$reefknotweb3react = require("@reef-knot/web3-react");
 var $53sus$styledcomponents = require("styled-components");
@@ -24,11 +24,11 @@ function $parcel$exportWildcard(dest, source) {
 
   return dest;
 }
-function $parcel$export(e, n, v, s) {
-  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
-}
 function $parcel$interopDefault(a) {
   return a && a.__esModule ? a.default : a;
+}
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
 }
 var $cf93e340d197c9ae$exports = {};
 var $a6aafa012cd206ea$exports = {};
@@ -102,7 +102,6 @@ const $f215aa7540648009$export$cb2837f914c2c08c = (props)=>{
         disconnect,
         onClose
     ]);
-    const handleCopy = (0, $53sus$lidofinanceuiprimitives.useCopyToClipboard)(account !== null && account !== void 0 ? account : "");
     const handleEtherscan = (0, $53sus$lidosdkreact.useEtherscanOpen)(account !== null && account !== void 0 ? account : "", "address");
     return /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinancelidoui.Modal), {
         title: "Account",
@@ -141,7 +140,9 @@ const $f215aa7540648009$export$cb2837f914c2c08c = (props)=>{
                 /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsxs)((0, $318766b0b8f4d305$export$abf0394beab7496c), {
                     children: [
                         /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinancelidoui.ButtonIcon), {
-                            onClick: handleCopy,
+                            onClick: ()=>{
+                                (0, ($parcel$interopDefault($53sus$copytoclipboard)))(account !== null && account !== void 0 ? account : "");
+                            },
                             icon: /*#__PURE__*/ (0, $53sus$reactjsxruntime.jsx)((0, $53sus$lidofinancelidoui.Copy), {}),
                             size: "xs",
                             variant: "ghost",
@@ -169,6 +170,7 @@ var $01a017be51a2078a$exports = {};
 var $8604b09e4a8b0413$exports = {};
 
 $parcel$export($8604b09e4a8b0413$exports, "WalletButton", function () { return $8604b09e4a8b0413$export$eab4424f030fcb21; });
+
 
 
 
@@ -273,6 +275,7 @@ $parcel$export($120319f9dacbe38e$exports, "WalletConnectButton", function () { r
 
 
 
+
 const $120319f9dacbe38e$export$2a466333ed714424 = (props)=>{
     const { onClick: onClick , ...rest } = props;
     const { openModal: openModal  } = (0, $74a600b2737e9d2e$export$33ffd74ebf07f060)((0, $724a2b6c20e6b206$export$abb12153ded04b4d).connect);
@@ -335,7 +338,7 @@ const $7e65aae0f2757818$var$_ShadowProviderWalletModal = ({ children: children ,
                 metrics: walletsMetrics,
                 // Controlled exception!!!
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
+                // @ts-expect-error
                 hiddenWallets: hiddenWallets,
                 ...common
             })

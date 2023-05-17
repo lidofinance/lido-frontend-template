@@ -6,14 +6,7 @@ export enum WALLET_MODAL {
     connect = 0,
     wallet = 1
 }
-export type ProviderWalletModalProps = {
-    walletsMetrics: Metrics;
-    hiddenWallets?: WalletId[];
-};
-export type ContextWalletModalValue = {
-    openModal: (wModal: WALLET_MODAL) => void;
-    closeModal: () => void;
-};
+/** @deprecated will be soon */
 export const WALLET_IDS: {
     readonly METAMASK: "Metamask";
     readonly WALLET_CONNECT: "WalletConnect";
@@ -34,7 +27,16 @@ export const WALLET_IDS: {
     readonly XDEFI: "Xdefi";
     readonly ZERION: "Zerion";
 };
+/** @deprecated will be soon */
 export type WalletId = (typeof WALLET_IDS)[keyof typeof WALLET_IDS];
+export type ProviderWalletModalProps = {
+    walletsMetrics: Metrics;
+    hiddenWallets?: WalletId[];
+};
+export type ContextWalletModalValue = {
+    openModal: (wModal: WALLET_MODAL) => void;
+    closeModal: () => void;
+};
 type UseModalType = (wModal: WALLET_MODAL) => {
     openModal: () => void;
     closeModal: () => void;

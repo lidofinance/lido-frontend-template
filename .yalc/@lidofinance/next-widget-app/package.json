@@ -24,9 +24,9 @@
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.6.1",
     "@lidofinance/next-ui-primitives": "*",
-    "next": "^12.3.0",
+    "next": "12 || 13",
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "1a7e5a3a50f1c5db2cf06e70a0e4990a"
+  "yalcSig": "36abc84d1506062e88be7e43ff65f854"
 }

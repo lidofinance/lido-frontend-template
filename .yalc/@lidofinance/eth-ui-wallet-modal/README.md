@@ -23,7 +23,6 @@ yarn add styled-components@^5.3.5 @lidofinance/lido-ui@^3.6.1 @reef-knot/connect
 ```tsx
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
 
-// More info about `reefKnot` you can see in `./types.ts` type `ProviderWalletModalProps`
 <ProviderWalletModal
   reefKnot={{
     walletsMetrics: walletsMetrics,
@@ -33,6 +32,11 @@ import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
   <SomeComponent />
 </ProviderWalletModal>
 ```
+More info about `reefKnot` props you can see in:
+- `./types.ts` type [ProviderWalletModalProps](./packages/packages/eth/ui/wallet-modal/src/types.ts)
+- about `walletsMetrics` here [@reef-knot metrics demo](https://github.com/lidofinance/reef-knot/blob/main/apps/demo-react/util/metrics.ts)
+- about `hiddenWallets` here [@reef-knot/connect-wallet-modal](https://github.com/lidofinance/reef-knot/blob/main/packages/connect-wallet-modal/README.md)
+
 **PAY ATTENTION** that `ProviderWalletModal` requires `CookieThemeProvider` from `@lidofinance/lido-ui`,
 but you don't need to wrap it like:
 ```tsx
@@ -40,12 +44,11 @@ but you don't need to wrap it like:
   <ProviderWalletModal />
 </CookieThemeProvider>
 ```
-because `ProviderWalletModal` was wrapped by `CookieThemeProvider` inside itself
-(more details see in `src/provider.tsx`)
+because `ProviderWalletModal` source code was wrapped by `CookieThemeProvider` [more details](./packages/eth/ui/wallet-modal/src/provider.tsx).
 
 #### 👛 WalletButton component
 
-Use `WalletButton` component to show button that open modal with connected wallet info (more detail `src/components/connectedWalletInfoModal`).
+Use `WalletButton` component to show button that open modal with connected wallet info [more detail](./packages/eth/ui/wallet-modal/src/components/connectedWalletInfoModal).
 
 The `WalletButton` use `ConnectedWalletInfoModal` always and you can't change it.
 
@@ -63,5 +66,4 @@ P.S. Example you can find on [Lido frontend template](https://github.com/lidofin
 #### 🤔 I need to change a default behavior for `WalletButton` or/and `WalletConnectButton`
 
 1. You can copy this code and make your own implementation on widget side.
-2. You can contact with us.
-
+2. You can contact with us [Discord](https://discord.com/channels/761182643269795850/931178453754081290).

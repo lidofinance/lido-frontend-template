@@ -1,39 +1,17 @@
 {
   "version": "v1",
   "packages": {
-    "@lidofinance/ui-wallet-modal": {
-      "signature": "8fbfd9edcc74ed5001c546050136d426",
-      "file": true
-    },
-    "@lidofinance/ui-primitives": {
-      "signature": "26336c7250ed3747c7012fa55ff73da0",
-      "file": true
-    },
-    "@lidofinance/next-api-wrapper": {
-      "signature": "3ce984dc1aa1050166b4f52ce95d6e27",
-      "file": true,
-      "replaced": "^0.7.0"
-    },
     "@lidofinance/eth-ui-wallet-modal": {
-      "signature": "ef0f70da1cfce36b41eb807682dd0fa3",
+      "signature": "90095fc362d0fbf634bb9dcfa2815d60",
       "file": true
     },
     "@lidofinance/eth-ui-primitives": {
-      "signature": "cf5854b1d79cb086ae75a72be3e8571b",
+      "signature": "3e45fbca6d302d2136ef68c4d8833c66",
       "file": true
     },
     "@lidofinance/next-widget-app": {
-      "signature": "1a7e5a3a50f1c5db2cf06e70a0e4990a",
+      "signature": "36abc84d1506062e88be7e43ff65f854",
       "file": true
-    },
-    "@lidofinance/next-ui-primitives": {
-      "signature": "2d8eea2e29f3edd7f341b18d0003135f",
-      "file": true
-    },
-    "@lidofinance/next-pages": {
-      "signature": "446d2be2f971632ee4d57aac60b27b5b",
-      "file": true,
-      "replaced": "^0.13.0"
     }
   }
 }
