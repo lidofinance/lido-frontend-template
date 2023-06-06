@@ -10,8 +10,7 @@ import {LidoLink as $gv0PY$LidoLink} from "@lidofinance/next-ui-primitives";
 
 
 
-let $9443e46d40e21d27$var$_ = (t)=>t, $9443e46d40e21d27$var$t;
-const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)($9443e46d40e21d27$var$t || ($9443e46d40e21d27$var$t = $9443e46d40e21d27$var$_`
+const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)`
   * {
     margin: 0;
     padding: 0;
@@ -25,7 +24,7 @@ const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)(
     position: relative;
     box-sizing: border-box;
 
-    font-size: ${0}px;
+    font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
     line-height: 1.5em;
     font-weight: 500;
     // https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
@@ -45,44 +44,43 @@ const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)(
       color: var(--lido-color-primaryVisited);
     }
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xs);
+`;
 
 
 
 
 
 
-let $bfd8aa9b9c7d635f$var$_ = (t)=>t, $bfd8aa9b9c7d635f$var$t, $bfd8aa9b9c7d635f$var$t1, $bfd8aa9b9c7d635f$var$t2, $bfd8aa9b9c7d635f$var$t3, $bfd8aa9b9c7d635f$var$t4, $bfd8aa9b9c7d635f$var$t5, $bfd8aa9b9c7d635f$var$t6;
-const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))($bfd8aa9b9c7d635f$var$t || ($bfd8aa9b9c7d635f$var$t = $bfd8aa9b9c7d635f$var$_`
+const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
   display: flex;
   flex-wrap: wrap;
   padding-top: 60px;
   padding-bottom: 20px;
   color: var(--lido-color-text);
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.lg} {
     padding-top: 40px;
   }
-`), ({ theme: theme  })=>theme.mediaQueries.lg);
-const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Divider))($bfd8aa9b9c7d635f$var$t1 || ($bfd8aa9b9c7d635f$var$t1 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Divider))`
   flex-basis: 100%;
   margin-bottom: 60px;
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.md} {
     margin-bottom: 40px;
   }
-`), ({ theme: theme  })=>theme.mediaQueries.md);
-const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $gv0PY$styledcomponents).div($bfd8aa9b9c7d635f$var$t2 || ($bfd8aa9b9c7d635f$var$t2 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $gv0PY$styledcomponents).div`
   flex-grow: 1;
   margin-bottom: 40px;
   box-sizing: border-box;
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.lg} {
     flex-basis: 100%;
     order: 2;
   }
-`), ({ theme: theme  })=>theme.mediaQueries.lg);
-const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $gv0PY$styledcomponents).div($bfd8aa9b9c7d635f$var$t3 || ($bfd8aa9b9c7d635f$var$t3 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $gv0PY$styledcomponents).div`
   flex-grow: 1;
   margin-bottom: 40px;
   padding-right: 20px;
@@ -91,29 +89,29 @@ const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $gv0PY$styledcomponents).d
     padding-right: 0;
   }
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.md} {
     flex-basis: 100%;
   }
-`), ({ theme: theme  })=>theme.mediaQueries.md);
-const $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2 = (0, $gv0PY$styledcomponents).h4($bfd8aa9b9c7d635f$var$t4 || ($bfd8aa9b9c7d635f$var$t4 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2 = (0, $gv0PY$styledcomponents).h4`
   margin: 0 0 1em;
 
   font-weight: 800;
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.sm}px;
   line-height: 1.4em;
-`), ({ theme: theme  })=>theme.fontSizesMap.sm);
-const $bfd8aa9b9c7d635f$export$655f131bfd3955dd = (0, $gv0PY$styledcomponents).div($bfd8aa9b9c7d635f$var$t5 || ($bfd8aa9b9c7d635f$var$t5 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$655f131bfd3955dd = (0, $gv0PY$styledcomponents).div`
   display: block;
   margin: 0 0 0.8em;
 
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
   line-height: 1.6em;
-`), ({ theme: theme  })=>theme.fontSizesMap.xs);
-const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Link))($bfd8aa9b9c7d635f$var$t6 || ($bfd8aa9b9c7d635f$var$t6 = $bfd8aa9b9c7d635f$var$_`
+`;
+const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Link))`
   display: block;
   margin: 0 0 0.8em;
 
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
   line-height: 1.6em;
   text-decoration: none;
   opacity: 0.7;
@@ -127,7 +125,7 @@ const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((
   &:hover {
     opacity: 1;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xs);
+`;
 
 
 const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
@@ -238,8 +236,7 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
 
 
 
-let $7861520291ce5a13$var$_ = (t)=>t, $7861520291ce5a13$var$t;
-const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).div($7861520291ce5a13$var$t || ($7861520291ce5a13$var$t = $7861520291ce5a13$var$_`
+const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).div`
   overflow: hidden;
 
   display: flex;
@@ -247,7 +244,7 @@ const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).d
   flex-shrink: 1;
 
   margin-left: auto;
-`));
+`;
 
 
 const $cbf1a2d5ec325762$export$223875819fd7cf93 = (props)=>{
@@ -271,14 +268,13 @@ const $cbf1a2d5ec325762$export$223875819fd7cf93 = (props)=>{
 
 
 
-let $1b182eeff22f5ff5$var$_ = (t)=>t, $1b182eeff22f5ff5$var$t;
-const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((0, $gv0PY$LidoLink))($1b182eeff22f5ff5$var$t || ($1b182eeff22f5ff5$var$t = $1b182eeff22f5ff5$var$_`
+const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((0, $gv0PY$LidoLink))`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xxxs}px;
   line-height: 1.7em;
   font-weight: 800;
   text-transform: uppercase;
@@ -286,7 +282,7 @@ const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((
   letter-spacing: 0.04em;
   color: var(--lido-color-secondary);
 
-  opacity: ${0};
+  opacity: ${({ $active: $active  })=>$active ? 1 : 0.8};
   cursor: pointer;
 
   :hover {
@@ -301,18 +297,18 @@ const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((
   }
 
   svg {
-    fill: ${0};
+    fill: ${({ $active: $active  })=>$active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`};
   }
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.lg} {
     flex-direction: column;
     text-transform: none;
     font-weight: 500;
-    font-size: ${0}px;
+    font-size: ${({ theme: theme  })=>theme.fontSizesMap.xxxs}px;
     line-height: 1.2em;
     letter-spacing: 0;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xxxs, ({ $active: $active  })=>$active ? 1 : 0.8, ({ $active: $active  })=>$active ? `var(--lido-color-primary)` : `var(--lido-color-secondary)`, ({ theme: theme  })=>theme.mediaQueries.lg, ({ theme: theme  })=>theme.fontSizesMap.xxxs);
+`;
 
 
 const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title , href: href , ...rest })=>{
@@ -338,16 +334,15 @@ const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title ,
 
 
 
-let $f275cfeaf9486c8e$var$_ = (t)=>t, $f275cfeaf9486c8e$var$t, $f275cfeaf9486c8e$var$t1, $f275cfeaf9486c8e$var$t2;
-const $f275cfeaf9486c8e$export$7bc8c02c4f2d6836 = (0, $gv0PY$css)($f275cfeaf9486c8e$var$t || ($f275cfeaf9486c8e$var$t = $f275cfeaf9486c8e$var$_`
+const $f275cfeaf9486c8e$export$7bc8c02c4f2d6836 = (0, $gv0PY$css)`
   display: flex;
   margin: 0 46px;
 
   svg {
     margin-right: 10px;
   }
-`));
-const $f275cfeaf9486c8e$var$mobileCss = (0, $gv0PY$css)($f275cfeaf9486c8e$var$t1 || ($f275cfeaf9486c8e$var$t1 = $f275cfeaf9486c8e$var$_`
+`;
+const $f275cfeaf9486c8e$var$mobileCss = (0, $gv0PY$css)`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -366,16 +361,16 @@ const $f275cfeaf9486c8e$var$mobileCss = (0, $gv0PY$css)($f275cfeaf9486c8e$var$t1
     margin-right: 0;
     margin-bottom: 7px;
   }
-`));
-const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $gv0PY$styledcomponents).div($f275cfeaf9486c8e$var$t2 || ($f275cfeaf9486c8e$var$t2 = $f275cfeaf9486c8e$var$_`
-  ${0}
+`;
+const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $gv0PY$styledcomponents).div`
+  ${$f275cfeaf9486c8e$export$7bc8c02c4f2d6836}
 
-  ${0} {
-    ${0}
+  ${({ theme: theme  })=>theme.mediaQueries.lg} {
+    ${$f275cfeaf9486c8e$var$mobileCss}
   }
 
   z-index: 6;
-`), $f275cfeaf9486c8e$export$7bc8c02c4f2d6836, ({ theme: theme  })=>theme.mediaQueries.lg, $f275cfeaf9486c8e$var$mobileCss);
+`;
 
 
 const $783d85da9b1dc834$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $gv0PY$memo)((props)=>{
@@ -395,22 +390,21 @@ $783d85da9b1dc834$export$b8a61e5c71402559.displayName = "Navigation";
 
 
 
-let $af46b3954d96e837$var$_ = (t)=>t, $af46b3954d96e837$var$t, $af46b3954d96e837$var$t1;
-const $af46b3954d96e837$export$54a719cd6595ff5c = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))($af46b3954d96e837$var$t || ($af46b3954d96e837$var$t = $af46b3954d96e837$var$_`
+const $af46b3954d96e837$export$54a719cd6595ff5c = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
   display: flex;
   align-items: center;
 
   padding-top: 18px;
   padding-bottom: 18px;
-`));
-const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).div($af46b3954d96e837$var$t1 || ($af46b3954d96e837$var$t1 = $af46b3954d96e837$var$_`
+`;
+const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).div`
   overflow: hidden;
   flex-shrink: 0;
 
-  ${0} {
+  ${({ theme: theme  })=>theme.mediaQueries.md} {
     width: 14px;
   }
-`), ({ theme: theme  })=>theme.mediaQueries.md);
+`;
 
 
 const $e06737997a3d64a1$export$8b251419efc915eb = (props)=>{
@@ -444,12 +438,11 @@ const $e06737997a3d64a1$export$8b251419efc915eb = (props)=>{
 
 
 
-let $d478dafe5e1a4039$var$_ = (t)=>t, $d478dafe5e1a4039$var$t;
-const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))($d478dafe5e1a4039$var$t || ($d478dafe5e1a4039$var$t = $d478dafe5e1a4039$var$_`
+const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
   position: relative;
-  margin-top: ${0}px;
-  margin-bottom: ${0}px;
-`), ({ theme: theme  })=>theme.spaceMap.sm, ({ theme: theme  })=>theme.spaceMap.sm);
+  margin-top: ${({ theme: theme  })=>theme.spaceMap.sm}px;
+  margin-bottom: ${({ theme: theme  })=>theme.spaceMap.sm}px;
+`;
 
 
 const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>{
@@ -464,24 +457,23 @@ const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>{
 
 
 
-let $f6511209e9658628$var$_ = (t)=>t, $f6511209e9658628$var$t, $f6511209e9658628$var$t1;
-const $f6511209e9658628$export$de4797fa0cf99ab6 = (0, $gv0PY$styledcomponents).h1($f6511209e9658628$var$t || ($f6511209e9658628$var$t = $f6511209e9658628$var$_`
+const $f6511209e9658628$export$de4797fa0cf99ab6 = (0, $gv0PY$styledcomponents).h1`
   margin-bottom: 0.2em;
 
   font-weight: 800;
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xl}px;
   line-height: 1.2em;
   text-align: center;
 
   &:empty {
     display: none;
   }
-`), ({ theme: theme  })=>theme.fontSizesMap.xl);
-const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h2($f6511209e9658628$var$t1 || ($f6511209e9658628$var$t1 = $f6511209e9658628$var$_`
-  margin-bottom: ${0}px;
+`;
+const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h2`
+  margin-bottom: ${({ theme: theme  })=>theme.spaceMap.md}px;
 
   font-weight: 500;
-  font-size: ${0}px;
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xxs}px;
   line-height: 1.5em;
   text-align: center;
   color: var(--lido-color-textSecondary);
@@ -489,7 +481,7 @@ const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h
   &:empty {
     display: none;
   }
-`), ({ theme: theme  })=>theme.spaceMap.md, ({ theme: theme  })=>theme.fontSizesMap.xxs);
+`;
 
 
 
@@ -503,7 +495,7 @@ const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = ({ ...props })=>{
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $9443e46d40e21d27$export$c507fb1c2e1ac13a), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $e06737997a3d64a1$export$8b251419efc915eb), {
                 headerActions: props.headerActions,
-                navigation: props === null || props === void 0 ? void 0 : props.navigation
+                navigation: props?.navigation
             }),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $0ca4c26db704cb04$export$861edd1ccea2f746), {
                 children: props.children

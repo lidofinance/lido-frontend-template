@@ -1832,6 +1832,13 @@
   dependencies:
     tiny-invariant "^1.1.0"
 
+"@lido-sdk/constants@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@lido-sdk/constants/-/constants-3.0.0.tgz#5b3c031659cef8d66ca76187768dfb9430d3b079"
+  integrity sha512-Y02FCjeFFTPpvy1AEVAUtxyjmqjKcKYZ7nl22quiY4LBJkgcPfP1A6ZspY93MlIoI3E1V52H/JtmYxhJNW2lGA==
+  dependencies:
+    tiny-invariant "^1.1.0"
+
 "@lido-sdk/contracts@2.0.0", "@lido-sdk/contracts@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@lido-sdk/contracts/-/contracts-2.0.0.tgz#3fd7de4c6e542e7bfd71ce07ccbaf72cb16df48b"
@@ -1913,15 +1920,19 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/eth-providers/-/eth-providers-0.15.0.tgz#e42f56999f34e840faf637c3dc456e3320cf594a"
   integrity sha512-4vmRyYihRGrKiahcVxHCUxbSFG17OQBVzNvcmh+ap149b6oW/PdO4w6+NaxK0Ai8Bt+ZwLV+5AAIhaLUAOjVkA==
 
-"@lidofinance/eth-ui-primitives@file:.yalc/@lidofinance/eth-ui-primitives":
-  version "0.0.0"
+"@lidofinance/eth-ui-primitives@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/eth-ui-primitives/-/eth-ui-primitives-0.26.0.tgz#04ca8d14ed31c2968e95fa0eff4696b8cc6ba93f"
+  integrity sha512-ITrhtQxAplxIls5A9VMB2IhFivb62d7RcEV1knrE2nJlJHVD9KALWsl9iDHUjiwU//2BuZ+F1BWHgbyG+zk3Dg==
   dependencies:
-    "@lido-sdk/constants" "^1.6.0"
+    "@lido-sdk/constants" "^3.0.0"
     "@lido-sdk/react" "^1.18.1"
     ethers "^5.7.2"
 
-"@lidofinance/eth-ui-wallet-modal@file:.yalc/@lidofinance/eth-ui-wallet-modal":
-  version "0.0.0"
+"@lidofinance/eth-ui-wallet-modal@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/eth-ui-wallet-modal/-/eth-ui-wallet-modal-0.26.0.tgz#1cfa2434f11084504b94af59b93ae7c2d3344d2b"
+  integrity sha512-DjFnhChjI58rY+XUyu/vy8Y4pFGnhT7H/oKADtYn4u0ZnnTAuu0ygLW4en0+Dw1yyTH2P9M46MdVyowXO+2U7Q==
   dependencies:
     "@lido-sdk/react" "^1.18.1"
     copy-to-clipboard "^3.3.3"
