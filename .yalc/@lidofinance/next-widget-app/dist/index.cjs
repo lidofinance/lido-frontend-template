@@ -153,14 +153,6 @@ const $7d98dd07dc8f6815$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                         children: "Resources"
                     }),
                     /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
-                        href: "https://stake.lido.fi/",
-                        children: "Stake with Lido"
-                    }),
-                    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/static/Lido:Ethereum-Liquid-Staking.pdf",
-                        children: "Primer"
-                    }),
-                    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
                         href: "https://lido.fi/terms-of-use",
                         children: "Terms of Use"
                     }),
@@ -175,9 +167,6 @@ const $7d98dd07dc8f6815$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
                         href: "https://lido.fi/static/LIDO_press_kit.zip",
                         children: "Press Kit"
-                    }),
-                    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             }),
@@ -209,9 +198,6 @@ const $7d98dd07dc8f6815$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
                         href: "https://blog.lido.fi/",
                         children: "Blog"
-                    }),
-                    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             }),
@@ -227,9 +213,6 @@ const $7d98dd07dc8f6815$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$70ac745ffa2bea38), {
                         href: "https://help.lido.fi/",
                         children: "Help Center"
-                    }),
-                    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $3b51e8e45c2a2f25$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             })
@@ -257,16 +240,13 @@ const $c420bc8b2b359a15$export$af0f646b086814d1 = (0, ($parcel$interopDefault($8
 `;
 
 
-const $6c9b3dcd1f47cff5$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot , ...rest } = props;
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $c420bc8b2b359a15$export$af0f646b086814d1), {
+const $6c9b3dcd1f47cff5$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...rest })=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $c420bc8b2b359a15$export$af0f646b086814d1), {
         ...rest,
         children: [
             leftSlot,
             /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$lidofinancelidoui.ThemeToggler), {})
         ]
     });
-};
 
 
 
@@ -325,7 +305,8 @@ const $94587fdd87edefce$export$721ee963a67379f1 = ({ icon: icon , title: title ,
     const { pathname: pathname  } = (0, $80aVp$nextrouter.useRouter)();
     // compare without query string
     const active = pathname === href.split("?")[0];
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $ec8c7e2f9b35d8f1$export$25da3807dbd81a49), {
+    return(// @ts-expect-error Research why types of property 'as' are incompatible.
+    /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $ec8c7e2f9b35d8f1$export$25da3807dbd81a49), {
         ...rest,
         href: href,
         $active: active,
@@ -337,7 +318,7 @@ const $94587fdd87edefce$export$721ee963a67379f1 = ({ icon: icon , title: title ,
                 })
             ]
         })
-    });
+    }));
 };
 
 
@@ -383,9 +364,8 @@ const $0f0af5405694d290$export$f8af16d8231e3b4e = (0, ($parcel$interopDefault($8
 `;
 
 
-const $a07f17e7c68bb26f$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $80aVp$react.memo)((props)=>{
-    const { links: links , ...rest } = props;
-    if (!links) return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$reactjsxruntime.Fragment), {});
+const $a07f17e7c68bb26f$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $80aVp$react.memo)(({ links: links , ...rest })=>{
+    if (!links) return null;
     return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $0f0af5405694d290$export$f8af16d8231e3b4e), {
         ...rest,
         children: links.map((pageProps)=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $94587fdd87edefce$export$721ee963a67379f1), {
@@ -417,10 +397,8 @@ const $3b3e5656b8e7ca1c$export$d69c4113bed92823 = (0, ($parcel$interopDefault($8
 `;
 
 
-const $2b0c08c25f103129$export$8b251419efc915eb = (props)=>{
-    const { navigation: navigation , headerActions: headerActions  } = props;
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $3b3e5656b8e7ca1c$export$54a719cd6595ff5c), {
-        ...props,
+const $2b0c08c25f103129$export$8b251419efc915eb = ({ navigation: navigation , headerActions: headerActions , ...rest })=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $3b3e5656b8e7ca1c$export$54a719cd6595ff5c), {
+        ...rest,
         size: "full",
         forwardedAs: "header",
         children: [
@@ -440,7 +418,6 @@ const $2b0c08c25f103129$export$8b251419efc915eb = (props)=>{
             })
         ]
     });
-};
 
 
 
@@ -455,13 +432,11 @@ const $5655d1d17c843cf7$export$1098d4de7cbde8b = (0, ($parcel$interopDefault($80
 `;
 
 
-const $7ed1e3306cce0384$export$861edd1ccea2f746 = (props)=>{
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $5655d1d17c843cf7$export$1098d4de7cbde8b), {
+const $7ed1e3306cce0384$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $5655d1d17c843cf7$export$1098d4de7cbde8b), {
         size: "tight",
         forwardedAs: "main",
         ...props
     });
-};
 
 
 
@@ -497,10 +472,7 @@ const $dbdbbb46ef73198c$export$731f89f04b9d0607 = (0, ($parcel$interopDefault($8
 
 
 
-// Migrations old cookies to new cross domain cookies
-(0, $80aVp$lidofinancelidoui.migrationThemeCookiesToCrossDomainCookiesClientSide)();
-const $7c44329ccee85bb9$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    return /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $80aVp$lidofinancelidoui.CookieThemeProvider), {
+const $7c44329ccee85bb9$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsxs)((0, $80aVp$lidofinancelidoui.CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $14b8fd49eb37e50c$export$c507fb1c2e1ac13a), {}),
             /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $2b0c08c25f103129$export$8b251419efc915eb), {
@@ -515,7 +487,6 @@ const $7c44329ccee85bb9$export$8e0cdabd0fe32f2d = ({ ...props })=>{
             /*#__PURE__*/ (0, $80aVp$reactjsxruntime.jsx)((0, $80aVp$lidofinancelidoui.ToastContainer), {})
         ]
     });
-};
 
 
 //# sourceMappingURL=index.cjs.map

@@ -1,6 +1,6 @@
-import {jsxs as $gv0PY$jsxs, jsx as $gv0PY$jsx, Fragment as $gv0PY$Fragment} from "react/jsx-runtime";
+import {jsxs as $gv0PY$jsxs, jsx as $gv0PY$jsx} from "react/jsx-runtime";
 import $gv0PY$react, {memo as $gv0PY$memo} from "react";
-import {migrationThemeCookiesToCrossDomainCookiesClientSide as $gv0PY$migrationThemeCookiesToCrossDomainCookiesClientSide, CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer, LidoLogo as $gv0PY$LidoLogo, Container as $gv0PY$Container, Divider as $gv0PY$Divider, Link as $gv0PY$Link, ThemeToggler as $gv0PY$ThemeToggler} from "@lidofinance/lido-ui";
+import {CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer, LidoLogo as $gv0PY$LidoLogo, Container as $gv0PY$Container, Divider as $gv0PY$Divider, Link as $gv0PY$Link, ThemeToggler as $gv0PY$ThemeToggler} from "@lidofinance/lido-ui";
 import $gv0PY$styledcomponents, {createGlobalStyle as $gv0PY$createGlobalStyle, css as $gv0PY$css} from "styled-components";
 import $gv0PY$nextlink from "next/link";
 import {useRouter as $gv0PY$useRouter} from "next/router";
@@ -143,14 +143,6 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                         children: "Resources"
                     }),
                     /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://stake.lido.fi/",
-                        children: "Stake with Lido"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/static/Lido:Ethereum-Liquid-Staking.pdf",
-                        children: "Primer"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
                         href: "https://lido.fi/terms-of-use",
                         children: "Terms of Use"
                     }),
@@ -165,9 +157,6 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
                         href: "https://lido.fi/static/LIDO_press_kit.zip",
                         children: "Press Kit"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             }),
@@ -199,9 +188,6 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
                         href: "https://blog.lido.fi/",
                         children: "Blog"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             }),
@@ -217,9 +203,6 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
                     /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
                         href: "https://help.lido.fi/",
                         children: "Help Center"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$655f131bfd3955dd), {
-                        children: "Some text"
                     })
                 ]
             })
@@ -247,16 +230,13 @@ const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).d
 `;
 
 
-const $cbf1a2d5ec325762$export$223875819fd7cf93 = (props)=>{
-    const { leftSlot: leftSlot , ...rest } = props;
-    return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $7861520291ce5a13$export$af0f646b086814d1), {
+const $cbf1a2d5ec325762$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $7861520291ce5a13$export$af0f646b086814d1), {
         ...rest,
         children: [
             leftSlot,
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ThemeToggler), {})
         ]
     });
-};
 
 
 
@@ -315,7 +295,8 @@ const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title ,
     const { pathname: pathname  } = (0, $gv0PY$useRouter)();
     // compare without query string
     const active = pathname === href.split("?")[0];
-    return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
+    return(// @ts-expect-error Research why types of property 'as' are incompatible.
+    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $1b182eeff22f5ff5$export$25da3807dbd81a49), {
         ...rest,
         href: href,
         $active: active,
@@ -327,7 +308,7 @@ const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title ,
                 })
             ]
         })
-    });
+    }));
 };
 
 
@@ -373,9 +354,8 @@ const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $gv0PY$styledcomponents).d
 `;
 
 
-const $783d85da9b1dc834$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $gv0PY$memo)((props)=>{
-    const { links: links , ...rest } = props;
-    if (!links) return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Fragment), {});
+const $783d85da9b1dc834$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $gv0PY$memo)(({ links: links , ...rest })=>{
+    if (!links) return null;
     return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $f275cfeaf9486c8e$export$f8af16d8231e3b4e), {
         ...rest,
         children: links.map((pageProps)=>/*#__PURE__*/ (0, $gv0PY$jsx)((0, $158badbcc92b8a29$export$721ee963a67379f1), {
@@ -407,10 +387,8 @@ const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).d
 `;
 
 
-const $e06737997a3d64a1$export$8b251419efc915eb = (props)=>{
-    const { navigation: navigation , headerActions: headerActions  } = props;
-    return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $af46b3954d96e837$export$54a719cd6595ff5c), {
-        ...props,
+const $e06737997a3d64a1$export$8b251419efc915eb = ({ navigation: navigation , headerActions: headerActions , ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $af46b3954d96e837$export$54a719cd6595ff5c), {
+        ...rest,
         size: "full",
         forwardedAs: "header",
         children: [
@@ -430,7 +408,6 @@ const $e06737997a3d64a1$export$8b251419efc915eb = (props)=>{
             })
         ]
     });
-};
 
 
 
@@ -445,13 +422,11 @@ const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $gv0PY$styledcomponents)((0
 `;
 
 
-const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>{
-    return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $d478dafe5e1a4039$export$1098d4de7cbde8b), {
+const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $gv0PY$jsx)((0, $d478dafe5e1a4039$export$1098d4de7cbde8b), {
         size: "tight",
         forwardedAs: "main",
         ...props
     });
-};
 
 
 
@@ -487,10 +462,7 @@ const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h
 
 
 
-// Migrations old cookies to new cross domain cookies
-(0, $gv0PY$migrationThemeCookiesToCrossDomainCookiesClientSide)();
-const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = ({ ...props })=>{
-    return /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$CookieThemeProvider), {
+const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $9443e46d40e21d27$export$c507fb1c2e1ac13a), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $e06737997a3d64a1$export$8b251419efc915eb), {
@@ -505,7 +477,6 @@ const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = ({ ...props })=>{
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ToastContainer), {})
         ]
     });
-};
 
 
 export {$65c37c265eb37c26$export$8e0cdabd0fe32f2d as WidgetApp, $f6511209e9658628$export$de4797fa0cf99ab6 as LayoutTitle, $f6511209e9658628$export$731f89f04b9d0607 as LayoutSubTitle};

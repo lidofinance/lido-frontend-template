@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@lidofinance/next-widget-app": {
-      "signature": "6ccc4fd11f947825f111a256105ad410",
+      "signature": "6ffb9f667c4886e2baad5fb2cb6035b3",
       "file": true
     }
   }
