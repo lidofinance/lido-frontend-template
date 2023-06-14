@@ -42,6 +42,15 @@ export default {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    // Fixes a build error with importing Pure ESM modules, e.g. reef-knot
+    // Some docs are here:
+    // <https://github.com/vercel/next.js/pull/27069>
+    // You can see how it is actually used in v12.3.4 here:
+    // <https://github.com/vercel/next.js/blob/v12.3.4/packages/next/build/webpack-config.ts#L417>
+    // Presumably, it is true by default in next v13 and won't be needed
+    esmExternals: true,
+  },
   // WARNING: Vulnerability fix, don't remove until default Next.js image loader is patched
   images: {
     loader: 'custom',

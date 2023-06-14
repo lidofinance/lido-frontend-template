@@ -105,7 +105,7 @@
   },
   "lint-staged": {
     "./**/*.{ts,tsx}": [
-      "eslint --ignore-path .gitignore --max-warnings=99999990"
+      "eslint --ignore-path .gitignore --max-warnings=0"
     ],
     "./**/*.{ts,tsx,css,md,json}": [
       "prettier --write"
