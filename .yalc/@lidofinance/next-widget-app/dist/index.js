@@ -50,8 +50,20 @@ const $9443e46d40e21d27$export$c507fb1c2e1ac13a = (0, $gv0PY$createGlobalStyle)`
 
 
 
+// Styled Components v5 has issues with ESM modules:
+// https://github.com/styled-components/styled-components/issues/115
+// https://github.com/rollup/rollup/issues/4438
+// It can be solved by using Styled Components v6, which is in beta ATM
+// But it will be better to stop using styled-components at all.
+// This is a temporary workaround, which seems to work well.
 
-const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
+
+// @ts-expect-error Property 'default' does not exist on type 'StyledInterface'.
+const $0aa03a66ad9b2697$var$styled = (0, $gv0PY$styledcomponents).default || (0, $gv0PY$styledcomponents);
+var $0aa03a66ad9b2697$export$2e2bcd8739ae039 = $0aa03a66ad9b2697$var$styled;
+
+
+const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Container))`
   display: flex;
   flex-wrap: wrap;
   padding-top: 60px;
@@ -62,7 +74,7 @@ const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $gv0PY$styledcomponents)((
     padding-top: 40px;
   }
 `;
-const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Divider))`
+const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Divider))`
   flex-basis: 100%;
   margin-bottom: 60px;
 
@@ -70,7 +82,7 @@ const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $gv0PY$styledcomponents)((
     margin-bottom: 40px;
   }
 `;
-const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $gv0PY$styledcomponents).div`
+const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   flex-grow: 1;
   margin-bottom: 40px;
   box-sizing: border-box;
@@ -80,7 +92,7 @@ const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $gv0PY$styledcomponents).d
     order: 2;
   }
 `;
-const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $gv0PY$styledcomponents).div`
+const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   flex-grow: 1;
   margin-bottom: 40px;
   padding-right: 20px;
@@ -93,21 +105,21 @@ const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $gv0PY$styledcomponents).d
     flex-basis: 100%;
   }
 `;
-const $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2 = (0, $gv0PY$styledcomponents).h4`
+const $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).h4`
   margin: 0 0 1em;
 
   font-weight: 800;
   font-size: ${({ theme: theme  })=>theme.fontSizesMap.sm}px;
   line-height: 1.4em;
 `;
-const $bfd8aa9b9c7d635f$export$655f131bfd3955dd = (0, $gv0PY$styledcomponents).div`
+const $bfd8aa9b9c7d635f$export$655f131bfd3955dd = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   display: block;
   margin: 0 0 0.8em;
 
   font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
   line-height: 1.6em;
 `;
-const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $gv0PY$styledcomponents)((0, $gv0PY$Link))`
+const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Link))`
   display: block;
   margin: 0 0 0.8em;
 
@@ -219,7 +231,7 @@ const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (
 
 
 
-const $7861520291ce5a13$export$af0f646b086814d1 = (0, $gv0PY$styledcomponents).div`
+const $7861520291ce5a13$export$af0f646b086814d1 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   overflow: hidden;
 
   display: flex;
@@ -248,7 +260,7 @@ const $cbf1a2d5ec325762$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...res
 
 
 
-const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $gv0PY$styledcomponents)((0, $gv0PY$LidoLink))`
+const $1b182eeff22f5ff5$export$25da3807dbd81a49 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$LidoLink))`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -315,6 +327,7 @@ const $158badbcc92b8a29$export$721ee963a67379f1 = ({ icon: icon , title: title ,
 
 
 
+
 const $f275cfeaf9486c8e$export$7bc8c02c4f2d6836 = (0, $gv0PY$css)`
   display: flex;
   margin: 0 46px;
@@ -343,7 +356,7 @@ const $f275cfeaf9486c8e$var$mobileCss = (0, $gv0PY$css)`
     margin-bottom: 7px;
   }
 `;
-const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $gv0PY$styledcomponents).div`
+const $f275cfeaf9486c8e$export$f8af16d8231e3b4e = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   ${$f275cfeaf9486c8e$export$7bc8c02c4f2d6836}
 
   ${({ theme: theme  })=>theme.mediaQueries.lg} {
@@ -370,14 +383,14 @@ $783d85da9b1dc834$export$b8a61e5c71402559.displayName = "Navigation";
 
 
 
-const $af46b3954d96e837$export$54a719cd6595ff5c = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
+const $af46b3954d96e837$export$54a719cd6595ff5c = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Container))`
   display: flex;
   align-items: center;
 
   padding-top: 18px;
   padding-bottom: 18px;
 `;
-const $af46b3954d96e837$export$d69c4113bed92823 = (0, $gv0PY$styledcomponents).div`
+const $af46b3954d96e837$export$d69c4113bed92823 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
   overflow: hidden;
   flex-shrink: 0;
 
@@ -415,7 +428,7 @@ const $e06737997a3d64a1$export$8b251419efc915eb = ({ navigation: navigation , he
 
 
 
-const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $gv0PY$styledcomponents)((0, $gv0PY$Container))`
+const $d478dafe5e1a4039$export$1098d4de7cbde8b = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Container))`
   position: relative;
   margin-top: ${({ theme: theme  })=>theme.spaceMap.sm}px;
   margin-bottom: ${({ theme: theme  })=>theme.spaceMap.sm}px;
@@ -432,7 +445,7 @@ const $0ca4c26db704cb04$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $gv
 
 
 
-const $f6511209e9658628$export$de4797fa0cf99ab6 = (0, $gv0PY$styledcomponents).h1`
+const $f6511209e9658628$export$de4797fa0cf99ab6 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).h1`
   margin-bottom: 0.2em;
 
   font-weight: 800;
@@ -444,7 +457,7 @@ const $f6511209e9658628$export$de4797fa0cf99ab6 = (0, $gv0PY$styledcomponents).h
     display: none;
   }
 `;
-const $f6511209e9658628$export$731f89f04b9d0607 = (0, $gv0PY$styledcomponents).h2`
+const $f6511209e9658628$export$731f89f04b9d0607 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).h2`
   margin-bottom: ${({ theme: theme  })=>theme.spaceMap.md}px;
 
   font-weight: 500;
@@ -480,4 +493,4 @@ const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $gv
 
 
 export {$65c37c265eb37c26$export$8e0cdabd0fe32f2d as WidgetApp, $f6511209e9658628$export$de4797fa0cf99ab6 as LayoutTitle, $f6511209e9658628$export$731f89f04b9d0607 as LayoutSubTitle};
-//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.js.map

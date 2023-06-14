@@ -1,6 +1,6 @@
 {
-  "name": "@lidofinance/next-widget-app",
-  "description": "Widget app wrapper for any widgets based on Next",
+  "name": "@lidofinance/eth-ui-primitives",
+  "description": "ETH UI primitives",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -12,21 +12,27 @@
     "browsers": "> 0.5%, last 2 versions, not dead"
   },
   "type": "module",
-  "source": "./src/index.tsx",
+  "source": "./src/index.ts",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "parcel build",
     "lint": "eslint . && prettier --check src",
     "lint:fix": "eslint --fix . && prettier --check src --write",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@lido-sdk/constants": "^3.1.0",
+    "@lido-sdk/react": "^2.0.0",
+    "ethers": "^5.7.2"
   },
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.7.3",
-    "@lidofinance/next-ui-primitives": "^0.27.0",
-    "next": "12 || 13",
+    "@lidofinance/ui-primitives": "^0.27.0",
+    "@reef-knot/web3-react": "^1.1.1",
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "99a9db1121c753b07a8810c280a808dc"
+  "yalcSig": "eace49ef9e7453ccd7bdc7422366c85b"
 }

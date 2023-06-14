@@ -1,5 +1,6 @@
 import React, { FC, PropsWithChildren, ReactNode } from "react";
 import { LidoLinkProps } from "@lidofinance/next-ui-primitives";
+export * from 'styled-components';
 export type NavigationLinkProps = LidoLinkProps & {
     icon: React.ReactNode;
     title: string;
