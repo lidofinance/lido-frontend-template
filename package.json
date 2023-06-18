@@ -15,9 +15,6 @@
   },
   "dependencies": {
     "@lido-sdk/constants": "^3.1.0",
-    "@lido-sdk/contracts": "^3.0.1",
-    "@lido-sdk/fetch": "^2.1.9",
-    "@lido-sdk/helpers": "^1.4.11",
     "@lido-sdk/providers": "^1.4.12",
     "@lido-sdk/react": "^2.0.0",
     "@lidofinance/analytics-matomo": "^0.27.0",
