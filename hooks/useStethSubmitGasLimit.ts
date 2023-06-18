@@ -3,9 +3,9 @@ import {
   constants as ethersConstants,
   utils as ethersUtils,
 } from 'ethers';
+import { useWeb3 } from 'reef-knot/web3-react';
 import { CHAINS } from '@lido-sdk/constants';
 import { useLidoSWR, useSTETHContractRPC } from '@lido-sdk/react';
-import { useWeb3 } from '@reef-knot/web3-react';
 
 import {
   getBackendRPCPath,

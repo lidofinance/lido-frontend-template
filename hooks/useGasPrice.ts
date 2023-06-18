@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { BigNumber } from 'ethers';
+import { useWeb3 } from 'reef-knot/web3-react';
 
-import { useWeb3 } from '@reef-knot/web3-react';
 import { CHAINS } from '@lido-sdk/constants';
 import { getStaticRpcBatchProvider } from '@lido-sdk/providers';
 

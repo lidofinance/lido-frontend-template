@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import NextApp, { AppProps } from 'next/app';
 import getConfig from 'next/config';
-import { ProviderWeb3 } from '@reef-knot/web3-react';
+import { ProviderWeb3 } from 'reef-knot/web3-react';
+
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
 import {
   Stake,

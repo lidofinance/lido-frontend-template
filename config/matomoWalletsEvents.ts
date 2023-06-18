@@ -1,5 +1,5 @@
+import { Metrics as WalletsMetrics } from 'reef-knot/connect-wallet-modal';
 import { MatomoEventType, trackEvent } from '@lidofinance/analytics-matomo';
-import { Metrics as WalletsMetrics } from '@reef-knot/connect-wallet-modal';
 
 import { default as dynamics } from './dynamics';
 import { getMatomoEventNameWithPrefix } from './matomo';

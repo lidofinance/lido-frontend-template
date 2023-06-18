@@ -4,7 +4,7 @@ import {
   WalletButton,
   WalletConnectButton,
 } from '@lidofinance/eth-ui-wallet-modal';
-import { useWeb3 } from '@reef-knot/web3-react';
+import { useWeb3 } from 'reef-knot/web3-react';
 
 import { HeaderWalletChainStyle } from './styles';
 
