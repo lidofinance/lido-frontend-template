@@ -478,9 +478,14 @@ const $f6511209e9658628$export$731f89f04b9d0607 = (0, $0aa03a66ad9b2697$export$2
 const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $9443e46d40e21d27$export$c507fb1c2e1ac13a), {}),
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $e06737997a3d64a1$export$8b251419efc915eb), {
+                headerActions: props.headerActions,
+                navigation: props?.navigation
+            }),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $0ca4c26db704cb04$export$861edd1ccea2f746), {
                 children: props.children
             }),
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $acdcb1d026776f13$export$a06f1c675e846f6f), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$CookiesTooltip), {}),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ToastContainer), {})
         ]
