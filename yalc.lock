@@ -2,16 +2,16 @@
   "version": "v1",
   "packages": {
     "@lidofinance/next-widget-app": {
-      "signature": "99a9db1121c753b07a8810c280a808dc",
+      "signature": "ddb2b6fcfff6f22ad18683bedfda29af",
       "file": true
     },
     "@lidofinance/eth-ui-wallet-modal": {
-      "signature": "634ded3efe0ef029dd534c0a4843648c",
+      "signature": "f0cfb309dbbc8f2d3b803df76d5c4ba7",
       "file": true,
       "replaced": "^0.26.0"
     },
     "@lidofinance/eth-ui-primitives": {
-      "signature": "eace49ef9e7453ccd7bdc7422366c85b",
+      "signature": "9f7ec128b554a2d2f8edeca6a831287c",
       "file": true,
       "replaced": "^0.26.0"
     }

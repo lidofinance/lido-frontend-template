@@ -15,6 +15,7 @@ import { WidgetApp, NavigationLinkProps } from '@lidofinance/next-widget-app';
 import { backendRPC, dynamics, walletsMetrics } from 'config';
 import { HeaderActions } from 'components/headerActions';
 import { AppWagmiConfig } from 'components/wagmi';
+import NoSSRWrapper from 'components/no-ssr-wrapper';
 import { withCsp } from 'utils';
 
 const { publicRuntimeConfig } = getConfig();
@@ -55,17 +56,20 @@ const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
       rpc={backendRPC}
       walletconnectProjectId={publicRuntimeConfig.walletconnectProjectId}
     >
-      <ProviderWalletModal
-        walletsMetrics={walletsMetrics}
-        hiddenWallets={['Opera Wallet']}
-      >
-        <WidgetApp
-          navigation={headerNavigation}
-          headerActions={<HeaderActions />}
+      {/* Temporary fix hydration error */}
+      <NoSSRWrapper>
+        <ProviderWalletModal
+          walletsMetrics={walletsMetrics}
+          hiddenWallets={['Opera Wallet']}
         >
-          <NextApp {...props} />
-        </WidgetApp>
-      </ProviderWalletModal>
+          <WidgetApp
+            navigation={headerNavigation}
+            headerActions={<HeaderActions />}
+          >
+            <NextApp {...props} />
+          </WidgetApp>
+        </ProviderWalletModal>
+      </NoSSRWrapper>
     </ProviderWeb3>
   </AppWagmiConfig>
 );

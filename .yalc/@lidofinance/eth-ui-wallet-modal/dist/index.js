@@ -110,6 +110,7 @@ const $4834fb6c2a5fac26$export$cb2837f914c2c08c = (props)=>{
         disconnect,
         onClose
     ]);
+    // TODO
     const handleEtherscan = (0, $5Wt9e$useEtherscanOpen)(account ?? "", "address");
     return /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$Modal), {
         title: "Account",
