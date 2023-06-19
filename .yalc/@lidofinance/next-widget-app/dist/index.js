@@ -1,6 +1,6 @@
 import {jsxs as $gv0PY$jsxs, jsx as $gv0PY$jsx} from "react/jsx-runtime";
 import $gv0PY$react, {memo as $gv0PY$memo} from "react";
-import {CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer, LidoLogo as $gv0PY$LidoLogo, Container as $gv0PY$Container, Divider as $gv0PY$Divider, Link as $gv0PY$Link, ThemeToggler as $gv0PY$ThemeToggler} from "@lidofinance/lido-ui";
+import {CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer, Container as $gv0PY$Container, Link as $gv0PY$Link, LidoLogo as $gv0PY$LidoLogo, ThemeToggler as $gv0PY$ThemeToggler} from "@lidofinance/lido-ui";
 import $gv0PY$styledcomponents, {createGlobalStyle as $gv0PY$createGlobalStyle, css as $gv0PY$css} from "styled-components";
 import $gv0PY$nextlink from "next/link";
 import {useRouter as $gv0PY$useRouter} from "next/router";
@@ -63,160 +63,82 @@ const $0aa03a66ad9b2697$var$styled = (0, $gv0PY$styledcomponents).default || (0,
 var $0aa03a66ad9b2697$export$2e2bcd8739ae039 = $0aa03a66ad9b2697$var$styled;
 
 
-const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Container))`
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  color: var(--lido-color-text);
-
-  ${({ theme: theme  })=>theme.mediaQueries.lg} {
-    padding-top: 40px;
-  }
-`;
-const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Divider))`
-  flex-basis: 100%;
-  margin-bottom: 60px;
-
-  ${({ theme: theme  })=>theme.mediaQueries.md} {
-    margin-bottom: 40px;
-  }
-`;
-const $bfd8aa9b9c7d635f$export$7b4485b886e9117a = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
-  flex-grow: 1;
-  margin-bottom: 40px;
+const $bfd8aa9b9c7d635f$export$a1a73e558e01ca3a = 880;
+const $bfd8aa9b9c7d635f$export$1c98a876852f31d = `@media screen and (max-width: ${$bfd8aa9b9c7d635f$export$a1a73e558e01ca3a}px)`;
+const $bfd8aa9b9c7d635f$export$51574cb47565ad4f = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((props)=>/*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Container), {
+        ...props
+    }))`
+  position: relative;
   box-sizing: border-box;
+  color: var(--lido-color-text);
+  display: flex;
+  row-gap: 44px;
+  flex-wrap: wrap;
 
-  ${({ theme: theme  })=>theme.mediaQueries.lg} {
-    flex-basis: 100%;
-    order: 2;
+  width: 100%;
+  max-width: 1424px;
+  padding: 24px 32px 32px;
+
+  ${$bfd8aa9b9c7d635f$export$1c98a876852f31d} {
+    margin-bottom: 60px;
+    padding: 20px 18px;
+    justify-content: center;
   }
 `;
-const $bfd8aa9b9c7d635f$export$531d2b9d9d383692 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
-  flex-grow: 1;
-  margin-bottom: 40px;
-  padding-right: 20px;
+const $bfd8aa9b9c7d635f$export$e0513c91be1318ca = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Link))`
+  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xxs}px;
+  line-height: 20px;
+  color: var(--lido-color-textSecondary);
+  font-weight: 400;
 
-  &:last-child {
-    padding-right: 0;
-  }
-
-  ${({ theme: theme  })=>theme.mediaQueries.md} {
-    flex-basis: 100%;
-  }
-`;
-const $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).h4`
-  margin: 0 0 1em;
-
-  font-weight: 800;
-  font-size: ${({ theme: theme  })=>theme.fontSizesMap.sm}px;
-  line-height: 1.4em;
-`;
-const $bfd8aa9b9c7d635f$export$655f131bfd3955dd = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
-  display: block;
-  margin: 0 0 0.8em;
-
-  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
-  line-height: 1.6em;
-`;
-const $bfd8aa9b9c7d635f$export$70ac745ffa2bea38 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$Link))`
-  display: block;
-  margin: 0 0 0.8em;
-
-  font-size: ${({ theme: theme  })=>theme.fontSizesMap.xs}px;
-  line-height: 1.6em;
-  text-decoration: none;
-  opacity: 0.7;
-
-  &,
-  &:hover,
   &:visited {
-    color: var(--lido-color-text);
+    color: var(--lido-color-textSecondary);
+    &:hover {
+      color: var(--lido-color-text);
+      opacity: 1;
+    }
   }
 
-  &:hover {
-    opacity: 1;
+  &:not(:last-of-type)::after {
+    content: '';
+    border-right: 1px solid var(--lido-color-textSecondary);
+    margin: 0 6px;
+  }
+`;
+const $bfd8aa9b9c7d635f$export$6a66cfdd9c26b6df = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039)((0, $gv0PY$LidoLogo))`
+  margin-right: 44px;
+
+  ${$bfd8aa9b9c7d635f$export$1c98a876852f31d} {
+    display: none;
+  }
+`;
+const $bfd8aa9b9c7d635f$export$3e9753e910d67bc5 = (0, $0aa03a66ad9b2697$export$2e2bcd8739ae039).div`
+  position: absolute;
+  top: 0;
+  left: 32px;
+  width: calc(100% - 64px);
+  height: 1px;
+  background: var(--lido-color-popupMenuItemBgActiveHover);
+  opacity: 0.12;
+
+  ${$bfd8aa9b9c7d635f$export$1c98a876852f31d} {
+    display: none;
   }
 `;
 
 
-const $acdcb1d026776f13$export$a06f1c675e846f6f = ({ ...rest })=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
-        ...rest,
+const $acdcb1d026776f13$export$a06f1c675e846f6f = ()=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$51574cb47565ad4f), {
         size: "full",
         forwardedAs: "footer",
         children: [
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$3e9753e910d67bc5), {}),
-            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$7b4485b886e9117a), {
-                children: /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$LidoLogo), {})
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$6a66cfdd9c26b6df), {}),
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$e0513c91be1318ca), {
+                href: "https://lido.fi/terms-of-use",
+                children: "Terms of Use"
             }),
-            /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$531d2b9d9d383692), {
-                children: [
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2), {
-                        children: "Resources"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/terms-of-use",
-                        children: "Terms of Use"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/privacy-notice",
-                        children: "Privacy Notice"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/faq",
-                        children: "FAQ"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://lido.fi/static/LIDO_press_kit.zip",
-                        children: "Press Kit"
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$531d2b9d9d383692), {
-                children: [
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2), {
-                        children: "Community"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://twitter.com/lidofinance",
-                        children: "Twitter"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://t.me/lidofinance",
-                        children: "Telegram"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://discord.gg/vgdPfhZ",
-                        children: "Discord"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://github.com/lidofinance",
-                        children: "GitHub"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://www.reddit.com/r/LidoFinance/",
-                        children: "Reddit"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://blog.lido.fi/",
-                        children: "Blog"
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0, $gv0PY$jsxs)((0, $bfd8aa9b9c7d635f$export$531d2b9d9d383692), {
-                children: [
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$53e4a0ea45e729a2), {
-                        children: "Contacts"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "mailto:info@lido.fi",
-                        children: "info@lido.fi"
-                    }),
-                    /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$70ac745ffa2bea38), {
-                        href: "https://help.lido.fi/",
-                        children: "Help Center"
-                    })
-                ]
+            /*#__PURE__*/ (0, $gv0PY$jsx)((0, $bfd8aa9b9c7d635f$export$e0513c91be1318ca), {
+                href: "https://lido.fi/privacy-notice",
+                children: "Privacy Notice"
             })
         ]
     });
