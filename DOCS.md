@@ -1,24 +1,4 @@
-# Lido Frontend Template Documentation
-
-This document outlines the template's structure, provides general guidelines and explains best practices for Lido
-frontend development. The template is mainly Ethereum-focused (just for example), but it can be easily modified for
-different blockchains while preserving the general structure of the project.
-
-## Stack
-
-The Lido Frontend Template stack includes:
-
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/docs/getting-started) | API routes, server-side rendering
-- [Reef-Knot](https://github.com/lidofinance/reef-knot) | Web3 Wallets Connection Library
-- [web3react](https://github.com/NoahZinsmeister/web3-react) | Web3 Provider and wallet connectors **(will be deprecated soon)**
-- [Wagmi](https://wagmi.sh/) | Ethereum library
-- [Ethers](https://docs.ethers.io/v5/) | Ethereum library
-- [SWR](https://swr.vercel.app/) | Data fetching and caching
-- [Lido UI](https://github.com/lidofinance/ui) | Lido UI React component library
-- [Lido Warehouse](https://github.com/lidofinance/warehouse) | Lido React component libraries to work with RPC,
-  track metrics, securely write logs, smart UI components and many more
-- [styled-components](https://styled-components.com/docs) | custom styled React components
+# Detailed documentation
 
 ## Environment variables
 

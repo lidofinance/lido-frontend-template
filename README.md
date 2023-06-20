@@ -1,63 +1,78 @@
 # Lido Frontend Template
 
-Lido Frontend Template is a project template for developing Lido applications. It features the standard Lido frontend stack including Next.js, SWR, ethers, Lido UI and styled-components. The purpose of this template is to standardize Lido frontends and to enable developers to start working on the application as soon as possible with minimal setup required.
+This document outlines the template's structure, provides general guidelines and explains best practices for Lido
+frontend development. The template is mainly Ethereum-focused (just for example), but it can be easily modified for
+different blockchains while preserving the general structure of the project.
 
-> 🚧 CI and deploy
->
-> After creating repo from the template make sure that you have correctly filled TARGET_WORKFLOW field in:
->
-> - .github/workflows/ci-dev.yml
-> - .github/workflows/ci-staging.yml
-> - .github/workflows/ci-prod.yml
+## 📦 Stack
 
-### Pre-requisites
+It features the standard Lido frontend stack including:
 
-- Node.js v12+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/docs/getting-started) | API routes, server-side rendering
+- [Reef-Knot](https://github.com/lidofinance/reef-knot) | Web3 Wallets Connection Library
+- [web3react](https://github.com/NoahZinsmeister/web3-react) | Web3 Provider and wallet connectors **(will be deprecated soon)**
+- [Wagmi](https://wagmi.sh/) | Ethereum library
+- [Ethers](https://docs.ethers.io/v5/) | Ethereum library
+- [SWR](https://swr.vercel.app/) | Data fetching and caching
+- [Lido UI](https://github.com/lidofinance/ui) | Lido UI React component library
+- [Lido Warehouse](https://github.com/lidofinance/warehouse) | Lido React component libraries to work with RPC,
+  track metrics, securely write logs, smart UI components and many more
+- [styled-components](https://styled-components.com/docs) | custom styled React components
+
+## 🎯 Purpose
+
+To standardize Lido frontends and to enable developers to start working on the application as soon as possible
+with minimal setup required.
+
+## 🚧 CI and deploy
+
+After creating repo from the template make sure that you have correctly filled TARGET_WORKFLOW field in:
+
+- .github/workflows/ci-dev.yml
+- .github/workflows/ci-staging.yml
+- .github/workflows/ci-prod.yml
+
+### ⚙️ Pre-requisites
+
+- Node.js v16
 - Yarn package manager
 
-## Development
+## 🚀 Fast Development Getting Started
 
-Step 0. Read `DOCS.md` in the root of the project
+**Step 0.** Read `DOCS.md` in the root of the project
 
-Step 1. Copy the contents of `.env` to `.env.local`
+**Step 1.** Copy the contents of `.env` to `.env.local`
 
 ```bash
 cp .env .env.local
 ```
 
-Step 2. Fill out the `.env.local`. You may need to sign up for [Infura](https://infura.io/) or [Alchemy](https://www.alchemy.com/), if you haven't already, to be able to use Ethereum JSON RPC connection.
+**Step 2.** Fill out the `.env.local`
 
-Step 3. Install dependencies
+**Step 3.** Install dependencies
 
 ```bash
 yarn install
 ```
 
-Step 4. Start the development server
+**Step 4.** Start the development server
 
 ```bash
 yarn dev
 ```
 
-Step 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Step 5.** Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Environment variables
+**Step 6.** Stop dev server and READ `DOCS.md` in the root of the project.
 
-This project uses publicRuntimeConfig in the [next.config.js](./next.config.js) and getServerSideProps on the pages (function may be empty, but it forces Next.js to switch to Server-Side Rendering mode). This is necessary to quickly start the docker container without rebuilding the application. More on that in `DOCS.md`.
-
-Read more about [runtime configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration) and [automatic static optimization](https://nextjs.org/docs/advanced-features/automatic-static-optimization)
-
-### Content-Security-Policy
-
-In order to improve security, this template includes a Content-Security-Policy boilerplate. Please make sure to customize the policies in [utils/withCsp.ts](utils/withCsp.ts) before shipping the application to production. Learn more about it in [DOCS](/DOCS.md#monitoring).
-
-## Production
+## 🎆 Production
 
 ```bash
 yarn build && yarn start
 ```
 
-## Release flow
+## 🔀 Release flow
 
 To create new release:
 
