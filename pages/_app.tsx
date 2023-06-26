@@ -22,6 +22,7 @@ import {
 } from 'config';
 import { HeaderActions } from 'components/headerActions';
 // import { AppWagmiConfig } from 'components/wagmi';
+import { GlobalStyles } from 'components/globalStyle';
 import NoSSRWrapper from 'components/no-ssr-wrapper';
 import { withCsp } from 'utils';
 
@@ -79,6 +80,7 @@ const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
         walletconnectProjectId: publicRuntimeConfig.walletconnectProjectId,
       }}
     >
+      <GlobalStyles />
       <NextApp {...props} />
     </WidgetAppEVM>
   </NoSSRWrapper>
