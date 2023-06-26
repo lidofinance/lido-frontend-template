@@ -1,6 +1,6 @@
 {
-  "name": "@lidofinance/next-widget-app",
-  "description": "Widget app wrapper for any widgets based on Next",
+  "name": "@lidofinance/next-widget-layout",
+  "description": "TODO",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -24,10 +24,9 @@
   "peerDependencies": {
     "@lidofinance/lido-ui": "^3.7.3",
     "@lidofinance/next-ui-primitives": "^0.27.0",
-    "@lidofinance/next-widget-layout": "*",
     "next": "12 || 13",
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "33381a49bebaaa69159f66913c1dda5a"
+  "yalcSig": "008c8272698d5e3197e75f81dab6b71b"
 }

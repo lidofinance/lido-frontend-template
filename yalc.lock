@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@lidofinance/next-widget-app": {
-      "signature": "29e877af353a2fddb56963d52c9ff14f",
+      "signature": "33381a49bebaaa69159f66913c1dda5a",
       "file": true
     },
     "@lidofinance/eth-ui-wallet-modal": {
@@ -14,6 +14,10 @@
       "signature": "9f7ec128b554a2d2f8edeca6a831287c",
       "file": true,
       "replaced": "^0.26.0"
+    },
+    "@lidofinance/next-widget-layout": {
+      "signature": "008c8272698d5e3197e75f81dab6b71b",
+      "file": true
     }
   }
 }

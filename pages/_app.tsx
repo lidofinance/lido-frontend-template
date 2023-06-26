@@ -10,7 +10,8 @@ import {
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { WidgetApp, NavigationLinkProps } from '@lidofinance/next-widget-app';
+import { WidgetApp } from '@lidofinance/next-widget-app';
+import { NavigationLinkProps } from '@lidofinance/next-widget-layout';
 
 import { backendRPC, dynamics, walletsMetrics } from 'config';
 import { HeaderActions } from 'components/headerActions';

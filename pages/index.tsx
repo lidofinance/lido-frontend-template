@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Section, Link } from '@lidofinance/lido-ui';
-import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-app';
+import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-layout';
 
 import { Faq, FAQItem, getFaqList } from 'components/faq';
 import EthWallet from 'components/ethWalletCard';

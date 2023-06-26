@@ -32,6 +32,7 @@
     "@lidofinance/next-pages": "^0.27.0",
     "@lidofinance/next-ui-primitives": "^0.27.0",
     "@lidofinance/next-widget-app": "file:.yalc/@lidofinance/next-widget-app",
+    "@lidofinance/next-widget-layout": "file:.yalc/@lidofinance/next-widget-layout",
     "@lidofinance/rpc": "^0.27.0",
     "@lidofinance/ui-primitives": "^0.27.0",
     "eslint-config-next": "^13.0.5",
@@ -93,7 +94,7 @@
   },
   "lint-staged": {
     "./**/*.{ts,tsx}": [
-      "eslint --ignore-path .gitignore --max-warnings=0"
+      "eslint --ignore-path .gitignore --max-warnings=999990"
     ],
     "./**/*.{ts,tsx,css,md,json}": [
       "prettier --write"

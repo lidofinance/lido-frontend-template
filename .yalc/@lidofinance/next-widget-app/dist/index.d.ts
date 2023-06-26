@@ -1,17 +1,12 @@
-import React, { FC, PropsWithChildren, ReactNode } from "react";
-import { LidoLinkProps } from "@lidofinance/next-ui-primitives";
-export * from 'styled-components';
-export type NavigationLinkProps = LidoLinkProps & {
-    icon: React.ReactNode;
-    title: string;
-    href: string;
-};
-export const LayoutTitle: import("styled-components").StyledComponent<"h1", import("styled-components").DefaultTheme, {}, never>;
-export const LayoutSubTitle: import("styled-components").StyledComponent<"h2", import("styled-components").DefaultTheme, {}, never>;
+import { FC, PropsWithChildren, ReactNode } from "react";
+import { NavigationLinkProps } from "@lidofinance/next-widget-layout";
 export type WidgetAppProps = {
     headerActions: ReactNode;
     navigation?: NavigationLinkProps[];
+    disableCookiesTooltip?: boolean;
+    disableToasts?: boolean;
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;
+export const WidgetAppEVM: FC<PropsWithChildren<WidgetAppProps>>;
 
 //# sourceMappingURL=index.d.ts.map
