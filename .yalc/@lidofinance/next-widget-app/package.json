@@ -22,12 +22,19 @@
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
+    "@lido-sdk/constants": "^3.1.0",
+    "@lidofinance/eth-ui-wallet-modal": "^0.27.0",
     "@lidofinance/lido-ui": "^3.7.3",
     "@lidofinance/next-ui-primitives": "^0.27.0",
     "@lidofinance/next-widget-layout": "*",
     "next": "12 || 13",
     "react": "17 || 18",
-    "styled-components": "^5.3.5"
+    "reef-knot": "^1.3.2",
+    "styled-components": "^5.3.5",
+    "wagmi": "0.12.15"
   },
-  "yalcSig": "33381a49bebaaa69159f66913c1dda5a"
+  "dependencies": {
+    "@lidofinance/eth-ui-wallet-modal": "^0.27.0"
+  },
+  "yalcSig": "eda5eb03f3aeb2c8fc6d388ebcd2d4e5"
 }
