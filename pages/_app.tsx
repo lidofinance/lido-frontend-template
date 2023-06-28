@@ -7,7 +7,7 @@ import {
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { WidgetAppEVM } from '@lidofinance/next-widget-app';
+import { EVMWidgetApp } from '@lidofinance/next-widget-app';
 import { NavigationLinkProps } from '@lidofinance/next-widget-layout';
 
 import {
@@ -29,7 +29,7 @@ migrationAllowCookieToCrossDomainCookieClientSide(
 );
 
 // Header pages
-const headerNavigation: NavigationLinkProps[] = [
+const navigationLinks: NavigationLinkProps[] = [
   {
     title: 'Stake',
     href: '/',
@@ -48,12 +48,12 @@ const headerNavigation: NavigationLinkProps[] = [
 ];
 
 // App use EVM wrapper
-const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
+const WidgetAppWrapper: FC<AppProps> = (props) => (
   // Temporary fix hydration error
   // TODO
   <NoSSRWrapper>
-    <WidgetAppEVM
-      navigation={headerNavigation}
+    <EVMWidgetApp
+      navigationLinks={navigationLinks}
       headerActions={<HeaderActions />}
       reefKnot={{
         walletsMetrics: walletsMetrics,
@@ -75,7 +75,7 @@ const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
     >
       <GlobalStyles />
       <NextApp {...props} />
-    </WidgetAppEVM>
+    </EVMWidgetApp>
   </NoSSRWrapper>
 );
 

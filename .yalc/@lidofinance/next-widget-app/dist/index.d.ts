@@ -12,7 +12,7 @@ type AppWagmiConfigProps = {
 };
 export type WidgetAppProps = {
     headerActions: ReactNode;
-    navigation?: NavigationLinkProps[] | undefined;
+    navigationLinks?: NavigationLinkProps[] | undefined;
     disableCookiesTooltip?: boolean | undefined;
     disableToasts?: boolean | undefined;
 };
@@ -22,6 +22,6 @@ export type WidgetAppEVMProps = WidgetAppProps & {
     reefKnot: ProviderWalletModalProps;
 };
 export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>>;
-export const WidgetAppEVM: FC<PropsWithChildren<WidgetAppEVMProps>>;
+export const EVMWidgetApp: FC<PropsWithChildren<WidgetAppEVMProps>>;
 
 //# sourceMappingURL=index.d.ts.map

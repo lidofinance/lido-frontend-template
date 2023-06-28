@@ -14,7 +14,7 @@ import { AppWagmiConfig } from 'components/wagmi';
 import NoSSRWrapper from 'components/no-ssr-wrapper';
 
 // Header pages
-const headerNavigation: NavigationLinkProps[] = [
+const navigationLinks: NavigationLinkProps[] = [
   {
     title: 'Stake',
     href: '/',
@@ -24,7 +24,7 @@ const headerNavigation: NavigationLinkProps[] = [
 
 // App use not EVM wrapper.
 // In general, this is also an example for ETH, however, this structure can be used for any blockchain.
-const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
+const WidgetAppWrapper: FC<AppProps> = (props) => (
   <AppWagmiConfig>
     {/* @ts-expect-error ProviderWeb3 accepts children, but some problem with type */}
     <ProviderWeb3
@@ -41,7 +41,7 @@ const WidgetAppWrapper: FC<AppProps> = ({ ...props }) => (
           hiddenWallets={['Opera Wallet']}
         >
           <WidgetApp
-            navigation={headerNavigation}
+            navigationLinks={navigationLinks}
             headerActions={<HeaderActions />}
           >
             <GlobalStyles />

@@ -2,7 +2,7 @@ import {jsxs as $82imM$jsxs, jsx as $82imM$jsx} from "react/jsx-runtime";
 import {Container as $82imM$Container, Link as $82imM$Link, LidoLogo as $82imM$LidoLogo, ThemeToggler as $82imM$ThemeToggler} from "@lidofinance/lido-ui";
 import $82imM$styledcomponents, {css as $82imM$css} from "styled-components";
 import $82imM$nextlink from "next/link";
-import $82imM$react, {memo as $82imM$memo} from "react";
+import $82imM$react from "react";
 import {useRouter as $82imM$useRouter} from "next/router";
 import {LidoLink as $82imM$LidoLink} from "@lidofinance/next-ui-primitives";
 
@@ -137,10 +137,141 @@ $parcel$export($859fe91f269286c6$exports, "Header", function () { return $859fe9
 
 
 
-var $acdd372ef22329b8$exports = {};
-var $fb6c299da4185c5f$exports = {};
 
-$parcel$export($fb6c299da4185c5f$exports, "Navigation", function () { return $fb6c299da4185c5f$export$b8a61e5c71402559; });
+
+
+
+const $fa262dd5155ad556$export$af0f646b086814d1 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+
+  margin-left: auto;
+`;
+
+
+const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $fa262dd5155ad556$export$af0f646b086814d1), {
+        ...rest,
+        children: [
+            leftSlot,
+            /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$ThemeToggler), {})
+        ]
+    });
+
+
+
+
+
+
+const $b1bde3ce8550df89$export$54a719cd6595ff5c = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
+  display: flex;
+  align-items: center;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+`;
+const $b1bde3ce8550df89$export$d69c4113bed92823 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
+  overflow: hidden;
+  flex-shrink: 0;
+
+  ${({ theme: theme  })=>theme.mediaQueries.md} {
+    width: 14px;
+  }
+`;
+
+
+const $859fe91f269286c6$export$8b251419efc915eb = ({ headerActions: headerActions , children: children , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $b1bde3ce8550df89$export$54a719cd6595ff5c), {
+        ...rest,
+        size: "full",
+        forwardedAs: "header",
+        children: [
+            /*#__PURE__*/ (0, $82imM$jsx)((0, $b1bde3ce8550df89$export$d69c4113bed92823), {
+                children: /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$nextlink), {
+                    href: "/",
+                    passHref: true,
+                    legacyBehavior: true,
+                    children: /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$LidoLogo), {})
+                })
+            }),
+            children,
+            /*#__PURE__*/ (0, $82imM$jsx)((0, $cf7f7e2685ef0014$export$223875819fd7cf93), {
+                leftSlot: headerActions
+            })
+        ]
+    });
+
+
+$parcel$exportWildcard($346ce23802cb2e3e$exports, $859fe91f269286c6$exports);
+
+
+var $cc84f519a0711793$exports = {};
+var $2bb8f36add087037$exports = {};
+
+$parcel$export($2bb8f36add087037$exports, "Main", function () { return $2bb8f36add087037$export$861edd1ccea2f746; });
+
+
+
+const $b648a3b47e7d9a7e$export$1098d4de7cbde8b = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
+  position: relative;
+  margin-top: ${({ theme: theme  })=>theme.spaceMap.sm}px;
+  margin-bottom: ${({ theme: theme  })=>theme.spaceMap.sm}px;
+`;
+
+
+const $2bb8f36add087037$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $82imM$jsx)((0, $b648a3b47e7d9a7e$export$1098d4de7cbde8b), {
+        size: "tight",
+        forwardedAs: "main",
+        ...props
+    });
+
+
+$parcel$exportWildcard($cc84f519a0711793$exports, $2bb8f36add087037$exports);
+
+
+var $acdd372ef22329b8$exports = {};
+
+$parcel$export($acdd372ef22329b8$exports, "NavigationAdaptive", function () { return $27665eff9c7bb00f$export$d37f81a2c6e32ed4; });
+
+
+const $27665eff9c7bb00f$export$7bc8c02c4f2d6836 = (0, $82imM$css)`
+  display: flex;
+  margin: 0 46px;
+
+  svg {
+    margin-right: 10px;
+  }
+`;
+const $27665eff9c7bb00f$var$mobileCss = (0, $82imM$css)`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: fixed;
+  padding: 8px;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: var(--lido-color-foreground);
+  border-top: 1px solid var(--lido-color-border);
+
+  svg {
+    margin-right: 0;
+    margin-bottom: 7px;
+  }
+`;
+const $27665eff9c7bb00f$export$d37f81a2c6e32ed4 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
+  ${$27665eff9c7bb00f$export$7bc8c02c4f2d6836}
+
+  ${({ theme: theme  })=>theme.mediaQueries.lg} {
+    ${$27665eff9c7bb00f$var$mobileCss}
+  }
+
+  z-index: 6;
+`;
 
 
 var $037121f140c5b807$exports = {};
@@ -219,158 +350,7 @@ const $1ca05f137d64f2d1$export$721ee963a67379f1 = ({ icon: icon , title: title ,
 $parcel$exportWildcard($037121f140c5b807$exports, $1ca05f137d64f2d1$exports);
 
 
-
-
-const $27665eff9c7bb00f$export$7bc8c02c4f2d6836 = (0, $82imM$css)`
-  display: flex;
-  margin: 0 46px;
-
-  svg {
-    margin-right: 10px;
-  }
-`;
-const $27665eff9c7bb00f$var$mobileCss = (0, $82imM$css)`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  position: fixed;
-  padding: 8px;
-  margin: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  background-color: var(--lido-color-foreground);
-  border-top: 1px solid var(--lido-color-border);
-
-  svg {
-    margin-right: 0;
-    margin-bottom: 7px;
-  }
-`;
-const $27665eff9c7bb00f$export$f8af16d8231e3b4e = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
-  ${$27665eff9c7bb00f$export$7bc8c02c4f2d6836}
-
-  ${({ theme: theme  })=>theme.mediaQueries.lg} {
-    ${$27665eff9c7bb00f$var$mobileCss}
-  }
-
-  z-index: 6;
-`;
-
-
-const $fb6c299da4185c5f$export$b8a61e5c71402559 = /*#__PURE__*/ (0, $82imM$memo)(({ links: links , ...rest })=>{
-    if (!links) return null;
-    return /*#__PURE__*/ (0, $82imM$jsx)((0, $27665eff9c7bb00f$export$f8af16d8231e3b4e), {
-        ...rest,
-        children: links.map((pageProps)=>/*#__PURE__*/ (0, $82imM$jsx)((0, $1ca05f137d64f2d1$export$721ee963a67379f1), {
-                ...pageProps
-            }, pageProps.href))
-    });
-});
-$fb6c299da4185c5f$export$b8a61e5c71402559.displayName = "Navigation";
-
-
-
-$parcel$exportWildcard($acdd372ef22329b8$exports, $fb6c299da4185c5f$exports);
 $parcel$exportWildcard($acdd372ef22329b8$exports, $037121f140c5b807$exports);
-
-
-
-
-
-
-const $fa262dd5155ad556$export$af0f646b086814d1 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  flex-shrink: 1;
-
-  margin-left: auto;
-`;
-
-
-const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $fa262dd5155ad556$export$af0f646b086814d1), {
-        ...rest,
-        children: [
-            leftSlot,
-            /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$ThemeToggler), {})
-        ]
-    });
-
-
-
-
-
-
-const $b1bde3ce8550df89$export$54a719cd6595ff5c = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
-  display: flex;
-  align-items: center;
-
-  padding-top: 18px;
-  padding-bottom: 18px;
-`;
-const $b1bde3ce8550df89$export$d69c4113bed92823 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
-  overflow: hidden;
-  flex-shrink: 0;
-
-  ${({ theme: theme  })=>theme.mediaQueries.md} {
-    width: 14px;
-  }
-`;
-
-
-const $859fe91f269286c6$export$8b251419efc915eb = ({ navigation: navigation , headerActions: headerActions , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $b1bde3ce8550df89$export$54a719cd6595ff5c), {
-        ...rest,
-        size: "full",
-        forwardedAs: "header",
-        children: [
-            /*#__PURE__*/ (0, $82imM$jsx)((0, $b1bde3ce8550df89$export$d69c4113bed92823), {
-                children: /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$nextlink), {
-                    href: "/",
-                    passHref: true,
-                    legacyBehavior: true,
-                    children: /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$LidoLogo), {})
-                })
-            }),
-            /*#__PURE__*/ (0, $82imM$jsx)((0, $fb6c299da4185c5f$export$b8a61e5c71402559), {
-                links: navigation
-            }),
-            /*#__PURE__*/ (0, $82imM$jsx)((0, $cf7f7e2685ef0014$export$223875819fd7cf93), {
-                leftSlot: headerActions
-            })
-        ]
-    });
-
-
-$parcel$exportWildcard($346ce23802cb2e3e$exports, $859fe91f269286c6$exports);
-
-
-var $cc84f519a0711793$exports = {};
-var $2bb8f36add087037$exports = {};
-
-$parcel$export($2bb8f36add087037$exports, "Main", function () { return $2bb8f36add087037$export$861edd1ccea2f746; });
-
-
-
-const $b648a3b47e7d9a7e$export$1098d4de7cbde8b = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
-  position: relative;
-  margin-top: ${({ theme: theme  })=>theme.spaceMap.sm}px;
-  margin-bottom: ${({ theme: theme  })=>theme.spaceMap.sm}px;
-`;
-
-
-const $2bb8f36add087037$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $82imM$jsx)((0, $b648a3b47e7d9a7e$export$1098d4de7cbde8b), {
-        size: "tight",
-        forwardedAs: "main",
-        ...props
-    });
-
-
-$parcel$exportWildcard($cc84f519a0711793$exports, $2bb8f36add087037$exports);
-
 
 
 var $ca0048e0fd949f53$exports = {};
@@ -412,5 +392,5 @@ const $4f2b321f2249e001$export$731f89f04b9d0607 = (0, $c95ab58c502ba1ce$export$2
 
 
 
-export {$eeac9cf985535277$export$a06f1c675e846f6f as Footer, $859fe91f269286c6$export$8b251419efc915eb as Header, $2bb8f36add087037$export$861edd1ccea2f746 as Main, $fb6c299da4185c5f$export$b8a61e5c71402559 as Navigation, $1ca05f137d64f2d1$export$721ee963a67379f1 as NavigationLink, $ca0048e0fd949f53$export$de4797fa0cf99ab6 as LayoutTitle, $4f2b321f2249e001$export$731f89f04b9d0607 as LayoutSubTitle};
+export {$eeac9cf985535277$export$a06f1c675e846f6f as Footer, $859fe91f269286c6$export$8b251419efc915eb as Header, $2bb8f36add087037$export$861edd1ccea2f746 as Main, $27665eff9c7bb00f$export$d37f81a2c6e32ed4 as NavigationAdaptive, $1ca05f137d64f2d1$export$721ee963a67379f1 as NavigationLink, $ca0048e0fd949f53$export$de4797fa0cf99ab6 as LayoutTitle, $4f2b321f2249e001$export$731f89f04b9d0607 as LayoutSubTitle};
 //# sourceMappingURL=index.js.map
