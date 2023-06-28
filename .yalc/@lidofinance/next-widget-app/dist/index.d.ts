@@ -11,6 +11,7 @@ type AppWagmiConfigProps = {
     walletconnectProjectId: string;
 };
 export type WidgetAppProps = {
+    navigation: ReactNode;
     headerActions: ReactNode;
     navigationLinks?: NavigationLinkProps[] | undefined;
     disableCookiesTooltip?: boolean | undefined;

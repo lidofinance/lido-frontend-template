@@ -5,7 +5,10 @@ import { ProviderWeb3 } from 'reef-knot/web3-react';
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
 import { Stake } from '@lidofinance/lido-ui';
 import { WidgetApp } from '@lidofinance/next-widget-app';
-import { NavigationLinkProps } from '@lidofinance/next-widget-layout';
+import {
+  NavigationAdaptive,
+  NavigationLink,
+} from '@lidofinance/next-widget-layout';
 
 import { backendRPC, dynamics, walletsMetrics } from 'config';
 import { HeaderActions } from 'components/headerActions';
@@ -13,14 +16,11 @@ import { GlobalStyles } from 'components/globalStyle';
 import { AppWagmiConfig } from 'components/wagmi';
 import NoSSRWrapper from 'components/no-ssr-wrapper';
 
-// Header pages
-const navigationLinks: NavigationLinkProps[] = [
-  {
-    title: 'Stake',
-    href: '/',
-    icon: <Stake />,
-  },
-];
+const Navigation: FC = () => (
+  <NavigationAdaptive>
+    <NavigationLink title="Stake" href={'/'} icon={<Stake />} />
+  </NavigationAdaptive>
+);
 
 // App use not EVM wrapper.
 // In general, this is also an example for ETH, however, this structure can be used for any blockchain.
@@ -41,7 +41,7 @@ const WidgetAppWrapper: FC<AppProps> = (props) => (
           hiddenWallets={['Opera Wallet']}
         >
           <WidgetApp
-            navigationLinks={navigationLinks}
+            navigation={<Navigation />}
             headerActions={<HeaderActions />}
           >
             <GlobalStyles />

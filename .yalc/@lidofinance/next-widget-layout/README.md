@@ -36,8 +36,8 @@ export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = (props) => (
   <>
     <Header headerActions={props.headerActions}>
       <NavigationAdaptive>
-        <NavigationLink title={Stake} href={'/'} icon={<Stake />} />
-        <NavigationLink title={Withdrawals} href={'/withdrawals'} icon={<Withdraw />} />
+        <NavigationLink title='Stake' href='/' icon={<Stake />} />
+        <NavigationLink title='Withdrawals' href='/withdrawals' icon={<Withdraw />} />
       </NavigationAdaptive>
     </Header>
     <Main>{props.children}</Main>

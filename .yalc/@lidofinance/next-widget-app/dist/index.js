@@ -2,7 +2,7 @@ import {jsxs as $gv0PY$jsxs, jsx as $gv0PY$jsx} from "react/jsx-runtime";
 import "react";
 import {ProviderWeb3 as $gv0PY$ProviderWeb3} from "reef-knot/web3-react";
 import {CookieThemeProvider as $gv0PY$CookieThemeProvider, CookiesTooltip as $gv0PY$CookiesTooltip, ToastContainer as $gv0PY$ToastContainer} from "@lidofinance/lido-ui";
-import {Header as $gv0PY$Header, NavigationAdaptive as $gv0PY$NavigationAdaptive, NavigationLink as $gv0PY$NavigationLink, Main as $gv0PY$Main, Footer as $gv0PY$Footer} from "@lidofinance/next-widget-layout";
+import {Header as $gv0PY$Header, Main as $gv0PY$Main, Footer as $gv0PY$Footer} from "@lidofinance/next-widget-layout";
 import {ProviderWalletModal as $gv0PY$ProviderWalletModal} from "@lidofinance/eth-ui-wallet-modal";
 import {getConnectors as $gv0PY$getConnectors} from "reef-knot/core-react";
 import {configureChains as $gv0PY$configureChains, createClient as $gv0PY$createClient, WagmiConfig as $gv0PY$WagmiConfig} from "wagmi";
@@ -57,11 +57,7 @@ const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $gv
         children: [
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Header), {
                 headerActions: props.headerActions,
-                children: /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$NavigationAdaptive), {
-                    children: props.navigationLinks?.map((navLinkItem)=>/*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$NavigationLink), {
-                            ...navLinkItem
-                        }, navLinkItem.href))
-                })
+                children: props.navigation
             }),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Main), {
                 children: props.children
@@ -78,6 +74,7 @@ const $65c37c265eb37c26$export$baada3ff66be5e09 = (props)=>/*#__PURE__*/ (0, $gv
             children: /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$ProviderWalletModal), {
                 ...props.reefKnot,
                 children: /*#__PURE__*/ (0, $gv0PY$jsx)($65c37c265eb37c26$export$8e0cdabd0fe32f2d, {
+                    navigation: props.navigation,
                     headerActions: props.headerActions,
                     navigationLinks: props?.navigationLinks,
                     disableCookiesTooltip: props?.disableCookiesTooltip,

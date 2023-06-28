@@ -8,7 +8,10 @@ import {
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
 import { EVMWidgetApp } from '@lidofinance/next-widget-app';
-import { NavigationLinkProps } from '@lidofinance/next-widget-layout';
+import {
+  NavigationAdaptive,
+  NavigationLink,
+} from '@lidofinance/next-widget-layout';
 
 import {
   getBackendRPCPath,
@@ -28,24 +31,17 @@ migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
 
-// Header pages
-const navigationLinks: NavigationLinkProps[] = [
-  {
-    title: 'Stake',
-    href: '/',
-    icon: <Stake />,
-  },
-  {
-    title: 'Example',
-    href: '/example',
-    icon: <Wrap />,
-  },
-  {
-    title: 'Landing',
-    href: 'https://lido.fi/',
-    icon: <LdoIcon />,
-  },
-];
+const Navigation: FC = () => (
+  <NavigationAdaptive>
+    <NavigationLink title="Stake" href={'/'} icon={<Stake />} />
+    <NavigationLink title="Example" href={'/example'} icon={<Wrap />} />
+    <NavigationLink
+      title="Landing"
+      href={'https://lido.fi/'}
+      icon={<LdoIcon />}
+    />
+  </NavigationAdaptive>
+);
 
 // App use EVM wrapper
 const WidgetAppWrapper: FC<AppProps> = (props) => (
@@ -53,7 +49,7 @@ const WidgetAppWrapper: FC<AppProps> = (props) => (
   // TODO
   <NoSSRWrapper>
     <EVMWidgetApp
-      navigationLinks={navigationLinks}
+      navigation={<Navigation />}
       headerActions={<HeaderActions />}
       reefKnot={{
         walletsMetrics: walletsMetrics,
