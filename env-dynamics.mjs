@@ -49,6 +49,9 @@ export const supportedChains = process.env?.SUPPORTED_CHAINS?.split(',').map(
   (chainId) => parseInt(chainId, 10),
 ) ?? [1, 4, 5];
 
+/** @type string */
+export const walletconnectProjectId = process.env.WALLETCONNECT_PROJECT_ID;
+
 // Example!
 /** @type boolean */
 // export const enableQaHelpers = toBoolean(process.env.ENABLE_QA_HELPERS);
