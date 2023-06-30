@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import { ModalProps, ButtonProps } from "@lidofinance/lido-ui";
-import { Metrics } from "@reef-knot/connect-wallet-modal";
+import { Metrics } from "reef-knot/connect-wallet-modal";
 export * from 'styled-components';
 export const ConnectedWalletInfoModal: FC<ModalProps>;
 export enum WALLET_MODAL {

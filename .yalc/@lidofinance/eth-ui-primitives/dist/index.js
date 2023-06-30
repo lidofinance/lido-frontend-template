@@ -5,7 +5,7 @@ import {Tooltip as $iajOg$Tooltip} from "@lidofinance/lido-ui";
 import {useTokenToWallet as $iajOg$useTokenToWallet} from "@lido-sdk/react";
 import $iajOg$styledcomponents from "styled-components";
 import {WalletFallback as $iajOg$WalletFallback} from "@lidofinance/ui-primitives";
-import {useWeb3 as $iajOg$useWeb3, useSupportedChains as $iajOg$useSupportedChains} from "@reef-knot/web3-react";
+import {useWeb3 as $iajOg$useWeb3, useSupportedChains as $iajOg$useSupportedChains} from "reef-knot/web3-react";
 import {CHAINS as $iajOg$CHAINS} from "@lido-sdk/constants";
 
 function $parcel$exportWildcard(dest, source) {

@@ -1,15 +1,16 @@
-import { CHAINS } from "@lido-sdk/constants";
 import { FC, PropsWithChildren, ReactNode } from "react";
+import { CHAINS } from "@lido-sdk/constants";
 import { ProviderWeb3Props } from "reef-knot/web3-react";
 import { NavigationLinkProps } from "@lidofinance/next-widget-layout";
 import { ProviderWalletModalProps } from "@lidofinance/eth-ui-wallet-modal";
-type AppWagmiConfigProps = {
+export type AppWagmiConfigProps = {
     defaultChain: CHAINS;
     supportedChains: CHAINS[];
     backendRPC: Record<number, string>;
     getBackendRPCPath: (chainId: CHAINS) => string;
     walletconnectProjectId: string;
 };
+export const AppWagmiConfig: FC<PropsWithChildren<AppWagmiConfigProps>>;
 export type WidgetAppProps = {
     navigation: ReactNode;
     headerActions: ReactNode;

@@ -30,6 +30,14 @@ var $eeac9cf985535277$exports = {};
 
 $parcel$export($eeac9cf985535277$exports, "Footer", function () { return $eeac9cf985535277$export$a06f1c675e846f6f; });
 
+var $f0336ed00b2afb2f$exports = {};
+
+$parcel$export($f0336ed00b2afb2f$exports, "MOBILE_MAX_WIDTH", function () { return $f0336ed00b2afb2f$export$a1a73e558e01ca3a; });
+$parcel$export($f0336ed00b2afb2f$exports, "MOBILE_MEDIA", function () { return $f0336ed00b2afb2f$export$1c98a876852f31d; });
+$parcel$export($f0336ed00b2afb2f$exports, "FooterStyle", function () { return $f0336ed00b2afb2f$export$51574cb47565ad4f; });
+$parcel$export($f0336ed00b2afb2f$exports, "FooterLink", function () { return $f0336ed00b2afb2f$export$e0513c91be1318ca; });
+$parcel$export($f0336ed00b2afb2f$exports, "LogoLidoStyle", function () { return $f0336ed00b2afb2f$export$6a66cfdd9c26b6df; });
+$parcel$export($f0336ed00b2afb2f$exports, "FooterDivider", function () { return $f0336ed00b2afb2f$export$3e9753e910d67bc5; });
 
 
 // Styled Components v5 has issues with ESM modules:
@@ -127,7 +135,9 @@ const $eeac9cf985535277$export$a06f1c675e846f6f = ()=>/*#__PURE__*/ (0, $82imM$j
     });
 
 
+
 $parcel$exportWildcard($a9ba963c6ee86286$exports, $eeac9cf985535277$exports);
+$parcel$exportWildcard($a9ba963c6ee86286$exports, $f0336ed00b2afb2f$exports);
 
 
 var $346ce23802cb2e3e$exports = {};
@@ -152,10 +162,10 @@ const $fa262dd5155ad556$export$af0f646b086814d1 = (0, $c95ab58c502ba1ce$export$2
 `;
 
 
-const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $fa262dd5155ad556$export$af0f646b086814d1), {
+const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ children: children , ...rest })=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $fa262dd5155ad556$export$af0f646b086814d1), {
         ...rest,
         children: [
-            leftSlot,
+            children,
             /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$ThemeToggler), {})
         ]
     });
@@ -163,6 +173,10 @@ const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ leftSlot: leftSlot , ...res
 
 
 
+var $b1bde3ce8550df89$exports = {};
+
+$parcel$export($b1bde3ce8550df89$exports, "HeaderStyle", function () { return $b1bde3ce8550df89$export$54a719cd6595ff5c; });
+$parcel$export($b1bde3ce8550df89$exports, "HeaderLogoStyle", function () { return $b1bde3ce8550df89$export$d69c4113bed92823; });
 
 
 const $b1bde3ce8550df89$export$54a719cd6595ff5c = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
@@ -197,13 +211,15 @@ const $859fe91f269286c6$export$8b251419efc915eb = ({ headerActions: headerAction
             }),
             children,
             /*#__PURE__*/ (0, $82imM$jsx)((0, $cf7f7e2685ef0014$export$223875819fd7cf93), {
-                leftSlot: headerActions
+                children: headerActions
             })
         ]
     });
 
 
+
 $parcel$exportWildcard($346ce23802cb2e3e$exports, $859fe91f269286c6$exports);
+$parcel$exportWildcard($346ce23802cb2e3e$exports, $b1bde3ce8550df89$exports);
 
 
 var $cc84f519a0711793$exports = {};
@@ -211,6 +227,9 @@ var $2bb8f36add087037$exports = {};
 
 $parcel$export($2bb8f36add087037$exports, "Main", function () { return $2bb8f36add087037$export$861edd1ccea2f746; });
 
+var $b648a3b47e7d9a7e$exports = {};
+
+$parcel$export($b648a3b47e7d9a7e$exports, "MainStyle", function () { return $b648a3b47e7d9a7e$export$1098d4de7cbde8b; });
 
 
 const $b648a3b47e7d9a7e$export$1098d4de7cbde8b = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
@@ -227,15 +246,18 @@ const $2bb8f36add087037$export$861edd1ccea2f746 = (props)=>/*#__PURE__*/ (0, $82
     });
 
 
+
 $parcel$exportWildcard($cc84f519a0711793$exports, $2bb8f36add087037$exports);
+$parcel$exportWildcard($cc84f519a0711793$exports, $b648a3b47e7d9a7e$exports);
 
 
 var $acdd372ef22329b8$exports = {};
+var $27665eff9c7bb00f$exports = {};
 
-$parcel$export($acdd372ef22329b8$exports, "NavigationAdaptive", function () { return $27665eff9c7bb00f$export$d37f81a2c6e32ed4; });
+$parcel$export($27665eff9c7bb00f$exports, "NavigationAdaptive", function () { return $27665eff9c7bb00f$export$d37f81a2c6e32ed4; });
 
 
-const $27665eff9c7bb00f$export$7bc8c02c4f2d6836 = (0, $82imM$css)`
+const $27665eff9c7bb00f$var$desktopCss = (0, $82imM$css)`
   display: flex;
   margin: 0 46px;
 
@@ -264,7 +286,7 @@ const $27665eff9c7bb00f$var$mobileCss = (0, $82imM$css)`
   }
 `;
 const $27665eff9c7bb00f$export$d37f81a2c6e32ed4 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039).div`
-  ${$27665eff9c7bb00f$export$7bc8c02c4f2d6836}
+  ${$27665eff9c7bb00f$var$desktopCss}
 
   ${({ theme: theme  })=>theme.mediaQueries.lg} {
     ${$27665eff9c7bb00f$var$mobileCss}
@@ -281,6 +303,9 @@ $parcel$export($1ca05f137d64f2d1$exports, "NavigationLink", function () { return
 
 
 
+var $38c747b9aaecb41f$exports = {};
+
+$parcel$export($38c747b9aaecb41f$exports, "NavigationLinkStyle", function () { return $38c747b9aaecb41f$export$25da3807dbd81a49; });
 
 
 const $38c747b9aaecb41f$export$25da3807dbd81a49 = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$LidoLink))`
@@ -347,9 +372,12 @@ const $1ca05f137d64f2d1$export$721ee963a67379f1 = ({ icon: icon , title: title ,
 };
 
 
+
 $parcel$exportWildcard($037121f140c5b807$exports, $1ca05f137d64f2d1$exports);
+$parcel$exportWildcard($037121f140c5b807$exports, $38c747b9aaecb41f$exports);
 
 
+$parcel$exportWildcard($acdd372ef22329b8$exports, $27665eff9c7bb00f$exports);
 $parcel$exportWildcard($acdd372ef22329b8$exports, $037121f140c5b807$exports);
 
 
@@ -392,5 +420,5 @@ const $4f2b321f2249e001$export$731f89f04b9d0607 = (0, $c95ab58c502ba1ce$export$2
 
 
 
-export {$eeac9cf985535277$export$a06f1c675e846f6f as Footer, $859fe91f269286c6$export$8b251419efc915eb as Header, $2bb8f36add087037$export$861edd1ccea2f746 as Main, $27665eff9c7bb00f$export$d37f81a2c6e32ed4 as NavigationAdaptive, $1ca05f137d64f2d1$export$721ee963a67379f1 as NavigationLink, $ca0048e0fd949f53$export$de4797fa0cf99ab6 as LayoutTitle, $4f2b321f2249e001$export$731f89f04b9d0607 as LayoutSubTitle};
+export {$eeac9cf985535277$export$a06f1c675e846f6f as Footer, $f0336ed00b2afb2f$export$a1a73e558e01ca3a as MOBILE_MAX_WIDTH, $f0336ed00b2afb2f$export$1c98a876852f31d as MOBILE_MEDIA, $f0336ed00b2afb2f$export$51574cb47565ad4f as FooterStyle, $f0336ed00b2afb2f$export$e0513c91be1318ca as FooterLink, $f0336ed00b2afb2f$export$6a66cfdd9c26b6df as LogoLidoStyle, $f0336ed00b2afb2f$export$3e9753e910d67bc5 as FooterDivider, $859fe91f269286c6$export$8b251419efc915eb as Header, $b1bde3ce8550df89$export$54a719cd6595ff5c as HeaderStyle, $b1bde3ce8550df89$export$d69c4113bed92823 as HeaderLogoStyle, $2bb8f36add087037$export$861edd1ccea2f746 as Main, $b648a3b47e7d9a7e$export$1098d4de7cbde8b as MainStyle, $27665eff9c7bb00f$export$d37f81a2c6e32ed4 as NavigationAdaptive, $1ca05f137d64f2d1$export$721ee963a67379f1 as NavigationLink, $38c747b9aaecb41f$export$25da3807dbd81a49 as NavigationLinkStyle, $ca0048e0fd949f53$export$de4797fa0cf99ab6 as LayoutTitle, $4f2b321f2249e001$export$731f89f04b9d0607 as LayoutSubTitle};
 //# sourceMappingURL=index.js.map

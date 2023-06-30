@@ -3,10 +3,10 @@ import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, crea
 import $5Wt9e$copytoclipboard from "copy-to-clipboard";
 import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle, CookieThemeProvider as $5Wt9e$CookieThemeProvider} from "@lidofinance/lido-ui";
 import {useSDK as $5Wt9e$useSDK, useEtherscanOpen as $5Wt9e$useEtherscanOpen, useEthereumBalance as $5Wt9e$useEthereumBalance} from "@lido-sdk/react";
-import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "@reef-knot/web3-react";
+import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "reef-knot/web3-react";
 import $5Wt9e$styledcomponents from "styled-components";
 import {FormatToken as $5Wt9e$FormatToken} from "@lidofinance/eth-ui-primitives";
-import {WalletsModalForEth as $5Wt9e$WalletsModalForEth} from "@reef-knot/connect-wallet-modal";
+import {WalletsModalForEth as $5Wt9e$WalletsModalForEth} from "reef-knot/connect-wallet-modal";
 
 function $parcel$exportWildcard(dest, source) {
   Object.keys(source).forEach(function(key) {

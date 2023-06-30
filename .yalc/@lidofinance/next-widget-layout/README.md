@@ -23,24 +23,41 @@ yarn add styled-components@^5.3.5 @lidofinance/lido-ui@^3.7.3 @lidofinance/next-
 
 ## Getting started
 
-```tsx
-import React, { FC, PropsWithChildren, ReactNode } from 'react'
-import { Header, Main, Footer, NavigationAdaptive, NavigationLink } from '@lidofinance/next-widget-layout'
-import { Stake, Withdraw } from '@lidofinance/lido-ui';
+Example for `pages/_app.tsx`:
 
-export type WidgetAppProps = {
-  headerActions: ReactNode
+```tsx
+import React, { FC } from 'react'
+import NextApp, { AppProps } from 'next/app'
+import { useWeb3 } from 'reef-knot/web3-react'
+
+import { WalletButton, WalletConnectButton } from '@lidofinance/eth-ui-wallet-modal'
+import { Header, Main, Footer, NavigationAdaptive, NavigationLink } from '@lidofinance/next-widget-layout'
+import { Stake, Withdraw } from '@lidofinance/lido-ui'
+
+const Navigation: FC = () => (
+  <NavigationAdaptive>
+    <NavigationLink title='Stake' href='/' icon={<Stake />} />
+    <NavigationLink title='Withdrawals' href='/withdrawals' icon={<Withdraw />} />
+  </NavigationAdaptive>
+);
+
+const HeaderActions: FC = () => {
+  const { active } = useWeb3()
+  return (
+    <>
+      {active ? <WalletButton /> : <WalletConnectButton size="sm" />}
+    </>
+  )
 }
 
-export const WidgetApp: FC<PropsWithChildren<WidgetAppProps>> = (props) => (
+export const WidgetAppWrapper: FC<AppProps> = (props) => (
   <>
-    <Header headerActions={props.headerActions}>
-      <NavigationAdaptive>
-        <NavigationLink title='Stake' href='/' icon={<Stake />} />
-        <NavigationLink title='Withdrawals' href='/withdrawals' icon={<Withdraw />} />
-      </NavigationAdaptive>
+    <Header headerActions={<HeaderActions />}>
+      <Navigation />
     </Header>
-    <Main>{props.children}</Main>
+    <Main>
+      <NextApp {...props} />
+    </Main>
     <Footer />
   </>
 )

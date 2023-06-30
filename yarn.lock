@@ -1931,16 +1931,9 @@
 
 "@lidofinance/eth-ui-primitives@file:.yalc/@lidofinance/eth-ui-primitives":
   version "0.0.0"
-  dependencies:
-    "@lido-sdk/constants" "^3.1.0"
-    "@lido-sdk/react" "^2.0.0"
-    ethers "^5.7.2"
 
 "@lidofinance/eth-ui-wallet-modal@file:.yalc/@lidofinance/eth-ui-wallet-modal":
   version "0.0.0"
-  dependencies:
-    "@lido-sdk/react" "^1.18.5"
-    copy-to-clipboard "^3.3.3"
 
 "@lidofinance/lido-ui@^3.7.3":
   version "3.7.3"
@@ -1986,6 +1979,9 @@
   integrity sha512-sQHLWqwhI7HCe7XcVkwURc7r0vQPZoUqj6E8qDIiCc6B3hspWaXDRGSkPoeFcNQoRpGyJWbvcxrChI4c0nEJGw==
 
 "@lidofinance/next-widget-app@file:.yalc/@lidofinance/next-widget-app":
+  version "0.0.0"
+
+"@lidofinance/next-widget-layout@file:.yalc/@lidofinance/next-widget-layout":
   version "0.0.0"
 
 "@lidofinance/rpc@^0.27.0":

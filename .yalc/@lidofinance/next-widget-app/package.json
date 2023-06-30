@@ -23,9 +23,9 @@
   },
   "peerDependencies": {
     "@lido-sdk/constants": "^3.1.0",
-    "@lidofinance/eth-ui-wallet-modal": "^0.27.0",
+    "@lidofinance/eth-ui-wallet-modal": "*",
     "@lidofinance/lido-ui": "^3.7.3",
-    "@lidofinance/next-ui-primitives": "^0.27.0",
+    "@lidofinance/next-ui-primitives": "*",
     "@lidofinance/next-widget-layout": "*",
     "next": "12 || 13",
     "react": "17 || 18",
@@ -33,8 +33,5 @@
     "styled-components": "^5.3.5",
     "wagmi": "0.12.15"
   },
-  "dependencies": {
-    "@lidofinance/eth-ui-wallet-modal": "^0.27.0"
-  },
-  "yalcSig": "26509318a4ecb28a50706be029e8b7e1"
+  "yalcSig": "69d268f4488fd30cd55a19bc5aa1639b"
 }

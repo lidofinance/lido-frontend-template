@@ -9,12 +9,35 @@ import {configureChains as $gv0PY$configureChains, createClient as $gv0PY$create
 import * as $gv0PY$wagmichains from "wagmi/chains";
 import {jsonRpcProvider as $gv0PY$jsonRpcProvider} from "wagmi/providers/jsonRpc";
 
+function $parcel$exportWildcard(dest, source) {
+  Object.keys(source).forEach(function(key) {
+    if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) {
+      return;
+    }
+
+    Object.defineProperty(dest, key, {
+      enumerable: true,
+      get: function get() {
+        return source[key];
+      }
+    });
+  });
+
+  return dest;
+}
+function $parcel$export(e, n, v, s) {
+  Object.defineProperty(e, n, {get: v, set: s, enumerable: true, configurable: true});
+}
 
 
 
 
 
 
+var $38ddeda052689a93$exports = {};
+var $a457050fc3bf712c$exports = {};
+
+$parcel$export($a457050fc3bf712c$exports, "AppWagmiConfig", function () { return $a457050fc3bf712c$export$92ad1c9857b6c1c8; });
 
 
 
@@ -43,13 +66,14 @@ const $a457050fc3bf712c$export$92ad1c9857b6c1c8 = (props)=>{
         provider: provider,
         webSocketProvider: webSocketProvider
     });
-    // @ts-expect-error check client
     return /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$WagmiConfig), {
         client: client,
         children: props.children
     });
 };
 
+
+$parcel$exportWildcard($38ddeda052689a93$exports, $a457050fc3bf712c$exports);
 
 
 
@@ -86,5 +110,5 @@ const $65c37c265eb37c26$export$baada3ff66be5e09 = (props)=>/*#__PURE__*/ (0, $gv
     });
 
 
-export {$65c37c265eb37c26$export$8e0cdabd0fe32f2d as WidgetApp, $65c37c265eb37c26$export$baada3ff66be5e09 as EVMWidgetApp};
+export {$65c37c265eb37c26$export$8e0cdabd0fe32f2d as WidgetApp, $65c37c265eb37c26$export$baada3ff66be5e09 as EVMWidgetApp, $a457050fc3bf712c$export$92ad1c9857b6c1c8 as AppWagmiConfig};
 //# sourceMappingURL=index.js.map
