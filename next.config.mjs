@@ -22,7 +22,6 @@ const rateLimitTimeFrame = process.env.RATE_LIMIT_TIME_FRAME;
 const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
-const walletconnectProjectId = process.env.WALLETCONNECT_PROJECT_ID
 
 const allowedRpcMethods = [
   'eth_call',
@@ -69,9 +68,6 @@ export default {
         headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
       },
     ];
-  },
-  publicRuntimeConfig : {
-    walletconnectProjectId,
   },
   serverRuntimeConfig: {
     basePath,

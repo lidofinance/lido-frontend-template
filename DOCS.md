@@ -39,6 +39,10 @@ export const myPublicVar = process.env.MY_PUBLIC_VAR;
 
 Note! The `next.config.mjs` run `buildDynamics()` that create `public/runtime/window-env.js` that import in `pages/_document.tsx`.
 
+## Architectural methodology for Lido frontend projects
+
+TODO (FSD?)...
+
 ## JSON RPC Provider
 
 Apart from Web3 connection provided by the user's wallet, we use an additional JSON RPC connection
@@ -75,7 +79,7 @@ Lido has a React Components library that is distributed as a npm package, `@lido
 It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions,
 tables, text components, modals, icons, identicons, tooltips and more.
 
-It is already listed as a dependency to this project and you may start using it right away, e.g.
+It is already listed as a dependency to this project, and you may start using it right away, e.g.
 
 ```tsx
 import { Button } from '@lidofinance/lido-ui';
@@ -89,13 +93,13 @@ const MyComponent: FC<{}> = () => {
 };
 ```
 
-For more visit the Lido UI repository at: https://github.com/lidofinance/ui
+For more visit the [Lido UI repository](https://github.com/lidofinance/ui).
 
-Check out Lido UI Storybook at: https://ui.lido.fi/
+Check out [Lido UI Storybook](https://ui.lido.fi).
 
 ## Lido Warehouse React Components Library
 
-For more visit the Lido Warehouse repository at: https://github.com/lidofinance/warehouse
+For more visit the [Lido Warehouse repository](https://github.com/lidofinance/warehouse).
 
 ## Git commit messages
 
@@ -111,8 +115,7 @@ $ yarn commit
 
 ## Icons
 
-Yon can use this mockup to generate icons for the app:
-https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons
+Yon can use this mockup to generate icons for the app at [figma](https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons)
 
 ## Monitoring
 
@@ -214,16 +217,16 @@ More info [response time metric](https://github.com/lidofinance/warehouse/tree/m
 Learn more about [Prometheus metrics](https://prometheus.io/docs/concepts/metric_types/) and
 [`prom-client`](https://github.com/siimon/prom-client).
 
-### Cache-control
+## Cache-control
 
-#### API
+### API
 
 Use cache control wherever possible. For example - GET requests for statistical data.
 For simple setting of cache-control headers, `@lidofinance/next-api-wrappers` are used.
 An example can be viewed [here](pages/api/mock-apr.ts) or [here](pages/api/mock-lido-stats.ts).
 API wrappers documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
 
-##### Example:
+#### Example:
 
 ```typescript
 import {
@@ -249,7 +252,7 @@ export default wrapRequest([
 ])(someApiRequest);
 ```
 
-#### Static files
+### Static files
 
 For caching static files (for example manifest.json), a `Next Middleware` is used. For simple setting of cache-control
 file headers, `@lidofinance/next-cache-files-middleware` are used. Its implementation is [here](middleware.ts).

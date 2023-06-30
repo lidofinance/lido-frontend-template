@@ -4,6 +4,11 @@ This document outlines the template's structure, provides general guidelines and
 frontend development. The template is mainly Ethereum-focused (just for example), but it can be easily modified for
 different blockchains while preserving the general structure of the project.
 
+### ⚙️ Pre-requisites
+
+- Node.js v16
+- Yarn package manager
+
 ## 📦 Stack
 
 It features the standard Lido frontend stack including:
@@ -33,14 +38,13 @@ After creating repo from the template make sure that you have correctly filled T
 - .github/workflows/ci-staging.yml
 - .github/workflows/ci-prod.yml
 
-### ⚙️ Pre-requisites
+## 🚛 Migration to Lido Frontend Template
 
-- Node.js v16
-- Yarn package manager
+Read [MIGRATION.md](./MIGRATION.md) and [DOCS.md](./DOCS.md) in the root of the project
 
 ## 🚀 Fast Development Getting Started
 
-**Step 0.** Read `DOCS.md` in the root of the project
+**Step 0.** Read [DOCS.md](./DOCS.md) in the root of the project
 
 **Step 1.** Copy the contents of `.env` to `.env.local`
 
@@ -64,7 +68,7 @@ yarn dev
 
 **Step 5.** Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-**Step 6.** Stop dev server and READ `DOCS.md` in the root of the project.
+**Step 6.** Stop dev server and READ [DOCS.md](./DOCS.md) in the root of the project.
 
 ## 🎆 Production
 
