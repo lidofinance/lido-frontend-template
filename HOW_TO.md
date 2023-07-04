@@ -1,4 +1,4 @@
-# MIGRATION GUIDE
+# HOW TO
 
 Current Lido CI setup is built with this app template in mind.
 If your project was built with custom code / fork of an older version of the staking widget,
@@ -18,7 +18,7 @@ NEXT_PUBLIC_MY_PUBLIC_VAR=hello
 MY_PUBLIC_VAR=hello
 ```
 
-### Step 2. Export variables in `next.config.mjs`
+### Step 2. Export variables in `next.config.mjs` and `env-dynamics.mjs`
 
 Now we need to rename `next.config.js` to [next.config.mjs](./next.config.mjs),
 after to change it so that we can use the variables in our application.
@@ -27,3 +27,5 @@ We will export the private variables with the `serverRuntimeConfig` and
 those variables that are essential for client-side JavaScript are specified in [env-dynamics.mjs](./env-dynamics.mjs).
 
 Note! Don't use `publicRuntimeConfig`. It is avoid problems caching variables on the client side.
+
+### Step 3.
