@@ -40,7 +40,7 @@ After creating repo from the template make sure that you have correctly filled T
 
 ## 🚛 Migration to Lido Frontend Template
 
-Read [MIGRATION.md](./MIGRATION.md) and [DOCS.md](./DOCS.md) in the root of the project
+Read [MIGRATION.md](./HOW_TO.md) and [DOCS.md](./DOCS.md) in the root of the project
 
 ## 🚀 Fast Development Getting Started
 
