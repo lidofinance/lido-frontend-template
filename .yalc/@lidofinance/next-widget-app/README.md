@@ -3,23 +3,17 @@
 Widget app wrapper (`pages/_app.tsx`) for any blockchains widgets based on Next.
 
 ### Installation
+
+* React 17 || 18
+* Next 12 || 13
+
 ```bash
 yarn add @lidofinance/next-widget-app
 
-# react 17
-yarn add react@^17.0.0
-# or react 18
-yarn add react@^18.0.0
-
-# next 12
-yarn add react@^12
-# or next 13
-yarn add react@^13
-
 # and additional
 yarn add styled-components@^5.3.5 reef-knot@^1.3.2 wagmi@0.12.15
-yarn add @lido-sdk/constants@^3.1.0 @lidofinance/lido-ui@^^3.7.3 @lidofinance/next-ui-primitives@^0.27.0
-yarn add @lidofinance/eth-ui-wallet-modal@^0.27.0 @lidofinance/next-widget-layout@<TODO>
+yarn add @lido-sdk/constants@^3.1.0 @lidofinance/lido-ui@^^3.8.0 @lidofinance/next-ui-primitives@^0.29.0
+yarn add @lidofinance/eth-ui-wallet-modal@^0.29.0 @lidofinance/next-widget-layout@^0.29.0
 ```
 
 ## Getting started

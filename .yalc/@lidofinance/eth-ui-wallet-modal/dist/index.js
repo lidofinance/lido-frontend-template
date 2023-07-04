@@ -1,9 +1,9 @@
 import {jsx as $5Wt9e$jsx, jsxs as $5Wt9e$jsxs} from "react/jsx-runtime";
 import {useCallback as $5Wt9e$useCallback, useContext as $5Wt9e$useContext, createContext as $5Wt9e$createContext, useState as $5Wt9e$useState, useMemo as $5Wt9e$useMemo, memo as $5Wt9e$memo} from "react";
+import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "reef-knot/web3-react";
 import $5Wt9e$copytoclipboard from "copy-to-clipboard";
 import {Modal as $5Wt9e$Modal, Identicon as $5Wt9e$Identicon, Address as $5Wt9e$Address, ButtonIcon as $5Wt9e$ButtonIcon, Copy as $5Wt9e$Copy, External as $5Wt9e$External, Button as $5Wt9e$Button, AddressBadge as $5Wt9e$AddressBadge, InlineLoader as $5Wt9e$InlineLoader, useThemeToggle as $5Wt9e$useThemeToggle, CookieThemeProvider as $5Wt9e$CookieThemeProvider} from "@lidofinance/lido-ui";
 import {useSDK as $5Wt9e$useSDK, useEtherscanOpen as $5Wt9e$useEtherscanOpen, useEthereumBalance as $5Wt9e$useEthereumBalance} from "@lido-sdk/react";
-import {useConnectorInfo as $5Wt9e$useConnectorInfo, useDisconnect as $5Wt9e$useDisconnect} from "reef-knot/web3-react";
 import $5Wt9e$styledcomponents from "styled-components";
 import {FormatToken as $5Wt9e$FormatToken} from "@lidofinance/eth-ui-primitives";
 import {WalletsModalForEth as $5Wt9e$WalletsModalForEth} from "reef-knot/connect-wallet-modal";
@@ -110,7 +110,6 @@ const $4834fb6c2a5fac26$export$cb2837f914c2c08c = (props)=>{
         disconnect,
         onClose
     ]);
-    // TODO
     const handleEtherscan = (0, $5Wt9e$useEtherscanOpen)(account ?? "", "address");
     return /*#__PURE__*/ (0, $5Wt9e$jsx)((0, $5Wt9e$Modal), {
         title: "Account",

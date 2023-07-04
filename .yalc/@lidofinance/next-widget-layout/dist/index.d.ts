@@ -4,7 +4,12 @@ import { LidoLinkProps } from "@lidofinance/next-ui-primitives";
 export * from 'styled-components';
 export const MOBILE_MAX_WIDTH = 880;
 export const MOBILE_MEDIA: string;
-export const FooterStyle: import("styled-components").StyledComponent<(props: any) => import("react").JSX.Element, import("styled-components").DefaultTheme, {}, never>;
+export const FooterStyle: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<{
+    size?: "content" | "full" | "tight" | undefined;
+} & Omit<import("react").ClassAttributes<HTMLDivElement> & import("react").HTMLAttributes<HTMLDivElement> & {
+    as?: keyof JSX.IntrinsicElements | undefined;
+    forwardedAs?: keyof JSX.IntrinsicElements | undefined;
+}, "ref" | "size"> & import("react").RefAttributes<HTMLDivElement>>, import("styled-components").DefaultTheme, {}, never>;
 export const FooterLink: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<Omit<import("react").ClassAttributes<HTMLAnchorElement> & import("react").AnchorHTMLAttributes<HTMLAnchorElement> & {
     as?: keyof JSX.IntrinsicElements | undefined;
     forwardedAs?: keyof JSX.IntrinsicElements | undefined;
@@ -16,7 +21,7 @@ export const LogoLidoStyle: import("styled-components").StyledComponent<import("
     forwardedAs?: keyof JSX.IntrinsicElements | undefined;
 }, "ref"> & import("react").RefAttributes<HTMLDivElement>>, import("styled-components").DefaultTheme, {}, never>;
 export const FooterDivider: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, {}, never>;
-export const Footer: FC;
+export const Footer: FC<ContainerProps>;
 export const HeaderStyle: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<{
     size?: "content" | "full" | "tight" | undefined;
 } & Omit<import("react").ClassAttributes<HTMLDivElement> & import("react").HTMLAttributes<HTMLDivElement> & {
@@ -25,7 +30,7 @@ export const HeaderStyle: import("styled-components").StyledComponent<import("re
 }, "ref" | "size"> & import("react").RefAttributes<HTMLDivElement>>, import("styled-components").DefaultTheme, {}, never>;
 export const HeaderLogoStyle: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, {}, never>;
 export type HeaderProps = ContainerProps & {
-    headerActions: ReactNode;
+    headerActions?: ReactNode;
 };
 export const Header: FC<PropsWithChildren<HeaderProps>>;
 export const MainStyle: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<{

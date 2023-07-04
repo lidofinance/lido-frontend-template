@@ -1,6 +1,6 @@
 {
   "name": "@lidofinance/next-widget-layout",
-  "description": "TODO",
+  "description": "Layout components: header, main, footer, etc.",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -28,5 +28,5 @@
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "yalcSig": "edda84b043e526b7a3573e3a4b23dcfe"
+  "yalcSig": "28c2f2d2360f18f8fec1545bb6f76459"
 }

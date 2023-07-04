@@ -39,7 +39,6 @@ $parcel$export($f0336ed00b2afb2f$exports, "FooterLink", function () { return $f0
 $parcel$export($f0336ed00b2afb2f$exports, "LogoLidoStyle", function () { return $f0336ed00b2afb2f$export$6a66cfdd9c26b6df; });
 $parcel$export($f0336ed00b2afb2f$exports, "FooterDivider", function () { return $f0336ed00b2afb2f$export$3e9753e910d67bc5; });
 
-
 // Styled Components v5 has issues with ESM modules:
 // https://github.com/styled-components/styled-components/issues/115
 // https://github.com/rollup/rollup/issues/4438
@@ -55,9 +54,7 @@ var $c95ab58c502ba1ce$export$2e2bcd8739ae039 = $c95ab58c502ba1ce$var$styled;
 
 const $f0336ed00b2afb2f$export$a1a73e558e01ca3a = 880;
 const $f0336ed00b2afb2f$export$1c98a876852f31d = `@media screen and (max-width: ${$f0336ed00b2afb2f$export$a1a73e558e01ca3a}px)`;
-const $f0336ed00b2afb2f$export$51574cb47565ad4f = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((props)=>/*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$Container), {
-        ...props
-    }))`
+const $f0336ed00b2afb2f$export$51574cb47565ad4f = (0, $c95ab58c502ba1ce$export$2e2bcd8739ae039)((0, $82imM$Container))`
   position: relative;
   box-sizing: border-box;
   color: var(--lido-color-text);
@@ -117,9 +114,10 @@ const $f0336ed00b2afb2f$export$3e9753e910d67bc5 = (0, $c95ab58c502ba1ce$export$2
 `;
 
 
-const $eeac9cf985535277$export$a06f1c675e846f6f = ()=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $f0336ed00b2afb2f$export$51574cb47565ad4f), {
+const $eeac9cf985535277$export$a06f1c675e846f6f = (props)=>/*#__PURE__*/ (0, $82imM$jsxs)((0, $f0336ed00b2afb2f$export$51574cb47565ad4f), {
         size: "full",
         forwardedAs: "footer",
+        ...props,
         children: [
             /*#__PURE__*/ (0, $82imM$jsx)((0, $f0336ed00b2afb2f$export$6a66cfdd9c26b6df), {}),
             /*#__PURE__*/ (0, $82imM$jsx)((0, $f0336ed00b2afb2f$export$e0513c91be1318ca), {
@@ -169,6 +167,7 @@ const $cf7f7e2685ef0014$export$223875819fd7cf93 = ({ children: children , ...res
             /*#__PURE__*/ (0, $82imM$jsx)((0, $82imM$ThemeToggler), {})
         ]
     });
+
 
 
 

@@ -4,18 +4,11 @@ Layout components: header, main, footer, etc.
 
 ## Installation
 
+- React 17 || 18
+- Next 12 || 13
+
 ```bash
 yarn add @lidofinance/next-widget-layout
-
-# react 17
-yarn add react@^17.0.0
-# or react 18
-yarn add react@^18.0.0
-
-# next 12
-yarn add react@^12
-# or next 13
-yarn add react@^13
 
 # other packages 
 yarn add styled-components@^5.3.5 @lidofinance/lido-ui@^3.7.3 @lidofinance/next-ui-primitives@^0.27.0

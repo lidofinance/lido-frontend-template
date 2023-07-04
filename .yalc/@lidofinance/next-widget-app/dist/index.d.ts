@@ -13,7 +13,7 @@ export type AppWagmiConfigProps = {
 export const AppWagmiConfig: FC<PropsWithChildren<AppWagmiConfigProps>>;
 export type WidgetAppProps = {
     navigation: ReactNode;
-    headerActions: ReactNode;
+    headerActions?: ReactNode;
     navigationLinks?: NavigationLinkProps[] | undefined;
     disableCookiesTooltip?: boolean | undefined;
     disableToasts?: boolean | undefined;

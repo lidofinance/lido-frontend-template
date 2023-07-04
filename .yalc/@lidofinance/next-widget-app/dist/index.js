@@ -80,7 +80,7 @@ $parcel$exportWildcard($38ddeda052689a93$exports, $a457050fc3bf712c$exports);
 const $65c37c265eb37c26$export$8e0cdabd0fe32f2d = (props)=>/*#__PURE__*/ (0, $gv0PY$jsxs)((0, $gv0PY$CookieThemeProvider), {
         children: [
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Header), {
-                headerActions: props.headerActions,
+                headerActions: props?.headerActions,
                 children: props.navigation
             }),
             /*#__PURE__*/ (0, $gv0PY$jsx)((0, $gv0PY$Main), {
@@ -99,7 +99,7 @@ const $65c37c265eb37c26$export$baada3ff66be5e09 = (props)=>/*#__PURE__*/ (0, $gv
                 ...props.reefKnot,
                 children: /*#__PURE__*/ (0, $gv0PY$jsx)($65c37c265eb37c26$export$8e0cdabd0fe32f2d, {
                     navigation: props.navigation,
-                    headerActions: props.headerActions,
+                    headerActions: props?.headerActions,
                     navigationLinks: props?.navigationLinks,
                     disableCookiesTooltip: props?.disableCookiesTooltip,
                     disableToasts: props?.disableToasts,
