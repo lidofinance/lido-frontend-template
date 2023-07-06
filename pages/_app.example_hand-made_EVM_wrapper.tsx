@@ -22,7 +22,7 @@ const Navigation: FC = () => (
   </NavigationAdaptive>
 );
 
-// App use not EVM wrapper.
+// App Use hand-made EVM wrapper.
 // In general, this is also an example for ETH, however, this structure can be used for any blockchain.
 const WidgetAppWrapper: FC<AppProps> = (props) => (
   <AppWagmiConfig>
