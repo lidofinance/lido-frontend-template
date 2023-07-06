@@ -7,7 +7,7 @@ import {
   Wrap,
   migrationAllowCookieToCrossDomainCookieClientSide,
 } from '@lidofinance/lido-ui';
-import { EVMWidgetApp } from '@lidofinance/next-widget-app';
+import { EVMWidgetApp } from '@lidofinance/eth-next-widget-app-evm';
 import {
   NavigationAdaptive,
   NavigationLink,

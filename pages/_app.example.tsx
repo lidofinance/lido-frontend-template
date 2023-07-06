@@ -4,7 +4,7 @@ import { ProviderWeb3 } from 'reef-knot/web3-react';
 
 import { ProviderWalletModal } from '@lidofinance/eth-ui-wallet-modal';
 import { Stake } from '@lidofinance/lido-ui';
-import { WidgetApp } from '@lidofinance/next-widget-app';
+import { WidgetApp } from '@lidofinance/eth-next-widget-app-evm';
 import {
   NavigationAdaptive,
   NavigationLink,

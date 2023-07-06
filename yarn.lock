@@ -1924,6 +1924,9 @@
   resolved "https://registry.yarnpkg.com/@lidofinance/eth-api-providers/-/eth-api-providers-0.30.0.tgz#29de53d9af05d724cc5db7fae95e356c48b03129"
   integrity sha512-XCDEzlVw9vnRKZ07ldQfDbvOuCnhWIt1Fno0JCNjoNBawXrtJaHp9goDjoKwG7W5yLl04paii0Uin2Ba6aoF9g==
 
+"@lidofinance/eth-next-widget-app-evm@file:.yalc/@lidofinance/eth-next-widget-app-evm":
+  version "0.0.0"
+
 "@lidofinance/eth-providers@^0.30.0":
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/@lidofinance/eth-providers/-/eth-providers-0.30.0.tgz#bf18a78e51c469afb10576e7b0242845747a7105"
@@ -1981,9 +1984,6 @@
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/@lidofinance/next-ui-primitives/-/next-ui-primitives-0.30.0.tgz#a80ac3652f244d54f64e6de4b5a67c7963f931b2"
   integrity sha512-n/7/mwWzAaykhlzNix5C/tKpBjA2v1jsfxsr5MFSrrvyF7NTtfIrupXZROS0+bq/UaHeAcCVx5gfIhfDja6kFw==
-
-"@lidofinance/next-widget-app@file:.yalc/@lidofinance/next-widget-app":
-  version "0.0.0"
 
 "@lidofinance/next-widget-layout@^0.30.0":
   version "0.30.0"
