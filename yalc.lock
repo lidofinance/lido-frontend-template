@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@lidofinance/eth-next-widget-app-evm": {
-      "signature": "622335a22b858d571376a6d2b861f671",
-      "file": true
-    }
-  }
-}
