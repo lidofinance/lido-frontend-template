@@ -21,6 +21,11 @@ Below is the detailed procedure on how to do it.
 
 **Step 1.** Specify a variable in `.env.local`, e.g.
 
+We have a lot of env variables used some of them are shared between environments, some of them (such as URLs,
+chain IDs and others) will differ env-to-env. To handle this requirement we separated environment handling logic between
+.env files (which are providing data for JS and HTML compilation in docker image build) and env-dynamics.mjs
+file which is dynamically providing values at each runtime environment.
+
 ```bash
 # .env.local
 MY_PUBLIC_VAR=hello
@@ -37,11 +42,11 @@ export const myPublicVar = process.env.MY_PUBLIC_VAR;
 
 ---
 
-Note! The `next.config.mjs` run `buildDynamics()` that create `public/runtime/window-env.js` that import in `pages/_document.tsx`.
+\_Note! The `next.config.mjs` run `buildDynamics()` that create `public/runtime/window-env.js` that import in `pages/_document.tsx`.
 
 ## Architectural methodology for Lido frontend projects
 
-TODO (FSD?)...
+\_Note! Perhaps it will be [FSD](https://feature-sliced.design/ru/docs), it is still in discussion.
 
 ## JSON RPC Provider
 
@@ -74,25 +79,6 @@ If everything goes well, you will see `generated` directory in the root of the p
 
 ## Lido UI React Components Library
 
-In order to ensure visual consistency across all Lido frontends and to speed up the development process,
-Lido has a React Components library that is distributed as a npm package, `@lidofinance/lido-ui`.
-It comes with two themes (light and dark) and various basic components including buttons, blocks, inputs, accordions,
-tables, text components, modals, icons, identicons, tooltips and more.
-
-It is already listed as a dependency to this project, and you may start using it right away, e.g.
-
-```tsx
-import { Button } from '@lidofinance/lido-ui';
-
-const MyComponent: FC<{}> = () => {
-  return (
-    <Button fullwidth color="primary" variant="outlined">
-      Click me
-    </Button>
-  );
-};
-```
-
 For more visit the [Lido UI repository](https://github.com/lidofinance/ui).
 
 Check out [Lido UI Storybook](https://ui.lido.fi).
@@ -112,10 +98,6 @@ you are free to make use of any Conventional Commit IDE extensions or use the CL
 $ git add .
 $ yarn commit
 ```
-
-## Icons
-
-Yon can use this mockup to generate icons for the app at [figma](https://www.figma.com/file/kUipxQFrZq28GXZvDqf4sA/Lido-Icons)
 
 ## Monitoring
 
@@ -227,6 +209,9 @@ An example can be viewed [here](pages/api/mock-apr.ts) or [here](pages/api/mock-
 API wrappers documentation [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
 
 #### Example:
+
+TODO: remove
+SEE https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper
 
 ```typescript
 import {

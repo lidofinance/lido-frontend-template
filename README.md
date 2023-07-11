@@ -17,7 +17,7 @@ It features the standard Lido frontend stack including:
 - [Next.js](https://nextjs.org/docs/getting-started) | API routes, server-side rendering
 - [Reef-Knot](https://github.com/lidofinance/reef-knot) | Web3 Wallets Connection Library
 - [web3react](https://github.com/NoahZinsmeister/web3-react) | Web3 Provider and wallet connectors **(will be deprecated soon)**
-- [Wagmi](https://wagmi.sh/) | Ethereum library
+- [Wagmi](https://wagmi.sh/) | Ethereum library **(only v0.12)**
 - [Ethers](https://docs.ethers.io/v5/) | Ethereum library
 - [SWR](https://swr.vercel.app/) | Data fetching and caching
 - [Lido UI](https://github.com/lidofinance/ui) | Lido UI React component library
@@ -40,7 +40,7 @@ After creating repo from the template make sure that you have correctly filled T
 
 ## 🚛 Migration to Lido Frontend Template
 
-Read [MIGRATION.md](./HOW_TO.md) and [DOCS.md](./DOCS.md) in the root of the project
+Read [HOW_TO.md](./HOW_TO.md) and [DOCS.md](./DOCS.md) step by step in the root of the project
 
 ## 🚀 Fast Development Getting Started
 
@@ -69,12 +69,6 @@ yarn dev
 **Step 5.** Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 **Step 6.** Stop dev server and READ [DOCS.md](./DOCS.md) in the root of the project.
-
-## 🎆 Production
-
-```bash
-yarn build && yarn start
-```
 
 ## 🔀 Release flow
 
