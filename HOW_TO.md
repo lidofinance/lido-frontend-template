@@ -8,23 +8,7 @@ most likely there would be changes required to make your app run smoothly.
 
 READ FIRST [DOCS.md](./DOCS.md)!!!
 
-### Step 1. Change all public environment variables to server-side
-
-TODO: remove about `NEXT_PUBLIC_` prefix!
-
-If you are using any public environment variables, i.e. those with the `NEXT_PUBLIC_` prefix,
-you will have to change them to regular server-side variables by removing the prefix, e.g.
-
-```bash
-# .env.local
-
-# before
-NEXT_PUBLIC_MY_PUBLIC_VAR=hello
-# after
-MY_PUBLIC_VAR=hello
-```
-
-### Step 2. Export variables in `next.config.mjs` and `env-dynamics.mjs`
+### Step 1. Export variables in `next.config.mjs` and `env-dynamics.mjs`
 
 Now we need to rename `next.config.js` to [next.config.mjs](./next.config.mjs),
 after to change it so that we can use the variables in our application.
@@ -32,11 +16,9 @@ after to change it so that we can use the variables in our application.
 We will export the private variables with the `serverRuntimeConfig` and
 those variables that are essential for client-side JavaScript are specified in [env-dynamics.mjs](./env-dynamics.mjs).
 
-...TODO...cache
-
 Note! Don't use `publicRuntimeConfig`. It is avoid problems caching variables on the client side.
 
-### Step 3. Install Lido Warehouse packages
+### Step 2. Install Lido Warehouse packages
 
 About **Lido Warehouse packages** you can read [here](https://github.com/lidofinance/warehouse).
 
@@ -48,7 +30,7 @@ In the first steps, you will have enough:
 - reef-knot **(only for EVM widgets)**
 - ...<TODO>...
 
-### Step 4. Wrap \_app.tsx
+### Step 3. Wrap \_app.tsx
 
 `#### EVM widget`
 Go to `pages/_app.tsx` and:
@@ -83,31 +65,58 @@ You can find:
 
 ##### About HeaderActions
 
-...TODO...
+<img height="256" src="./.github/assets/HeaderActionsSlot.png">
 
-### Step N: Global styles
+Use `HeaderActions` slot to pass a `connect to wallet` button and a `see wallet` button.
 
-...TODO...
+You can find an example in [./components/headerActions/headerActions.tsx](./components/headerActions/headerActions.tsx).
 
-### Step N: See all PAY ATTENTION comments
+### Step 4: Global styles
 
-...TODO...
-...TODO 2... Needs script to remove PAY ATTENTION comments.
+Don't forget to set the global styles for the project in `./pages/_app.tsx`.
 
-### Step N: Layout for each page
+Example of global styles you can find in [./components/globalStyle.ts](./components/globalStyle.ts)
 
-...TODO...
-Draft: use LayoutTitle, LayoutSubTitle, Section
-
-### Step N: How to error page
-
-...TODO...
-import { Page404 } from '@lidofinance/next-pages/ui';
-
-### Step N: Metrics
+### Step 5: See all PAY ATTENTION comments
 
 ...TODO...
 
-### Step N: API helpers
+### Step 6: Layout for each page
 
-...TODO...
+For pages, you should use a components such as:
+
+- `LayoutTitle` - h1 title,
+- `LayoutSubTitle` - h2 title,
+- `Section` - for separating a logically blocks.
+
+Examples you can find here:
+
+- [./pages/index.tsx](./pages/index.tsx)
+- [./pages/example.tsx](./pages/example.tsx)
+
+### Step 7: How to error page
+
+For errors page such as:
+
+- pages/404.tsx
+- pages/500.tsx
+
+You can use [@lidofinance/next-pages/ui](https://github.com/lidofinance/warehouse/tree/main/packages/next/pages)
+
+### Step 8: Metrics
+
+You should add a file like [./pages/api/metrics.ts](./pages/api/metrics.ts) for export metrics.
+
+**TODO more info...**
+
+### Step 9: API helpers
+
+All API methods, which located in `./pages/api`, you should wrap via wrappers from [@lidofinance/next-api-wrapper](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper).
+
+These wrappers provide `rate limit defender`, `cache control`, `response time metric`, `error handler` and etc.
+
+Examples you can find here:
+
+- [@lidofinance/next-api-wrapper](https://github.com/lidofinance/warehouse/tree/main/packages/next/api-wrapper),
+- [./pages/api/mock-apr.ts](./pages/api/mock-apr.ts),
+- [./pages/api/mock-lido-stats.ts](./pages/api/mock-lido-stats.ts)
