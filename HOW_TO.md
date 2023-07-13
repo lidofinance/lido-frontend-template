@@ -24,11 +24,12 @@ About **Lido Warehouse packages** you can read [here](https://github.com/lidofin
 
 In the first steps, you will have enough:
 
-- @lidofinance/lido-ui
-- @lidofinance/eth-next-widget-app-evm **(only for EVM widgets)**
-- @lidofinance/eth-ui-wallet-modal **(only for EVM widgets)**
-- reef-knot **(only for EVM widgets)**
-- ...<TODO>...
+- @lidofinance/lido-ui,
+- @lidofinance/eth-next-widget-app-evm **(only for EVM widgets)**,
+- @lidofinance/eth-ui-wallet-modal **(only for EVM widgets)**,
+- reef-knot **(only for EVM widgets)**.
+
+Next, it may be necessary install some packages from [warehouse](https://github.com/lidofinance/warehouse).
 
 ### Step 3. Wrap \_app.tsx
 
@@ -79,7 +80,20 @@ Example of global styles you can find in [./components/globalStyle.ts](./compone
 
 ### Step 5: See all PAY ATTENTION comments
 
-...TODO...
+You should to walk through the project where is a `PAY ATTENTION` comment and to put correct values.
+
+There are some places:
+
+- [./pages/\_document.tsx](./pages/_document.tsx),
+- FAQ,
+- [env-dynamics.mjs](env-dynamics.mjs),
+- Matomo,
+- allowed RPC methods,
+- CSP settings,
+- [./public/manifest.json](./public/manifest.json),
+- etc.
+
+_TIPS: you can use `Find in Files` on IDE!_
 
 ### Step 6: Layout for each page
 
@@ -106,8 +120,6 @@ You can use [@lidofinance/next-pages/ui](https://github.com/lidofinance/warehous
 ### Step 8: Metrics
 
 You should add a file like [./pages/api/metrics.ts](./pages/api/metrics.ts) for export metrics.
-
-**TODO more info...**
 
 ### Step 9: API helpers
 
