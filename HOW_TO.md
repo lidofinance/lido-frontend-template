@@ -22,14 +22,35 @@ Note! Don't use `publicRuntimeConfig`. It is avoid problems caching variables on
 
 About **Lido Warehouse packages** you can read [here](https://github.com/lidofinance/warehouse).
 
-In the first steps, you will have enough:
+It can be:
 
-- @lidofinance/lido-ui,
-- @lidofinance/eth-next-widget-app-evm **(only for EVM widgets)**,
-- @lidofinance/eth-ui-wallet-modal **(only for EVM widgets)**,
-- reef-knot **(only for EVM widgets)**.
+- @lidofinance/api-logger
+- @lidofinance/api-metrics
+- @lidofinance/next-api-wrapper
+- @lidofinance/next-pages
+- etc.
 
-Next, it may be necessary install some packages from [warehouse](https://github.com/lidofinance/warehouse).
+In the first steps to avoid some problems you should update all warehouse deps to the latest versions:
+
+In the second steps you should install a deps:
+
+`yarn add @lidofinance/lido-ui`
+
+`yarn add @lidofinance/next-widget-layout`
+
+`yarn add @lidofinance/eth-next-widget-app-evm` **(only for EVM widgets)**
+
+`yarn add @lidofinance/eth-ui-wallet-modal` **(only for EVM widgets)**
+
+`yarn add @lidofinance/eth-ui-primitives` **(only for EVM widgets)**
+
+`yarn add @lidofinance/ui-primitives` **(only for EVM widgets)**
+
+`yarn add @lidofinance/next-ui-primitives`
+
+`yarn add reef-knot` **(only for EVM widgets)**
+
+Also, it may be necessary install some another packages from [warehouse](https://github.com/lidofinance/warehouse).
 
 ### Step 3. Wrap \_app.tsx
 
@@ -71,6 +92,10 @@ You can find:
 Use `HeaderActions` slot to pass a `connect to wallet` button and a `see wallet` button.
 
 You can find an example in [./components/headerActions/headerActions.tsx](./components/headerActions/headerActions.tsx).
+
+##### About Navigation
+
+...TODO...
 
 ### Step 4: Global styles
 
