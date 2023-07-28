@@ -10,8 +10,7 @@
     "lint:fix": "yarn lint --fix",
     "types": "tsc --noEmit",
     "typechain": "typechain --target=ethers-v5 --out-dir ./generated ./abi/*.json",
-    "postinstall": "husky install && yarn typechain",
-    "commit": "git-cz"
+    "postinstall": "husky install && yarn typechain"
   },
   "dependencies": {
     "@lido-sdk/constants": "^3.1.0",
@@ -99,15 +98,5 @@
     "./**/*.{ts,tsx,css,md,json}": [
       "prettier --write"
     ]
-  },
-  "commintlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/prompt"
-    }
   }
 }
