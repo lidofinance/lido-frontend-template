@@ -1,12 +1,8 @@
-import getConfig from 'next/config';
 import { CHAINS } from '@lido-sdk/constants';
 
-export const { serverRuntimeConfig } = getConfig();
-
-const { basePath } = serverRuntimeConfig;
-
 export const getBackendRPCPath = (chainId: CHAINS): string => {
-  return `${basePath ?? ''}/api/rpc?chainId=${chainId}`;
+  const BASE_URL = typeof window === 'undefined' ? '' : window.location.origin;
+  return `${BASE_URL}/api/rpc?chainId=${chainId}`;
 };
 
 export const backendRPC = {

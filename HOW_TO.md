@@ -30,9 +30,9 @@ It can be:
 - @lidofinance/next-pages
 - etc.
 
-In the first steps to avoid some problems you should update all warehouse deps to the latest versions:
+In the first to avoid some compatibility issues you should update all `warehouse` dependencies to the latest versions:
 
-In the second steps you should install a deps:
+In the second you should install a dependencies:
 
 `yarn add @lidofinance/lido-ui`
 
@@ -95,7 +95,15 @@ You can find an example in [./components/headerActions/headerActions.tsx](./comp
 
 ##### About Navigation
 
-...TODO...
+Use `NavigationAdaptive`, `NavigationLink` to build `Navigation` component,
+after pass that to:
+
+- `EVMWidgetApp` (as prop),
+- `WidgetApp` (as prop),
+- `Header` (as children)
+
+You can find an `Navigation` example component in [./pages/\_app.tsx](./pages/_app.tsx)
+or [Warehouse repo](https://github.com/lidofinance/warehouse/tree/main/packages/next/widget-layout)
 
 ### Step 4: Global styles
 
