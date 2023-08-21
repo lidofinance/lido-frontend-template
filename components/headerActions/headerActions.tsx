@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { CHAINS, getChainColor } from '@lido-sdk/constants';
 import {
   WalletButton,
-  WalletConnectButton,
+  ConnectWalletButton,
 } from '@lidofinance/eth-ui-wallet-modal';
 import { useWeb3 } from 'reef-knot/web3-react';
 
@@ -24,7 +24,7 @@ export const HeaderActions: FC = () => {
           {chainName}
         </HeaderWalletChainStyle>
       )}
-      {active ? <WalletButton /> : <WalletConnectButton size="sm" />}
+      {active ? <WalletButton /> : <ConnectWalletButton size="sm" />}
     </>
   );
 };
