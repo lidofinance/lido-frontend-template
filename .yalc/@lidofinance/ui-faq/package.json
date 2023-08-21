@@ -1,0 +1,31 @@
+{
+  "name": "@lidofinance/ui-faq",
+  "description": "FAQ",
+  "repository": "git@github.com:lidofinance/warehouse.git",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16",
+    "browsers": "> 0.5%, last 2 versions, not dead"
+  },
+  "type": "module",
+  "source": "./src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "lint": "eslint . && prettier --check src",
+    "lint:fix": "eslint --fix . && prettier --check src --write",
+    "types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@lidofinance/lido-ui": "^3.7.3",
+    "react": "17 || 18",
+    "react-markdown": "^8.0.7",
+    "styled-components": "^5.3.5"
+  },
+  "yalcSig": "e21eddd4e61c704417c1c7227e7a2d9a"
+}

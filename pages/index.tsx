@@ -4,8 +4,9 @@ import Head from 'next/head';
 
 import { Section, Link } from '@lidofinance/lido-ui';
 import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-layout';
+import { Faq, FAQItem } from '@lidofinance/ui-faq';
 
-import { Faq, FAQItem, getFaqList } from 'components/faq';
+import { getFaqList } from 'components/faq';
 import EthWallet from 'components/ethWalletCard';
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';
