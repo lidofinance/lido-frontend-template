@@ -4,9 +4,15 @@ import Head from 'next/head';
 
 import { Section, Link } from '@lidofinance/lido-ui';
 import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-layout';
-import { Faq, FAQItem } from '@lidofinance/ui-faq';
+import {
+  FaqAccordion,
+  getRawDataFromNetlifyOrCache,
+  parseNetlifyWidgetFAQ,
+  FAQItem,
+  pagesFAQ,
+} from '@lidofinance/ui-faq';
 
-import { getFaqList } from 'components/faq';
+import { serverRuntimeConfig } from 'config';
 import EthWallet from 'components/ethWalletCard';
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';
@@ -42,7 +48,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       </Section>
 
       <Section title="FAQ">
-        <Faq faqList={faqList} />
+        <FaqAccordion faqList={faqList} />
       </Section>
     </>
   );
@@ -50,8 +56,25 @@ const Home: FC<HomeProps> = ({ faqList }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => ({
-  props: {
-    faqList: await getFaqList(['lido-frontend-template']),
-  },
-});
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const [, faqRawData] = await getRawDataFromNetlifyOrCache(
+    serverRuntimeConfig.faqNetlifyUrl,
+  );
+
+  let faqList: pagesFAQ | undefined = undefined;
+  if (faqRawData) {
+    const pages = await parseNetlifyWidgetFAQ(faqRawData);
+    faqList = pages.find((page: pagesFAQ) => page['name'] === 'Index Page');
+  }
+
+  return {
+    props: {
+      faqList: [],
+
+      ...(faqList &&
+        faqList['q&a'] && {
+          faqList: faqList['q&a'],
+        }),
+    },
+  };
+};

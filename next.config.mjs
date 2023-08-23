@@ -33,6 +33,8 @@ const allowedRpcMethods = [
   // PAY ATTENTION: Extra RPC methods can be added here
 ];
 
+const faqNetlifyUrl = process.env.FAQ_NETLIFY_URL;
+
 export default {
   basePath,
   eslint: {
@@ -80,5 +82,6 @@ export default {
     cspReportOnly,
     cspReportUri,
     allowedRpcMethods,
+    faqNetlifyUrl,
   },
 };
