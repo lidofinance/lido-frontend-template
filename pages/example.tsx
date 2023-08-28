@@ -46,7 +46,9 @@ export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
   let faqList: pagesFAQ | undefined = undefined;
   if (faqRawData) {
     const pages = await parseNetlifyWidgetFAQ(faqRawData);
-    faqList = pages.find((page: pagesFAQ) => page['name'] === 'Example Page');
+    faqList = pages.find(
+      (page: pagesFAQ) => page['identification'] === 'example_page',
+    );
   }
 
   return {
@@ -54,8 +56,8 @@ export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
       faqList: [],
 
       ...(faqList &&
-        faqList['q&a'] && {
-          faqList: faqList['q&a'],
+        faqList['faq'] && {
+          faqList: faqList['faq'],
         }),
     },
   };

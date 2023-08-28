@@ -16,8 +16,8 @@ export const parseNetlifyFile: (md: string, remarkPlugins?: PluggableList) => Pr
     data: Record<string, any>;
 }>;
 export type pagesFAQ = {
-    name: string;
-    'q&a': FAQItem[];
+    identification: string;
+    faq: FAQItem[];
 };
 export const parseNetlifyWidgetFAQ: (md: string) => Promise<pagesFAQ[]>;
 

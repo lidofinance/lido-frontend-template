@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@lidofinance/ui-faq": {
-      "signature": "d114c4a53c1b92899ba8bc2b64636e18",
+      "signature": "6bbf2aa264e6b8b83387d3990dad1881",
       "file": true
     }
   }
