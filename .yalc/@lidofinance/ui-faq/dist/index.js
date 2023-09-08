@@ -1,7 +1,7 @@
 import {jsx as $loPuo$jsx, Fragment as $loPuo$Fragment} from "react/jsx-runtime";
 import "react";
 import $loPuo$reactmarkdown from "react-markdown";
-import {Accordion as $loPuo$Accordion} from "@lidofinance/lido-ui";
+import * as $loPuo$lidofinancelidoui from "@lidofinance/lido-ui";
 import $loPuo$styledcomponents from "styled-components";
 import {unified as $loPuo$unified} from "unified";
 import $loPuo$remarkparse from "remark-parse";
@@ -82,10 +82,10 @@ const $b871f2fb17bf3607$export$eb463a824a473e05 = (0, $f7fa192b95611bbe$export$2
 `;
 
 
-const $17df517d232bb386$export$821fcbaf011feac1 = (props)=>{
-    const { faqList: faqList } = props;
+const { Accordion: $17df517d232bb386$var$Accordion } = $loPuo$lidofinancelidoui;
+const $17df517d232bb386$export$821fcbaf011feac1 = ({ faqList: faqList })=>{
     return /*#__PURE__*/ (0, $loPuo$jsx)((0, $loPuo$Fragment), {
-        children: faqList.map(({ question: question, answer: answer }, index)=>/*#__PURE__*/ (0, $loPuo$jsx)((0, $loPuo$Accordion), {
+        children: faqList.map(({ question: question, answer: answer }, index)=>/*#__PURE__*/ (0, $loPuo$jsx)($17df517d232bb386$var$Accordion, {
                 defaultExpanded: index === 0,
                 summary: String(question),
                 children: /*#__PURE__*/ (0, $loPuo$jsx)((0, $b871f2fb17bf3607$export$eb463a824a473e05), {
@@ -111,42 +111,6 @@ $parcel$exportWildcard($4e053a1b8b64ce9e$exports, $49bd0fe341d564cb$exports);
 
 
 var $364ca8732529d7a4$exports = {};
-var $fa4fe0e0cc4ead59$exports = {};
-
-$parcel$export($fa4fe0e0cc4ead59$exports, "getRawDataFromNetlifyOrCache", function () { return $fa4fe0e0cc4ead59$export$6cf5b06c41265e02; });
-const $fa4fe0e0cc4ead59$var$cacheMap = new Map();
-const $fa4fe0e0cc4ead59$export$6cf5b06c41265e02 = async (url)=>{
-    const cacheKey = url;
-    if ($fa4fe0e0cc4ead59$var$cacheMap.has(cacheKey)) return [
-        true,
-        $fa4fe0e0cc4ead59$var$cacheMap.get(cacheKey)
-    ];
-    try {
-        const response = await fetch(url);
-        if (!response.ok) return [
-            false,
-            null
-        ];
-        // Temporary solution
-        // The CMS, while generating md, adds an '\_' between the text and
-        // the link, which is then replaced by 'nbsp;' (non-breaking space)
-        // and interferes correct content display
-        // To fix this, we replace '\_' with ' '
-        const rawData = (await response.text()).replace(/\\_\[/gm, " [").replace(/\)\\_/gm, ") ");
-        $fa4fe0e0cc4ead59$var$cacheMap.set(cacheKey, rawData);
-        return [
-            true,
-            rawData
-        ];
-    } catch (err) {
-        return [
-            false,
-            null
-        ];
-    }
-};
-
-
 var $cea9c420a83e9c0d$exports = {};
 
 $parcel$export($cea9c420a83e9c0d$exports, "parseNetlifyFile", function () { return $cea9c420a83e9c0d$export$398969c16ec94b3d; });
@@ -178,28 +142,37 @@ const $cea9c420a83e9c0d$export$398969c16ec94b3d = async (md, remarkPlugins)=>{
         data: file.data
     };
 };
-const $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 = async (md)=>{
-    const { data: data } = await $cea9c420a83e9c0d$export$398969c16ec94b3d(md, [
-        (0, $loPuo$remarkdirective),
-        [
-            (0, $loPuo$remarkfrontmatter),
+const $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 = async (fileContent)=>{
+    try {
+        // Temporary solution
+        // The CMS, while generating md, adds an '\_' between the text and
+        // the link, which is then replaced by 'nbsp;' (non-breaking space)
+        // and interferes correct content display
+        // To fix this, we replace '\_' with ' '
+        const fixedFileContent = fileContent.replace(/\\_\[/gm, " [").replace(/\)\\_/gm, ") ");
+        const { data: data } = await $cea9c420a83e9c0d$export$398969c16ec94b3d(fixedFileContent, [
+            (0, $loPuo$remarkdirective),
             [
-                "yaml"
-            ]
-        ],
-        (0, $66ee759281a91b0e$export$6e7a2400c9873c8e)
-    ]);
-    const { frontmatter: frontmatter = {} } = data;
-    const { pages: pages = [] } = frontmatter;
-    return pages;
+                (0, $loPuo$remarkfrontmatter),
+                [
+                    "yaml"
+                ]
+            ],
+            (0, $66ee759281a91b0e$export$6e7a2400c9873c8e)
+        ]);
+        const { frontmatter: frontmatter = {} } = data;
+        const { pages: pages = [] } = frontmatter;
+        return pages;
+    } catch (err) {
+        return err;
+    }
 };
 
 
-$parcel$exportWildcard($364ca8732529d7a4$exports, $fa4fe0e0cc4ead59$exports);
 $parcel$exportWildcard($364ca8732529d7a4$exports, $cea9c420a83e9c0d$exports);
 
 
 
 
-export {$17df517d232bb386$export$821fcbaf011feac1 as FaqAccordion, $b871f2fb17bf3607$export$eb463a824a473e05 as FaqItem, $fa4fe0e0cc4ead59$export$6cf5b06c41265e02 as getRawDataFromNetlifyOrCache, $cea9c420a83e9c0d$export$398969c16ec94b3d as parseNetlifyFile, $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 as parseNetlifyWidgetFAQ};
+export {$17df517d232bb386$export$821fcbaf011feac1 as FaqAccordion, $b871f2fb17bf3607$export$eb463a824a473e05 as FaqItem, $cea9c420a83e9c0d$export$398969c16ec94b3d as parseNetlifyFile, $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 as parseNetlifyWidgetFAQ};
 //# sourceMappingURL=index.js.map

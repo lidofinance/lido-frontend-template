@@ -1,0 +1,1 @@
+{"version":3,"file":"servicePage.d.ts","sourceRoot":"","sources":["../../src/servicePage/servicePage.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAmC,MAAM,OAAO,CAAA;AAEvD,OAAO,KAAK,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAA;AAM9D,MAAM,MAAM,gBAAgB,GAAG,kBAAkB,CAC/C,KAAK,EACL;IACE,KAAK,EAAE,KAAK,CAAC,SAAS,CAAA;CACvB,CACF,CAAA;AAWD,eAAO,MAAM,WAAW;WAbb,MAAM,SAAS;;;;0DAayB,CAAA"}

@@ -1,6 +1,6 @@
 {
-  "name": "@lidofinance/ui-faq",
-  "description": "FAQ",
+  "name": "@lidofinance/ui-pages",
+  "description": "Common UI pages",
   "repository": "git@github.com:lidofinance/warehouse.git",
   "license": "MIT",
   "version": "0.0.0",
@@ -21,7 +21,7 @@
     }
   },
   "scripts": {
-    "build": "parcel build",
+    "build": "tsc && tsc-alias",
     "lint": "eslint . && prettier --check src",
     "lint:fix": "eslint --fix . && prettier --check src --write",
     "types": "tsc --noEmit"
@@ -31,23 +31,5 @@
     "react": "17 || 18",
     "styled-components": "^5.3.5"
   },
-  "devDependencies": {
-    "@lidofinance/config-prettier": "*",
-    "@lidofinance/lido-ui": "^3.7.3",
-    "@storybook/react": "^7.0.7",
-    "@types/mdast": "^3.0.11",
-    "@types/js-yaml": "^4.0.5",
-    "@types/react": "^18.0.25",
-    "@types/styled-components": "^5.1.26"
-  },
-  "dependencies": {
-    "js-yaml": "^4.1.0",
-    "mdast": "^3.0.0",
-    "react-markdown": "^8.0.7",
-    "remark-directive": "^2.0.1",
-    "remark-frontmatter": "^4.0.1",
-    "remark-parse": "^10.0.2",
-    "remark-stringify": "^10.0.3",
-    "unified": "^10.1.2"
-  }
+  "yalcSig": "c9c2cac1812b3f7199aa29b23a90138a"
 }

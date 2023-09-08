@@ -2,8 +2,23 @@
   "version": "v1",
   "packages": {
     "@lidofinance/ui-faq": {
-      "signature": "6bbf2aa264e6b8b83387d3990dad1881",
+      "signature": "edb688d2573cb6ce17269edee74426da",
       "file": true
+    },
+    "@lidofinance/ui-pages": {
+      "signature": "c9c2cac1812b3f7199aa29b23a90138a",
+      "file": true,
+      "replaced": "^0.35.0"
+    },
+    "@lidofinance/next-pages": {
+      "signature": "1606b6082f36335502698466c5071e8f",
+      "file": true,
+      "replaced": "^0.35.0"
+    },
+    "@lidofinance/rpc": {
+      "signature": "69ad01385be387052c4217eaf9ec6c55",
+      "file": true,
+      "replaced": "^0.35.0"
     }
   }
 }
