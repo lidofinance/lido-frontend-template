@@ -6,16 +6,16 @@ import { Section, Link } from '@lidofinance/lido-ui';
 import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-layout';
 import {
   FaqAccordion,
-  getRawDataFromNetlifyOrCache,
   parseNetlifyWidgetFAQ,
   FAQItem,
-  pagesFAQ,
+  PageFAQ,
 } from '@lidofinance/ui-faq';
 
 import { serverRuntimeConfig } from 'config';
 import EthWallet from 'components/ethWalletCard';
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';
+import { serverAxios } from 'utilsApi';
 
 interface HomeProps {
   faqList: FAQItem[];
@@ -57,25 +57,29 @@ const Home: FC<HomeProps> = ({ faqList }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const [, faqRawData] = await getRawDataFromNetlifyOrCache(
-    serverRuntimeConfig.faqNetlifyUrl,
-  );
+  let foundPage: PageFAQ | undefined = undefined;
+  const pageIdentification = 'index_page';
 
-  let faqList: pagesFAQ | undefined = undefined;
-  if (faqRawData) {
-    const pages = await parseNetlifyWidgetFAQ(faqRawData);
-    faqList = pages.find(
-      (page: pagesFAQ) => page['identification'] === 'index_page',
+  try {
+    const { data: netlifyRawData } = await serverAxios.get<string>(
+      serverRuntimeConfig.faqNetlifyUrl,
     );
+
+    const pages = await parseNetlifyWidgetFAQ(netlifyRawData);
+    foundPage = pages.find(
+      (page: PageFAQ) => page['identification'] === pageIdentification,
+    );
+  } catch {
+    // noop
   }
 
   return {
     props: {
       faqList: [],
 
-      ...(faqList &&
-        faqList['faq'] && {
-          faqList: faqList['faq'],
+      ...(foundPage &&
+        foundPage['faq'] && {
+          faqList: foundPage['faq'],
         }),
     },
   };

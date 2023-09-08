@@ -10,6 +10,7 @@ export * from './matomo';
 export * from './matomoClickEvents';
 export * from './matomoWalletsEvents';
 export * from './metrics';
+export * from './requestTimeouts';
 export * from './rpc';
 export * from './steth';
 export * from './texts';

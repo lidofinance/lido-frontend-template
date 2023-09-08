@@ -36,6 +36,7 @@
     "@lidofinance/ui-faq": "file:.yalc/@lidofinance/ui-faq",
     "@lidofinance/ui-pages": "^0.35.0",
     "@lidofinance/ui-primitives": "^0.35.0",
+    "axios": "^1.4.0",
     "eslint-config-next": "^13.0.5",
     "ethers": "^5.7.2",
     "fs-extra": "^10.1.0",

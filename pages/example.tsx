@@ -5,14 +5,14 @@ import Head from 'next/head';
 import { Section } from '@lidofinance/lido-ui';
 import { LayoutSubTitle, LayoutTitle } from '@lidofinance/next-widget-layout';
 import {
-  FAQItem,
-  getRawDataFromNetlifyOrCache,
-  parseNetlifyWidgetFAQ,
-  pagesFAQ,
   FaqAccordion,
+  parseNetlifyWidgetFAQ,
+  FAQItem,
+  PageFAQ,
 } from '@lidofinance/ui-faq';
 
 import { serverRuntimeConfig } from 'config';
+import { serverAxios } from 'utilsApi';
 
 interface ExampleProps {
   faqList: FAQItem[];
@@ -39,25 +39,29 @@ const Example: FC<ExampleProps> = ({ faqList }) => {
 export default Example;
 
 export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
-  const [, faqRawData] = await getRawDataFromNetlifyOrCache(
-    serverRuntimeConfig.faqNetlifyUrl,
-  );
+  let foundPage: PageFAQ | undefined;
+  const pageIdentification = 'example_page';
 
-  let faqList: pagesFAQ | undefined = undefined;
-  if (faqRawData) {
-    const pages = await parseNetlifyWidgetFAQ(faqRawData);
-    faqList = pages.find(
-      (page: pagesFAQ) => page['identification'] === 'example_page',
+  try {
+    const { data: netlifyRawData } = await serverAxios.get<string>(
+      serverRuntimeConfig.faqNetlifyUrl,
     );
+
+    const pages = await parseNetlifyWidgetFAQ(netlifyRawData);
+    foundPage = pages.find(
+      (page: PageFAQ) => page['identification'] === pageIdentification,
+    );
+  } catch {
+    // noop
   }
 
   return {
     props: {
       faqList: [],
 
-      ...(faqList &&
-        faqList['faq'] && {
-          faqList: faqList['faq'],
+      ...(foundPage &&
+        foundPage['faq'] && {
+          faqList: foundPage['faq'],
         }),
     },
   };
