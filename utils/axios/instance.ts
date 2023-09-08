@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Axios, { CreateAxiosDefaults } from 'axios';
 import { REQUEST_TIMEOUT } from 'config';
 

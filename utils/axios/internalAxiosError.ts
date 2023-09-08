@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { AxiosError } from 'axios';
 
 export class InternalAxiosError extends Error {
