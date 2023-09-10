@@ -30,6 +30,7 @@ const allowedRpcMethods = [
   'eth_getBalance',
   'eth_getBlockByNumber',
   'eth_estimateGas',
+  'eth_blockNumber',
   // PAY ATTENTION: Extra RPC methods can be added here
 ];
 
