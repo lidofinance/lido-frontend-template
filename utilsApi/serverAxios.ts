@@ -1,8 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { CreateAxiosDefaults } from 'axios';
-// import { getStatusLabel } from '@lidofinance/api-metrics';
+import { getStatusLabel } from '@lidofinance/api-metrics';
 import { _createAxios, InternalAxiosError } from 'utils';
-// import { metrics } from './metrics';
+import {
+  requestsTimingOutgoingCompleted,
+  requestsCounterOutgoingFailed,
+  requestsCounterOutgoingSent,
+} from './metrics';
 
 export const createServerAxios = (axiosConfig?: CreateAxiosDefaults) => {
   const instance = _createAxios(axiosConfig);
@@ -14,8 +18,8 @@ export const createServerAxios = (axiosConfig?: CreateAxiosDefaults) => {
         return config;
       }
 
-      // const hostname = new URL(requestURL).hostname;
-      // metrics.requestsOutgoingSent.counter.labels({ hostname }).inc();
+      const hostname = new URL(requestURL).hostname;
+      requestsCounterOutgoingSent.labels({ hostname }).inc();
 
       config.metadata ??= {};
       config.metadata.startTime = Date.now();
@@ -38,10 +42,12 @@ export const createServerAxios = (axiosConfig?: CreateAxiosDefaults) => {
         return response;
       }
 
-      // const endTime = Date.now();
-      // const hostname = new URL(requestURL).hostname;
-      // const status = getStatusLabel(response.status);
-      // metrics.requestsOutgoingCompleted.histogram.labels({ status, hostname }).observe((endTime - startTime) / 1000);
+      const endTime = Date.now();
+      const hostname = new URL(requestURL).hostname;
+      const status = getStatusLabel(response.status);
+      requestsTimingOutgoingCompleted
+        .labels({ status, hostname })
+        .observe((endTime - startTime) / 1000);
       return response;
     },
     (error) => {
@@ -50,8 +56,10 @@ export const createServerAxios = (axiosConfig?: CreateAxiosDefaults) => {
         // looks like this is not an axios error
         return Promise.reject(error);
       }
-      // const hostname = new URL(requestURL).hostname;
-      // metrics.requestsOutgoingFailed.counter.labels({ hostname, reason: error.code }).inc();
+      const hostname = new URL(requestURL).hostname;
+      requestsCounterOutgoingFailed
+        .labels({ hostname, reason: error.code })
+        .inc();
       return Promise.reject(new InternalAxiosError(error));
     },
   );
