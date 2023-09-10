@@ -7,7 +7,7 @@ import {
 } from '@lidofinance/next-api-wrapper';
 
 import { API_ROUTES, CACHE_DEFAULT_HEADERS } from 'config';
-import { rateLimit, apiTimings, serverLogger } from 'utilsApi';
+import { rateLimit, requestsTimingIncoming, serverLogger } from 'utilsApi';
 
 /**
  * PAY ATTENTION: Example showing how to use API wrappers (error handler and cache control).
@@ -34,7 +34,7 @@ const mockLidoStats: API = (_, res) => {
 
 export default wrapRequest([
   rateLimit,
-  responseTimeMetric(apiTimings, API_ROUTES.SHORT_LIDO_STATS),
+  responseTimeMetric(requestsTimingIncoming, API_ROUTES.LIDO_STATS),
   cacheControl({
     headers: CACHE_DEFAULT_HEADERS,
   }),

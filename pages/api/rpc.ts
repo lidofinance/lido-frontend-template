@@ -9,7 +9,7 @@ import { rpcFactory } from '@lidofinance/next-pages/api';
 import { API_ROUTES, dynamics, serverRuntimeConfig } from 'config';
 import {
   registry,
-  apiTimings,
+  requestsTimingIncoming,
   rateLimit,
   rpcUrls,
   serverLogger,
@@ -34,6 +34,6 @@ const rpc = rpcFactory({
 
 export default wrapRequest([
   rateLimit,
-  responseTimeMetric(apiTimings, API_ROUTES.RPC),
+  responseTimeMetric(requestsTimingIncoming, API_ROUTES.RPC),
   defaultErrorHandler({ serverLogger: serverLogger }),
 ])(rpc);
