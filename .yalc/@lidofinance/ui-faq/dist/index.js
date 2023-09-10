@@ -101,6 +101,15 @@ const $17df517d232bb386$export$821fcbaf011feac1 = ({ faqList: faqList })=>{
 
 var $30e3952008c9e88b$exports = {};
 
+$parcel$export($30e3952008c9e88b$exports, "isFAQItem", function () { return $30e3952008c9e88b$export$cfc7e514f00a6e18; });
+$parcel$export($30e3952008c9e88b$exports, "isFAQList", function () { return $30e3952008c9e88b$export$9eaf5da275f92952; });
+const $30e3952008c9e88b$export$cfc7e514f00a6e18 = (obj)=>{
+    return "answer" in obj && "question" in obj;
+};
+const $30e3952008c9e88b$export$9eaf5da275f92952 = (obj)=>{
+    return "faqList" in obj && obj.faqList.isArray();
+};
+
 
 $parcel$exportWildcard($49bd0fe341d564cb$exports, $17df517d232bb386$exports);
 $parcel$exportWildcard($49bd0fe341d564cb$exports, $b871f2fb17bf3607$exports);
@@ -114,6 +123,7 @@ var $364ca8732529d7a4$exports = {};
 var $cea9c420a83e9c0d$exports = {};
 
 $parcel$export($cea9c420a83e9c0d$exports, "parseNetlifyFile", function () { return $cea9c420a83e9c0d$export$398969c16ec94b3d; });
+$parcel$export($cea9c420a83e9c0d$exports, "isPageFAQ", function () { return $cea9c420a83e9c0d$export$5c49e5abe2bae48e; });
 $parcel$export($cea9c420a83e9c0d$exports, "parseNetlifyWidgetFAQ", function () { return $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85; });
 
 
@@ -142,30 +152,29 @@ const $cea9c420a83e9c0d$export$398969c16ec94b3d = async (md, remarkPlugins)=>{
         data: file.data
     };
 };
+const $cea9c420a83e9c0d$export$5c49e5abe2bae48e = (obj)=>{
+    return "identification" in obj && "faq" in obj;
+};
 const $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 = async (fileContent)=>{
-    try {
-        // Temporary solution
-        // The CMS, while generating md, adds an '\_' between the text and
-        // the link, which is then replaced by 'nbsp;' (non-breaking space)
-        // and interferes correct content display
-        // To fix this, we replace '\_' with ' '
-        const fixedFileContent = fileContent.replace(/\\_\[/gm, " [").replace(/\)\\_/gm, ") ");
-        const { data: data } = await $cea9c420a83e9c0d$export$398969c16ec94b3d(fixedFileContent, [
-            (0, $loPuo$remarkdirective),
+    // Temporary solution
+    // The CMS, while generating md, adds an '\_' between the text and
+    // the link, which is then replaced by 'nbsp;' (non-breaking space)
+    // and interferes correct content display
+    // To fix this, we replace '\_' with ' '
+    const fixedFileContent = fileContent.replace(/\\_\[/gm, " [").replace(/\)\\_/gm, ") ");
+    const { data: data } = await $cea9c420a83e9c0d$export$398969c16ec94b3d(fixedFileContent, [
+        (0, $loPuo$remarkdirective),
+        [
+            (0, $loPuo$remarkfrontmatter),
             [
-                (0, $loPuo$remarkfrontmatter),
-                [
-                    "yaml"
-                ]
-            ],
-            (0, $66ee759281a91b0e$export$6e7a2400c9873c8e)
-        ]);
-        const { frontmatter: frontmatter = {} } = data;
-        const { pages: pages = [] } = frontmatter;
-        return pages;
-    } catch (err) {
-        return err;
-    }
+                "yaml"
+            ]
+        ],
+        (0, $66ee759281a91b0e$export$6e7a2400c9873c8e)
+    ]);
+    const { frontmatter: frontmatter = {} } = data;
+    const { pages: pages = [] } = frontmatter;
+    return pages;
 };
 
 
@@ -174,5 +183,5 @@ $parcel$exportWildcard($364ca8732529d7a4$exports, $cea9c420a83e9c0d$exports);
 
 
 
-export {$17df517d232bb386$export$821fcbaf011feac1 as FaqAccordion, $b871f2fb17bf3607$export$eb463a824a473e05 as FaqItem, $cea9c420a83e9c0d$export$398969c16ec94b3d as parseNetlifyFile, $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 as parseNetlifyWidgetFAQ};
+export {$17df517d232bb386$export$821fcbaf011feac1 as FaqAccordion, $b871f2fb17bf3607$export$eb463a824a473e05 as FaqItem, $30e3952008c9e88b$export$cfc7e514f00a6e18 as isFAQItem, $30e3952008c9e88b$export$9eaf5da275f92952 as isFAQList, $cea9c420a83e9c0d$export$398969c16ec94b3d as parseNetlifyFile, $cea9c420a83e9c0d$export$5c49e5abe2bae48e as isPageFAQ, $cea9c420a83e9c0d$export$6fd2da1a4bdd8c85 as parseNetlifyWidgetFAQ};
 //# sourceMappingURL=index.js.map
