@@ -4,12 +4,7 @@ import Head from 'next/head';
 
 import { Section } from '@lidofinance/lido-ui';
 import { LayoutSubTitle, LayoutTitle } from '@lidofinance/next-widget-layout';
-import {
-  FaqAccordion,
-  parseNetlifyWidgetFAQ,
-  FAQItem,
-  PageFAQ,
-} from '@lidofinance/ui-faq';
+import { FaqAccordion, getFAQ, FAQItem, PageFAQ } from '@lidofinance/ui-faq';
 
 import { serverRuntimeConfig } from 'config';
 import { serverAxios } from 'utilsApi';
@@ -43,11 +38,7 @@ export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
   const pageIdentification = 'example_page';
 
   try {
-    const { data: netlifyRawData } = await serverAxios.get<string>(
-      serverRuntimeConfig.faqNetlifyUrl,
-    );
-
-    const pages = await parseNetlifyWidgetFAQ(netlifyRawData);
+    const pages = await getFAQ(serverRuntimeConfig.faqNetlifyUrl, serverAxios);
     foundPage = pages.find(
       (page: PageFAQ) => page['identification'] === pageIdentification,
     );

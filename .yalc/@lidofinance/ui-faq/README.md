@@ -1,6 +1,6 @@
 # @lidofinance/faq
 
-FAQ JSX (TSX) components and fetch utils.
+FAQ components and utils.
 
 ## Installation
 
@@ -20,11 +20,10 @@ import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import {
-  FAQItem,
-  getRawDataFromNetlifyOrCache,
-  parseNetlifyWidgetFAQ,
-  pagesFAQ,
   FaqAccordion,
+  parseNetlifyWidgetFAQ,
+  FAQItem,
+  PageFAQ,
 } from '@lidofinance/ui-faq';
 
 
@@ -40,24 +39,28 @@ const Example: FC<ExampleProps> = ({ faqList }) => (
 export default Example;
 
 export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
-  const faqNetlifyUrl = '<path_to_netlify_file>';
-  const [, faqRawData] = await getRawDataFromNetlifyOrCache(faqNetlifyUrl);
+  let foundPage: PageFAQ | undefined = undefined;
+  const pageIdentification = '<url_to_netlify_file>';
 
-  let faqList: pagesFAQ | undefined = undefined;
-  if (faqRawData) {
-    const pages = await parseNetlifyWidgetFAQ(faqRawData);
-    faqList = pages.find(
-      (page: pagesFAQ) => page['identification'] === 'example_page',
+  try {
+    // Better use your own fetch wrapper (or axios) with timeout, metrics, logger etc.
+    const netlifyRawData = fetch(serverRuntimeConfig.faqNetlifyUrl);
+
+    const pages = await parseNetlifyWidgetFAQ(netlifyRawData);
+    foundPage = pages.find(
+      (page: PageFAQ) => page['identification'] === pageIdentification,
     );
+  } catch {
+    // noop
   }
 
   return {
     props: {
       faqList: [],
 
-      ...(faqList &&
-        faqList['faq'] && {
-          faqList: faqList['faq'],
+      ...(foundPage &&
+        foundPage['faq'] && {
+          faqList: foundPage['faq'],
         }),
     },
   };
