@@ -56,7 +56,9 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const pageIdentification = 'index_page';
 
   try {
-    const pages = await getFAQ(serverRuntimeConfig.faqNetlifyUrl, serverAxios);
+    const pages = await getFAQ(serverRuntimeConfig.faqNetlifyUrl, {
+      axiosServerInstance: serverAxios,
+    });
     foundPage = pages.find(
       (page: PageFAQ) => page['identification'] === pageIdentification,
     );
