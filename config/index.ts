@@ -8,6 +8,7 @@ export * from './chains';
 export * from './estimate';
 export * from './matomo';
 export * from './matomoClickEvents';
+export * from './matomoFaq';
 export * from './matomoWalletsEvents';
 export * from './metrics';
 export * from './requestTimeouts';

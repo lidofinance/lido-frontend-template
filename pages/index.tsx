@@ -6,7 +6,7 @@ import { Section, Link } from '@lidofinance/lido-ui';
 import { LayoutTitle, LayoutSubTitle } from '@lidofinance/next-widget-layout';
 import { FaqAccordion, getFAQ, FAQItem, PageFAQ } from '@lidofinance/ui-faq';
 
-import { serverRuntimeConfig } from 'config';
+import { serverRuntimeConfig, matomoEventMap } from 'config';
 import EthWallet from 'components/ethWalletCard';
 import StakeForm from 'components/stakeForm';
 import LidoStatistics from 'components/lidoStatistics';
@@ -43,7 +43,7 @@ const Home: FC<HomeProps> = ({ faqList }) => {
       </Section>
 
       <Section title="FAQ">
-        <FaqAccordion faqList={faqList} />
+        <FaqAccordion faqList={faqList} matomoEventMap={matomoEventMap} />
       </Section>
     </>
   );
@@ -56,8 +56,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const pageIdentification = 'index_page';
 
   try {
-    const pages = await getFAQ(serverRuntimeConfig.faqNetlifyUrl, {
-      axiosServerInstance: serverAxios,
+    const pages = await getFAQ(serverRuntimeConfig.faqContentUrl, {
+      axiosInstance: serverAxios,
     });
     foundPage = pages.find(
       (page: PageFAQ) => page['identification'] === pageIdentification,

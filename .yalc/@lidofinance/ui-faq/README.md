@@ -1,6 +1,6 @@
-# @lidofinance/faq
+# @lidofinance/ui-faq
 
-FAQ components and utils.
+FAQ UI components and parse utils.
 
 ## Installation
 
@@ -10,43 +10,58 @@ FAQ components and utils.
 yarn add @lidofinance/faq
 
 # and additional
-yarn add next@^12.3.0 styled-components@^5.3.5 @lidofinance/lido-ui@^3.6.1
+yarn add next@^12.3.0 styled-components@^5.3.5 @lidofinance/lido-ui@^3.6.1 axios@^1.5.0 cache-manager@^5.2.3
+
+# and warehouse packages
+yarn add @lidofinance/analytics-matomo@^0.37.0 @lidofinance/next-ui-primitives@^0.37.0
 ```
 
 ## Using
+
+There is SSR example (using `getStaticProps`), but also you can use `getFAQ` on client side inside any client component
 
 ```tsx
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import {
-  FaqAccordion,
-  parseNetlifyWidgetFAQ,
-  FAQItem,
-  PageFAQ,
-} from '@lidofinance/ui-faq';
+import { FaqAccordion, getFAQ, FAQItem, PageFAQ } from '@lidofinance/ui-faq';
+import { serverAxios } from 'utilsApi';
 
 
 interface ExampleProps {
   faqList: FAQItem[];
 }
 
-// PAY ATTENTION: Example showing how to add page (and for routing test)
-const Example: FC<ExampleProps> = ({ faqList }) => (
+const IndexPage: FC<ExampleProps> = ({ faqList }) => (
   <FaqAccordion faqList={faqList} />
 );
 
-export default Example;
+export default IndexPage;
 
 export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
-  let foundPage: PageFAQ | undefined = undefined;
-  const pageIdentification = '<url_to_netlify_file>';
+  let foundPage: PageFAQ | undefined;
+  const pageIdentification = 'index_page';
 
   try {
-    // Better use your own fetch wrapper (or axios) with timeout, metrics, logger etc.
-    const netlifyRawData = fetch(serverRuntimeConfig.faqNetlifyUrl);
+    const pages = await getFAQ(serverRuntimeConfig.faqContentUrl, {
+      // default axios instance without logger, metrics, timeout
+      axiosInstance: serverAxios, // or clientAxios
+      // cache default is true
+      cache: true,
+      // memoryCacheConfig default is undefined
+      memoryCacheConfig: { max: 100, ttl: 6 * 100 * 1000 },
+    });
 
-    const pages = await parseNetlifyWidgetFAQ(netlifyRawData);
+    // or custom axios and without cache
+    // const pages = await getFAQ(serverRuntimeConfig.faqContentUrl, {
+    //   axiosInstance: clientAxios,
+    //   cache: false,
+    // });
+
+    // or use internal FAQ pkg axios and use cache
+    // const pages = await getFAQ(serverRuntimeConfig.faqContentUrl);
+    
+    // bacause `getFAQ` returns data for all pages
     foundPage = pages.find(
       (page: PageFAQ) => page['identification'] === pageIdentification,
     );
@@ -65,4 +80,48 @@ export const getStaticProps: GetStaticProps<ExampleProps> = async () => {
     },
   };
 };
+```
+
+### Matomo analytics
+
+Client side example. Let's make with [matomo analytics](https://www.npmjs.com/package/@lidofinance/analytics-matomo)!
+
+```tsx
+// See: @lidofinance/analytics-matomo
+import { MATOMO_CLICK_EVENTS } from './matomoClickEvents';
+
+export const matomoEventMap = new Map();
+
+// Exact match required - 'https://lido.fi' or 'https://lido.fi/?ref=<ref>' not be working!
+matomoEventMap.set('https://lido.fi/', MATOMO_CLICK_EVENTS.faqLidoLandingLink);
+// Exact match required - 'example' or 'example/?ref=<ref>' not be working!
+matomoEventMap.set('/example', MATOMO_CLICK_EVENTS.faqExamplePageLocalLink);
+// Important: you should match `href` with `faqContentUrl` at source, not with `<FaqAccordion ... />` HTML output!
+
+const ExamplePage2: FC = () => {
+  const [foundPage, setFoundPage] = useState<PageFAQ | undefined>(undefined);
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const pageIdentification = 'example_page_2';
+        const pages = await getFAQ(dynamics.faqContentUrl);
+
+        setFoundPage(
+          pages.find(
+            (page: PageFAQ) => page['identification'] === pageIdentification,
+          ),
+        );
+      } catch {
+        // noop
+      }
+    })();
+  }, []);
+  
+  return (
+    <FaqAccordion faqList={faqList} matomoEventMap={matomoEventMap} />
+  )
+};
+
+export default ExamplePage2;
 ```

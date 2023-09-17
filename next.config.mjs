@@ -31,10 +31,11 @@ const allowedRpcMethods = [
   'eth_getBlockByNumber',
   'eth_estimateGas',
   'eth_blockNumber',
+  'eth_getGasPrice',
   // PAY ATTENTION: Extra RPC methods can be added here
 ];
 
-const faqNetlifyUrl = process.env.FAQ_NETLIFY_URL;
+const faqContentUrl = process.env.FAQ_CONTENT_URL;
 
 export default {
   basePath,
@@ -83,6 +84,6 @@ export default {
     cspReportOnly,
     cspReportUri,
     allowedRpcMethods,
-    faqNetlifyUrl,
+    faqContentUrl,
   },
 };
