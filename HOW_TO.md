@@ -71,7 +71,7 @@ More info [here](https://github.com/lidofinance/warehouse/tree/main/packages/nex
 
 If you need a completely different layout structure - see block `Not EVM widget` below.
 
-#### Not EVM widget
+#### Non-EVM widget
 
 For not EVM widget we haven't a ready solution. You should make it yourself.
 For that you should go to `pages/_app.tsx` and need use `widget layout components` like example [here](https://github.com/lidofinance/warehouse/tree/main/packages/next/widget-layout#getting-started),
