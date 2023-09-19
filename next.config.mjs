@@ -1,4 +1,5 @@
 import { CHAINS } from '@lido-sdk/constants';
+
 import buildDynamics from './scripts/build-dynamics.mjs';
 
 buildDynamics();
@@ -14,9 +15,27 @@ const apiProviderUrls = {
   [CHAINS.Kovan]: process.env[`API_PROVIDER_URL_${CHAINS.Kovan}`],
 };
 
+// rate limit
+const rateLimit = process.env.RATE_LIMIT;
+const rateLimitTimeFrame = process.env.RATE_LIMIT_TIME_FRAME;
+
 const cspTrustedHosts = process.env.CSP_TRUSTED_HOSTS;
 const cspReportOnly = process.env.CSP_REPORT_ONLY;
 const cspReportUri = process.env.CSP_REPORT_URI;
+
+const allowedRpcMethods = [
+  'eth_call',
+  'eth_gasPrice',
+  'eth_requestAccounts',
+  'eth_getBalance',
+  'eth_getBlockByNumber',
+  'eth_estimateGas',
+  'eth_blockNumber',
+  'eth_getGasPrice',
+  // PAY ATTENTION: Extra RPC methods can be added here
+];
+
+const faqContentUrl = process.env.FAQ_CONTENT_URL;
 
 export default {
   basePath,
@@ -26,15 +45,22 @@ export default {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    // Fixes a build error with importing Pure ESM modules, e.g. reef-knot
+    // Some docs are here:
+    // <https://github.com/vercel/next.js/pull/27069>
+    // You can see how it is actually used in v12.3.4 here:
+    // <https://github.com/vercel/next.js/blob/v12.3.4/packages/next/build/webpack-config.ts#L417>
+    // Presumably, it is true by default in next v13 and won't be needed
+    esmExternals: true,
+  },
   // WARNING: Vulnerability fix, don't remove until default Next.js image loader is patched
   images: {
     loader: 'custom',
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack', 'url-loader'],
-    });
+    // Fix: Module not found: Can't resolve 'fs'...
+    config.resolve.fallback = { fs: false };
 
     return config;
   },
@@ -52,8 +78,12 @@ export default {
     infuraApiKey,
     alchemyApiKey,
     apiProviderUrls,
+    rateLimit,
+    rateLimitTimeFrame,
     cspTrustedHosts,
     cspReportOnly,
     cspReportUri,
+    allowedRpcMethods,
+    faqContentUrl,
   },
 };

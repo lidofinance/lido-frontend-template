@@ -1,3 +1,5 @@
+// All from this file needs for dynamic env
+
 import * as dynamics from '../env-dynamics.mjs';
 
 declare global {

@@ -1,7 +1,8 @@
 {
+  "name": "PAY ATTENTION: Put correct data and remove a duplicate",
   "name": "Lido Frontend Template",
   "short_name": "Lido",
-  "description": "Lido is the liquid staking solution for Ethereum.",
+  "description": "Lido is the liquid staking solution for X.",
   "iconPath": "favicon-512x512.svg",
   "icons": [
     {

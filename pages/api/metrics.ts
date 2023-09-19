@@ -1,11 +1,16 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { registry } from 'utils/metrics';
+import { metricsFactory } from '@lidofinance/next-pages/api';
+import { registry } from 'utilsApi/metrics';
+import { contractInfo } from 'utils/metrics';
 
-type Metrics = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
+if (process.env.NODE_ENV === 'production') {
+  // Collect 'contract info' metrics
+  registry.registerMetric(contractInfo);
 
-const metrics: Metrics = async (req, res) => {
-  const collectedMetrics = await registry.metrics();
-  res.send(collectedMetrics);
-};
+  // PAY ATTENTION: Extra metrics can be registered here
+}
+
+const metrics = metricsFactory({
+  registry,
+});
 
 export default metrics;

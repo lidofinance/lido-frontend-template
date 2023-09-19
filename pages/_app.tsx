@@ -1,47 +1,80 @@
-import { memo } from 'react';
-import NextApp, { AppContext, AppProps } from 'next/app';
-import {
-  ToastContainer,
-  CookiesTooltip,
-  migrationAllowCookieToCrossDomainCookieClientSide,
-  migrationThemeCookiesToCrossDomainCookiesClientSide,
-} from '@lidofinance/lido-ui';
-import Providers from 'providers';
-import { CustomAppProps } from 'types';
-import { withCsp } from 'utils/withCsp';
+import { FC } from 'react';
+import NextApp, { AppProps } from 'next/app';
 
-// Migrations old cookies to new cross domain cookies
-migrationThemeCookiesToCrossDomainCookiesClientSide();
+import {
+  Stake,
+  Ldo as LdoIcon,
+  Wrap,
+  migrationAllowCookieToCrossDomainCookieClientSide,
+} from '@lidofinance/lido-ui';
+import { EVMWidgetApp } from '@lidofinance/eth-next-widget-app-evm';
+import {
+  NavigationAdaptive,
+  NavigationLink,
+} from '@lidofinance/next-widget-layout';
+
+import {
+  getBackendRPCPath,
+  backendRPC,
+  dynamics,
+  walletsMetrics,
+} from 'config';
+import { HeaderActions } from 'components/headerActions';
+import { GlobalStyles } from 'components/globalStyle';
+import NoSSRWrapper from 'components/no-ssr-wrapper';
+import { withCsp } from 'utils';
 
 // Migrations old allow cookies to new cross domain cookies
+// It is here 'cause `keyOldCookies` may be different for widgets
+// One day it will be deprecated
 migrationAllowCookieToCrossDomainCookieClientSide(
   'LIDO_WIDGET__COOKIES_ALLOWED',
 );
 
-const App = (props: AppProps): JSX.Element => {
-  const { Component, pageProps } = props;
+const Navigation: FC = () => (
+  <NavigationAdaptive>
+    <NavigationLink title="Stake" href={'/'} icon={<Stake />} />
+    <NavigationLink title="Example" href={'/example'} icon={<Wrap />} />
+    <NavigationLink
+      title="Landing"
+      href={'https://lido.fi/'}
+      icon={<LdoIcon />}
+    />
+  </NavigationAdaptive>
+);
 
-  return <Component {...pageProps} />;
-};
-
-const MemoApp = memo(App);
-
-const AppWrapper = (props: CustomAppProps): JSX.Element => {
-  const { ...rest } = props;
-
-  return (
-    <Providers>
-      <MemoApp {...rest} />
-      <CookiesTooltip />
-      <ToastContainer />
-    </Providers>
-  );
-};
-
-AppWrapper.getInitialProps = async (appContext: AppContext) => {
-  return await NextApp.getInitialProps(appContext);
-};
+// App use EVM wrapper
+const WidgetAppWrapper: FC<AppProps> = (props) => (
+  // Temporary fix hydration error
+  // TODO
+  <NoSSRWrapper>
+    <EVMWidgetApp
+      navigation={<Navigation />}
+      headerActions={<HeaderActions />}
+      reefKnot={{
+        walletsMetrics: walletsMetrics,
+        hiddenWallets: ['Opera Wallet'],
+      }}
+      providerWeb3={{
+        defaultChainId: dynamics.defaultChain,
+        supportedChainIds: dynamics.supportedChains,
+        rpc: backendRPC,
+        walletconnectProjectId: dynamics.walletconnectProjectId,
+      }}
+      wagmi={{
+        defaultChain: dynamics.defaultChain,
+        supportedChains: dynamics.supportedChains,
+        backendRPC: backendRPC,
+        getBackendRPCPath: getBackendRPCPath,
+        walletconnectProjectId: dynamics.walletconnectProjectId,
+      }}
+    >
+      <GlobalStyles />
+      <NextApp {...props} />
+    </EVMWidgetApp>
+  </NoSSRWrapper>
+);
 
 export default process.env.NODE_ENV === 'development'
-  ? AppWrapper
-  : withCsp(AppWrapper);
+  ? WidgetAppWrapper
+  : withCsp(WidgetAppWrapper);

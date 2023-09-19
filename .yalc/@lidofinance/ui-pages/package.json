@@ -1,0 +1,35 @@
+{
+  "name": "@lidofinance/ui-pages",
+  "description": "Common UI pages",
+  "repository": "git@github.com:lidofinance/warehouse.git",
+  "license": "MIT",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16",
+    "browsers": "> 0.5%, last 2 versions, not dead"
+  },
+  "type": "module",
+  "source": "./src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "lint": "eslint . && prettier --check src",
+    "lint:fix": "eslint --fix . && prettier --check src --write",
+    "types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@lidofinance/lido-ui": "^3.7.3",
+    "react": "17 || 18",
+    "styled-components": "^5.3.5"
+  },
+  "yalcSig": "c9c2cac1812b3f7199aa29b23a90138a"
+}

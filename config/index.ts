@@ -1,9 +1,18 @@
 import getConfig from 'next/config';
 export const { serverRuntimeConfig } = getConfig();
+
 export { default as dynamics } from './dynamics';
 export * from './api';
-export * from './locale';
-export * from './rpc';
-export * from './storage';
-export * from './example';
+export * from './cache';
+export * from './chains';
+export * from './estimate';
+export * from './matomo';
+export * from './matomoClickEvents';
+export * from './matomoFaq';
+export * from './matomoWalletsEvents';
 export * from './metrics';
+export * from './requestTimeouts';
+export * from './rpc';
+export * from './steth';
+export * from './texts';
+export * from './units';

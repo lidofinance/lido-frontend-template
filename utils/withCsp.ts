@@ -1,10 +1,11 @@
-import { withSecureHeaders } from 'next-secure-headers';
-import getConfig from 'next/config';
 import { FC } from 'react';
-import { CustomAppProps } from 'types';
+import { AppProps } from 'next/app';
+import { withSecureHeaders } from 'next-secure-headers';
+import { serverRuntimeConfig } from 'config';
 
-const { serverRuntimeConfig } = getConfig();
 const { cspTrustedHosts, cspReportOnly, cspReportUri } = serverRuntimeConfig;
+
+// PAY ATTENTION: Extra Content Security Policy can be added here
 
 const trustedHosts = cspTrustedHosts
   ? cspTrustedHosts.split(',')
@@ -35,12 +36,10 @@ export const contentSecurityPolicy = {
     baseUri: ["'none'"],
     reportURI: cspReportUri,
   },
-  reportOnly: reportOnly,
+  reportOnly,
 };
 
-export const withCsp = (
-  app: ({ config, ...appProps }: CustomAppProps) => JSX.Element,
-): FC =>
+export const withCsp = (app: FC<AppProps>): FC =>
   withSecureHeaders({
     contentSecurityPolicy,
     frameGuard: false,

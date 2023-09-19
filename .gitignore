@@ -32,8 +32,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#ide
+# ide
 .vscode
 .idea
 
+# dynamic envs
 /public/runtime/
