@@ -6,7 +6,7 @@ most likely there would be changes required to make your app run smoothly.
 
 ### Step 0. Docs
 
-READ FIRST [DOCS.md](./DOCS.md)!!!
+First, read [DOCS.md](./DOCS.md)
 
 ### Step 1. Export variables in `next.config.mjs` and `env-dynamics.mjs`
 
