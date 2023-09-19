@@ -4,7 +4,7 @@ import { REQUEST_TIMEOUT } from 'config';
 
 declare module 'axios' {
   export interface InternalAxiosRequestConfig {
-    metadata: any;
+    metadata?: Record<string, unknown>;
   }
 }
 
