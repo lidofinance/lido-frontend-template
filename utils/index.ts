@@ -4,4 +4,3 @@ export * from './formatBalance';
 export * from './logger';
 export * from './stringToEther';
 export * from './standardFetcher';
-export * from './serverLogger';

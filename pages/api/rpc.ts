@@ -7,7 +7,6 @@ import {
 } from '@lidofinance/next-api-wrapper';
 import getConfig from 'next/config';
 import { fetchWithFallbacks } from 'utils/fetchWithFallbacks';
-import { serverLogger } from 'utils/serverLogger';
 
 const { serverRuntimeConfig } = getConfig();
 const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
@@ -16,7 +15,7 @@ const { infuraApiKey, alchemyApiKey, apiProviderUrls } =
 type Rpc = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
 const rpc: Rpc = async (req, res) => {
-  serverLogger.debug('Request to RPC');
+  console.debug('Request to RPC');
   const chainId = Number(req.query.chainId);
 
   if (!CHAINS[chainId]) {
@@ -48,6 +47,4 @@ const rpc: Rpc = async (req, res) => {
 };
 
 // Error handler wrapper
-export default wrapRequest([
-  defaultErrorHandler({ serverLogger: serverLogger }),
-])(rpc);
+export default wrapRequest([defaultErrorHandler()])(rpc);

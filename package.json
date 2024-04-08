@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS='-r next-logger' next build",
     "start": "NODE_OPTIONS='-r next-logger' next start",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "yarn lint --fix",
@@ -13,7 +13,6 @@
     "postinstall": "husky install && yarn typechain"
   },
   "dependencies": {
-    "@darkobits/mask-string": "^2.0.1",
     "@ethersproject/abstract-signer": "^5.5.0",
     "@ethersproject/address": "^5.5.0",
     "@ethersproject/bignumber": "^5.5.0",
@@ -27,10 +26,12 @@
     "@lido-sdk/fetch": "^2.1.0",
     "@lido-sdk/helpers": "^1.4.3",
     "@lido-sdk/react": "^1.18.1",
-    "@lidofinance/analytics-matomo": "^0.9.0",
+    "@lidofinance/analytics-matomo": "^0.42.0",
+    "@lidofinance/api-metrics": "^0.42.0",
     "@lidofinance/lido-ui": "^3.0.0-next.17",
-    "@lidofinance/next-api-wrapper": "^0.16.0",
-    "@lidofinance/next-cache-files-middleware": "^0.16.0",
+    "@lidofinance/next-api-wrapper": "^0.42.0",
+    "@lidofinance/next-cache-files-middleware": "^0.42.0",
+    "@lidofinance/satanizer": "^0.42.0",
     "cookie": "^0.5.0",
     "copy-to-clipboard": "^3.3.1",
     "eslint-config-next": "^13.0.5",
