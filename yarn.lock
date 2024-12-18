@@ -1854,10 +1854,10 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@lidofinance/analytics-matomo@^0.42.0":
-  version "0.42.0"
-  resolved "https://registry.yarnpkg.com/@lidofinance/analytics-matomo/-/analytics-matomo-0.42.0.tgz#c2ac299948333bab245fdd9913feea64f3e4ea8b"
-  integrity sha512-s8EDwYe7/jlhtC4xUehJC3oI3G3PAGq9mXXtnhECqhpoda8bCYbtexVL4BDP43FKTJnWCO2kf/w6jjkZCIMv+g==
+"@lidofinance/analytics-matomo@^0.48.0":
+  version "0.48.0"
+  resolved "https://registry.yarnpkg.com/@lidofinance/analytics-matomo/-/analytics-matomo-0.48.0.tgz#0a4ad9dd4af1d49cdf5f9206b1dde9c08216fff0"
+  integrity sha512-HJBmnXFeQp2PuE8/rghhXy6PbykdSd7g5qqDKuPg5l97rbqbtdFJU2lZuwmPs+PMNquhcdn+yUyEXC4gRSC2Hw==
 
 "@lidofinance/api-metrics@^0.42.0":
   version "0.42.0"
