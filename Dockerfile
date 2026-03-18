@@ -14,7 +14,7 @@ RUN NODE_NO_BUILD_DYNAMICS=true yarn typechain && yarn build
 # public/runtime is used to inject runtime vars; it should exist and user node should have write access there for it
 RUN rm -rf /app/public/runtime \
   && mkdir -p /app/public/runtime \
-  && chown node:node /app/public/runtime
+  && chown node /app/public/runtime
 
 # final image
 FROM node:24-alpine AS base
