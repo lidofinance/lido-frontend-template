@@ -3,8 +3,7 @@ FROM node:24-alpine AS build
 
 WORKDIR /app
 
-# hadolint ignore=DL3018
-RUN apk add --no-cache git
+RUN apk add --no-cache git=2.36.3-r0
 COPY package.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile --non-interactive --ignore-scripts \
@@ -35,7 +34,7 @@ COPY --from=build /app /app
 USER node
 EXPOSE 3000
 
-HEALTHCHECK --interval=10s --timeout=3s \
+HEALTHCHECK --interval=10s --timeout=3s --start-period=30s \
   CMD wget -q -O /dev/null http://127.0.0.1:3000/api/health || exit 1
 
 CMD ["yarn", "start"]
